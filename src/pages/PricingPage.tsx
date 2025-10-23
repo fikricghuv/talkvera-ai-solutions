@@ -1,6 +1,12 @@
 import { Check, Zap, Rocket, Building2 } from 'lucide-react';
 
-function PricingPage() {
+type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
+
+interface HomePageProps {
+    onNavigate: (page: Page) => void;
+}
+
+function PricingPage({ onNavigate }: HomePageProps) {
   const plans = [
     {
       icon: Zap,
@@ -165,6 +171,7 @@ function PricingPage() {
                       ? 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-lg shadow-blue-500/30'
                       : 'bg-gray-800 hover:bg-gray-700 text-white border border-gray-700'
                   }`}
+                  onClick={() => onNavigate('contact')}
                 >
                   {plan.price === 'Custom' ? 'Contact Sales' : 'Get Started'}
                 </button>
@@ -219,7 +226,8 @@ function PricingPage() {
               <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
                 Our team can design a tailored package that perfectly fits your unique requirements and budget.
               </p>
-              <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30">
+              <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30"
+              onClick={() => onNavigate('contact')}>
                 Schedule a Consultation
               </button>
             </div>

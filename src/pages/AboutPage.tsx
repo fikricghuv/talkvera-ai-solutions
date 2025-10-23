@@ -1,6 +1,12 @@
 import { Target, Users, Award, Lightbulb, Heart, TrendingUp } from 'lucide-react';
 
-function AboutPage() {
+type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
+
+interface HomePageProps {
+    onNavigate: (page: Page) => void;
+}
+
+function AboutPage({ onNavigate }: HomePageProps) {
   const values = [
     {
       icon: Lightbulb,
@@ -66,13 +72,12 @@ function AboutPage() {
 
   return (
     <div className="pt-16">
-      <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20"></div>
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
           <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
         </div>
-        
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-8">
@@ -198,10 +203,12 @@ function AboutPage() {
             Whether you're looking to transform your business with AI or join our talented team, we'd love to hear from you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30">
+            <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30"
+            onClick={() => onNavigate('contact')}>
               Get in Touch
             </button>
-            <button className="px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all">
+            <button className="px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all"
+            onClick={() => onNavigate('contact')}>
               View Open Positions
             </button>
           </div>

@@ -18,23 +18,17 @@ function DocsPage() {
     { id: 'process', label: 'Our Process', icon: Workflow },
     { id: 'resources', label: 'Resources', icon: FileText },
     {
-      id: 'ai-agents',
-      label: 'AI Agents',
-      icon: Bot,
-      children: [
-        { id: 'overview', label: 'Overview' },
-        { id: 'ultimate-assistant', label: 'Ultimate Assistant' },
-        { id: 'rag-pipeline', label: 'RAG Pipeline' },
-      ],
-    },
-    {
       id: 'case-studies',
       label: 'Case Studies',
       icon: BookOpenText,
       children: [
-        { id: 'overview-case-studies', label: 'Overview' },
+        { id: 'overview', label: 'Overview' },
+        { id: 'ultimate-assistant', label: 'Ultimate Assistant' },
+        { id: 'rag-pipeline', label: 'RAG Pipeline' },
+        { id: 'newsletter-creation', label: 'Newsletter Creation' },
         { id: 'schedule-appointment-agent', label: 'Schedule Appointment Agent' },
         { id: 'customer-service-agent', label: 'Customer Service Agent' },
+        { id: 'generate-test-case', label: 'Generate Test Scenario' },
       ],
     },
   ];
@@ -42,79 +36,78 @@ function DocsPage() {
   const renderContent = () => {
     switch (activeSection) {
       case 'introduction':
-  return (
-    <div className="space-y-8">
-      <h1 className="text-4xl font-bold mb-6">Getting Started</h1>
+        return (
+          <div className="space-y-8">
+            <h1 className="text-4xl font-bold mb-6">Getting Started</h1>
 
-      <p className="text-gray-400 leading-relaxed">
-        Welcome to TalkVera's documentation! This section is your launchpad for getting oriented
-        with our tools, services, and how we work. Our goal is to make working with TalkVera
-        seamless and intuitive.
-      </p>
+            <p className="text-gray-400 leading-relaxed">
+              Welcome to TalkVera's documentation! This section is your launchpad for getting oriented
+              with our tools, services, and how we work. Our goal is to make working with TalkVera
+              seamless and intuitive.
+            </p>
 
-      <div>
-        <h2 className="text-2xl font-semibold mb-3">Navigating the Documentation</h2>
-        <p className="text-gray-400 leading-relaxed">
-          Each major category in this documentation is presented as a dropdown menu, containing
-          detailed subpages for each topic. Use the sidebar or top navigation to explore areas like
-          <span className="text-white font-medium"> "Technology Stack," "Our Process," </span>and
-          <span className="text-white font-medium"> "AI Agents."</span> If you're searching for
-          something specific, use the built-in search feature or press
-          <span className="text-white font-medium"> Command + K </span>
-          to activate our <span className="text-white font-medium">Ask AI</span> tool, which can
-          answer questions, suggest resources, or point you directly to relevant sections of the
-          documentation.
-        </p>
-      </div>
+            <div>
+              <h2 className="text-2xl font-semibold mb-3">Navigating the Documentation</h2>
+              <p className="text-gray-400 leading-relaxed">
+                Each major category in this documentation is presented as a dropdown menu, containing
+                detailed subpages for each topic. Use the sidebar or top navigation to explore areas like
+                <span className="text-white font-medium"> "Technology Stack," "Our Process," </span>and
+                <span className="text-white font-medium"> "AI Agents."</span> If you're searching for
+                something specific, use the built-in search feature or press
+                <span className="text-white font-medium"> Command + K </span>
+                to activate our <span className="text-white font-medium">Ask AI</span> tool, which can
+                answer questions, suggest resources, or point you directly to relevant sections of the
+                documentation.
+              </p>
+            </div>
 
-      <div>
-        <h2 className="text-2xl font-semibold mb-3">Who This Is For</h2>
-        <p className="text-gray-400 leading-relaxed">
-          This documentation is designed for developers, product leaders, operations teams, and
-          decision-makers who want to understand and implement AI capabilities into their workflows.
-          Whether you're launching a new project or integrating one of our agents into your systems,
-          this guide will help you understand what's possible and how to get there.
-        </p>
-      </div>
+            <div>
+              <h2 className="text-2xl font-semibold mb-3">Who This Is For</h2>
+              <p className="text-gray-400 leading-relaxed">
+                This documentation is designed for developers, product leaders, operations teams, and
+                decision-makers who want to understand and implement AI capabilities into their workflows.
+                Whether you're launching a new project or integrating one of our agents into your systems,
+                this guide will help you understand what's possible and how to get there.
+              </p>
+            </div>
 
-      <div>
-        <h2 className="text-2xl font-semibold mb-3">How to Work With Us</h2>
-        <p className="text-gray-400 leading-relaxed mb-3">
-          To start working with TalkVera, visit our
-          <span className="text-white font-medium"> Contact Page </span>and fill out the form with
-          as much detail as possible about your project. The more context you provide, the better we
-          can scope the engagement and align you with the right solutions.
-        </p>
-        <p className="text-gray-400 leading-relaxed">
-          Currently, TalkVera works on a partnership plan that starts at
-          <span className="text-white font-medium"> $20,000/month.</span> If your project is smaller
-          in scope or budget, we recommend visiting our
-          <span className="text-white font-medium"> Pricing Page </span>
-          to explore available options.
-        </p>
-      </div>
+            <div>
+              <h2 className="text-2xl font-semibold mb-3">How to Work With Us</h2>
+              <p className="text-gray-400 leading-relaxed mb-3">
+                To start working with TalkVera, visit our
+                <span className="text-white font-medium"> Contact Page </span>and fill out the form with
+                as much detail as possible about your project. The more context you provide, the better we
+                can scope the engagement and align you with the right solutions.
+              </p>
+              <p className="text-gray-400 leading-relaxed">
+                Currently, TalkVera works on a partnership plan that starts at
+                <span className="text-white font-medium"> $20,000/month.</span> If your project is smaller
+                in scope or budget, we recommend visiting our
+                <span className="text-white font-medium"> Pricing Page </span>
+                to explore available options.
+              </p>
+            </div>
 
-      <div>
-        <h2 className="text-2xl font-semibold mb-3">Documentation Tips</h2>
-        <p className="text-gray-400 leading-relaxed">
-          Each page in the documentation is written with clarity and speed in mind. You'll find
-          headings, brief explanations, and where helpful, embedded videos, diagrams, and example
-          prompts. Use these as references or templates to better understand how our tools work in
-          practice.
-        </p>
-      </div>
+            <div>
+              <h2 className="text-2xl font-semibold mb-3">Documentation Tips</h2>
+              <p className="text-gray-400 leading-relaxed">
+                Each page in the documentation is written with clarity and speed in mind. You'll find
+                headings, brief explanations, and where helpful, embedded videos, diagrams, and example
+                prompts. Use these as references or templates to better understand how our tools work in
+                practice.
+              </p>
+            </div>
 
-      <div>
-        <h2 className="text-2xl font-semibold mb-3">Feedback Welcome</h2>
-        <p className="text-gray-400 leading-relaxed">
-          We strive to keep our documentation current and helpful. If something's missing or unclear,
-          don't hesitate to reach out. We're continuously iterating based on client feedback and
-          evolving AI capabilities.
-        </p>
-      </div>
-    </div>
-  );
-
+            <div>
+              <h2 className="text-2xl font-semibold mb-3">Feedback Welcome</h2>
+              <p className="text-gray-400 leading-relaxed">
+                We strive to keep our documentation current and helpful. If something's missing or unclear,
+                don't hesitate to reach out. We're continuously iterating based on client feedback and
+                evolving AI capabilities.
+              </p>
+            </div>
+          </div>
+        );
 
       case 'tech-stack':
         return (
@@ -365,11 +358,11 @@ function DocsPage() {
                 This section addresses common technical, implementation, and product-related questions. Topics include system maintainability, LLM behavior, hosting options, multilingual support, and RAG implementations.
               </p>
               <ul className="list-disc list-inside text-gray-400 space-y-1">
-                <li><strong>Maintainability:</strong> Modular architecture, versioned APIs, and documentation-first design.</li>
-                <li><strong>Hallucination handling:</strong> RAGAS metrics, human-reviewed data audits, and retraining when needed.</li>
-                <li><strong>Hosting:</strong> Supports client-hosted deployments (VPC/private cloud) with secure IAM onboarding.</li>
-                <li><strong>Multilingual systems:</strong> Built-in localization and model adaptation for global deployments.</li>
-                <li><strong>RAG support:</strong> Grounded retrieval with semantic filters and QA scoring (precision, recall, groundedness).</li>
+                <li><strong className="text-white">Maintainability:</strong> Modular architecture, versioned APIs, and documentation-first design.</li>
+                <li><strong className="text-white">Hallucination handling:</strong> RAGAS metrics, human-reviewed data audits, and retraining when needed.</li>
+                <li><strong className="text-white">Hosting:</strong> Supports client-hosted deployments (VPC/private cloud) with secure IAM onboarding.</li>
+                <li><strong className="text-white">Multilingual systems:</strong> Built-in localization and model adaptation for global deployments.</li>
+                <li><strong className="text-white">RAG support:</strong> Grounded retrieval with semantic filters and QA scoring (precision, recall, groundedness).</li>
               </ul>
             </section>
 
@@ -380,9 +373,9 @@ function DocsPage() {
                 We use modern infrastructure practices to ensure reliability and security in every deployment. CI/CD, environment provisioning, and secure configuration are built into our DevOps workflows.
               </p>
               <ul className="list-disc list-inside text-gray-400 space-y-1">
-                <li><strong>Deployment:</strong> GitHub Actions or n8n-based pipelines with isolated staging and production environments.</li>
-                <li><strong>Provisioning:</strong> Managed via Docker, Terraform, Railway, or Kubernetes.</li>
-                <li><strong>Security:</strong> Encryption, secrets management, and role-based access control (least privilege principle).</li>
+                <li><strong className="text-white">Deployment:</strong> GitHub Actions or n8n-based pipelines with isolated staging and production environments.</li>
+                <li><strong className="text-white">Provisioning:</strong> Managed via Docker, Terraform, Railway, or Kubernetes.</li>
+                <li><strong className="text-white">Security:</strong> Encryption, secrets management, and role-based access control (least privilege principle).</li>
               </ul>
             </section>
 
@@ -393,8 +386,8 @@ function DocsPage() {
                 In cases of inconsistent responses or latency issues, we provide structured diagnostics and fallback mechanisms to maintain stability.
               </p>
               <ul className="list-disc list-inside text-gray-400 space-y-1">
-                <li><strong>Inconsistent responses:</strong> Provide logs for automated retries and fallback model analysis.</li>
-                <li><strong>Latency profiling:</strong> Async tracing, caching, and prompt optimization to improve performance.</li>
+                <li><strong className="text-white">Inconsistent responses:</strong> Provide logs for automated retries and fallback model analysis.</li>
+                <li><strong className="text-white">Latency profiling:</strong> Async tracing, caching, and prompt optimization to improve performance.</li>
               </ul>
             </section>
 
@@ -405,16 +398,16 @@ function DocsPage() {
                 Quick reference for foundational AI and system design terminology.
               </p>
               <ul className="list-disc list-inside text-gray-400 space-y-1">
-                <li><strong>LLM (Large Language Model):</strong> Neural network trained to generate human-like text.</li>
-                <li><strong>RAG (Retrieval-Augmented Generation):</strong> Combines LLMs with vector databases for factual grounding.</li>
-                <li><strong>Vector Database:</strong> Engine that stores and retrieves text embeddings for semantic search.</li>
-                <li><strong>Embedding:</strong> Numeric vector capturing the meaning of text or data.</li>
-                <li><strong>Prompt Engineering:</strong> Crafting prompts to shape model behavior.</li>
-                <li><strong>Groundedness:</strong> Alignment of AI outputs with source documents or trusted context.</li>
-                <li><strong>Token Limit:</strong> Maximum text length an AI model can process per request.</li>
-                <li><strong>Agent:</strong> AI system that performs tasks autonomously or semi-autonomously.</li>
-                <li><strong>Human-in-the-Loop (HITL):</strong> Workflow involving human validation or override of AI outputs.</li>
-                <li><strong>CI/CD:</strong> Continuous integration and deployment pipelines ensuring reliable updates.</li>
+                <li><strong className="text-white">LLM (Large Language Model):</strong> Neural network trained to generate human-like text.</li>
+                <li><strong className="text-white">RAG (Retrieval-Augmented Generation):</strong> Combines LLMs with vector databases for factual grounding.</li>
+                <li><strong className="text-white">Vector Database:</strong> Engine that stores and retrieves text embeddings for semantic search.</li>
+                <li><strong className="text-white">Embedding:</strong> Numeric vector capturing the meaning of text or data.</li>
+                <li><strong className="text-white">Prompt Engineering:</strong> Crafting prompts to shape model behavior.</li>
+                <li><strong className="text-white">Groundedness:</strong> Alignment of AI outputs with source documents or trusted context.</li>
+                <li><strong className="text-white">Token Limit:</strong> Maximum text length an AI model can process per request.</li>
+                <li><strong className="text-white">Agent:</strong> AI system that performs tasks autonomously or semi-autonomously.</li>
+                <li><strong className="text-white">Human-in-the-Loop (HITL):</strong> Workflow involving human validation or override of AI outputs.</li>
+                <li><strong className="text-white">CI/CD:</strong> Continuous integration and deployment pipelines ensuring reliable updates.</li>
               </ul>
             </section>
           </div>
@@ -469,19 +462,19 @@ function DocsPage() {
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 {[
-                  { title: "Ultimate Assistant", desc: "A comprehensive AI assistant capable of handling multiple tasks and workflows." },
-                  { title: "Deep Research PDF Report", desc: "Specialized agent for conducting in-depth research and generating comprehensive PDF reports." },
-                  { title: "Newsletter Creation", desc: "AI-powered newsletter creation and distribution system." },
-                  { title: "RAG Pipeline", desc: "Retrieval-Augmented Generation pipeline for enhanced AI responses." },
-                  { title: "Faceless Shorts", desc: "Automated short-form video content creation system." },
+                  // 💡 Ubah data agar memiliki ID yang jelas (sesuai slug)
+                  { id: 'ultimate-assistant', title: "Ultimate Assistant", desc: "A comprehensive AI assistant capable of handling multiple tasks and workflows." },
+                  { id: 'rag-pipeline', title: "RAG Pipeline", desc: "Retrieval-Augmented Generation pipeline for enhanced AI responses." },
+                  { id: 'newsletter-creation', title: "Newsletter Creation", desc: "AI-powered newsletter creation and distribution system." },
                 ].map((item, i) => (
-                  <div
+                  <button 
                     key={i}
-                    className="p-6 rounded-xl border border-gray-700 hover:border-blue-500/40 transition-all bg-gray-900/20"
+                    onClick={() => setActiveSection(item.id)} 
+                    className="text-left p-6 rounded-xl border border-gray-700 hover:border-blue-500/40 transition-all bg-gray-900/20 hover:bg-gray-800/40"
                   >
                     <h3 className="text-xl font-semibold mb-2 text-white">{item.title}</h3>
                     <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
-                  </div>
+                  </button>
                 ))}
               </div>
             </section>
@@ -503,7 +496,6 @@ function DocsPage() {
             </section>
           </div>
         );
-
 
       case 'ultimate-assistant':
         return (
@@ -974,6 +966,147 @@ function DocsPage() {
                   </div>
                   <button className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all">
                     Schedule RAG Assessment
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      
+      case 'newsletter-creation':
+        return (
+          <div className="space-y-6">
+            <h1 className="text-4xl font-bold mb-4">Newsletter Creation Agent</h1>
+            <p className="text-xl text-gray-400">
+              An AI-powered agent designed to fully automate the content aggregation, generation, and distribution of professional newsletters.
+            </p>
+
+            <div className="mt-8 p-6 bg-gradient-to-br from-cyan-900/20 to-gray-900/50 rounded-xl border border-cyan-500/30">
+              <h3 className="text-2xl font-semibold mb-4">Overview</h3>
+              <p className="text-gray-400 leading-relaxed">
+                The Newsletter Creation Agent streamlines your content marketing workflow, eliminating manual drafting and formatting. It uses advanced NLP to scan trending topics, analyze internal data, draft engaging articles, and format the final newsletter, ensuring consistent, high-quality communication with your audience without consuming valuable team resources.
+              </p>
+            </div>
+
+            <div className="space-y-8 mt-8">
+              <div>
+                <h3 className="text-2xl font-semibold mb-6">Key Features</h3>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  
+                  <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
+                    <h4 className="text-lg font-semibold mb-3 text-cyan-400">1. Automated Content Curation</h4>
+                    <ul className="space-y-2 text-sm text-gray-400">
+                      <li>• Real-time aggregation of industry news and trends from defined sources</li>
+                      <li>• Analysis of top-performing content based on client-defined metrics</li>
+                      <li>• Automatic generation of engaging headlines and subject lines</li>
+                      <li>• Content prioritization based on audience interest and business goals</li>
+                      <li>• Summarization of long articles into concise newsletter snippets</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
+                    <h4 className="text-lg font-semibold mb-3 text-cyan-400">2. Drafting and Tone Customization</h4>
+                    <ul className="space-y-2 text-sm text-gray-400">
+                      <li>• Generation of unique body text (articles, tips, updates) from structured data</li>
+                      <li>• Brand voice synchronization (formal, casual, expert) using style guide input</li>
+                      <li>• A/B testing variations for content segments and CTAs</li>
+                      <li>• Seamless integration of user-generated or internal team content</li>
+                      <li>• Automated translation for multilingual newsletters</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
+                    <h4 className="text-lg font-semibold mb-3 text-cyan-400">3. Layout and Formatting</h4>
+                    <ul className="space-y-2 text-sm text-gray-400">
+                      <li>• Automatic application of brand templates (HTML/CSS)</li>
+                      <li>• Dynamic adjustment of image sizes and placement for mobile optimization</li>
+                      <li>• Inclusion of tracking pixels and compliance footers (GDPR)</li>
+                      <li>• Pre-send validation for broken links and email client rendering issues</li>
+                      <li>• Version control for layout changes and template updates</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
+                    <h4 className="text-lg font-semibold mb-3 text-cyan-400">4. Distribution and Analytics</h4>
+                    <ul className="space-y-2 text-sm text-gray-400">
+                      <li>• Direct API integration with major email service providers (Mailchimp, HubSpot, SendGrid)</li>
+                      <li>• Segmentation based on subscriber behavior and demographics</li>
+                      <li>• Scheduling and automated send-off at optimal times</li>
+                      <li>• Real-time tracking of open rates, click-through rates (CTR), and conversions</li>
+                      <li>• Automated reporting and performance diagnostics</li>
+                    </ul>
+                  </div>
+
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-semibold mb-6">Technical Architecture</h3>
+                <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
+                  <div className="space-y-4 text-gray-400">
+                    <p><strong className="text-white">Content Engine:</strong> Uses specialized LLMs (e.g., GPT-4) fine-tuned for marketing language and style consistency.</p>
+                    <p><strong className="text-white">Data Integration:</strong> Web scraping module and API connectors for content ingestion from RSS, blogs, or databases.</p>
+                    <p><strong className="text-white">Security:</strong> Strict adherence to privacy policies; encryption of subscriber data during processing and transfer.</p>
+                    <p><strong className="text-white">Scalability:</strong> Designed to handle high-volume distribution lists and daily/weekly sending frequencies.</p>
+                    <p><strong className="text-white">Interface:</strong> Intuitive dashboard for defining content parameters, monitoring drafts, and scheduling sends.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-semibold mb-6">Use Cases & Success Stories</h3>
+                <div className="space-y-6">
+                  <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
+                    <h4 className="text-lg font-semibold mb-3">SaaS Product Update Newsletter</h4>
+                    <p className="text-gray-400 text-sm mb-3">
+                      <strong className="text-white">Client:</strong> Mid-sized B2B SaaS platform
+                    </p>
+                    <p className="text-gray-400 text-sm mb-3">
+                      <strong className="text-white">Implementation:</strong> Agent pulls updates directly from the Jira/Trello development boards to draft release notes.
+                    </p>
+                    <p className="text-gray-400 text-sm mb-3">
+                      <strong className="text-white">Results:</strong>
+                    </p>
+                    <ul className="space-y-1 text-sm text-gray-400 ml-4">
+                      <li>• Time spent on newsletter creation reduced by 95% (from 8 hours to 15 minutes)</li>
+                      <li>• Open rates increased by 15% due to improved subject line generation</li>
+                      <li>• Feature adoption rate increased by 22% post-newsletter distribution</li>
+                      <li>• Marketing team reallocated 80% of their time to strategic campaigns</li>
+                    </ul>
+                  </div>
+
+                  <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
+                    <h4 className="text-lg font-semibold mb-3">Daily Market Digest</h4>
+                    <p className="text-gray-400 text-sm mb-3">
+                      <strong className="text-white">Client:</strong> Financial advisory firm
+                    </p>
+                    <p className="text-gray-400 text-sm mb-3">
+                      <strong className="text-white">Implementation:</strong> Agent aggregates global market data and regulatory changes into a concise daily brief.
+                    </p>
+                    <p className="text-gray-400 text-sm mb-3">
+                      <strong className="text-white">Results:</strong>
+                    </p>
+                    <ul className="space-y-1 text-sm text-gray-400 ml-4">
+                      <li>• Guaranteed daily delivery before 7:00 AM local time, 7 days a week</li>
+                      <li>• Accuracy score for synthesized market data maintained at 99.8%</li>
+                      <li>• Subscriber retention increased due to consistent, valuable content</li>
+                      <li>• Compliance sign-off time reduced with automated legal checks</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h3 className="text-2xl font-semibold mb-6">Getting Started</h3>
+                <div className="p-6 bg-gradient-to-br from-cyan-900/20 to-gray-900/50 rounded-xl border border-cyan-500/30">
+                  <div className="space-y-4 text-gray-400">
+                    <p><strong className="text-white">Step 1:</strong> Define your newsletter segments, frequency, and core content sources</p>
+                    <p><strong className="text-white">Step 2:</strong> Integrate with your email platform and upload branding/style guides</p>
+                    <p><strong className="text-white">Step 3:</strong> Configure content review protocols (optional human oversight) and scheduling</p>
+                    <p><strong className="text-white">Step 4:</strong> Launch automated distribution and begin tracking performance</p>
+                  </div>
+                  <button className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all">
+                    Schedule Consultation
                   </button>
                 </div>
               </div>

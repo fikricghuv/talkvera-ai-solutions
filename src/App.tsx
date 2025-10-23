@@ -22,9 +22,9 @@ function App() {
       case 'home':
         return <HomePage onNavigate={setCurrentPage}/>;
       case 'pricing':
-        return <PricingPage />;
+        return <PricingPage onNavigate={setCurrentPage}/>;
       case 'about':
-        return <AboutPage />;
+        return <AboutPage onNavigate={setCurrentPage}/>;
       // case 'case-study':
       //   return <CaseStudyPage />;
       case 'docs':

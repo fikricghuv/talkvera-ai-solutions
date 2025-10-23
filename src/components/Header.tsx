@@ -88,7 +88,7 @@ function Header({ currentPage, onNavigate }: HeaderProps) {
               </button>
             ))}
             <button 
-              onClick={() => handleNavigate('contact')} // 💡 TAMBAHKAN INI
+              onClick={() => handleNavigate('contact')}
               className="w-full px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-lg"
             >
               Get Started

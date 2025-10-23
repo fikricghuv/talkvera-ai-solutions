@@ -1,7 +1,7 @@
 import { Menu, X, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 
-type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs';
+type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact';
 
 interface HeaderProps {
   currentPage: Page;
@@ -15,7 +15,8 @@ function Header({ currentPage, onNavigate }: HeaderProps) {
     { label: 'Home', page: 'home' },
     { label: 'Pricing', page: 'pricing' },
     { label: 'About', page: 'about' },
-    { label: 'Case Study', page: 'case-study' },
+    // { label: 'Case Study', page: 'case-study' },
+    { label: 'Contact', page: 'contact' },
     { label: 'Docs', page: 'docs' },
   ];
 
@@ -55,7 +56,10 @@ function Header({ currentPage, onNavigate }: HeaderProps) {
                 {item.label}
               </button>
             ))}
-            <button className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30">
+            <button 
+              onClick={() => handleNavigate('contact')}
+              className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30"
+            >
               Get Started
             </button>
           </div>
@@ -83,9 +87,13 @@ function Header({ currentPage, onNavigate }: HeaderProps) {
                 {item.label}
               </button>
             ))}
-            <button className="w-full px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-lg">
+            <button 
+              onClick={() => handleNavigate('contact')} // 💡 TAMBAHKAN INI
+              className="w-full px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-lg"
+            >
               Get Started
             </button>
+            
           </div>
         )}
       </nav>

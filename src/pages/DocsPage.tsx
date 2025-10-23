@@ -1,8 +1,16 @@
 import { useState } from 'react';
-import { Book, ChevronRight, Bot, Network, Workflow, FileText, Zap } from 'lucide-react';
+import { Book, Bot, Network, Workflow, FileText, BookOpenText } from 'lucide-react';
 
 function DocsPage() {
   const [activeSection, setActiveSection] = useState('introduction');
+  const [openDropdown, setOpenDropdown] = useState(null);
+
+  type DropdownId = string | null;
+
+  const toggleDropdown = (id: string): void => {
+    // cast to any to avoid changing existing useState declarations elsewhere
+    (setOpenDropdown as any)(openDropdown === id ? null : id as DropdownId);
+  };
 
   const navigation = [
     { id: 'introduction', label: 'Introduction', icon: Book },
@@ -19,334 +27,483 @@ function DocsPage() {
         { id: 'rag-pipeline', label: 'RAG Pipeline' },
       ],
     },
+    {
+      id: 'case-studies',
+      label: 'Case Studies',
+      icon: BookOpenText,
+      children: [
+        { id: 'overview-case-studies', label: 'Overview' },
+        { id: 'schedule-appointment-agent', label: 'Schedule Appointment Agent' },
+        { id: 'customer-service-agent', label: 'Customer Service Agent' },
+      ],
+    },
   ];
 
   const renderContent = () => {
     switch (activeSection) {
       case 'introduction':
-        return (
-          <div className="space-y-6">
-            <h1 className="text-4xl font-bold mb-4">Welcome to TalkVera Documentation</h1>
-            <p className="text-xl text-gray-400">
-              Comprehensive guides and resources to help you understand and leverage our AI solutions.
-            </p>
+  return (
+    <div className="space-y-8">
+      <h1 className="text-4xl font-bold mb-6">Getting Started</h1>
 
-            <div className="mt-8 p-6 bg-blue-500/10 border border-blue-500/30 rounded-xl">
-              <h3 className="text-xl font-semibold mb-3 flex items-center space-x-2">
-                <Zap className="w-5 h-5 text-blue-400" />
-                <span>Getting Started</span>
-              </h3>
-              <p className="text-gray-400 mb-4">
-                TalkVera provides enterprise-grade AI solutions designed to transform your business operations. Our platform combines cutting-edge machine learning, natural language processing, and automation technologies to deliver measurable results.
-              </p>
-              <ul className="space-y-2 text-gray-400">
-                <li className="flex items-start space-x-2">
-                  <ChevronRight className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span>Explore our technology stack to understand our technical capabilities</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <ChevronRight className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span>Learn about our three-phase implementation process</span>
-                </li>
-                <li className="flex items-start space-x-2">
-                  <ChevronRight className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span>Discover our pre-built AI agent solutions and capabilities</span>
-                </li>
-              </ul>
-            </div>
+      <p className="text-gray-400 leading-relaxed">
+        Welcome to TalkVera's documentation! This section is your launchpad for getting oriented
+        with our tools, services, and how we work. Our goal is to make working with TalkVera
+        seamless and intuitive.
+      </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-              <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                <h3 className="text-lg font-semibold mb-2">Core Capabilities</h3>
-                <p className="text-gray-400 text-sm">
-                  Natural language processing, computer vision, predictive analytics, and intelligent automation.
-                </p>
-              </div>
-              <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                <h3 className="text-lg font-semibold mb-2">Industry Solutions</h3>
-                <p className="text-gray-400 text-sm">
-                  Tailored AI implementations for finance, healthcare, retail, manufacturing, and professional services.
-                </p>
-              </div>
-            </div>
-          </div>
-        );
+      <div>
+        <h2 className="text-2xl font-semibold mb-3">Navigating the Documentation</h2>
+        <p className="text-gray-400 leading-relaxed">
+          Each major category in this documentation is presented as a dropdown menu, containing
+          detailed subpages for each topic. Use the sidebar or top navigation to explore areas like
+          <span className="text-white font-medium"> "Technology Stack," "Our Process," </span>and
+          <span className="text-white font-medium"> "AI Agents."</span> If you're searching for
+          something specific, use the built-in search feature or press
+          <span className="text-white font-medium"> Command + K </span>
+          to activate our <span className="text-white font-medium">Ask AI</span> tool, which can
+          answer questions, suggest resources, or point you directly to relevant sections of the
+          documentation.
+        </p>
+      </div>
+
+      <div>
+        <h2 className="text-2xl font-semibold mb-3">Who This Is For</h2>
+        <p className="text-gray-400 leading-relaxed">
+          This documentation is designed for developers, product leaders, operations teams, and
+          decision-makers who want to understand and implement AI capabilities into their workflows.
+          Whether you're launching a new project or integrating one of our agents into your systems,
+          this guide will help you understand what's possible and how to get there.
+        </p>
+      </div>
+
+      <div>
+        <h2 className="text-2xl font-semibold mb-3">How to Work With Us</h2>
+        <p className="text-gray-400 leading-relaxed mb-3">
+          To start working with TalkVera, visit our
+          <span className="text-white font-medium"> Contact Page </span>and fill out the form with
+          as much detail as possible about your project. The more context you provide, the better we
+          can scope the engagement and align you with the right solutions.
+        </p>
+        <p className="text-gray-400 leading-relaxed">
+          Currently, TalkVera works on a partnership plan that starts at
+          <span className="text-white font-medium"> $20,000/month.</span> If your project is smaller
+          in scope or budget, we recommend visiting our
+          <span className="text-white font-medium"> Pricing Page </span>
+          to explore available options.
+        </p>
+      </div>
+
+      <div>
+        <h2 className="text-2xl font-semibold mb-3">Documentation Tips</h2>
+        <p className="text-gray-400 leading-relaxed">
+          Each page in the documentation is written with clarity and speed in mind. You'll find
+          headings, brief explanations, and where helpful, embedded videos, diagrams, and example
+          prompts. Use these as references or templates to better understand how our tools work in
+          practice.
+        </p>
+      </div>
+
+      <div>
+        <h2 className="text-2xl font-semibold mb-3">Feedback Welcome</h2>
+        <p className="text-gray-400 leading-relaxed">
+          We strive to keep our documentation current and helpful. If something's missing or unclear,
+          don't hesitate to reach out. We're continuously iterating based on client feedback and
+          evolving AI capabilities.
+        </p>
+      </div>
+    </div>
+  );
+
 
       case 'tech-stack':
         return (
-          <div className="space-y-6">
+          <div className="space-y-8 max-w-5xl mx-auto">
             <h1 className="text-4xl font-bold mb-4">Technology Stack</h1>
-            <p className="text-xl text-gray-400">
-              Built on industry-leading technologies to ensure performance, scalability, and reliability.
+
+            <p className="text-gray-400">
+              At Talkvera, we adopt a forward-looking, modular tech stack built for speed, flexibility, and 
+              long-term scalability. Our tooling reflects a blend of modern cloud infrastructure, 
+              developer-centric platforms, and battle-tested AI frameworks. We select technologies based on 
+              performance, integration depth, 
+              open-source momentum, and alignment with client-specific use cases. 
+              Whether you're a technical stakeholder or completely new to AI, our stack is designed to make 
+              innovation accessible and reliable.
             </p>
 
-            <div className="space-y-6 mt-8">
-              <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                <h3 className="text-2xl font-semibold mb-4">Machine Learning Frameworks</h3>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                  <div className="p-4 bg-gray-900/50 rounded-lg">
-                    <h4 className="font-semibold text-blue-400 mb-2">PyTorch & TensorFlow</h4>
-                    <p className="text-sm text-gray-400">Deep learning model development and training for custom AI solutions.</p>
-                  </div>
-                  <div className="p-4 bg-gray-900/50 rounded-lg">
-                    <h4 className="font-semibold text-blue-400 mb-2">Scikit-learn</h4>
-                    <p className="text-sm text-gray-400">Classical machine learning algorithms for prediction and classification tasks.</p>
-                  </div>
-                  <div className="p-4 bg-gray-900/50 rounded-lg">
-                    <h4 className="font-semibold text-blue-400 mb-2">Hugging Face Transformers</h4>
-                    <p className="text-sm text-gray-400">State-of-the-art NLP models for language understanding and generation.</p>
-                  </div>
-                  <div className="p-4 bg-gray-900/50 rounded-lg">
-                    <h4 className="font-semibold text-blue-400 mb-2">OpenAI GPT & Claude</h4>
-                    <p className="text-sm text-gray-400">Large language models for advanced conversational AI and reasoning.</p>
-                  </div>
-                </div>
-              </div>
+            <h2 className="text-3xl font-semibold mt-12 mb-4">Infrastructure</h2>
+            <p className="text-gray-400">
+              We operate primarily as a <strong className="text-white">full AWS shop</strong>, meaning our systems are deployed, 
+              managed, and scaled using <strong className="text-white">Amazon Web Services</strong> — a trusted platform for secure, 
+              high-performance cloud computing.
+            </p>
 
-              <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                <h3 className="text-2xl font-semibold mb-4">Cloud Infrastructure</h3>
-                <div className="space-y-3 text-gray-400">
-                  <p><strong className="text-white">AWS:</strong> EC2, Lambda, SageMaker, S3 for scalable compute and storage</p>
-                  <p><strong className="text-white">Kubernetes:</strong> Container orchestration for microservices architecture</p>
-                  <p><strong className="text-white">Docker:</strong> Containerization for consistent deployment environments</p>
-                  <p><strong className="text-white">Redis:</strong> In-memory caching for high-performance data access</p>
-                </div>
-              </div>
+            <p className="text-gray-400">
+              Our in-house <strong className="text-white">cloud infrastructure engineers</strong> are experienced with 
+              <strong className="text-white"> multi-cloud environments</strong>, enabling support across 
+              <strong className="text-white"> Azure</strong>, <strong className="text-white">Google Cloud Platform (GCP)</strong>, 
+              and <strong className="text-white">DigitalOcean</strong> depending on project needs. This flexibility ensures 
+              clients in regulated industries or with unique infrastructure requirements are fully supported.
+            </p>
 
-              <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                <h3 className="text-2xl font-semibold mb-4">Data & Analytics</h3>
-                <div className="space-y-3 text-gray-400">
-                  <p><strong className="text-white">PostgreSQL & MongoDB:</strong> Robust data storage for structured and unstructured data</p>
-                  <p><strong className="text-white">Apache Kafka:</strong> Real-time data streaming and event processing</p>
-                  <p><strong className="text-white">Elasticsearch:</strong> Full-text search and analytics engine</p>
-                  <p><strong className="text-white">Grafana & Prometheus:</strong> Monitoring, visualization, and alerting</p>
-                </div>
-              </div>
+            <ul className="list-disc pl-6 space-y-2 text-gray-400">
+              <li><strong className="text-white">Supabase:</strong> Secure authentication and real-time updates for rapid feature delivery.</li>
+              <li><strong className="text-white">PostgreSQL:</strong> Our primary structured database — robust, scalable, and reliable.</li>
+              <li><strong className="text-white">Vector Databases:</strong> Tools like <strong>Pinecone</strong>, <strong>Weaviate</strong>, and <strong>Qdrant</strong> enable semantic search and contextual understanding in AI systems.</li>
+              <li><strong className="text-white">API Key Provisioning:</strong> Dedicated, scoped keys per client project for secure access control.</li>
+              <li><strong className="text-white">Internal Developer Tooling:</strong> Custom scripts, CLI tools, and integrations with <strong>ClickUp</strong> and <strong>GitHub</strong> to maintain operational efficiency.</li>
+            </ul>
 
-              <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                <h3 className="text-2xl font-semibold mb-4">Security & Compliance</h3>
-                <div className="space-y-3 text-gray-400">
-                  <p><strong className="text-white">Encryption:</strong> AES-256 encryption at rest, TLS 1.3 in transit</p>
-                  <p><strong className="text-white">Authentication:</strong> OAuth 2.0, SSO, multi-factor authentication</p>
-                  <p><strong className="text-white">Compliance:</strong> SOC 2 Type II, GDPR, HIPAA, ISO 27001 certified</p>
-                  <p><strong className="text-white">Audit Logging:</strong> Comprehensive activity tracking and compliance reporting</p>
-                </div>
-              </div>
-            </div>
+            <h2 className="text-3xl font-semibold mt-12 mb-4">Programming & Integrations</h2>
+            <p className="text-gray-400">
+              Our development process is shaped by tools that enable <strong className="text-white">rapid iteration</strong>, 
+              <strong className="text-white"> intelligent automation</strong>, and <strong className="text-white">deep integration</strong> 
+              with external systems.
+            </p>
+
+            <ul className="list-disc pl-6 space-y-2 text-gray-400">
+              <li><strong className="text-white">Languages:</strong> <strong>Python</strong> for AI and backend systems, 
+                <strong> JavaScript/TypeScript</strong> for front-end and lightweight logic.
+              </li>
+              <li><strong className="text-white">Developer Tools:</strong> Platforms like <strong>Replit</strong>, <strong>Cursor</strong>, 
+                <strong>Lovable</strong>, and <strong>Bolt</strong> for real-time collaboration and rapid prototyping.
+              </li>
+              <li><strong className="text-white">Integration Layer:</strong> Via <strong>n8n</strong>, supporting 850+ integrations 
+                with SaaS tools, databases, and webhook-based services for instant connectivity.
+              </li>
+              <li><strong className="text-white">Voice AI:</strong> Powered by <strong>ElevenLabs</strong> and retail AI tools 
+                for natural, context-aware voice agents.
+              </li>
+            </ul>
+
+            <h2 className="text-3xl font-semibold mt-12 mb-4">Artificial Intelligence</h2>
+            <p className="text-gray-400">
+              We take a <strong className="text-white">model-agnostic</strong> approach to AI — benchmarking across providers 
+              to select the best-performing model based on your goals. Whether optimizing for 
+              <strong className="text-white"> speed</strong>, <strong className="text-white">precision</strong>, 
+              <strong className="text-white">cost-efficiency</strong>, or <strong className="text-white">multilingual output</strong>, 
+              we tailor each deployment for maximum impact.
+            </p>
+
+            <ul className="list-disc pl-6 space-y-2 text-gray-400">
+              <li><strong className="text-white">Retrieval-Augmented Generation (RAG):</strong> Grounding LLM responses with 
+                relevant internal data for accuracy and reduced hallucination.
+              </li>
+              <li><strong className="text-white">Embedding Model Selection & Testing:</strong> Running controlled experiments 
+                to find the most effective embedding strategy for your data.
+              </li>
+              <li><strong className="text-white">Agent Frameworks & Builders:</strong> Modular AI agents that can 
+                <strong> search</strong>, <strong>summarize</strong>, <strong>trigger workflows</strong>, or 
+                <strong> take actions</strong> in real-time.
+              </li>
+              <li><strong className="text-white">LLM Evaluation & Model Routing:</strong> Internal scoring systems 
+                (LLM-as-a-judge) dynamically route tasks to the best-performing models.
+              </li>
+            </ul>
           </div>
         );
 
       case 'process':
         return (
-          <div className="space-y-6">
+          <div className="space-y-6 text-left">
             <h1 className="text-4xl font-bold mb-4">Our Process</h1>
-            <p className="text-xl text-gray-400">
-              A proven methodology for delivering successful AI implementations.
-            </p>
 
-            <div className="space-y-8 mt-8">
-              <div className="p-8 bg-gradient-to-br from-blue-900/20 to-gray-900/50 rounded-xl border border-blue-500/30">
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-16 h-16 rounded-xl bg-blue-500/20 flex items-center justify-center border border-blue-500/50">
-                    <span className="text-3xl font-bold text-blue-400">01</span>
-                  </div>
-                  <h3 className="text-3xl font-bold">Discovery Phase</h3>
-                </div>
-                <div className="space-y-4 text-gray-400 pl-20">
-                  <p className="font-semibold text-white text-lg">Duration: 2-4 weeks</p>
-                  <div className="space-y-3">
-                    <p><strong className="text-white">Business Analysis:</strong> Deep dive into your current operations, pain points, and strategic objectives. We conduct stakeholder interviews and workflow analysis to understand your unique needs.</p>
-                    <p><strong className="text-white">Technical Assessment:</strong> Comprehensive review of your existing infrastructure, data assets, and integration requirements. We identify opportunities and constraints.</p>
-                    <p><strong className="text-white">Solution Design:</strong> Development of a detailed AI strategy roadmap including architecture design, technology selection, and success metrics definition.</p>
-                    <p><strong className="text-white">Deliverables:</strong> Technical proposal, project timeline, resource allocation plan, and ROI projections.</p>
-                  </div>
-                </div>
-              </div>
+            <div className="space-y-8 text-gray-400 leading-relaxed">
+              <section>
+                <h2 className="text-2xl text-white mb-2">Initial Discovery</h2>
+                <p>
+                  At Talkvera, we see ourselves not just as service providers—but as long-term
+                  strategic partners in your AI transformation journey. We take a deeply consultative
+                  approach to ensure every system we build aligns with your broader vision, scales with
+                  your business, and drives measurable impact across departments.
+                </p>
+                <p>
+                  Our goal is to go far beyond the surface-level use case and instead uncover where AI
+                  can create true, compounding value in your organization.
+                </p>
+              </section>
 
-              <div className="p-8 bg-gradient-to-br from-cyan-900/20 to-gray-900/50 rounded-xl border border-cyan-500/30">
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-16 h-16 rounded-xl bg-cyan-500/20 flex items-center justify-center border border-cyan-500/50">
-                    <span className="text-3xl font-bold text-cyan-400">02</span>
-                  </div>
-                  <h3 className="text-3xl font-bold">Development Phase</h3>
-                </div>
-                <div className="space-y-4 text-gray-400 pl-20">
-                  <p className="font-semibold text-white text-lg">Duration: 6-12 weeks</p>
-                  <div className="space-y-3">
-                    <p><strong className="text-white">Data Preparation:</strong> Collection, cleaning, and structuring of training data. Implementation of data pipelines and quality assurance protocols.</p>
-                    <p><strong className="text-white">Model Development:</strong> Custom AI model training and optimization using state-of-the-art algorithms. Iterative testing and validation against success criteria.</p>
-                    <p><strong className="text-white">System Integration:</strong> Development of APIs and connectors to seamlessly integrate with your existing systems. Implementation of security and access controls.</p>
-                    <p><strong className="text-white">User Interface:</strong> Design and development of intuitive dashboards and control panels for monitoring and management.</p>
-                    <p><strong className="text-white">Testing & QA:</strong> Rigorous testing including unit tests, integration tests, and user acceptance testing. Performance optimization and bug fixes.</p>
-                  </div>
-                </div>
-              </div>
+              <section>
+                <h2 className="text-2xl text-white mb-2">Organizational Understanding</h2>
+                <p>
+                  We begin by immersing ourselves in your team's world—learning how your company operates
+                  today and where you're heading tomorrow. We spend time understanding:
+                </p>
+                <ul className="list-disc list-inside space-y-1 mt-2">
+                  <li>Your core business model and revenue streams</li>
+                  <li>Internal workflows and decision-making processes</li>
+                  <li>Existing pain points and inefficiencies</li>
+                  <li>Departments where AI can have immediate impact</li>
+                </ul>
+              </section>
 
-              <div className="p-8 bg-gradient-to-br from-green-900/20 to-gray-900/50 rounded-xl border border-green-500/30">
-                <div className="flex items-center space-x-4 mb-6">
-                  <div className="w-16 h-16 rounded-xl bg-green-500/20 flex items-center justify-center border border-green-500/50">
-                    <span className="text-3xl font-bold text-green-400">03</span>
-                  </div>
-                  <h3 className="text-3xl font-bold">Deployment Phase</h3>
-                </div>
-                <div className="space-y-4 text-gray-400 pl-20">
-                  <p className="font-semibold text-white text-lg">Duration: 2-4 weeks + Ongoing</p>
-                  <div className="space-y-3">
-                    <p><strong className="text-white">Staged Rollout:</strong> Careful phased deployment starting with pilot groups, gathering feedback, and making adjustments before full-scale launch.</p>
-                    <p><strong className="text-white">Team Training:</strong> Comprehensive training programs for administrators and end-users. Documentation and knowledge transfer sessions.</p>
-                    <p><strong className="text-white">Monitoring Setup:</strong> Implementation of real-time monitoring, alerting systems, and analytics dashboards to track performance and usage.</p>
-                    <p><strong className="text-white">Ongoing Support:</strong> Dedicated support team for troubleshooting, maintenance, and optimization. Regular performance reviews and strategy sessions.</p>
-                    <p><strong className="text-white">Continuous Improvement:</strong> Model retraining with new data, feature enhancements based on user feedback, and proactive optimization.</p>
-                  </div>
-                </div>
-              </div>
+              <section>
+                <h2 className="text-2xl text-white mb-2">Strategic Roadmapping</h2>
+                <p>
+                  With a deep understanding of your org structure, we help chart a high-leverage AI
+                  roadmap. This ensures your short-term wins are built on top of systems that are
+                  flexible, extendable, and aligned with future use cases.
+                </p>
+                <p>The roadmap helps answer:</p>
+                <ul className="list-disc list-inside space-y-1 mt-2">
+                  <li>What can we build today that generates ROI in &lt;90 days?</li>
+                  <li>
+                    What foundational systems do we need for long-term automation and intelligence?
+                  </li>
+                  <li>Where will AI create the most measurable business impact?</li>
+                  <li>
+                    How do we ensure interoperability, governance, and observability from day one?
+                  </li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl text-white mb-2">Security & Compliance</h2>
+                <p>
+                  Trust is foundational in AI systems—especially when handling sensitive data, customer
+                  communication, or proprietary workflows. During discovery, we assess:
+                </p>
+                <ul className="list-disc list-inside space-y-1 mt-2">
+                  <li>Data classification and handling requirements</li>
+                  <li>Access control and permissions</li>
+                  <li>Infrastructure constraints and compliance needs</li>
+                  <li>Auditability and traceability requirements</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl text-white mb-2">Rapid Iteration & Continuous Delivery</h2>
+                <p>
+                  At True Horizon, we believe the real power of AI lies in its ability to evolve. That's
+                  why our development methodology is built around agility, modularity, and frequent
+                  iteration. Every system we build is custom, and we co-create it with your team in
+                  fast-moving, feedback-driven cycles.
+                </p>
+              </section>
+
+              <section>
+                <h3 className="text-xl text-white mb-1">Agile Development Framework</h3>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Agile sprints (1–2 weeks) with demoable deliverables</li>
+                  <li>Sprint planning and retro calls to align expectations</li>
+                  <li>Kanban or Jira-based task management for transparency</li>
+                  <li>Embedded client feedback built into every iteration</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3 className="text-xl text-white mb-1">Modular Architecture</h3>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Independent microservices and agents</li>
+                  <li>Swappable foundation models or RAG layers</li>
+                  <li>API-first infrastructure for external integrations</li>
+                  <li>Easily replaceable vector stores, LLMs, and pipelines</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl text-white mb-2">Quality Assurance & Deployment</h2>
+                <p>
+                  At True Horizon AI, the final stage of our three-step AI lifecycle focuses on rigorous
+                  testing, secure deployment, and long-term reliability. We combine automated pipelines
+                  with human evaluation to ensure your system performs consistently, safely, and scalably
+                  in production.
+                </p>
+              </section>
+
+              <section>
+                <h3 className="text-xl text-white mb-1">Quality Assurance Process</h3>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Automated testing pipelines with CI/CD integration</li>
+                  <li>Comprehensive test coverage across critical functionalities</li>
+                  <li>Hallucination detection and prevention</li>
+                  <li>Prompt injection defense and security testing</li>
+                  <li>Toxicity and bias checks with industry-specific thresholds</li>
+                  <li>RAG evaluation and retrieval accuracy validation</li>
+                </ul>
+              </section>
+
+              <section>
+                <h3 className="text-xl text-white mb-1">Deployment Workflows</h3>
+                <ul className="list-disc list-inside space-y-1">
+                  <li>Staging and production environment setup</li>
+                  <li>Automated deployment pipelines</li>
+                  <li>Monitoring and alerting configuration</li>
+                  <li>Security and compliance validation</li>
+                  <li>Performance optimization and scaling</li>
+                </ul>
+              </section>
+
+              <section>
+                <h2 className="text-2xl text-white mb-2">Ongoing Support & Optimization</h2>
+                <p>
+                  AI systems are never "done." We provide continuous oversight and enhancement through:
+                </p>
+                <ul className="list-disc list-inside space-y-1 mt-2">
+                  <li>Live system monitoring and performance tracking</li>
+                  <li>Scheduled QA cycles and prompt refreshes</li>
+                  <li>Regular re-embedding or retraining if needed</li>
+                  <li>Direct support channels with optional SLAs</li>
+                </ul>
+              </section>
             </div>
           </div>
         );
 
       case 'resources':
         return (
-          <div className="space-y-6">
-            <h1 className="text-4xl font-bold mb-4">Resources</h1>
-            <p className="text-xl text-gray-400">
-              Additional materials and guides to maximize your TalkVera experience.
+          <div className="space-y-12">
+            <h1 className="text-4xl font-bold mb-6">Additional Resources</h1>
+            <p className="text-xl text-gray-400 mb-10">
+              Technical references and troubleshooting insights to support engineering teams, partners, and technical buyers working with TalkVera systems.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8">
-              <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all">
-                <h3 className="text-xl font-semibold mb-3">API Documentation</h3>
-                <p className="text-gray-400 mb-4">
-                  Complete reference for integrating with TalkVera's APIs, including authentication, endpoints, and code examples.
-                </p>
-                <a href="#" className="text-blue-400 hover:text-blue-300 font-semibold">
-                  View API Docs →
-                </a>
-              </div>
+            {/* Technical FAQ & Troubleshooting Guide */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-3">Technical FAQ & Troubleshooting Guide</h2>
+              <p className="text-gray-400 mb-4">
+                This section addresses common technical, implementation, and product-related questions. Topics include system maintainability, LLM behavior, hosting options, multilingual support, and RAG implementations.
+              </p>
+              <ul className="list-disc list-inside text-gray-400 space-y-1">
+                <li><strong>Maintainability:</strong> Modular architecture, versioned APIs, and documentation-first design.</li>
+                <li><strong>Hallucination handling:</strong> RAGAS metrics, human-reviewed data audits, and retraining when needed.</li>
+                <li><strong>Hosting:</strong> Supports client-hosted deployments (VPC/private cloud) with secure IAM onboarding.</li>
+                <li><strong>Multilingual systems:</strong> Built-in localization and model adaptation for global deployments.</li>
+                <li><strong>RAG support:</strong> Grounded retrieval with semantic filters and QA scoring (precision, recall, groundedness).</li>
+              </ul>
+            </section>
 
-              <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all">
-                <h3 className="text-xl font-semibold mb-3">Video Tutorials</h3>
-                <p className="text-gray-400 mb-4">
-                  Step-by-step video guides covering setup, configuration, and best practices for common use cases.
-                </p>
-                <a href="#" className="text-blue-400 hover:text-blue-300 font-semibold">
-                  Watch Tutorials →
-                </a>
-              </div>
+            {/* Infrastructure & DevOps */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-3">Infrastructure & DevOps</h2>
+              <p className="text-gray-400 mb-4">
+                We use modern infrastructure practices to ensure reliability and security in every deployment. CI/CD, environment provisioning, and secure configuration are built into our DevOps workflows.
+              </p>
+              <ul className="list-disc list-inside text-gray-400 space-y-1">
+                <li><strong>Deployment:</strong> GitHub Actions or n8n-based pipelines with isolated staging and production environments.</li>
+                <li><strong>Provisioning:</strong> Managed via Docker, Terraform, Railway, or Kubernetes.</li>
+                <li><strong>Security:</strong> Encryption, secrets management, and role-based access control (least privilege principle).</li>
+              </ul>
+            </section>
 
-              <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all">
-                <h3 className="text-xl font-semibold mb-3">Best Practices Guide</h3>
-                <p className="text-gray-400 mb-4">
-                  Learn industry best practices for AI implementation, data management, and system optimization.
-                </p>
-                <a href="#" className="text-blue-400 hover:text-blue-300 font-semibold">
-                  Read Guide →
-                </a>
-              </div>
+            {/* Troubleshooting & Edge Cases */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-3">Troubleshooting & Edge Cases</h2>
+              <p className="text-gray-400 mb-4">
+                In cases of inconsistent responses or latency issues, we provide structured diagnostics and fallback mechanisms to maintain stability.
+              </p>
+              <ul className="list-disc list-inside text-gray-400 space-y-1">
+                <li><strong>Inconsistent responses:</strong> Provide logs for automated retries and fallback model analysis.</li>
+                <li><strong>Latency profiling:</strong> Async tracing, caching, and prompt optimization to improve performance.</li>
+              </ul>
+            </section>
 
-              <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all">
-                <h3 className="text-xl font-semibold mb-3">Community Forum</h3>
-                <p className="text-gray-400 mb-4">
-                  Connect with other TalkVera users, share experiences, and get help from our community experts.
-                </p>
-                <a href="#" className="text-blue-400 hover:text-blue-300 font-semibold">
-                  Join Forum →
-                </a>
-              </div>
-
-              <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all">
-                <h3 className="text-xl font-semibold mb-3">Webinar Series</h3>
-                <p className="text-gray-400 mb-4">
-                  Live and recorded webinars featuring AI experts, product updates, and real-world implementations.
-                </p>
-                <a href="#" className="text-blue-400 hover:text-blue-300 font-semibold">
-                  View Schedule →
-                </a>
-              </div>
-
-              <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all">
-                <h3 className="text-xl font-semibold mb-3">Technical Blog</h3>
-                <p className="text-gray-400 mb-4">
-                  In-depth articles on AI trends, technical deep-dives, and insights from our engineering team.
-                </p>
-                <a href="#" className="text-blue-400 hover:text-blue-300 font-semibold">
-                  Read Blog →
-                </a>
-              </div>
-            </div>
+            {/* Glossary */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-3">Glossary: Key Terminology</h2>
+              <p className="text-gray-400 mb-4">
+                Quick reference for foundational AI and system design terminology.
+              </p>
+              <ul className="list-disc list-inside text-gray-400 space-y-1">
+                <li><strong>LLM (Large Language Model):</strong> Neural network trained to generate human-like text.</li>
+                <li><strong>RAG (Retrieval-Augmented Generation):</strong> Combines LLMs with vector databases for factual grounding.</li>
+                <li><strong>Vector Database:</strong> Engine that stores and retrieves text embeddings for semantic search.</li>
+                <li><strong>Embedding:</strong> Numeric vector capturing the meaning of text or data.</li>
+                <li><strong>Prompt Engineering:</strong> Crafting prompts to shape model behavior.</li>
+                <li><strong>Groundedness:</strong> Alignment of AI outputs with source documents or trusted context.</li>
+                <li><strong>Token Limit:</strong> Maximum text length an AI model can process per request.</li>
+                <li><strong>Agent:</strong> AI system that performs tasks autonomously or semi-autonomously.</li>
+                <li><strong>Human-in-the-Loop (HITL):</strong> Workflow involving human validation or override of AI outputs.</li>
+                <li><strong>CI/CD:</strong> Continuous integration and deployment pipelines ensuring reliable updates.</li>
+              </ul>
+            </section>
           </div>
         );
 
       case 'overview':
         return (
-          <div className="space-y-6">
-            <h1 className="text-4xl font-bold mb-4">AI Agents Overview</h1>
-            <p className="text-xl text-gray-400">
-              Intelligent autonomous agents that execute complex tasks and make decisions.
-            </p>
-
-            <div className="mt-8 p-6 bg-gradient-to-br from-blue-900/20 to-gray-900/50 rounded-xl border border-blue-500/30">
-              <h3 className="text-2xl font-semibold mb-4">What are AI Agents?</h3>
-              <p className="text-gray-400 mb-4 leading-relaxed">
-                AI agents are autonomous software entities that perceive their environment, make decisions, and take actions to achieve specific goals. Unlike traditional automation, AI agents can adapt to changing conditions, learn from experience, and handle complex scenarios that require reasoning and judgment.
-              </p>
+          <div className="space-y-16">
+            {/* Header */}
+            <div>
+              <h1 className="text-4xl font-bold mb-4">TalkVera AI Agents</h1>
               <p className="text-gray-400 leading-relaxed">
-                TalkVera's AI agents combine natural language understanding, machine learning, and domain expertise to deliver intelligent automation across various business functions.
+                Our AI agents are designed with a focus on practical utility and seamless integration.
+                Each agent is built with a common set of features and capabilities, ensuring consistency
+                across our product line while allowing for specialized functionality where needed.
               </p>
             </div>
 
-            <div className="space-y-6 mt-8">
-              <h3 className="text-2xl font-semibold">Core Capabilities</h3>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                  <h4 className="text-lg font-semibold mb-3 text-blue-400">Natural Language Processing</h4>
-                  <p className="text-gray-400 text-sm">
-                    Understand and generate human language with context awareness, sentiment analysis, and multi-language support.
-                  </p>
-                </div>
-
-                <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                  <h4 className="text-lg font-semibold mb-3 text-blue-400">Decision Making</h4>
-                  <p className="text-gray-400 text-sm">
-                    Make intelligent decisions based on business rules, learned patterns, and real-time data analysis.
-                  </p>
-                </div>
-
-                <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                  <h4 className="text-lg font-semibold mb-3 text-blue-400">Task Orchestration</h4>
-                  <p className="text-gray-400 text-sm">
-                    Coordinate multiple sub-tasks, manage workflows, and integrate with various systems seamlessly.
-                  </p>
-                </div>
-
-                <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                  <h4 className="text-lg font-semibold mb-3 text-blue-400">Continuous Learning</h4>
-                  <p className="text-gray-400 text-sm">
-                    Improve performance over time through feedback loops, pattern recognition, and model updates.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-8 p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-              <h3 className="text-2xl font-semibold mb-4">Pre-Built Agent Solutions</h3>
-              <ul className="space-y-3 text-gray-400">
-                <li className="flex items-start space-x-3">
-                  <ChevronRight className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span><strong className="text-white">Ultimate Assistant:</strong> Multi-functional agent for customer support, scheduling, and information retrieval</span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <ChevronRight className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span><strong className="text-white">RAG Pipeline:</strong> Retrieval-Augmented Generation for knowledge-based question answering</span>
-                </li>
-                <li className="flex items-start space-x-3">
-                  <ChevronRight className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <span><strong className="text-white">Custom Agents:</strong> Tailored solutions designed for your specific business requirements</span>
-                </li>
+            {/* Philosophy */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Philosophy Behind Agent Design</h2>
+              <p className="text-gray-400 mb-4 leading-relaxed">
+                At TalkVera, we believe in creating AI agents that are:
+              </p>
+              <ul className="list-disc list-inside text-gray-400 space-y-1">
+                <li><strong className="text-white">Autonomous yet Collaborative:</strong> Capable of independent operation while maintaining human oversight.</li>
+                <li><strong className="text-white">Context-Aware:</strong> Understanding and adapting to specific business contexts and requirements.</li>
+                <li><strong className="text-white">Secure & Compliant:</strong> Built with enterprise-grade security and compliance in mind.</li>
+                <li><strong className="text-white">Scalable & Maintainable:</strong> Designed for easy scaling and ongoing optimization.</li>
               </ul>
-            </div>
+            </section>
+
+            {/* Common Features */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Common Features Across All Agents</h2>
+              <ul className="list-disc list-inside text-gray-400 space-y-1">
+                <li><strong className="text-white">Natural Language Understanding:</strong> Advanced comprehension of context and intent.</li>
+                <li><strong className="text-white">Multi-Modal Communication:</strong> Support for text, voice, and structured data.</li>
+                <li><strong className="text-white">Integration Capabilities:</strong> Seamless connection with existing systems and workflows.</li>
+                <li><strong className="text-white">Analytics & Reporting:</strong> Detailed insights into performance and usage.</li>
+                <li><strong className="text-white">Customization Framework:</strong> Flexible adaptation to specific business needs.</li>
+              </ul>
+            </section>
+
+            {/* Available Templates */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-6">Available Templates</h2>
+              <p className="text-gray-400 mb-8 leading-relaxed">
+                Our pre-built agent templates provide ready-to-use solutions for common business needs.
+                Each template is designed to be easily customizable and deployed quickly for your use case.
+              </p>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {[
+                  { title: "Ultimate Assistant", desc: "A comprehensive AI assistant capable of handling multiple tasks and workflows." },
+                  { title: "Deep Research PDF Report", desc: "Specialized agent for conducting in-depth research and generating comprehensive PDF reports." },
+                  { title: "Newsletter Creation", desc: "AI-powered newsletter creation and distribution system." },
+                  { title: "RAG Pipeline", desc: "Retrieval-Augmented Generation pipeline for enhanced AI responses." },
+                  { title: "Faceless Shorts", desc: "Automated short-form video content creation system." },
+                ].map((item, i) => (
+                  <div
+                    key={i}
+                    className="p-6 rounded-xl border border-gray-700 hover:border-blue-500/40 transition-all bg-gray-900/20"
+                  >
+                    <h3 className="text-xl font-semibold mb-2 text-white">{item.title}</h3>
+                    <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                  </div>
+                ))}
+              </div>
+            </section>
+
+            {/* Integration & Customization */}
+            <section>
+              <h2 className="text-2xl font-semibold mb-4">Integration & Customization</h2>
+              <p className="text-gray-400 mb-6 leading-relaxed">
+                All our agents can be customized to match your specific needs and integrated with your existing systems.
+                We provide detailed documentation and support to ensure smooth implementation and ongoing optimization.
+              </p>
+
+              <ul className="list-disc list-inside text-gray-400 space-y-1">
+                <li><strong className="text-white">API Integration:</strong> RESTful APIs for seamless system connectivity.</li>
+                <li><strong className="text-white">Custom Training:</strong> Domain-specific knowledge and behavior training.</li>
+                <li><strong className="text-white">Workflow Automation:</strong> Integration with existing business processes.</li>
+                <li><strong className="text-white">Security & Compliance:</strong> Enterprise-grade security features.</li>
+              </ul>
+            </section>
           </div>
         );
+
 
       case 'ultimate-assistant':
         return (
@@ -782,7 +939,7 @@ function DocsPage() {
                 <h3 className="text-2xl font-semibold mb-6">Configuration Options</h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                    <h4 className="text-lg font-semibold mb-3 text-cyan-400">Retrieval Strategy</h4>
+                    <h4 className="text-lg font-semibold mb-3 text-blue-400">Retrieval Strategy</h4>
                     <ul className="space-y-2 text-sm text-gray-400">
                       <li>• Top-K retrieval (configurable K value)</li>
                       <li>• Threshold-based filtering</li>
@@ -793,7 +950,7 @@ function DocsPage() {
                   </div>
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                    <h4 className="text-lg font-semibold mb-3 text-cyan-400">Response Generation</h4>
+                    <h4 className="text-lg font-semibold mb-3 text-blue-400">Response Generation</h4>
                     <ul className="space-y-2 text-sm text-gray-400">
                       <li>• Temperature and creativity controls</li>
                       <li>• Response length preferences</li>
@@ -833,6 +990,7 @@ function DocsPage() {
     <div className="pt-16 min-h-screen bg-gradient-to-b from-transparent to-gray-900/30">
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
+          {/* Sidebar */}
           <aside className="lg:col-span-1">
             <div className="sticky top-24 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 p-6">
               <h2 className="text-xl font-bold mb-6">Documentation</h2>
@@ -840,17 +998,43 @@ function DocsPage() {
                 {navigation.map((item) => (
                   <div key={item.id}>
                     <button
-                      onClick={() => setActiveSection(item.id)}
-                      className={`w-full flex items-center space-x-3 px-4 py-2.5 rounded-lg transition-all ${
+                      onClick={() =>
+                        item.children
+                          ? toggleDropdown(item.id)
+                          : setActiveSection(item.id)
+                      }
+                      className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition-all ${
                         activeSection === item.id
                           ? 'bg-blue-500/20 text-blue-400'
                           : 'text-gray-400 hover:bg-gray-800/50 hover:text-white'
                       }`}
                     >
-                      <item.icon size={18} />
-                      <span className="text-sm font-medium">{item.label}</span>
+                      <div className="flex items-center space-x-3">
+                        <item.icon size={18} />
+                        <span className="text-sm font-medium">{item.label}</span>
+                      </div>
+
+                      {item.children && (
+                        <svg
+                          className={`w-4 h-4 transform transition-transform ${
+                            openDropdown === item.id ? 'rotate-90' : ''
+                          }`}
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M9 5l7 7-7 7"
+                          />
+                        </svg>
+                      )}
                     </button>
-                    {item.children && (
+
+                    {/* Dropdown */}
+                    {item.children && openDropdown === item.id && (
                       <div className="ml-8 mt-1 space-y-1">
                         {item.children.map((child) => (
                           <button
@@ -873,6 +1057,7 @@ function DocsPage() {
             </div>
           </aside>
 
+          {/* Main content */}
           <main className="lg:col-span-3">
             <div className="prose prose-invert max-w-none">
               {renderContent()}

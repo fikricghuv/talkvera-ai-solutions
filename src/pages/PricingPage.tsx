@@ -22,69 +22,83 @@ function PricingPage() {
     },
     {
       icon: Rocket,
-      name: 'Professional',
+      name: 'Business Partner',
       price: '$7,999',
       period: '/month',
       description: 'Ideal for growing companies ready to scale their AI capabilities',
       features: [
-        'Up to 10 custom AI agents',
-        'Advanced automation pipelines',
-        'Real-time analytics & insights',
-        'Priority support (24h response)',
-        'Weekly strategy sessions',
-        '250,000 API calls/month',
-        'Advanced security & compliance',
-        'Dedicated account manager',
-        'Custom integrations',
-        'A/B testing capabilities',
+        'Dedicated AI Engineer',
+        'VIP support queue',
+        'Documentation and user guides',
+        'Live debugging and solution management',
+        'Client portal'
       ],
       highlighted: true,
     },
     {
       icon: Building2,
-      name: 'Enterprise',
+      name: 'Enterprise Partner',
       price: 'Custom',
       period: '',
       description: 'Comprehensive solutions for large organizations with complex needs',
       features: [
-        'Unlimited custom AI agents',
-        'Fully managed automation infrastructure',
-        'Advanced analytics & reporting',
-        '24/7 dedicated support',
-        'Daily strategic consultation',
-        'Unlimited API calls',
-        'Enterprise-grade security',
-        'White-label solutions',
-        'Custom model training',
-        'Multi-region deployment',
-        'SLA guarantees',
-        'On-premise options available',
+        'Includes all Business Partner features',
+        'Dedicated Project Manager',
+        'Weekly 60 minute meetings with our executive team',
+        'Strategic roadmap review',
+        'Team training and enablement sessions',
+        'Documentation of all completed work',
+        'Quarterly executive briefing',
+        'Everything customized for you and your business'
       ],
       highlighted: false,
     },
   ];
 
-  const addons = [
+  const partnership = [
     {
-      name: 'Additional AI Agent',
-      price: '$500/month',
-      description: 'Add extra AI agents to your existing plan',
+      icon: Zap,
+      name: 'AI/ML Engineers',
     },
     {
-      name: 'Custom Model Training',
-      price: '$2,500/project',
-      description: 'Train specialized models on your proprietary data',
+      name: 'Business Process Consultants',
+      icon: Zap,
     },
     {
-      name: 'Advanced Analytics Package',
-      price: '$1,200/month',
-      description: 'Deep-dive analytics with custom dashboards and reporting',
+      name: 'Data Scientists',
+      icon: Zap,
     },
     {
-      name: 'Priority Support Upgrade',
-      price: '$800/month',
-      description: 'Upgrade to 24/7 priority support with 1-hour response time',
+      name: 'Solution Architects',
+      icon: Zap,
     },
+    {
+      name: 'Project Managers',
+      icon: Zap,
+    },
+    {
+      name: 'UI/UX Specialists',
+      icon: Zap,
+    },
+  ];
+
+  const processes = [
+    {
+      
+      desc: 'Clear documentation of all work completed',
+    },
+    {
+      desc: 'Regular progress updates and demonstrations',
+      
+    },
+    {
+      desc: 'Collaborative planning sessions',
+      
+    },
+    {
+      desc: 'Detailed time tracking and reporting',
+      
+    }
   ];
 
   return (
@@ -100,7 +114,11 @@ function PricingPage() {
               Choose Your AI Journey
             </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Transparent pricing designed to scale with your business. No hidden fees, no surprises.
+              At Talkvera, we act as your dedicated AI partner—focused on identifying and executing the highest ROI opportunities for automation within your business.
+            </p>
+            <br/>
+            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+              Our mission is to help you and your team reclaim valuable hours each week by designing intelligent systems that eliminate repetitive tasks, streamline workflows, and scale with your operations. Over time, these time savings compound into massive gains in efficiency, productivity, and growth.
             </p>
           </div>
 
@@ -121,9 +139,9 @@ function PricingPage() {
                 )}
 
                 <div className="mb-6">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-4">
+                  {/* <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-4">
                     <plan.icon className="w-6 h-6 text-blue-400" />
-                  </div>
+                  </div> */}
                   <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
                   <p className="text-gray-400 text-sm mb-4">{plan.description}</p>
                   <div className="flex items-baseline mb-2">
@@ -156,29 +174,42 @@ function PricingPage() {
 
           <div className="mt-24">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">Add-Ons & Extensions</h2>
+              <h2 className="text-4xl font-bold mb-4">What Sets Our Development Partnership Apart</h2>
               <p className="text-xl text-gray-400">
-                Enhance your plan with additional capabilities tailored to your needs
+                Every Talkvera development partnership includes access to:
               </p>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              {addons.map((addon, index) => (
+              {partnership.map((partner, index) => (
                 <div
                   key={index}
                   className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all"
                 >
                   <div className="flex justify-between items-start mb-3">
-                    <h3 className="text-xl font-semibold">{addon.name}</h3>
-                    <span className="text-blue-400 font-bold whitespace-nowrap ml-4">
-                      {addon.price}
-                    </span>
+                    <partner.icon className="w-6 h-6 text-blue-400 flex-shrink-0" /> 
                   </div>
-                  <p className="text-gray-400 text-sm">{addon.description}</p>
+                  <h3 className="text-xl font-semibold">{partner.name}</h3>
                 </div>
               ))}
             </div>
           </div>
+
+          <div className="mt-24">
+            <div className="mb-12 text-center">
+              <h2 className="text-4xl font-bold mb-4">Transparent Process</h2>
+            </div>
+
+            <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
+              {processes.map((data, index) => (
+                <div key={index}>
+                  <hr className="mb-3 border-blue-400" />
+                  <h4 className="text-gray-400">{data.desc}</h4>
+                </div>
+              ))}
+            </div>
+          </div>
+
 
           <div className="mt-24 p-12 bg-gradient-to-br from-blue-900/20 to-cyan-900/20 rounded-2xl border border-blue-500/30">
             <div className="text-center">
@@ -191,21 +222,6 @@ function PricingPage() {
               <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30">
                 Schedule a Consultation
               </button>
-            </div>
-          </div>
-
-          <div className="mt-16 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-4xl font-bold text-blue-400 mb-2">30 Days</div>
-              <div className="text-gray-400">Money-Back Guarantee</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-blue-400 mb-2">No Setup</div>
-              <div className="text-gray-400">Fees or Hidden Costs</div>
-            </div>
-            <div>
-              <div className="text-4xl font-bold text-blue-400 mb-2">Cancel</div>
-              <div className="text-gray-400">Anytime, No Questions</div>
             </div>
           </div>
         </div>

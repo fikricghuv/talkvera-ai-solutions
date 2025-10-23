@@ -67,6 +67,12 @@ function AboutPage() {
   return (
     <div className="pt-16">
       <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20"></div>
+        <div className="absolute inset-0">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
+          <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        </div>
+        
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-8">
@@ -93,7 +99,7 @@ function AboutPage() {
       </section>
 
       <section className="py-24 bg-gradient-to-b from-gray-900/30 to-transparent">
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-7xl mx-auto px-6 pt-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
             <div>
               <h2 className="text-4xl font-bold mb-6">Our Story</h2>
@@ -112,7 +118,7 @@ function AboutPage() {
             <div className="relative">
               <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-900/40 to-cyan-900/40 border border-blue-500/30 p-12 flex items-center justify-center">
                 <div className="text-center">
-                  <TrendingUp className="w-24 h-24 text-blue-400 mx-auto mb-6" />
+                  <TrendingUp className="w-22 h-22 text-blue-400 mx-auto mb-6" />
                   <div className="text-6xl font-bold text-blue-400 mb-2">500+</div>
                   <div className="text-xl text-gray-300">AI Solutions Deployed</div>
                 </div>
@@ -123,15 +129,21 @@ function AboutPage() {
           <div className="mb-24">
             <h2 className="text-4xl font-bold mb-6 text-center">Our Mission & Vision</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700">
-                <Target className="w-12 h-12 text-blue-400 mb-4" />
-                <h3 className="text-2xl font-bold mb-4">Mission</h3>
+              <div className="p-8 text-center">
+                <div className='flex justify-center'>
+                  <Target className="w-12 h-12 text-blue-400 mb-4" />
+                </div>
+                
+                <h3 className="text-2xl font-bold mb-4 text-center">Mission</h3>
                 <p className="text-gray-400 leading-relaxed">
                   To empower businesses with accessible, ethical, and impactful AI solutions that drive sustainable growth and create lasting value for all stakeholders.
                 </p>
               </div>
-              <div className="p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700">
-                <Lightbulb className="w-12 h-12 text-cyan-400 mb-4" />
+              <div className="p-8 text-center">
+                <div className='flex justify-center'>
+                  <Lightbulb className="w-12 h-12 text-cyan-400 mb-4" />
+                </div>
+                
                 <h3 className="text-2xl font-bold mb-4">Vision</h3>
                 <p className="text-gray-400 leading-relaxed">
                   To become the world's most trusted AI partner, recognized for innovation, integrity, and the positive transformation we bring to businesses and communities globally.
@@ -164,7 +176,7 @@ function AboutPage() {
               {team.map((member, index) => (
                 <div
                   key={index}
-                  className="p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all"
+                  className="p-8 "
                 >
                   <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-6 mx-auto">
                     <Users className="w-10 h-10 text-blue-400" />

@@ -42,11 +42,6 @@ function Footer({ onNavigate }: FooterProps) {
                   Case Studies
                 </button>
               </li>
-              <li>
-                <a href="#" className="text-sm text-gray-400 hover:text-blue-400 transition-colors">
-                  Careers
-                </a>
-              </li>
             </ul>
           </div>
 
@@ -68,11 +63,6 @@ function Footer({ onNavigate }: FooterProps) {
                 >
                   Pricing
                 </button>
-              </li>
-              <li>
-                <a href="#" className="text-sm text-gray-400 hover:text-blue-400 transition-colors">
-                  Blog
-                </a>
               </li>
             </ul>
           </div>

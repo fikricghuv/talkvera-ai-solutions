@@ -1,6 +1,13 @@
-import { Bot, Workflow, BarChart3, Shield, Lock, CheckCircle2, ArrowRight, Zap } from 'lucide-react';
+import { Bot, Workflow, BarChart3, Shield, Lock, CheckCircle2, ArrowRight, Zap, Rocket, Brain } from 'lucide-react';
 
-function HomePage() {
+type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
+
+interface HomePageProps {
+    onNavigate: (page: Page) => void;
+}
+
+function HomePage({ onNavigate }: HomePageProps) {
+
   const features = [
     {
       icon: Bot,
@@ -36,19 +43,22 @@ function HomePage() {
 
   const processSteps = [
     {
-      number: '01',
-      title: 'Discovery',
-      description: 'We analyze your business challenges, goals, and requirements to create a comprehensive AI strategy tailored to your needs.',
+      number: "1",
+      title: "Discovery & Strategy",
+      description: "We begin by understanding your vision, goals, and requirements. Through collaborative discussions and research, we lay the foundation for your project's success.",
+      icon: Brain,
     },
     {
-      number: '02',
-      title: 'Development',
-      description: 'Our expert team builds custom AI solutions using state-of-the-art technologies, ensuring scalability and performance.',
+      number: "2",
+      title: "Model Development",
+      description: "Our team transforms ideas into reality through agile development. We build, test, and iterate, ensuring your solution meets the highest standards of quality and performance.",
+      icon: Workflow,
     },
     {
-      number: '03',
-      title: 'Deployment',
-      description: 'Seamless integration into your existing systems with ongoing support, monitoring, and continuous optimization.',
+      number: "3",
+      title: "Deployment & Scale",
+      description: "We carefully launch your solution, ensuring a smooth transition to production. Our team provides ongoing support and optimization to keep your system running at its best.",
+      icon: Rocket,
     },
   ];
 
@@ -94,11 +104,15 @@ function HomePage() {
           </p>
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2">
+            <button 
+              onClick={() => onNavigate('contact')} // Panggil onNavigate('contact')
+              className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2"
+            >
               <span>Get Started</span>
               <ArrowRight size={20} />
             </button>
-            <button className="px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all">
+            <button className="px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all"
+            onClick={() => onNavigate('docs')}>
               View Case Studies
             </button>
           </div>
@@ -120,7 +134,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
+      {/* <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -146,37 +160,100 @@ function HomePage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
-      <section className="py-24 bg-gradient-to-b from-gray-900/30 to-transparent">
-        <div className="max-w-7xl mx-auto px-6">
+      {/* SECTION 2: Comprehensive AI Solutions (Tampilan Baru) */}
+      <section className="py-24 relative overflow-hidden">
+        {/* Efek Cahaya di Sisi Kanan (Memecah Kebosanan Kotak) */}
+        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Our Process
+              Comprehensive AI Solutions
             </h2>
             <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              A proven three-step methodology to deliver exceptional AI solutions tailored to your business.
+              End-to-end AI services designed to transform your business operations and drive innovation.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {processSteps.map((step, index) => (
-              <div key={index} className="relative">
-                <div className="text-center">
-                  <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/50 mb-6">
-                    <span className="text-3xl font-bold text-blue-400">{step.number}</span>
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4">{step.title}</h3>
-                  <p className="text-gray-400 leading-relaxed">{step.description}</p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => (
+              <div
+                key={index}
+                // Hapus border standar. Tambahkan efek 'relative' dan 'group'.
+                className="group relative p-8 bg-gray-900/70 rounded-3xl backdrop-blur-sm transition-all duration-300 hover:scale-[1.03] hover:shadow-2xl hover:shadow-blue-900/50"
+              >
+                {/* Efek Border Gradien yang Mengapung (Floating Border Effect) */}
+                <div className="absolute inset-0 rounded-3xl p-[1px] pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <div className="absolute inset-0 rounded-[calc(1.5rem+1px)] bg-gradient-to-br from-blue-500/80 via-cyan-500/80 to-transparent"></div>
                 </div>
-                {index < processSteps.length - 1 && (
-                  <div className="hidden md:block absolute top-10 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-blue-500/50 to-transparent"></div>
-                )}
+                {/* Lapisan Hitam di Bawah Border Gradien agar gradien terlihat seperti garis tipis */}
+                <div className="absolute inset-[1px] rounded-3xl bg-gray-900/80 transition-all duration-500"></div>
+
+                {/* Konten Kartu */}
+                <div className="relative z-20">
+                    <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500/30 to-cyan-500/30 flex items-center justify-center mb-6 group-hover:scale-105 transition-transform duration-300 shadow-lg shadow-blue-500/10">
+                        <feature.icon className="w-7 h-7 text-blue-300" />
+                    </div>
+                    <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
+                    <p className="text-gray-400 leading-relaxed">{feature.description}</p>
+                    
+                </div>
               </div>
             ))}
           </div>
         </div>
       </section>
+
+      {/* SECTION 3: Our Process (Vertical Clean Style + Right Icon) */}
+<section className="py-24 relative overflow-hidden">
+  <div className="max-w-4xl mx-auto px-6">
+    {/* Header */}
+    <div className="text-center mb-16">
+      <h2 className="text-4xl md:text-5xl font-bold mb-4">
+        Our Proven Process
+      </h2>
+      <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+        A streamlined methodology to deliver exceptional AI solutions tailored to your business needs.
+      </p>
+    </div>
+
+    {/* Steps (Vertical Layout) */}
+    <div className="flex flex-col gap-14">
+      {processSteps.map((step, index) => (
+        <div
+          key={index}
+          className="flex items-start justify-between gap-6"
+        >
+          {/* Kiri: Nomor dan Konten */}
+          <div className="flex items-start gap-6">
+            {/* Nomor step */}
+            <div className="text-5xl font-extrabold text-blue-400 shrink-0 leading-none">
+              {step.number}
+            </div>
+
+            {/* Konten step */}
+            <div>
+              <h3 className="text-2xl font-semibold mb-2">
+                {step.title}
+              </h3>
+              <p className="text-gray-400 leading-relaxed">
+                {step.description}
+              </p>
+            </div>
+          </div>
+
+          {/* Kanan: Ikon */}
+          <div className="shrink-0 text-blue-400">
+            <step.icon className="w-10 h-10" />
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
 
       <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
         <div className="max-w-7xl mx-auto px-6">
@@ -221,7 +298,9 @@ function HomePage() {
           <p className="text-xl text-gray-400 mb-10">
             Join hundreds of companies leveraging AI to drive growth, efficiency, and innovation.
           </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2 mx-auto">
+          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2 mx-auto"
+          onClick={() => onNavigate('contact')}>
+            
             <span>Schedule a Consultation</span>
             <ArrowRight size={20} />
           </button>

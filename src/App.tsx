@@ -4,10 +4,11 @@ import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import PricingPage from './pages/PricingPage';
 import AboutPage from './pages/AboutPage';
-import CaseStudyPage from './pages/CaseStudyPage';
+// import CaseStudyPage from './pages/CaseStudyPage';
 import DocsPage from './pages/DocsPage';
+import ContactPage from './pages/ContactPage';
 
-type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs';
+type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact';
 
 function App() {
   const [currentPage, setCurrentPage] = useState<Page>('home');
@@ -19,17 +20,19 @@ function App() {
   const renderPage = () => {
     switch (currentPage) {
       case 'home':
-        return <HomePage />;
+        return <HomePage onNavigate={setCurrentPage}/>;
       case 'pricing':
         return <PricingPage />;
       case 'about':
         return <AboutPage />;
-      case 'case-study':
-        return <CaseStudyPage />;
+      // case 'case-study':
+      //   return <CaseStudyPage />;
       case 'docs':
         return <DocsPage />;
+      case 'contact':
+        return <ContactPage />;
       default:
-        return <HomePage />;
+        return <HomePage onNavigate={setCurrentPage}/>;
     }
   };
 

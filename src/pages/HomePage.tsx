@@ -206,53 +206,59 @@ function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* SECTION 3: Our Process (Vertical Clean Style + Right Icon) */}
-<section className="py-24 relative overflow-hidden">
-  <div className="max-w-4xl mx-auto px-6">
-    {/* Header */}
-    <div className="text-center mb-16">
-      <h2 className="text-4xl md:text-5xl font-bold mb-4">
-        Our Proven Process
-      </h2>
-      <p className="text-lg text-gray-400 max-w-2xl mx-auto">
-        A streamlined methodology to deliver exceptional AI solutions tailored to your business needs.
-      </p>
-    </div>
+      <section className="py-24 relative overflow-hidden bg-gradient-to-b from-gray-900/30 to-transparent">
+        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[120px]"></div>
 
-    {/* Steps (Vertical Layout) */}
-    <div className="flex flex-col gap-14">
-      {processSteps.map((step, index) => (
-        <div
-          key={index}
-          className="flex items-start justify-between gap-6"
-        >
-          {/* Kiri: Nomor dan Konten */}
-          <div className="flex items-start gap-6">
-            {/* Nomor step */}
-            <div className="text-5xl font-extrabold text-blue-400 shrink-0 leading-none">
-              {step.number}
-            </div>
-
-            {/* Konten step */}
-            <div>
-              <h3 className="text-2xl font-semibold mb-2">
-                {step.title}
-              </h3>
-              <p className="text-gray-400 leading-relaxed">
-                {step.description}
-              </p>
-            </div>
+        <div className="max-w-5xl mx-auto px-6 relative">
+          <div className="text-center mb-20">
+            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+              Our Proven Process
+            </h2>
+            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+              A streamlined three-phase methodology to deliver exceptional AI solutions tailored to your business.
+            </p>
           </div>
 
-          {/* Kanan: Ikon */}
-          <div className="shrink-0 text-blue-400">
-            <step.icon className="w-10 h-10" />
+          <div className="relative">
+            {processSteps.map((step, index) => (
+              <div key={index} className="relative">
+                <div className="flex gap-8 items-start pb-20 last:pb-0">
+                  <div className="relative flex flex-col items-center">
+                    <div className="relative z-10 w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/50 flex items-center justify-center backdrop-blur-sm shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
+                      <span className="text-3xl font-bold bg-gradient-to-br from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                        {step.number}
+                      </span>
+                    </div>
+
+                    {index < processSteps.length - 1 && (
+                      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-0.5 h-[calc(100%+2rem)] bg-gradient-to-b from-blue-500/50 via-cyan-500/30 to-transparent"></div>
+                    )}
+                  </div>
+
+                  <div className="flex-1 pt-2 group">
+                    <div className="relative p-8 bg-gradient-to-br from-gray-800/40 to-gray-900/40 rounded-2xl border border-gray-700/50 hover:border-blue-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 backdrop-blur-sm">
+                      <div className="absolute top-8 right-8 opacity-20 group-hover:opacity-40 transition-opacity">
+                        <step.icon className="w-16 h-16 text-blue-400" />
+                      </div>
+
+                      <div className="relative">
+                        <h3 className="text-2xl md:text-3xl font-bold mb-3 text-white">
+                          {step.title}
+                        </h3>
+                        <p className="text-gray-400 leading-relaxed text-base md:text-lg">
+                          {step.description}
+                        </p>
+                      </div>
+
+                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
-      ))}
-    </div>
-  </div>
-</section>
+      </section>
 
 
       <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">

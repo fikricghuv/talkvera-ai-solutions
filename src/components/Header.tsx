@@ -2,10 +2,10 @@ import { Menu, X, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 
 type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact';
-
+type Section = string | undefined;
 interface HeaderProps {
   currentPage: Page;
-  onNavigate: (page: Page) => void;
+  onNavigate: (page: Page, section?: Section) => void;
 }
 
 function Header({ currentPage, onNavigate }: HeaderProps) {
@@ -15,8 +15,8 @@ function Header({ currentPage, onNavigate }: HeaderProps) {
     { label: 'Home', page: 'home' },
     { label: 'Pricing', page: 'pricing' },
     { label: 'About', page: 'about' },
-    // { label: 'Case Study', page: 'case-study' },
-    { label: 'Contact', page: 'contact' },
+    { label: 'Case Study', page: 'case-study' },
+    // { label: 'Contact', page: 'contact' },
     { label: 'Docs', page: 'docs' },
   ];
 
@@ -33,17 +33,15 @@ function Header({ currentPage, onNavigate }: HeaderProps) {
             onClick={() => handleNavigate('home')}
             className="flex items-center space-x-2 group"
           >
-            <div className="relative">
-              <Sparkles className="w-8 h-8 text-blue-400 group-hover:text-blue-300 transition-colors" />
-              <div className="absolute inset-0 bg-blue-400 blur-xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-            </div>
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-              TalkVera
-            </span>
+            <img
+                src='/assets/logo-talkvera-white.svg'
+                alt="TalkVera Logo"
+                className="h-8 w-auto transition-opacity group-hover:opacity-80" // Sesuaikan ukuran dan efek hover
+            />
           </button>
 
           <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
+            {/* {navItems.map((item) => (
               <button
                 key={item.page}
                 onClick={() => handleNavigate(item.page)}
@@ -55,7 +53,32 @@ function Header({ currentPage, onNavigate }: HeaderProps) {
               >
                 {item.label}
               </button>
-            ))}
+            ))} */}
+            {navItems.map((item) => {
+                // Tentukan aksi navigasi
+                let navigateAction = () => handleNavigate(item.page);
+
+                // LOGIKA PERBAIKAN: Jika item adalah 'Case Study', ubah tujuannya.
+                if (item.page === 'case-study') {
+                    // Kita navigasi ke 'docs', tetapi kita kirim 'case-studies/overview' sebagai section
+                    // Note: Kita harus mengirim 2 parameter ke onNavigate
+                    navigateAction = () => onNavigate('docs', 'case-studies/overview');
+                }
+
+                return (
+                    <button
+                      key={`${item.label}-${item.page}`}
+                      onClick={navigateAction}
+                      className={`text-sm font-medium transition-colors ${
+                        currentPage === item.page
+                          ? 'text-blue-400'
+                          : 'text-gray-300 hover:text-white'
+                      }`}
+                    >
+                      {item.label}
+                    </button>
+                );
+            })}
             <button 
               onClick={() => handleNavigate('contact')}
               className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30"

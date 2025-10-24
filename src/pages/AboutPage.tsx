@@ -84,10 +84,10 @@ function AboutPage({ onNavigate }: HomePageProps) {
               <Target className="w-4 h-4 text-blue-400" />
               <span className="text-sm text-blue-300">About TalkVera</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent leading-tight">
               Pioneering the Future of AI
             </h1>
-            <p className="text-xl text-gray-400 max-w-3xl mx-auto">
+            <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
               We're on a mission to democratize AI and empower businesses of all sizes to harness the transformative power of artificial intelligence.
             </p>
           </div>
@@ -107,25 +107,27 @@ function AboutPage({ onNavigate }: HomePageProps) {
         <div className="max-w-7xl mx-auto px-6 pt-10">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
             <div>
-              <h2 className="text-4xl font-bold mb-6">Our Story</h2>
-              <div className="space-y-4 text-gray-400 leading-relaxed">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Story</h2>
+              <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
                 <p>
-                  Founded in 2019, TalkVera began with a simple observation: businesses were struggling to adopt AI despite its enormous potential. The gap between cutting-edge research and practical business applications was too wide.
+                  Founded in **2022**, TalkVera began with a simple observation: businesses were struggling to adopt AI despite its enormous potential. The gap between cutting-edge research and practical business applications was too wide.
                 </p>
                 <p>
-                  Our founding team, comprised of AI researchers and enterprise software veterans, set out to bridge that gap. We built TalkVera to be the trusted partner that businesses need to navigate the complex world of AI implementation.
+                  Our founding team, comprised of AI researchers and enterprise software veterans, set out to bridge that gap. We built TalkVera to be the **trusted partner** that businesses need to navigate the complex world of AI implementation.
                 </p>
                 <p>
                   Today, we're proud to serve hundreds of clients across industries, from startups to Fortune 500 companies. Our solutions have processed billions of data points, automated millions of workflows, and delivered measurable impact for organizations worldwide.
                 </p>
               </div>
             </div>
-            <div className="relative">
-              <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-900/40 to-cyan-900/40 border border-blue-500/30 p-12 flex items-center justify-center">
+            {/* Box Highlighted di Samping Kanan */}
+            <div className="relative p-1 bg-gradient-to-br from-blue-500/50 to-cyan-500/50 rounded-3xl shadow-2xl shadow-blue-500/20">
+              <div className="aspect-square rounded-[1.4rem] bg-gray-900 p-12 flex items-center justify-center">
                 <div className="text-center">
-                  <TrendingUp className="w-22 h-22 text-blue-400 mx-auto mb-6" />
-                  <div className="text-6xl font-bold text-blue-400 mb-2">500+</div>
-                  <div className="text-xl text-gray-300">AI Solutions Deployed</div>
+                  <TrendingUp className="w-20 h-20 text-blue-400 mx-auto mb-6" />
+                  <div className="text-7xl font-extrabold text-blue-400 mb-2">500+</div>
+                  <div className="text-xl text-gray-300 font-semibold">AI Solutions Deployed</div>
+                  <p className="text-sm text-gray-500 mt-2">Validated and running in production environments.</p>
                 </div>
               </div>
             </div>
@@ -159,16 +161,16 @@ function AboutPage({ onNavigate }: HomePageProps) {
 
           <div className="mb-24">
             <h2 className="text-4xl font-bold mb-12 text-center">Our Core Values</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => (
                 <div
                   key={index}
-                  className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all text-center"
+                  className="p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700 transition-all duration-300 transform hover:scale-[1.02] hover:border-blue-500/70 shadow-lg"
                 >
-                  <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center mx-auto mb-4">
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-4">
                     <value.icon className="w-7 h-7 text-blue-400" />
                   </div>
-                  <h3 className="text-xl font-semibold mb-3">{value.title}</h3>
+                  <h3 className="text-xl font-bold mb-3">{value.title}</h3>
                   <p className="text-sm text-gray-400 leading-relaxed">{value.description}</p>
                 </div>
               ))}

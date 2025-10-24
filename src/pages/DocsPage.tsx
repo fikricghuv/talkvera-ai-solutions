@@ -1,15 +1,35 @@
-import { useState } from 'react';
+// src/pages/DocsPage.tsx
+import { useState, useEffect } from 'react'; // <--- PERBAIKAN DI SINI
 import { Book, Bot, Network, Workflow, FileText, BookOpenText } from 'lucide-react';
 
-function DocsPage() {
-  const [activeSection, setActiveSection] = useState('introduction');
-  const [openDropdown, setOpenDropdown] = useState(null);
+type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
 
-  type DropdownId = string | null;
+interface DocsPageProps {
+    onNavigate: (page: Page, section?: string) => void;
+    initialSection?: string; 
+}
+
+function DocsPage({ onNavigate, initialSection }: DocsPageProps) {
+  const [activeSection, setActiveSection] = useState(initialSection || 'introduction');
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  useEffect(() => {
+      if (initialSection) {
+          if (initialSection.startsWith('case-studies/')) {
+              // Jika ini adalah Case Study, aktifkan 'overview' dan buka dropdown 'case-studies'
+              setActiveSection('overview');
+              setOpenDropdown('case-studies'); 
+          } else {
+              // Untuk section lain (misalnya 'introduction', 'tech-stack')
+              setActiveSection(initialSection);
+              setOpenDropdown(null); // Tutup dropdown lain jika ada
+          }
+      }
+  }, [initialSection]);
 
   const toggleDropdown = (id: string): void => {
-    // cast to any to avoid changing existing useState declarations elsewhere
-    (setOpenDropdown as any)(openDropdown === id ? null : id as DropdownId);
+    // Menggunakan setOpenDropdown tanpa 'as any'
+    setOpenDropdown(openDropdown === id ? null : id);
   };
 
   const navigation = [
@@ -40,7 +60,7 @@ function DocsPage() {
           <div className="space-y-8">
             <h1 className="text-4xl font-bold mb-6">Getting Started</h1>
 
-            <p className="text-gray-400 leading-relaxed">
+            <p className=" leading-relaxed">
               Welcome to TalkVera's documentation! This section is your launchpad for getting oriented
               with our tools, services, and how we work. Our goal is to make working with TalkVera
               seamless and intuitive.
@@ -48,11 +68,11 @@ function DocsPage() {
 
             <div>
               <h2 className="text-2xl font-semibold mb-3">Navigating the Documentation</h2>
-              <p className="text-gray-400 leading-relaxed">
+              <p className=" leading-relaxed">
                 Each major category in this documentation is presented as a dropdown menu, containing
                 detailed subpages for each topic. Use the sidebar or top navigation to explore areas like
-                <span className="text-white font-medium"> "Technology Stack," "Our Process," </span>and
-                <span className="text-white font-medium"> "AI Agents."</span> If you're searching for
+                <span className="text-white font-medium"> "Technology Stack", "Our Process", </span>and
+                <span className="text-white font-medium"> "AI Agents".</span> If you're searching for
                 something specific, use the built-in search feature or press
                 <span className="text-white font-medium"> Command + K </span>
                 to activate our <span className="text-white font-medium">Ask AI</span> tool, which can
@@ -63,7 +83,7 @@ function DocsPage() {
 
             <div>
               <h2 className="text-2xl font-semibold mb-3">Who This Is For</h2>
-              <p className="text-gray-400 leading-relaxed">
+              <p className=" leading-relaxed">
                 This documentation is designed for developers, product leaders, operations teams, and
                 decision-makers who want to understand and implement AI capabilities into their workflows.
                 Whether you're launching a new project or integrating one of our agents into your systems,
@@ -73,13 +93,13 @@ function DocsPage() {
 
             <div>
               <h2 className="text-2xl font-semibold mb-3">How to Work With Us</h2>
-              <p className="text-gray-400 leading-relaxed mb-3">
+              <p className=" leading-relaxed mb-3">
                 To start working with TalkVera, visit our
                 <span className="text-white font-medium"> Contact Page </span>and fill out the form with
                 as much detail as possible about your project. The more context you provide, the better we
                 can scope the engagement and align you with the right solutions.
               </p>
-              <p className="text-gray-400 leading-relaxed">
+              <p className=" leading-relaxed">
                 Currently, TalkVera works on a partnership plan that starts at
                 <span className="text-white font-medium"> $20,000/month.</span> If your project is smaller
                 in scope or budget, we recommend visiting our
@@ -90,7 +110,7 @@ function DocsPage() {
 
             <div>
               <h2 className="text-2xl font-semibold mb-3">Documentation Tips</h2>
-              <p className="text-gray-400 leading-relaxed">
+              <p className=" leading-relaxed">
                 Each page in the documentation is written with clarity and speed in mind. You'll find
                 headings, brief explanations, and where helpful, embedded videos, diagrams, and example
                 prompts. Use these as references or templates to better understand how our tools work in
@@ -100,7 +120,7 @@ function DocsPage() {
 
             <div>
               <h2 className="text-2xl font-semibold mb-3">Feedback Welcome</h2>
-              <p className="text-gray-400 leading-relaxed">
+              <p className=" leading-relaxed">
                 We strive to keep our documentation current and helpful. If something's missing or unclear,
                 don't hesitate to reach out. We're continuously iterating based on client feedback and
                 evolving AI capabilities.
@@ -114,7 +134,7 @@ function DocsPage() {
           <div className="space-y-8 max-w-5xl mx-auto">
             <h1 className="text-4xl font-bold mb-4">Technology Stack</h1>
 
-            <p className="text-gray-400">
+            <p>
               At Talkvera, we adopt a forward-looking, modular tech stack built for speed, flexibility, and 
               long-term scalability. Our tooling reflects a blend of modern cloud infrastructure, 
               developer-centric platforms, and battle-tested AI frameworks. We select technologies based on 
@@ -125,13 +145,13 @@ function DocsPage() {
             </p>
 
             <h2 className="text-3xl font-semibold mt-12 mb-4">Infrastructure</h2>
-            <p className="text-gray-400">
+            <p>
               We operate primarily as a <strong className="text-white">full AWS shop</strong>, meaning our systems are deployed, 
               managed, and scaled using <strong className="text-white">Amazon Web Services</strong> — a trusted platform for secure, 
               high-performance cloud computing.
             </p>
 
-            <p className="text-gray-400">
+            <p>
               Our in-house <strong className="text-white">cloud infrastructure engineers</strong> are experienced with 
               <strong className="text-white"> multi-cloud environments</strong>, enabling support across 
               <strong className="text-white"> Azure</strong>, <strong className="text-white">Google Cloud Platform (GCP)</strong>, 
@@ -139,7 +159,7 @@ function DocsPage() {
               clients in regulated industries or with unique infrastructure requirements are fully supported.
             </p>
 
-            <ul className="list-disc pl-6 space-y-2 text-gray-400">
+            <ul className="list-disc pl-6 space-y-2">
               <li><strong className="text-white">Supabase:</strong> Secure authentication and real-time updates for rapid feature delivery.</li>
               <li><strong className="text-white">PostgreSQL:</strong> Our primary structured database — robust, scalable, and reliable.</li>
               <li><strong className="text-white">Vector Databases:</strong> Tools like <strong>Pinecone</strong>, <strong>Weaviate</strong>, and <strong>Qdrant</strong> enable semantic search and contextual understanding in AI systems.</li>
@@ -148,13 +168,13 @@ function DocsPage() {
             </ul>
 
             <h2 className="text-3xl font-semibold mt-12 mb-4">Programming & Integrations</h2>
-            <p className="text-gray-400">
+            <p>
               Our development process is shaped by tools that enable <strong className="text-white">rapid iteration</strong>, 
               <strong className="text-white"> intelligent automation</strong>, and <strong className="text-white">deep integration</strong> 
               with external systems.
             </p>
 
-            <ul className="list-disc pl-6 space-y-2 text-gray-400">
+            <ul className="list-disc pl-6 space-y-2">
               <li><strong className="text-white">Languages:</strong> <strong>Python</strong> for AI and backend systems, 
                 <strong> JavaScript/TypeScript</strong> for front-end and lightweight logic.
               </li>
@@ -170,7 +190,7 @@ function DocsPage() {
             </ul>
 
             <h2 className="text-3xl font-semibold mt-12 mb-4">Artificial Intelligence</h2>
-            <p className="text-gray-400">
+            <p>
               We take a <strong className="text-white">model-agnostic</strong> approach to AI — benchmarking across providers 
               to select the best-performing model based on your goals. Whether optimizing for 
               <strong className="text-white"> speed</strong>, <strong className="text-white">precision</strong>, 
@@ -178,7 +198,7 @@ function DocsPage() {
               we tailor each deployment for maximum impact.
             </p>
 
-            <ul className="list-disc pl-6 space-y-2 text-gray-400">
+            <ul className="list-disc pl-6 space-y-2">
               <li><strong className="text-white">Retrieval-Augmented Generation (RAG):</strong> Grounding LLM responses with 
                 relevant internal data for accuracy and reduced hallucination.
               </li>
@@ -201,7 +221,7 @@ function DocsPage() {
           <div className="space-y-6 text-left">
             <h1 className="text-4xl font-bold mb-4">Our Process</h1>
 
-            <div className="space-y-8 text-gray-400 leading-relaxed">
+            <div className="space-y-8 leading-relaxed">
               <section>
                 <h2 className="text-2xl text-white mb-2">Initial Discovery</h2>
                 <p>
@@ -347,17 +367,17 @@ function DocsPage() {
         return (
           <div className="space-y-12">
             <h1 className="text-4xl font-bold mb-6">Additional Resources</h1>
-            <p className="text-xl text-gray-400 mb-10">
+            <p className="text-xl mb-10">
               Technical references and troubleshooting insights to support engineering teams, partners, and technical buyers working with TalkVera systems.
             </p>
 
             {/* Technical FAQ & Troubleshooting Guide */}
             <section>
               <h2 className="text-2xl font-semibold mb-3">Technical FAQ & Troubleshooting Guide</h2>
-              <p className="text-gray-400 mb-4">
+              <p className="mb-4">
                 This section addresses common technical, implementation, and product-related questions. Topics include system maintainability, LLM behavior, hosting options, multilingual support, and RAG implementations.
               </p>
-              <ul className="list-disc list-inside text-gray-400 space-y-1">
+              <ul className="list-disc list-inside space-y-1">
                 <li><strong className="text-white">Maintainability:</strong> Modular architecture, versioned APIs, and documentation-first design.</li>
                 <li><strong className="text-white">Hallucination handling:</strong> RAGAS metrics, human-reviewed data audits, and retraining when needed.</li>
                 <li><strong className="text-white">Hosting:</strong> Supports client-hosted deployments (VPC/private cloud) with secure IAM onboarding.</li>
@@ -369,10 +389,10 @@ function DocsPage() {
             {/* Infrastructure & DevOps */}
             <section>
               <h2 className="text-2xl font-semibold mb-3">Infrastructure & DevOps</h2>
-              <p className="text-gray-400 mb-4">
+              <p className="mb-4">
                 We use modern infrastructure practices to ensure reliability and security in every deployment. CI/CD, environment provisioning, and secure configuration are built into our DevOps workflows.
               </p>
-              <ul className="list-disc list-inside text-gray-400 space-y-1">
+              <ul className="list-disc list-inside space-y-1">
                 <li><strong className="text-white">Deployment:</strong> GitHub Actions or n8n-based pipelines with isolated staging and production environments.</li>
                 <li><strong className="text-white">Provisioning:</strong> Managed via Docker, Terraform, Railway, or Kubernetes.</li>
                 <li><strong className="text-white">Security:</strong> Encryption, secrets management, and role-based access control (least privilege principle).</li>
@@ -382,10 +402,10 @@ function DocsPage() {
             {/* Troubleshooting & Edge Cases */}
             <section>
               <h2 className="text-2xl font-semibold mb-3">Troubleshooting & Edge Cases</h2>
-              <p className="text-gray-400 mb-4">
+              <p className="mb-4">
                 In cases of inconsistent responses or latency issues, we provide structured diagnostics and fallback mechanisms to maintain stability.
               </p>
-              <ul className="list-disc list-inside text-gray-400 space-y-1">
+              <ul className="list-disc list-inside space-y-1">
                 <li><strong className="text-white">Inconsistent responses:</strong> Provide logs for automated retries and fallback model analysis.</li>
                 <li><strong className="text-white">Latency profiling:</strong> Async tracing, caching, and prompt optimization to improve performance.</li>
               </ul>
@@ -394,10 +414,10 @@ function DocsPage() {
             {/* Glossary */}
             <section>
               <h2 className="text-2xl font-semibold mb-3">Glossary: Key Terminology</h2>
-              <p className="text-gray-400 mb-4">
+              <p className="mb-4">
                 Quick reference for foundational AI and system design terminology.
               </p>
-              <ul className="list-disc list-inside text-gray-400 space-y-1">
+              <ul className="list-disc list-inside space-y-1">
                 <li><strong className="text-white">LLM (Large Language Model):</strong> Neural network trained to generate human-like text.</li>
                 <li><strong className="text-white">RAG (Retrieval-Augmented Generation):</strong> Combines LLMs with vector databases for factual grounding.</li>
                 <li><strong className="text-white">Vector Database:</strong> Engine that stores and retrieves text embeddings for semantic search.</li>
@@ -419,7 +439,7 @@ function DocsPage() {
             {/* Header */}
             <div>
               <h1 className="text-4xl font-bold mb-4">TalkVera AI Agents</h1>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="leading-relaxed">
                 Our AI agents are designed with a focus on practical utility and seamless integration.
                 Each agent is built with a common set of features and capabilities, ensuring consistency
                 across our product line while allowing for specialized functionality where needed.
@@ -429,10 +449,10 @@ function DocsPage() {
             {/* Philosophy */}
             <section>
               <h2 className="text-2xl font-semibold mb-4">Philosophy Behind Agent Design</h2>
-              <p className="text-gray-400 mb-4 leading-relaxed">
+              <p className="mb-4 leading-relaxed">
                 At TalkVera, we believe in creating AI agents that are:
               </p>
-              <ul className="list-disc list-inside text-gray-400 space-y-1">
+              <ul className="list-disc list-inside space-y-1">
                 <li><strong className="text-white">Autonomous yet Collaborative:</strong> Capable of independent operation while maintaining human oversight.</li>
                 <li><strong className="text-white">Context-Aware:</strong> Understanding and adapting to specific business contexts and requirements.</li>
                 <li><strong className="text-white">Secure & Compliant:</strong> Built with enterprise-grade security and compliance in mind.</li>
@@ -443,7 +463,7 @@ function DocsPage() {
             {/* Common Features */}
             <section>
               <h2 className="text-2xl font-semibold mb-4">Common Features Across All Agents</h2>
-              <ul className="list-disc list-inside text-gray-400 space-y-1">
+              <ul className="list-disc list-inside space-y-1">
                 <li><strong className="text-white">Natural Language Understanding:</strong> Advanced comprehension of context and intent.</li>
                 <li><strong className="text-white">Multi-Modal Communication:</strong> Support for text, voice, and structured data.</li>
                 <li><strong className="text-white">Integration Capabilities:</strong> Seamless connection with existing systems and workflows.</li>
@@ -455,7 +475,7 @@ function DocsPage() {
             {/* Available Templates */}
             <section>
               <h2 className="text-2xl font-semibold mb-6">Available Templates</h2>
-              <p className="text-gray-400 mb-8 leading-relaxed">
+              <p className="mb-8 leading-relaxed">
                 Our pre-built agent templates provide ready-to-use solutions for common business needs.
                 Each template is designed to be easily customizable and deployed quickly for your use case.
               </p>
@@ -466,6 +486,9 @@ function DocsPage() {
                   { id: 'ultimate-assistant', title: "Ultimate Assistant", desc: "A comprehensive AI assistant capable of handling multiple tasks and workflows." },
                   { id: 'rag-pipeline', title: "RAG Pipeline", desc: "Retrieval-Augmented Generation pipeline for enhanced AI responses." },
                   { id: 'newsletter-creation', title: "Newsletter Creation", desc: "AI-powered newsletter creation and distribution system." },
+                  { id: 'schedule-appointment', title: "Schedule Appointment", desc: "AI-powered newsletter creation and distribution system." },
+                  { id: 'customer-service-agent', title: "Customer Service Agent", desc: "AI-powered newsletter creation and distribution system." },
+                  { id: 'generate-test-case', title: "Generate Test Case", desc: "AI-powered newsletter creation and distribution system." },
                 ].map((item, i) => (
                   <button 
                     key={i}
@@ -473,7 +496,7 @@ function DocsPage() {
                     className="text-left p-6 rounded-xl border border-gray-700 hover:border-blue-500/40 transition-all bg-gray-900/20 hover:bg-gray-800/40"
                   >
                     <h3 className="text-xl font-semibold mb-2 text-white">{item.title}</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">{item.desc}</p>
+                    <p className="text-sm leading-relaxed">{item.desc}</p>
                   </button>
                 ))}
               </div>
@@ -482,12 +505,12 @@ function DocsPage() {
             {/* Integration & Customization */}
             <section>
               <h2 className="text-2xl font-semibold mb-4">Integration & Customization</h2>
-              <p className="text-gray-400 mb-6 leading-relaxed">
+              <p className="mb-6 leading-relaxed">
                 All our agents can be customized to match your specific needs and integrated with your existing systems.
                 We provide detailed documentation and support to ensure smooth implementation and ongoing optimization.
               </p>
 
-              <ul className="list-disc list-inside text-gray-400 space-y-1">
+              <ul className="list-disc list-inside space-y-1">
                 <li><strong className="text-white">API Integration:</strong> RESTful APIs for seamless system connectivity.</li>
                 <li><strong className="text-white">Custom Training:</strong> Domain-specific knowledge and behavior training.</li>
                 <li><strong className="text-white">Workflow Automation:</strong> Integration with existing business processes.</li>
@@ -501,13 +524,13 @@ function DocsPage() {
         return (
           <div className="space-y-6">
             <h1 className="text-4xl font-bold mb-4">Ultimate Assistant</h1>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl">
               An intelligent multi-purpose AI agent that serves as a comprehensive virtual assistant for your business operations.
             </p>
 
             <div className="mt-8 p-6 bg-gradient-to-br from-blue-900/20 to-gray-900/50 rounded-xl border border-blue-500/30">
               <h3 className="text-2xl font-semibold mb-4">Overview</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="leading-relaxed">
                 The Ultimate Assistant is TalkVera's flagship AI agent, designed to handle a wide range of business tasks with human-like understanding and efficiency. It combines advanced natural language processing, contextual reasoning, and seamless system integrations to provide comprehensive support across customer service, internal operations, and information management.
               </p>
             </div>
@@ -518,7 +541,7 @@ function DocsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">1. Conversational Intelligence</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Natural multi-turn dialogue with context retention across sessions</li>
                       <li>• Intent recognition and entity extraction for accurate understanding</li>
                       <li>• Sentiment analysis to adapt tone and response strategy</li>
@@ -529,7 +552,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">2. Customer Support Automation</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Instant response to common inquiries (FAQs, policies, procedures)</li>
                       <li>• Ticket creation and routing to appropriate teams when needed</li>
                       <li>• Order status tracking and shipping updates</li>
@@ -540,7 +563,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">3. Intelligent Scheduling & Task Management</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Automatic meeting scheduling with calendar integration</li>
                       <li>• Smart conflict resolution and time zone handling</li>
                       <li>• Task assignment and deadline tracking</li>
@@ -551,7 +574,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">4. Information Retrieval & Knowledge Management</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Instant access to company documentation and knowledge bases</li>
                       <li>• Semantic search across multiple data sources</li>
                       <li>• Document summarization and key insight extraction</li>
@@ -562,7 +585,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">5. Data Analysis & Reporting</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Natural language queries for business intelligence data</li>
                       <li>• Automated report generation on demand</li>
                       <li>• Trend identification and anomaly detection</li>
@@ -573,7 +596,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">6. System Integration & Automation</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Pre-built connectors for CRM, ERP, and helpdesk systems</li>
                       <li>• Workflow automation across multiple platforms</li>
                       <li>• Data synchronization and validation</li>
@@ -587,7 +610,7 @@ function DocsPage() {
               <div>
                 <h3 className="text-2xl font-semibold mb-6">Technical Architecture</h3>
                 <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                  <div className="space-y-4 text-gray-400">
+                  <div className="space-y-4">
                     <p><strong className="text-white">Language Models:</strong> Built on GPT-4 and Claude-3 architecture with domain-specific fine-tuning for your industry</p>
                     <p><strong className="text-white">Context Management:</strong> Advanced memory systems maintain conversation state and user preferences across sessions</p>
                     <p><strong className="text-white">Security:</strong> End-to-end encryption, role-based access control, and audit logging for all interactions</p>
@@ -602,16 +625,16 @@ function DocsPage() {
                 <div className="space-y-6">
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3">E-Commerce Customer Support</h4>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Client:</strong> Leading online retailer with 2M+ monthly customers
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Implementation:</strong> Ultimate Assistant deployed across website chat, email, and messaging platforms
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Results:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4">
+                    <ul className="space-y-1 text-sm ml-4">
                       <li>• 82% of customer inquiries resolved without human intervention</li>
                       <li>• Average response time reduced from 4 hours to under 1 minute</li>
                       <li>• Customer satisfaction (CSAT) increased from 3.8 to 4.6 out of 5</li>
@@ -622,16 +645,16 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3">Corporate IT Helpdesk</h4>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Client:</strong> Fortune 500 company with 15,000 employees
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Implementation:</strong> Internal assistant for password resets, software requests, and IT troubleshooting
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Results:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4">
+                    <ul className="space-y-1 text-sm ml-4">
                       <li>• 75% reduction in helpdesk ticket volume</li>
                       <li>• Average resolution time decreased from 2 hours to 5 minutes</li>
                       <li>• Employee productivity increased with immediate issue resolution</li>
@@ -642,16 +665,16 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3">Financial Services Advisory</h4>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Client:</strong> Regional bank serving 500,000 account holders
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Implementation:</strong> Ultimate Assistant for account inquiries, transaction disputes, and product recommendations
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Results:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4">
+                    <ul className="space-y-1 text-sm ml-4">
                       <li>• 90% of routine banking questions handled automatically</li>
                       <li>• Fraud detection and alert response time reduced by 85%</li>
                       <li>• Product cross-sell increased by 35% through intelligent recommendations</li>
@@ -665,13 +688,14 @@ function DocsPage() {
               <div>
                 <h3 className="text-2xl font-semibold mb-6">Getting Started</h3>
                 <div className="p-6 bg-gradient-to-br from-blue-900/20 to-gray-900/50 rounded-xl border border-blue-500/30">
-                  <div className="space-y-4 text-gray-400">
+                  <div className="space-y-4">
                     <p><strong className="text-white">Step 1:</strong> Schedule a discovery call to discuss your specific use cases and requirements</p>
                     <p><strong className="text-white">Step 2:</strong> We'll design a custom configuration tailored to your business processes and brand voice</p>
                     <p><strong className="text-white">Step 3:</strong> Pilot deployment with a small user group to gather feedback and refine</p>
                     <p><strong className="text-white">Step 4:</strong> Full rollout with comprehensive training and ongoing optimization</p>
                   </div>
-                  <button className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all">
+                  <button className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all"
+                  onClick={() => onNavigate('contact')}>
                     Schedule Consultation
                   </button>
                 </div>
@@ -684,16 +708,16 @@ function DocsPage() {
         return (
           <div className="space-y-6">
             <h1 className="text-4xl font-bold mb-4">RAG Pipeline</h1>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl">
               Retrieval-Augmented Generation system for accurate, knowledge-grounded AI responses.
             </p>
 
             <div className="mt-8 p-6 bg-gradient-to-br from-blue-900/20 to-gray-900/50 rounded-xl border border-blue-500/30">
               <h3 className="text-2xl font-semibold mb-4">What is RAG?</h3>
-              <p className="text-gray-400 leading-relaxed mb-4">
+              <p className="leading-relaxed mb-4">
                 Retrieval-Augmented Generation (RAG) is an advanced AI architecture that combines the power of large language models with your organization's proprietary knowledge base. Instead of relying solely on pre-trained knowledge, RAG dynamically retrieves relevant information from your documents, databases, and systems to generate accurate, contextual, and up-to-date responses.
               </p>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="leading-relaxed">
                 This approach eliminates hallucinations, ensures factual accuracy, and keeps responses grounded in your actual business information, policies, and data.
               </p>
             </div>
@@ -704,7 +728,7 @@ function DocsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">1. Document Ingestion & Processing</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Automated ingestion from multiple sources (files, databases, APIs, websites)</li>
                       <li>• Support for 50+ file formats (PDF, Word, Excel, HTML, JSON, etc.)</li>
                       <li>• Intelligent document parsing with table and image extraction</li>
@@ -716,7 +740,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">2. Chunking & Embedding Strategy</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Smart text chunking that preserves semantic meaning</li>
                       <li>• Overlapping chunks to maintain context across boundaries</li>
                       <li>• Multiple embedding models for different content types</li>
@@ -728,7 +752,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">3. Vector Database & Search</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• High-performance vector database (Pinecone, Weaviate, or custom)</li>
                       <li>• Semantic similarity search with configurable thresholds</li>
                       <li>• Hybrid search combining vector and keyword approaches</li>
@@ -740,7 +764,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">4. Context Assembly & Generation</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Intelligent ranking and reranking of retrieved documents</li>
                       <li>• Context compression to fit LLM token limits</li>
                       <li>• Source attribution and citation generation</li>
@@ -752,7 +776,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">5. Quality Assurance & Monitoring</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Automated fact-checking against source documents</li>
                       <li>• Hallucination detection algorithms</li>
                       <li>• User feedback loops for continuous improvement</li>
@@ -764,7 +788,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">6. Security & Compliance</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Role-based access control (RBAC) at document level</li>
                       <li>• Data residency controls for regulated industries</li>
                       <li>• Audit logging for all queries and retrievals</li>
@@ -779,7 +803,7 @@ function DocsPage() {
               <div>
                 <h3 className="text-2xl font-semibold mb-6">Technical Specifications</h3>
                 <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                  <div className="space-y-4 text-gray-400">
+                  <div className="space-y-4">
                     <p><strong className="text-white">Embedding Models:</strong> OpenAI Ada-002, Cohere Embed v3, custom fine-tuned models</p>
                     <p><strong className="text-white">Language Models:</strong> GPT-4, Claude-3 Opus, Llama-2 (for on-premise deployments)</p>
                     <p><strong className="text-white">Vector Databases:</strong> Pinecone, Weaviate, Qdrant, or self-hosted solutions</p>
@@ -795,29 +819,29 @@ function DocsPage() {
                 <div className="space-y-6">
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3">Enterprise Knowledge Management</h4>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Client:</strong> Multinational consulting firm with 20+ years of project documentation
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Challenge:</strong> 50,000+ documents across SharePoint, Confluence, and file servers. Consultants spending hours searching for relevant past work and best practices.
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Solution:</strong> RAG Pipeline indexing all historical documents with natural language search interface
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Implementation Details:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4 mb-3">
+                    <ul className="space-y-1 text-sm ml-4 mb-3">
                       <li>• Automated daily ingestion from all document sources</li>
                       <li>• Custom metadata extraction for project type, client industry, and methodology</li>
                       <li>• Permission-aware retrieval matching Active Directory security groups</li>
                       <li>• Conversational interface allowing follow-up questions</li>
                       <li>• Citation of source documents with direct links for verification</li>
                     </ul>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Results:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4">
+                    <ul className="space-y-1 text-sm ml-4">
                       <li>• Research time reduced from 4+ hours to under 15 minutes</li>
                       <li>• 93% of queries successfully answered with relevant information</li>
                       <li>• Consultants able to leverage institutional knowledge effectively</li>
@@ -828,29 +852,29 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3">Technical Support Documentation</h4>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Client:</strong> SaaS company providing DevOps platform to 10,000+ customers
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Challenge:</strong> Complex product with frequent updates. Support team overwhelmed with technical questions. Documentation scattered across multiple systems.
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Solution:</strong> RAG Pipeline integrating product docs, API references, troubleshooting guides, and community discussions
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Implementation Details:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4 mb-3">
+                    <ul className="space-y-1 text-sm ml-4 mb-3">
                       <li>• Real-time ingestion as documentation is updated</li>
                       <li>• Code-aware chunking preserving syntax and structure</li>
                       <li>• Version-specific retrieval matching customer's product version</li>
                       <li>• Integration with ticket system for context-aware suggestions</li>
                       <li>• Continuous learning from successful ticket resolutions</li>
                     </ul>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Results:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4">
+                    <ul className="space-y-1 text-sm ml-4">
                       <li>• 70% of technical questions resolved without human intervention</li>
                       <li>• First-time resolution rate improved from 65% to 89%</li>
                       <li>• Support ticket volume reduced by 45%</li>
@@ -861,29 +885,29 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3">Legal Contract Analysis</h4>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Client:</strong> Corporate law department managing 10,000+ contracts
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Challenge:</strong> Need to quickly find contract clauses, analyze obligations, and identify risks across thousands of documents. Manual review taking days per analysis.
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Solution:</strong> Specialized RAG Pipeline for legal document understanding and analysis
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Implementation Details:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4 mb-3">
+                    <ul className="space-y-1 text-sm ml-4 mb-3">
                       <li>• Legal-specific embeddings trained on contract language</li>
                       <li>• Clause-level chunking with hierarchical document structure</li>
                       <li>• Multi-document comparison and analysis capabilities</li>
                       <li>• Risk scoring based on precedent and company policies</li>
                       <li>• Audit trail for all analyses with explainable reasoning</li>
                     </ul>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Results:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4">
+                    <ul className="space-y-1 text-sm ml-4">
                       <li>• Contract review time reduced from 3 days to 2 hours</li>
                       <li>• 97% accuracy in clause extraction and categorization</li>
                       <li>• Early identification of non-standard terms and risks</li>
@@ -894,29 +918,29 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3">Healthcare Clinical Decision Support</h4>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Client:</strong> Hospital system with 500 physicians across 12 specialties
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Challenge:</strong> Physicians need quick access to latest clinical guidelines, research, and institutional protocols. Medical knowledge expanding faster than practitioners can keep up.
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Solution:</strong> HIPAA-compliant RAG Pipeline integrating medical literature, hospital protocols, and patient records
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Implementation Details:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4 mb-3">
+                    <ul className="space-y-1 text-sm ml-4 mb-3">
                       <li>• Integration with PubMed, UpToDate, and internal guidelines</li>
                       <li>• Real-time updates as new research is published</li>
                       <li>• Patient-context-aware recommendations (allergies, history, meds)</li>
                       <li>• Evidence grading and source credibility scoring</li>
                       <li>• Full HIPAA compliance with comprehensive audit logging</li>
                     </ul>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Results:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4">
+                    <ul className="space-y-1 text-sm ml-4">
                       <li>• Physicians able to access relevant guidelines in under 30 seconds</li>
                       <li>• 15% improvement in adherence to evidence-based protocols</li>
                       <li>• Reduction in adverse drug interactions through better information</li>
@@ -932,7 +956,7 @@ function DocsPage() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">Retrieval Strategy</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Top-K retrieval (configurable K value)</li>
                       <li>• Threshold-based filtering</li>
                       <li>• Maximum marginal relevance (MMR) for diversity</li>
@@ -943,7 +967,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-blue-400">Response Generation</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Temperature and creativity controls</li>
                       <li>• Response length preferences</li>
                       <li>• Citation style (inline, footnotes, none)</li>
@@ -957,14 +981,15 @@ function DocsPage() {
               <div>
                 <h3 className="text-2xl font-semibold mb-6">Getting Started with RAG Pipeline</h3>
                 <div className="p-6 bg-gradient-to-br from-blue-900/20 to-gray-900/50 rounded-xl border border-blue-500/30">
-                  <div className="space-y-4 text-gray-400">
+                  <div className="space-y-4">
                     <p><strong className="text-white">Step 1:</strong> Audit your knowledge sources and document repositories</p>
                     <p><strong className="text-white">Step 2:</strong> Define use cases, access controls, and success metrics</p>
                     <p><strong className="text-white">Step 3:</strong> Pilot with a subset of documents and small user group</p>
                     <p><strong className="text-white">Step 4:</strong> Iterate based on feedback, accuracy measurements, and usage patterns</p>
                     <p><strong className="text-white">Step 5:</strong> Scale to full document corpus with ongoing monitoring and optimization</p>
                   </div>
-                  <button className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all">
+                  <button className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all"
+                  onClick={() => onNavigate('contact')}>
                     Schedule RAG Assessment
                   </button>
                 </div>
@@ -977,13 +1002,13 @@ function DocsPage() {
         return (
           <div className="space-y-6">
             <h1 className="text-4xl font-bold mb-4">Newsletter Creation Agent</h1>
-            <p className="text-xl text-gray-400">
+            <p className="text-xl">
               An AI-powered agent designed to fully automate the content aggregation, generation, and distribution of professional newsletters.
             </p>
 
             <div className="mt-8 p-6 bg-gradient-to-br from-cyan-900/20 to-gray-900/50 rounded-xl border border-cyan-500/30">
               <h3 className="text-2xl font-semibold mb-4">Overview</h3>
-              <p className="text-gray-400 leading-relaxed">
+              <p className="leading-relaxed">
                 The Newsletter Creation Agent streamlines your content marketing workflow, eliminating manual drafting and formatting. It uses advanced NLP to scan trending topics, analyze internal data, draft engaging articles, and format the final newsletter, ensuring consistent, high-quality communication with your audience without consuming valuable team resources.
               </p>
             </div>
@@ -995,7 +1020,7 @@ function DocsPage() {
                   
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-cyan-400">1. Automated Content Curation</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Real-time aggregation of industry news and trends from defined sources</li>
                       <li>• Analysis of top-performing content based on client-defined metrics</li>
                       <li>• Automatic generation of engaging headlines and subject lines</li>
@@ -1006,7 +1031,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-cyan-400">2. Drafting and Tone Customization</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Generation of unique body text (articles, tips, updates) from structured data</li>
                       <li>• Brand voice synchronization (formal, casual, expert) using style guide input</li>
                       <li>• A/B testing variations for content segments and CTAs</li>
@@ -1017,7 +1042,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-cyan-400">3. Layout and Formatting</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Automatic application of brand templates (HTML/CSS)</li>
                       <li>• Dynamic adjustment of image sizes and placement for mobile optimization</li>
                       <li>• Inclusion of tracking pixels and compliance footers (GDPR)</li>
@@ -1028,7 +1053,7 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3 text-cyan-400">4. Distribution and Analytics</h4>
-                    <ul className="space-y-2 text-sm text-gray-400">
+                    <ul className="space-y-2 text-sm">
                       <li>• Direct API integration with major email service providers (Mailchimp, HubSpot, SendGrid)</li>
                       <li>• Segmentation based on subscriber behavior and demographics</li>
                       <li>• Scheduling and automated send-off at optimal times</li>
@@ -1043,7 +1068,7 @@ function DocsPage() {
               <div>
                 <h3 className="text-2xl font-semibold mb-6">Technical Architecture</h3>
                 <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
-                  <div className="space-y-4 text-gray-400">
+                  <div className="space-y-4">
                     <p><strong className="text-white">Content Engine:</strong> Uses specialized LLMs (e.g., GPT-4) fine-tuned for marketing language and style consistency.</p>
                     <p><strong className="text-white">Data Integration:</strong> Web scraping module and API connectors for content ingestion from RSS, blogs, or databases.</p>
                     <p><strong className="text-white">Security:</strong> Strict adherence to privacy policies; encryption of subscriber data during processing and transfer.</p>
@@ -1058,16 +1083,16 @@ function DocsPage() {
                 <div className="space-y-6">
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3">SaaS Product Update Newsletter</h4>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Client:</strong> Mid-sized B2B SaaS platform
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Implementation:</strong> Agent pulls updates directly from the Jira/Trello development boards to draft release notes.
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Results:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4">
+                    <ul className="space-y-1 text-sm ml-4">
                       <li>• Time spent on newsletter creation reduced by 95% (from 8 hours to 15 minutes)</li>
                       <li>• Open rates increased by 15% due to improved subject line generation</li>
                       <li>• Feature adoption rate increased by 22% post-newsletter distribution</li>
@@ -1077,16 +1102,16 @@ function DocsPage() {
 
                   <div className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700">
                     <h4 className="text-lg font-semibold mb-3">Daily Market Digest</h4>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Client:</strong> Financial advisory firm
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Implementation:</strong> Agent aggregates global market data and regulatory changes into a concise daily brief.
                     </p>
-                    <p className="text-gray-400 text-sm mb-3">
+                    <p className="text-sm mb-3">
                       <strong className="text-white">Results:</strong>
                     </p>
-                    <ul className="space-y-1 text-sm text-gray-400 ml-4">
+                    <ul className="space-y-1 text-sm ml-4">
                       <li>• Guaranteed daily delivery before 7:00 AM local time, 7 days a week</li>
                       <li>• Accuracy score for synthesized market data maintained at 99.8%</li>
                       <li>• Subscriber retention increased due to consistent, valuable content</li>
@@ -1099,13 +1124,14 @@ function DocsPage() {
               <div>
                 <h3 className="text-2xl font-semibold mb-6">Getting Started</h3>
                 <div className="p-6 bg-gradient-to-br from-cyan-900/20 to-gray-900/50 rounded-xl border border-cyan-500/30">
-                  <div className="space-y-4 text-gray-400">
+                  <div className="space-y-4">
                     <p><strong className="text-white">Step 1:</strong> Define your newsletter segments, frequency, and core content sources</p>
                     <p><strong className="text-white">Step 2:</strong> Integrate with your email platform and upload branding/style guides</p>
                     <p><strong className="text-white">Step 3:</strong> Configure content review protocols (optional human oversight) and scheduling</p>
                     <p><strong className="text-white">Step 4:</strong> Launch automated distribution and begin tracking performance</p>
                   </div>
-                  <button className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all">
+                  <button className="mt-6 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all"
+                  onClick={() => onNavigate('contact')}>
                     Schedule Consultation
                   </button>
                 </div>
@@ -1139,7 +1165,7 @@ function DocsPage() {
                       className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition-all ${
                         activeSection === item.id
                           ? 'bg-blue-500/20 text-blue-400'
-                          : 'text-gray-400 hover:bg-gray-800/50 hover:text-white'
+                          : 'text-gray-200 hover:bg-gray-800/50 hover:text-white'
                       }`}
                     >
                       <div className="flex items-center space-x-3">
@@ -1176,7 +1202,7 @@ function DocsPage() {
                             className={`w-full text-left px-4 py-2 rounded-lg text-sm transition-all ${
                               activeSection === child.id
                                 ? 'text-blue-400 bg-blue-500/10'
-                                : 'text-gray-500 hover:text-white hover:bg-gray-800/30'
+                                : 'text-gray-300 hover:text-white hover:bg-gray-800/30'
                             }`}
                           >
                             {child.label}
@@ -1203,3 +1229,4 @@ function DocsPage() {
 }
 
 export default DocsPage;
+

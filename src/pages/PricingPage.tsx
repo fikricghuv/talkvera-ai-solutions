@@ -1,4 +1,5 @@
-import { Check, Zap, Rocket, Building2 } from 'lucide-react';
+import { Check, Zap, Rocket, Building2, User, Target, Layers, TrendingUp, Compass, Globe, Clock } from 'lucide-react';
+import { useState } from 'react';
 
 type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
 
@@ -8,24 +9,6 @@ interface HomePageProps {
 
 function PricingPage({ onNavigate }: HomePageProps) {
   const plans = [
-    {
-      icon: Zap,
-      name: 'Starter',
-      price: '$2,999',
-      period: '/month',
-      description: 'Perfect for small businesses getting started with AI automation',
-      features: [
-        'Up to 3 custom AI agents',
-        'Basic automation pipelines',
-        'Performance analytics dashboard',
-        'Email support (48h response)',
-        'Monthly strategy calls',
-        '50,000 API calls/month',
-        'Basic security protocols',
-        'Community access',
-      ],
-      highlighted: false,
-    },
     {
       icon: Rocket,
       name: 'Business Partner',
@@ -62,49 +45,19 @@ function PricingPage({ onNavigate }: HomePageProps) {
   ];
 
   const partnership = [
-    {
-      icon: Zap,
-      name: 'AI/ML Engineers',
-    },
-    {
-      name: 'Business Process Consultants',
-      icon: Zap,
-    },
-    {
-      name: 'Data Scientists',
-      icon: Zap,
-    },
-    {
-      name: 'Solution Architects',
-      icon: Zap,
-    },
-    {
-      name: 'Project Managers',
-      icon: Zap,
-    },
-    {
-      name: 'UI/UX Specialists',
-      icon: Zap,
-    },
+    { icon: User, name: 'AI/ML Engineers' },
+    { icon: Target, name: 'Business Process Consultants' },
+    { icon: Layers, name: 'Data Scientists' },
+    { icon: Compass, name: 'Solution Architects' },
+    { icon: Clock, name: 'Project Managers' },
+    { icon: Globe, name: 'UI/UX Specialists' },
   ];
 
   const processes = [
-    {
-      
-      desc: 'Clear documentation of all work completed',
-    },
-    {
-      desc: 'Regular progress updates and demonstrations',
-      
-    },
-    {
-      desc: 'Collaborative planning sessions',
-      
-    },
-    {
-      desc: 'Detailed time tracking and reporting',
-      
-    }
+    { icon: Check, desc: 'Clear documentation of all work completed' },
+    { icon: TrendingUp, desc: 'Regular progress updates and demonstrations' },
+    { icon: Layers, desc: 'Collaborative planning sessions' },
+    { icon: Clock, desc: 'Detailed time tracking and reporting' },
   ];
 
   return (
@@ -116,7 +69,7 @@ function PricingPage({ onNavigate }: HomePageProps) {
               <Zap className="w-4 h-4 text-blue-400" />
               <span className="text-sm text-blue-300">Flexible Pricing Plans</span>
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent leading-tight">
               Choose Your AI Journey
             </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
@@ -128,52 +81,70 @@ function PricingPage({ onNavigate }: HomePageProps) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {/* Pricing Cards (2 Kolom Centered) */}
+          <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
             {plans.map((plan, index) => (
               <div
                 key={index}
-                className={`relative p-8 rounded-2xl transition-all ${
-                  plan.highlighted
-                    ? 'bg-gradient-to-br from-blue-900/40 to-cyan-900/40 border-2 border-blue-500 shadow-2xl shadow-blue-500/20 scale-105'
-                    : 'bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700 hover:border-gray-600'
-                }`}
+                // Mengurangi padding dari p-8 menjadi p-6
+                className={`relative p-6 flex flex-col justify-between rounded-3xl transition-all duration-300 transform hover:scale-[1.03]
+                  ${
+                    plan.highlighted
+                      ? 'bg-gradient-to-br from-blue-900/40 to-cyan-900/40 border-2 border-blue-500 shadow-2xl shadow-blue-500/30'
+                      : 'bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700 hover:border-blue-500/50'
+                  }
+                `}
               >
+                {/* Most Popular Badge */}
                 {plan.highlighted && (
-                  <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 px-4 py-1 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-sm font-semibold rounded-full">
+                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 px-4 py-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-semibold rounded-full shadow-lg">
                     Most Popular
                   </div>
                 )}
+                
+                {/* Card Content Top */}
+                <div className='flex flex-col'>
+                    <div className="mb-5">
+                        {/* Mengurangi ukuran font dari 3xl menjadi 2xl */}
+                        <h3 className="text-2xl font-bold mb-1">{plan.name}</h3>
+                        {/* Mengurangi ukuran font dari sm menjadi xs */}
+                        <p className="text-gray-400 text-xs mb-3 italic">{plan.description}</p>
+                        <div className="flex items-baseline mb-5">
+                            {plan.price === 'Custom' ? (
+                                <span className="text-4xl font-bold text-blue-400">Custom</span>
+                            ) : (
+                                <>
+                                    <span className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                                        {plan.price}
+                                    </span>
+                                    <span className="text-gray-400 ml-2 text-lg">{plan.period}</span>
+                                </>
+                            )}
+                        </div>
+                    </div>
 
-                <div className="mb-6">
-                  {/* <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-4">
-                    <plan.icon className="w-6 h-6 text-blue-400" />
-                  </div> */}
-                  <h3 className="text-2xl font-bold mb-2">{plan.name}</h3>
-                  <p className="text-gray-400 text-sm mb-4">{plan.description}</p>
-                  <div className="flex items-baseline mb-2">
-                    <span className="text-5xl font-bold">{plan.price}</span>
-                    <span className="text-gray-400 ml-2">{plan.period}</span>
-                  </div>
+                    {/* Feature List: Menggunakan min-height agar tombol sebaris */}
+                    {/* Mengurangi min-height dari 52 menjadi 40 */}
+                    <ul className="space-y-2 mb-6 min-h-40">
+                      {plan.features.map((feature, fIndex) => (
+                        <li key={fIndex} className="flex items-start space-x-2">
+                          <Check className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
+                          <span className="text-sm text-gray-300">{feature}</span>
+                        </li>
+                      ))}
+                    </ul>
                 </div>
 
-                <ul className="space-y-3 mb-8">
-                  {plan.features.map((feature, fIndex) => (
-                    <li key={fIndex} className="flex items-start space-x-3">
-                      <Check className="w-5 h-5 text-blue-400 flex-shrink-0 mt-0.5" />
-                      <span className="text-sm text-gray-300">{feature}</span>
-                    </li>
-                  ))}
-                </ul>
-
+                {/* Button Bottom: Selalu di bawah karena flex-col justify-between */}
                 <button
-                  className={`w-full py-3 rounded-lg font-semibold transition-all ${
+                  className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all transform hover:scale-[1.02] ${
                     plan.highlighted
-                      ? 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-lg shadow-blue-500/30'
+                      ? 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-xl shadow-blue-500/40'
                       : 'bg-gray-800 hover:bg-gray-700 text-white border border-gray-700'
                   }`}
                   onClick={() => onNavigate('contact')}
                 >
-                  {plan.price === 'Custom' ? 'Contact Sales' : 'Get Started'}
+                  {plan.price === 'Custom' ? 'Contact Sales' : 'Get Started Now'}
                 </button>
               </div>
             ))}
@@ -187,16 +158,29 @@ function PricingPage({ onNavigate }: HomePageProps) {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-6">
               {partnership.map((partner, index) => (
                 <div
                   key={index}
-                  className="p-6 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 hover:border-blue-500/50 transition-all"
+                  // Styling baru: Ikon Sentris tanpa kotak, fokus pada efek glowing/underline
+                  className="group relative p-4 flex flex-col items-center justify-center text-center 
+                             transition-all duration-300 cursor-pointer"
                 >
-                  <div className="flex justify-between items-start mb-3">
-                    <partner.icon className="w-6 h-6 text-blue-400 flex-shrink-0" /> 
+                  {/* Icon Container: Lebih menonjol dan mendapatkan efek glowing saat hover */}
+                  <div className={`p-3 mb-2 rounded-full 
+                                  bg-blue-500/10 group-hover:bg-blue-500/20 transition-all duration-300 
+                                  group-hover:shadow-lg group-hover:shadow-cyan-500/40`}>
+                      <partner.icon className="w-6 h-6 text-blue-400 group-hover:text-cyan-300 transition-all duration-300" /> 
                   </div>
-                  <h3 className="text-xl font-semibold">{partner.name}</h3>
+                  
+                  {/* Text: Ukuran standard, dengan garis di bawah saat hover */}
+                  <h3 className="text-sm font-semibold text-white transition-all duration-300 
+                                 group-hover:text-blue-200 relative pt-1">
+                      {partner.name}
+                      {/* Underline effect */}
+                      <span className="absolute left-0 right-0 -bottom-1 h-0.5 bg-cyan-500 
+                                       transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+                  </h3>
                 </div>
               ))}
             </div>
@@ -221,7 +205,7 @@ function PricingPage({ onNavigate }: HomePageProps) {
           <div className="mt-24 p-12 bg-gradient-to-br from-blue-900/20 to-cyan-900/20 rounded-2xl border border-blue-500/30">
             <div className="text-center">
               <h2 className="text-3xl font-bold mb-4">
-                Need a Custom Solution?
+                Ready to Discuss Your Project?
               </h2>
               <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
                 Our team can design a tailored package that perfectly fits your unique requirements and budget.

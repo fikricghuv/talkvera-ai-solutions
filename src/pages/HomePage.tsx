@@ -1,13 +1,15 @@
-import { Bot, Workflow, BarChart3, Shield, Lock, CheckCircle2, ArrowRight, Zap, Rocket, Brain } from 'lucide-react';
+import { Bot, Workflow, BarChart3, Shield, Lock, Star, ArrowRight, Zap, Rocket, Brain, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import StarField from '../components/StarFieldAnimation';
 
 type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
-
+type Section = string | undefined;
 interface HomePageProps {
-    onNavigate: (page: Page) => void;
+    currentPage: Page;
+    onNavigate: (page: Page, section?: Section) => void;
 }
 
-function HomePage({ onNavigate }: HomePageProps) {
+function HomePage({ currentPage, onNavigate }: HomePageProps) {
 
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
@@ -86,6 +88,8 @@ function HomePage({ onNavigate }: HomePageProps) {
   return (
     <div className="pt-16">
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+
+        <StarField />
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20"></div>
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
@@ -115,7 +119,7 @@ function HomePage({ onNavigate }: HomePageProps) {
               <ArrowRight size={20} />
             </button>
             <button className="px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all"
-            onClick={() => onNavigate('docs')}>
+            onClick={() => onNavigate('docs', 'case-studies/overview')}>
               View Case Studies
             </button>
           </div>
@@ -137,222 +141,241 @@ function HomePage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      {/* <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Comprehensive AI Solutions
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              End-to-end AI services designed to transform your business operations and drive innovation.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="group p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all hover:shadow-xl hover:shadow-blue-500/10"
-              >
-                <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                  <feature.icon className="w-7 h-7 text-blue-400" />
-                </div>
-                <h3 className="text-xl font-semibold mb-3">{feature.title}</h3>
-                <p className="text-gray-400 leading-relaxed">{feature.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section> */}
-
-      {/* SECTION 2: Comprehensive AI Solutions (Vertikal Selalu Tampil) */}
+      {/* SECTION 2: Comprehensive AI Solutions (Diperbaiki menjadi Accordion Interaktif) */}
       <section className="py-24 relative overflow-hidden">
-        {/* Efek Cahaya di Sisi Kanan (Memecah Kebosanan Kotak) */}
-        <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none"></div>
+          {/* Efek Cahaya di Sisi Kanan (Memecah Kebosanan Kotak) */}
+          <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Comprehensive AI Solutions
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              End-to-end AI services designed to transform your business operations and drive innovation.
-            </p>
+          <div className="max-w-7xl mx-auto px-6 relative z-10">
+              <div className="text-center mb-16">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                      Comprehensive AI Solutions
+                  </h2>
+                  <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                      End-to-end AI services designed to transform your business operations and drive innovation.
+                  </p>
+              </div>
+
+              <div className="max-w-4xl mx-auto space-y-4">
+                  {features.map((feature, index) => {
+                      const isActive = index === activeIndex;
+                      const Icon = feature.icon;
+
+                      return (
+                          <div key={index}>
+                              <button
+                                  onClick={() => setActiveIndex(isActive ? null : index)} // Toggle: Tutup jika aktif, buka jika tidak
+                                  className={`group relative w-full text-left p-6 md:p-8 rounded-3xl backdrop-blur-sm transition-all duration-300 border 
+                                      ${
+                                          isActive
+                                              ? 'bg-gray-800/90 border-blue-500/70 shadow-2xl shadow-blue-900/40 transform scale-[1.01]'
+                                              : 'bg-gray-900/70 border-gray-700/50 hover:border-gray-600/70'
+                                      }
+                                  `}
+                              >
+                                  {/* Efek Border Gradien untuk yang Aktif */}
+                                  <div
+                                      className={`absolute inset-0 rounded-3xl p-[1px] pointer-events-none transition-opacity duration-500
+                                          ${isActive ? 'opacity-100' : 'opacity-0'}
+                                      `}
+                                  >
+                                      <div className="absolute inset-0 rounded-[calc(1.5rem+1px)] bg-gradient-to-br from-blue-500/80 via-cyan-500/80 to-transparent"></div>
+                                  </div>
+                                  {/* Lapisan Hitam di Bawah Border Gradien */}
+                                  <div
+                                      className={`absolute inset-[1px] rounded-3xl transition-all duration-500 
+                                          ${isActive ? 'bg-gray-800/80' : 'bg-gray-900/80'}
+                                      `}
+                                  ></div>
+
+                                  {/* Konten Kartu (Bagian yang Selalu Terlihat) */}
+                                  <div className="relative z-20 flex justify-between items-center gap-4">
+                                      {/* KIRI: Ikon dan Judul */}
+                                      <div className='flex items-center space-x-4'>
+                                          <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 shadow-lg 
+                                              ${isActive ? 'bg-blue-500/40' : 'bg-gray-700/50 group-hover:bg-blue-500/30'}`}
+                                          >
+                                              <Icon className={`w-5 h-5 transition-colors ${isActive ? 'text-blue-300' : 'text-gray-400 group-hover:text-blue-300'}`} />
+                                          </div>
+                                          <h3 className={`text-xl font-semibold transition-colors ${isActive ? 'text-white' : 'text-gray-300 group-hover:text-white'}`}>
+                                              {feature.title}
+                                          </h3>
+                                      </div>
+                                      
+                                      {/* KANAN: Ikon Chevron (Indikator Buka/Tutup) */}
+                                      <div className="shrink-0">
+                                          <ChevronDown className={`w-6 h-6 text-blue-400 transition-transform duration-300 ${isActive ? 'rotate-180' : 'rotate-0'}`} />
+                                      </div>
+                                  </div>
+                              </button>
+
+                              {/* Deskripsi (Hanya Tampil saat Aktif) */}
+                              <div
+                                  className={`overflow-hidden transition-all duration-500 ease-in-out`}
+                                  style={{ 
+                                      maxHeight: isActive ? '200px' : '0', // Tinggi maksimum yang cukup
+                                      opacity: isActive ? 1 : 0 
+                                  }}
+                              >
+                                  <p className="text-gray-400 leading-relaxed mt-4 ml-6 p-4 rounded-b-lg border-l-4 border-blue-500/50 bg-gray-900/50 shadow-inner">
+                                      {feature.description}
+                                  </p>
+                              </div>
+                          </div>
+                      );
+                  })}
+              </div>
           </div>
-
-          {/* CONTAINER UTAMA: Diganti menjadi vertikal (max-w-4xl mx-auto) */}
-          <div className="max-w-4xl mx-auto space-y-4">
-            {features.map((feature, index) => {
-              const isActive = index === activeIndex;
-              const Icon = feature.icon;
-
-              return (
-                <button
-                  key={index}
-                  onClick={() => setActiveIndex(index)} // Tetap set activeIndex saat diklik
-                  className={`group relative w-full text-left p-6 md:p-8 rounded-3xl backdrop-blur-sm transition-all duration-300 border 
-                    ${
-                      isActive
-                        ? 'bg-gray-800/90 border-blue-500/70 shadow-2xl shadow-blue-900/40 transform scale-[1.01]'
-                        : 'bg-gray-900/70 border-gray-700/50 hover:border-gray-600/70'
-                    }
-                  `}
-                >
-                  {/* Efek Border Gradien untuk yang Aktif */}
-                  <div
-                    className={`absolute inset-0 rounded-3xl p-[1px] pointer-events-none transition-opacity duration-500
-                      ${isActive ? 'opacity-100' : 'opacity-0'}
-                    `}
-                  >
-                    <div className="absolute inset-0 rounded-[calc(1.5rem+1px)] bg-gradient-to-br from-blue-500/80 via-cyan-500/80 to-transparent"></div>
-                  </div>
-                  {/* Lapisan Hitam di Bawah Border Gradien */}
-                  <div
-                    className={`absolute inset-[1px] rounded-3xl transition-all duration-500 
-                      ${isActive ? 'bg-gray-800/80' : 'bg-gray-900/80'}
-                    `}
-                  ></div>
-
-                  {/* Konten Kartu */}
-                  <div className="relative z-20 flex justify-between items-start gap-4">
-                    {/* KIRI: Judul dan Deskripsi */}
-                    <div className='flex-1'>
-                      <div className="flex items-center space-x-4 mb-3">
-                         {/* Ikon Kecil di Kiri (Selalu Ada) */}
-                        <div className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all duration-300 shadow-lg 
-                            ${isActive ? 'bg-blue-500/30' : 'bg-gray-700/50 group-hover:bg-blue-500/30'}`}
-                        >
-                          <Icon className={`w-4 h-4 transition-colors ${isActive ? 'text-blue-300' : 'text-gray-400 group-hover:text-blue-300'}`} />
-                        </div>
-                        <h3 className={`text-xl font-semibold transition-colors ${isActive ? 'text-white' : 'text-gray-300 group-hover:text-white'}`}>
-                          {feature.title}
-                        </h3>
-                      </div>
-                      
-                      {/* 💡 DESKRIPSI SELALU TAMPIL (Hapus Kondisional isActive) */}
-                      <p className="text-gray-400 leading-relaxed mt-4 ml-12 transition-all duration-500 max-w-3xl">
-                          {feature.description}
-                      </p>
-                    </div>
-                    
-                    {/* KANAN: Ikon Besar (Hanya Muncul saat Aktif) */}
-                    {isActive && (
-                        <div className="hidden sm:block shrink-0 text-blue-500 opacity-80 mt-1">
-                           <Icon className="w-20 h-20" />
-                        </div>
-                    )}
-                  </div>
-                </button>
-              );
-            })}
-          </div>
-        </div>
       </section>
 
+      {/* SECTION 3: Our Proven Process (Ditingkatkan) */}
       <section className="py-24 relative overflow-hidden bg-gradient-to-b from-gray-900/30 to-transparent">
-        <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[120px]"></div>
+          <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[120px]"></div>
 
-        <div className="max-w-5xl mx-auto px-6 relative">
-          <div className="text-center mb-8">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Our Proven Process
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              A streamlined three-phase methodology to deliver exceptional AI solutions tailored to your business.
-            </p>
-          </div>
-
-          <div className="relative">
-            {processSteps.map((step, index) => (
-              <div key={index} className="relative">
-                <div className="flex gap-8 items-start pb-16 last:pb-0">
-                  <div className="relative flex flex-col items-center pt-8">
-                    <div className="relative z-10 w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/50 flex items-center justify-center backdrop-blur-sm shadow-lg shadow-blue-500/20 group-hover:scale-110 transition-transform">
-                      <span className="text-3xl font-bold bg-gradient-to-br from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                        {step.number}
-                      </span>
-                    </div>
-
-                    {index < processSteps.length - 1 && (
-                      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-0.5 h-[calc(100%+2rem)] bg-gradient-to-b from-blue-500/50 via-cyan-500/30 to-transparent"></div>
-                    )}
-                  </div>
-
-                  <div className="flex-1 pt-8 group">
-                    <div className="relative p-8 bg-gradient-to-br from-gray-800/40 to-gray-900/40 rounded-2xl border border-gray-700/50 hover:border-blue-500/30 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 backdrop-blur-sm">
-                      <div className="absolute top-8 right-8 opacity-20 group-hover:opacity-40 transition-opacity">
-                        <step.icon className="w-16 h-16 text-blue-400" />
-                      </div>
-
-                      <div className="relative">
-                        <h3 className="text-2xl md:text-3xl font-bold mb-3 text-white">
-                          {step.title}
-                        </h3>
-                        <p className="text-gray-400 leading-relaxed text-base md:text-lg">
-                          {step.description}
-                        </p>
-                      </div>
-
-                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
-                    </div>
-                  </div>
-                </div>
+          <div className="max-w-5xl mx-auto px-6 relative">
+              <div className="text-center mb-16"> {/* Meningkatkan margin bawah */}
+                  <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                      Our Proven Process
+                  </h2>
+                  <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                      A streamlined three-phase methodology to deliver exceptional AI solutions tailored to your business.
+                  </p>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              Real Results from Real Clients
-            </h2>
-            <p className="text-xl text-gray-400 max-w-2xl mx-auto">
-              See how TalkVera has helped businesses achieve unprecedented growth and efficiency.
-            </p>
-          </div>
+              <div className="relative">
+                  {processSteps.map((step, index) => (
+                      <div key={index} className="relative">
+                          {/* Flex container untuk Angka dan Konten, spasi responsif */}
+                          <div className="flex gap-6 md:gap-8 items-start pb-16 last:pb-0"> 
+                              {/* Kolom Kiri: Angka dan Garis Penghubung */}
+                              <div className="relative flex flex-col items-center pt-8">
+                                  <div className="relative z-10 w-20 h-20 rounded-2xl bg-gradient-to-br from-blue-500/20 to-cyan-500/20 border-2 border-blue-500/50 flex items-center justify-center backdrop-blur-sm shadow-xl shadow-blue-500/20 transition-transform hover:scale-105">
+                                      <span className="text-3xl font-bold bg-gradient-to-br from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                                          {step.number}
+                                      </span>
+                                  </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div
-                key={index}
-                className="p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all"
-              >
-                <div className="flex items-center space-x-1 mb-6">
-                  {[...Array(5)].map((_, i) => (
-                    <CheckCircle2 key={i} className="w-5 h-5 text-blue-400" />
+                                  {/* Garis Vertikal Timeline */}
+                                  {index < processSteps.length - 1 && (
+                                      <div className="absolute top-20 left-1/2 -translate-x-1/2 w-0.5 h-[calc(100%+2rem)] bg-gradient-to-b from-blue-500/70 via-cyan-500/30 to-transparent"></div>
+                                  )}
+                              </div>
+
+                              {/* Kolom Kanan: Card Konten */}
+                              <div className="flex-1 pt-8 group">
+                                  <div className="relative p-8 bg-gradient-to-br from-gray-800/40 to-gray-900/40 rounded-2xl border border-gray-700/50 hover:border-blue-500/30 transition-all duration-300 hover:shadow-2xl hover:shadow-blue-500/10 backdrop-blur-sm">
+                                      
+                                      {/* Ikon Latar Belakang */}
+                                      <div className="absolute top-8 right-8 opacity-20 group-hover:opacity-40 transition-opacity">
+                                          <step.icon className="w-16 h-16 text-blue-400" />
+                                      </div>
+
+                                      <div className="relative">
+                                          {/* Judul Bergradien */}
+                                          <h3 className="text-2xl md:text-3xl font-bold mb-3 bg-gradient-to-r from-white to-blue-300 bg-clip-text text-transparent">
+                                              {step.title}
+                                          </h3>
+                                          <p className="text-gray-400 leading-relaxed text-base md:text-lg">
+                                              {step.description}
+                                          </p>
+                                      </div>
+
+                                      {/* Overlay Effect on Hover */}
+                                      <div className="absolute inset-0 rounded-2xl bg-gradient-to-br from-blue-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none"></div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   ))}
-                </div>
-                <p className="text-gray-300 mb-6 leading-relaxed italic">
-                  "{testimonial.quote}"
-                </p>
-                <div className="pt-6 border-t border-gray-700">
-                  <div className="font-semibold text-white">{testimonial.author}</div>
-                  <div className="text-sm text-gray-500">{testimonial.role}</div>
-                </div>
               </div>
-            ))}
           </div>
-        </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-blue-900/20 to-cyan-900/20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Unlock hidden potential within your business
-          </h2>
-          <p className="text-xl text-gray-400 mb-10">
-            Discover limitless opportunities with secure and intelligent AI systems.
-          </p>
-          <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2 mx-auto"
-          onClick={() => onNavigate('contact')}>
-            
-            <span>Get Started</span>
-            <ArrowRight size={20} />
-          </button>
-        </div>
+      {/* SECTION 4: Real Results from Real Clients (Diperbarui) */}
+      <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
+          <div className="max-w-7xl mx-auto px-6">
+              <div className="text-center mb-16">
+                  <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                      Real Results from Real Clients
+                  </h2>
+                  <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                      See how TalkVera has helped businesses achieve unprecedented growth and efficiency.
+                  </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {testimonials.map((testimonial, index) => (
+                      <div
+                          key={index}
+                          className="group relative p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-[1.02] shadow-xl hover:shadow-yellow-500/10"
+                      >
+                          {/* Efek bayangan kuning/biru halus saat hover */}
+                          <div className="absolute inset-0 rounded-2xl bg-blue-500/0 group-hover:bg-cyan-500/5 transition-colors duration-500 pointer-events-none"></div>
+                          
+                          <div className="relative z-10">
+                              <div className="flex items-center space-x-1 mb-6">
+                                  {[...Array(5)].map((_, i) => (
+                                      // Mengganti CheckCircle2 dengan Star dan mewarnainya kuning
+                                      <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
+                                  ))}
+                              </div>
+                              <p className="text-gray-300 mb-6 leading-relaxed italic">
+                                  "{testimonial.quote}"
+                              </p>
+                              <div className="pt-6 border-t border-gray-700">
+                                  <div className="font-semibold text-white">{testimonial.author}</div>
+                                  <div className="text-sm text-gray-500">{testimonial.role}</div>
+                              </div>
+                          </div>
+                      </div>
+                  ))}
+              </div>
+          </div>
+      </section>
+
+      {/* SECTION 5: CTA Final (Dibuat mirip Hero Section) */}
+      <section className="relative py-32 overflow-hidden bg-gray-950/50">
+          {/* Latar belakang Cosmic Glows (sedikit berbeda dari Hero) */}
+          <div className="absolute inset-0">
+              {/* Glow 1 (Biru) - Menggunakan animasi cosmic-pan yang sudah didefinisikan */}
+              <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] animate-cosmic-pan" style={{animationDuration: '25s'}}></div>
+              {/* Glow 2 (Cyan) - Menggunakan animasi cosmic-pan yang sudah didefinisikan */}
+              <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-600/10 rounded-full blur-[100px] animate-cosmic-pan" style={{animationDelay: '-15s', animationDuration: '25s'}}></div>
+          </div>
+
+          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
+              {/* Judul dengan efek gradien seperti di Hero Section */}
+              <h2 className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent leading-tight">
+                  Unlock hidden potential within your business
+              </h2>
+              <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
+                  Discover limitless opportunities with secure and intelligent AI systems. Ready to elevate your operations?
+              </p>
+              
+              {/* CSS kustom untuk animasi pulsa yang lambat (ditambahkan di sini untuk kebutuhan tunggal) */}
+              <style>{`
+                  @keyframes pulse-slow {
+                      0%, 100% {
+                          box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
+                      }
+                      50% {
+                          box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+                      }
+                  }
+                  .animate-pulse-slow {
+                      animation: pulse-slow 3s infinite;
+                  }
+              `}</style>
+              
+              {/* Button dengan ikon Rocket dan animasi pulse yang lambat */}
+              <button className="relative px-10 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-3 mx-auto 
+                  animate-pulse-slow"
+              onClick={() => onNavigate('contact')}>
+                  
+                  <span>Start Your Transformation Today</span>
+                  <Rocket size={20} />
+              </button>
+          </div>
       </section>
     </div>
   );

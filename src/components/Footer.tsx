@@ -1,4 +1,4 @@
-import { Sparkles, Mail, Linkedin, Twitter } from 'lucide-react';
+import { Mail, Instagram, Phone } from 'lucide-react';
 
 type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs';
 
@@ -13,10 +13,11 @@ function Footer({ onNavigate }: FooterProps) {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <Sparkles className="w-6 h-6 text-blue-400" />
-              <span className="text-xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                TalkVera
-              </span>
+              <img
+                  src='/assets/logo-talkvera-white.svg'
+                  alt="TalkVera Logo"
+                  className="h-8 w-auto transition-opacity group-hover:opacity-80" // Sesuaikan ukuran dan efek hover
+              />
             </div>
             <p className="text-sm text-gray-400">
               Building intelligent AI solutions for business growth with secure and compliant protocols.
@@ -34,14 +35,14 @@ function Footer({ onNavigate }: FooterProps) {
                   About Us
                 </button>
               </li>
-              <li>
+              {/* <li>
                 <button
-                  onClick={() => onNavigate('case-study')}
+                  onClick={() => onNavigate('docs')}
                   className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
                 >
                   Case Studies
                 </button>
-              </li>
+              </li> */}
             </ul>
           </div>
 
@@ -70,24 +71,26 @@ function Footer({ onNavigate }: FooterProps) {
           <div>
             <h3 className="font-semibold text-white mb-4">Connect</h3>
             <div className="flex space-x-4">
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
-              >
-                <Mail size={18} className="text-gray-400 hover:text-blue-400" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
-              >
-                <Linkedin size={18} className="text-gray-400 hover:text-blue-400" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
-              >
-                <Twitter size={18} className="text-gray-400 hover:text-blue-400" />
-              </a>
+                <a
+                    href="https://api.whatsapp.com/send/?phone=6285171182228&text&type=phone_number&app_absent=0"
+                    target="_blank"  rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
+                >
+                    <Phone size={18} className="text-gray-400 hover:text-blue-400" />
+                </a>
+                
+                <a
+                    href="https://www.instagram.com/talk.vera/"
+                    target="_blank"  rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
+                >
+                    <Instagram size={18} className="text-gray-400 hover:text-blue-400" />
+                </a>
+                
+                <a
+                    href="mailto:talkvera.agent@gmail.com"
+                    className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
+                >
+                    <Mail size={18} className="text-gray-400 hover:text-blue-400" />
+                </a>
             </div>
           </div>
         </div>

@@ -1,4 +1,5 @@
 import { Target, Users, Award, Lightbulb, Heart, TrendingUp } from 'lucide-react';
+import StarField from '../components/StarFieldAnimation';
 
 type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
 
@@ -73,6 +74,7 @@ function AboutPage({ onNavigate }: HomePageProps) {
   return (
     <div className="pt-16">
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <StarField />
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20"></div>
         <div className="absolute inset-0">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
@@ -110,13 +112,13 @@ function AboutPage({ onNavigate }: HomePageProps) {
               <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Story</h2>
               <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
                 <p>
-                  Founded in **2022**, TalkVera began with a simple observation: businesses were struggling to adopt AI despite its enormous potential. The gap between cutting-edge research and practical business applications was too wide.
+                  Talkvera was founded on a singular, uncompromising principle: True AI must deliver tangible results in production environments. We recognized that too many businesses were stalled at the 'proof-of-concept' stage, struggling to transform AI’s immense potential into consistent, scalable, operational solutions.
                 </p>
                 <p>
-                  Our founding team, comprised of AI researchers and enterprise software veterans, set out to bridge that gap. We built TalkVera to be the **trusted partner** that businesses need to navigate the complex world of AI implementation.
+                  Our founding team—comprised of veteran AI/ML specialists and experienced software engineers—came together to bridge this critical gap. Our mission is centered on uncompromising implementation, ensuring every solution we build is not only intelligently designed but also robust, fully integrated, and ready for enterprise scale.
                 </p>
                 <p>
-                  Today, we're proud to serve hundreds of clients across industries, from startups to Fortune 500 companies. Our solutions have processed billions of data points, automated millions of workflows, and delivered measurable impact for organizations worldwide.
+                  Although we are a recently established company, our production expertise is already fully validated. To date, we have proudly launched and managed over 50+ production workflow AI automations across various sectors. Each successful deployment is a testament to our commitment: delivering measurable impact, automating complex business processes, and providing immediate productivity gains to our clients.
                 </p>
               </div>
             </div>

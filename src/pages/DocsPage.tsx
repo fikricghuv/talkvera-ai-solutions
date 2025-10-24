@@ -1,6 +1,6 @@
 // src/pages/DocsPage.tsx
 import { useState, useEffect } from 'react'; // <--- PERBAIKAN DI SINI
-import { Book, Bot, Network, Workflow, FileText, BookOpenText } from 'lucide-react';
+import { Book, Network, Workflow, FileText, BookOpenText } from 'lucide-react';
 
 type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
 

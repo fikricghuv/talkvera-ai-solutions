@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 
-const NUM_STARS = 100;
+const NUM_STARS = 500;
 
 const StarField = () => {
     // Menghasilkan posisi bintang secara acak hanya sekali saat mount

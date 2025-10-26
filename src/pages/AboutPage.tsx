@@ -115,8 +115,8 @@ function AboutPage({ onNavigate }: HomePageProps) {
             </div>
           </div>
 
-          <div className='py-24'>
-            <h2 className="text-4xl font-bold mb-12 text-center">Leadership Team</h2>
+          <div className='pb-24'>
+            <h2 className="text-4xl font-bold mb-12 text-center">Meet Our Team</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {team.map((member, index) => (
                 <div
@@ -181,14 +181,11 @@ function AboutPage({ onNavigate }: HomePageProps) {
             </div>
             {/* Box Highlighted di Samping Kanan */}
             <div className="relative p-1 bg-gradient-to-br from-blue-500/50 to-cyan-500/50 rounded-3xl shadow-2xl shadow-blue-500/20">
-              <div className="aspect-square rounded-[1.4rem] bg-gray-900 p-12 flex items-center justify-center">
-                <div className="text-center">
-                  <TrendingUp className="w-20 h-20 text-blue-400 mx-auto mb-6" />
-                  <div className="text-7xl font-extrabold text-blue-400 mb-2">500+</div>
-                  <div className="text-xl text-gray-300 font-semibold">AI Solutions Deployed</div>
-                  <p className="text-sm text-gray-500 mt-2">Validated and running in production environments.</p>
-                </div>
-              </div>
+              <img
+                src="/assets/people-do-programming.jpg" 
+                alt="People working on programming"
+                className="w-full h-full object-cover rounded-[1.4rem]" 
+              />
             </div>
           </div>
         </div>

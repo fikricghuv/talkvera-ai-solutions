@@ -1,4 +1,5 @@
 import { Mail, Phone, MapPin, ArrowRight, Zap } from 'lucide-react';
+import StarField from '../components/StarFieldAnimation';
 
 // --- Type/Interface Declarations (Dianggap Anda menggunakan TypeScript/TSX) ---
 // Jika Anda tidak menggunakan TypeScript, HAPUS BARIS INI dan BARIS 6-17.
@@ -11,6 +12,7 @@ interface TextareaComponentProps {
     id: string;
     label: string;
     placeholder?: string;
+    required?: boolean;
 }
 
 interface InputComponentProps {
@@ -27,9 +29,7 @@ interface SelectComponentProps {
     options: SelectOption[];
     required?: boolean;
 }
-// -----------------------------------------------------------------------------
 
-// Data untuk opsi Project Budget
 const employeeOptions: SelectOption[] = [
     { value: '', label: 'Select Employee Range' },
     { value: '1-10', label: '1 - 10 Employees (Startup)' },
@@ -52,9 +52,7 @@ function ContactPage() {
             
             {/* 1. Header and Title */}
             <section className="relative py-24 text-center overflow-hidden">
-                {/* Background Glow Effect */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-blue-600/10 blur-[200px] pointer-events-none"></div>
-
+                <StarField />
                 <div className="relative max-w-4xl mx-auto px-6 z-10">
                     <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6">
                         <Zap className="w-4 h-4 text-blue-400" />
@@ -71,7 +69,6 @@ function ContactPage() {
                 </div>
             </section>
 
-            {/* 2. Contact Form (TrueHorizon 2-Column Layout) */}
             <section className="pb-32">
                 <div className="max-w-7xl mx-auto px-6">
                     {/* Container dengan Border Gradient Kustom */}
@@ -120,29 +117,43 @@ function ContactPage() {
                                 </p>
                             </div>
 
-                            {/* Right Column: Input Form (MODIFIED) */}
                             <div className="lg:col-span-2 p-8 md:p-12">
+                                <h2 className='text-md font-semibold text-white pb-2'>Let's get to know you</h2>
                                 <form className="space-y-6">
-                                    {/* Row 1: Full Name and Work Email */}
+                                    
+                                    {/* Row 1: First Name and Last Name (NEW) */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <InputComponent id="name" label="Full Name" type="text" placeholder="Enter your full name" required={true} />
-                                        <InputComponent id="email" label="Work Email" type="email" placeholder="example@company.com" required={true} />
+                                        <InputComponent id="firstName" label="First Name" type="text" placeholder="Enter your first name" required={true} />
+                                        <InputComponent id="lastName" label="Last Name" type="text" placeholder="Enter your last name" required={true} />
                                     </div>
                                     
-                                    {/* Row 2: Company Name and Company Size (Diperbarui) */}
+                                    {/* Row 2: Your Role and Website (NEW) */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <InputComponent id="company" label="Company Name" type="text" placeholder="Your Company Name" required={true} />
-                                        <SelectComponent 
-                                            id="company-size" // ID diperbarui
-                                            label="Company Size (Number of Employees)" // Label diperbarui
-                                            options={employeeOptions} // Menggunakan data karyawan
-                                            required={true}
-                                            selectStyle={selectStyle} // Pass the custom style
-                                        />
+                                        <InputComponent id="role" label="Your Role within Organization" type="text" placeholder="e.g., CTO, Head of AI" required={true} />
+                                        <InputComponent id="website" label="Website (Optional)" type="url" placeholder="https://www.company.com" required={false} />
                                     </div>
 
-                                    {/* Row 3: Tell us about your project... */}
-                                    <TextareaComponent id="project-desc" label="Tell us about your project..." placeholder="Describe your AI needs, current challenges, and goals..." />
+                                    {/* Row 3: Work Email and Company Name */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <InputComponent id="email" label="Work Email" type="email" placeholder="example@company.com" required={true} />
+                                        <InputComponent id="company" label="Company Name" type="text" placeholder="Your Company Name" required={true} />
+                                    </div>
+                                    
+                                    {/* Row 4: Company Size (Dipertahankan) */}
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <SelectComponent 
+                                            id="company-size" 
+                                            label="Company Size (Number of Employees)" 
+                                            options={employeeOptions} 
+                                            required={true}
+                                            selectStyle={selectStyle} 
+                                        />
+                                        {/* Kolom kosong untuk menjaga tata letak 2 kolom */}
+                                        <div></div> 
+                                    </div>
+
+                                    {/* Row 5: Tell us about your project... */}
+                                    <TextareaComponent id="project-desc" label="How Can We Help?" placeholder="Describe your AI needs, current challenges, and goals..." required={true}/>
                                     
                                     {/* Submit Button */}
                                     <button type="submit" className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-[1.01] shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2">
@@ -178,15 +189,16 @@ const InputComponent = ({ id, label, type = 'text', placeholder, required = fals
 );
 
 // Reusable Textarea Component
-const TextareaComponent = ({ id, label, placeholder }: TextareaComponentProps) => (
+const TextareaComponent = ({ id, label, placeholder, required = false }: TextareaComponentProps) => (
     <div>
         <label htmlFor={id} className="block text-sm font-medium text-gray-300 mb-2">
-            {label}
+            {label} {required && <span className="text-red-500">*</span>}
         </label>
         <textarea
             id={id}
             rows={4}
             placeholder={placeholder}
+            required={required}
             // Perubahan Styling: Menghapus outline dan mengubah fokus ring
             className="w-full px-4 py-3 bg-gray-800/80 border border-gray-700 rounded-xl text-white placeholder-gray-500 
                        focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:outline-none transition-all duration-200 resize-none"
@@ -203,9 +215,8 @@ const SelectComponent = ({ id, label, options, required = false, selectStyle }: 
         <select
             id={id}
             required={required}
-            // Perubahan Styling: Menghapus outline dan mengubah fokus ring
-            className="w-full px-4 py-3 bg-gray-800/80 border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:outline-none transition-all duration-200"
-            style={selectStyle} // Terapkan custom style untuk panah dropdown
+            className="w-full px-4 py-3 bg-gray-800/80 border border-gray-700 rounded-xl text-white appearance-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:outline-none transition-all duration-200"
+            style={selectStyle} 
         >
             {options.map((option) => (
                 <option 

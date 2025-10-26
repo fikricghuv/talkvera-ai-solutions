@@ -158,26 +158,22 @@ function PricingPage({ onNavigate }: HomePageProps) {
               </p>
             </div>
 
-            <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-6">
+            <div className="max-w-10xl mx-auto grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-8">
               {partnership.map((partner, index) => (
                 <div
                   key={index}
-                  // Styling baru: Ikon Sentris tanpa kotak, fokus pada efek glowing/underline
                   className="group relative p-4 flex flex-col items-center justify-center text-center 
                              transition-all duration-300 cursor-pointer"
                 >
-                  {/* Icon Container: Lebih menonjol dan mendapatkan efek glowing saat hover */}
                   <div className={`p-3 mb-2 rounded-full 
                                   bg-blue-500/10 group-hover:bg-blue-500/20 transition-all duration-300 
                                   group-hover:shadow-lg group-hover:shadow-cyan-500/40`}>
-                      <partner.icon className="w-15 h-15 text-blue-400 group-hover:text-cyan-200 transition-all duration-300" /> 
+                      <partner.icon className="w-30 h-30 text-blue-400 group-hover:text-cyan-200 transition-all duration-300" /> 
                   </div>
                   
-                  {/* Text: Ukuran standard, dengan garis di bawah saat hover */}
-                  <h3 className="text-sm font-semibold text-white transition-all duration-300 
+                  <h3 className="font-semibold text-white transition-all duration-300 
                                  group-hover:text-blue-200 relative pt-1">
                       {partner.name}
-                      {/* Underline effect */}
                       <span className="absolute left-0 right-0 -bottom-1 h-0.5 bg-cyan-500 
                                        transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                   </h3>

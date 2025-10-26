@@ -9,27 +9,23 @@ interface HomePageProps {
 }
 
 function AboutPage({ onNavigate }: HomePageProps) {
-  const values = [
+
+  const services = [
     {
       icon: Lightbulb,
-      title: 'Innovation First',
-      description: 'We push the boundaries of AI technology to deliver cutting-edge solutions that give our clients a competitive advantage.',
+      title: 'Custom AI Agent Engineering',
+      description: 'We architect, deploy, and maintain AI systems tailored to your specific business operations—designed to drive measurable outcomes and long-term scalability.',
     },
     {
       icon: Heart,
-      title: 'Client Success',
-      description: 'Your success is our success. We are committed to building long-term partnerships and delivering measurable results.',
+      title: 'Fully Managed',
+      description: 'Our team builds and manages end-to-end automation systems that integrate seamlessly into your workflows, unlocking efficiency and reducing manual overhead.',
     },
     {
       icon: Award,
-      title: 'Excellence',
-      description: 'We maintain the highest standards in everything we do, from code quality to customer service.',
-    },
-    {
-      icon: Users,
-      title: 'Collaboration',
-      description: 'We work closely with our clients as true partners, fostering transparent communication and shared goals.',
-    },
+      title: 'AI Partner',
+      description: 'We partner with your team to assess opportunities for AI implementation, align solutions with business goals, and ensure successful adoption across departments.',
+    }
   ];
 
   const team = [
@@ -91,38 +87,10 @@ function AboutPage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-b from-gray-900/30 to-transparent">
+      <section className="bg-gradient-to-b from-gray-900/30 to-transparent">
         <div className="max-w-7xl mx-auto px-6 pt-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
-            <div>
-              <h2 className="text-4xl md:text-5xl font-bold mb-6">Our Story</h2>
-              <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
-                <p>
-                  Talkvera was founded on a singular, uncompromising principle: True AI must deliver tangible results in production environments. We recognized that too many businesses were stalled at the 'proof-of-concept' stage, struggling to transform AI’s immense potential into consistent, scalable, operational solutions.
-                </p>
-                <p>
-                  Our founding team—comprised of veteran AI/ML specialists and experienced software engineers—came together to bridge this critical gap. Our mission is centered on uncompromising implementation, ensuring every solution we build is not only intelligently designed but also robust, fully integrated, and ready for enterprise scale.
-                </p>
-                <p>
-                  Although we are a recently established company, our production expertise is already fully validated. To date, we have proudly launched and managed over 50+ production workflow AI automations across various sectors. Each successful deployment is a testament to our commitment: delivering measurable impact, automating complex business processes, and providing immediate productivity gains to our clients.
-                </p>
-              </div>
-            </div>
-            {/* Box Highlighted di Samping Kanan */}
-            <div className="relative p-1 bg-gradient-to-br from-blue-500/50 to-cyan-500/50 rounded-3xl shadow-2xl shadow-blue-500/20">
-              <div className="aspect-square rounded-[1.4rem] bg-gray-900 p-12 flex items-center justify-center">
-                <div className="text-center">
-                  <TrendingUp className="w-20 h-20 text-blue-400 mx-auto mb-6" />
-                  <div className="text-7xl font-extrabold text-blue-400 mb-2">500+</div>
-                  <div className="text-xl text-gray-300 font-semibold">AI Solutions Deployed</div>
-                  <p className="text-sm text-gray-500 mt-2">Validated and running in production environments.</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
           <div className="mb-24">
-            <h2 className="text-4xl font-bold mb-6 text-center">Our Mission & Vision</h2>
+            {/* <h2 className="text-4xl font-bold mb-6 text-center">Our Mission & Vision</h2> */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="p-8 text-center">
                 <div className='flex justify-center'>
@@ -147,25 +115,7 @@ function AboutPage({ onNavigate }: HomePageProps) {
             </div>
           </div>
 
-          <div className="mb-24">
-            <h2 className="text-4xl font-bold mb-14 text-center">Our Core Values</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {values.map((value, index) => (
-                <div
-                  key={index}
-                  className="p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700 transition-all duration-300 transform hover:scale-[1.02] hover:border-blue-500/70 shadow-lg"
-                >
-                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-4">
-                    <value.icon className="w-7 h-7 text-blue-400" />
-                  </div>
-                  <h3 className="text-xl font-bold mb-3">{value.title}</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">{value.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
+          <div className='py-24'>
             <h2 className="text-4xl font-bold mb-12 text-center">Leadership Team</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {team.map((member, index) => (
@@ -191,6 +141,54 @@ function AboutPage({ onNavigate }: HomePageProps) {
                     </div>
                 </div>
               ))}
+            </div>
+          </div>
+
+          <div className="mb-24">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className="p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700 transition-all duration-300 transform hover:scale-[1.02] hover:border-blue-500/70 shadow-lg"
+                >
+                  <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-4">
+                    <service.icon className="w-7 h-7 text-blue-400" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{service.title}</h3>
+                  <p className="text-sm text-gray-400 leading-relaxed">{service.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
+            <div>
+              <h2 className="text-4xl md:text-5xl font-bold mb-6">We Help You Grow</h2>
+              <br />
+              <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
+                <p>
+                  At Talkvera, we don't just build AI systems—we build long-term partnerships that evolve with your business. Our mission is to help you unlock growth by leveraging custom AI solutions that are scalable, efficient, and aligned with your goals.
+                </p>
+                <p>
+                  Whether you're optimizing internal operations, reducing manual workload, or exploring new ways to engage customers, we act as a strategic partner in your transformation journey. We combine deep technical expertise with a business-first mindset to deliver real, measurable impact.
+                </p>
+                <br />
+                <p className="text-blue-400 font-semibold">
+                  Fikri A
+                </p>
+                <span className='text-sm'>Co-Founder</span>
+              </div>
+            </div>
+            {/* Box Highlighted di Samping Kanan */}
+            <div className="relative p-1 bg-gradient-to-br from-blue-500/50 to-cyan-500/50 rounded-3xl shadow-2xl shadow-blue-500/20">
+              <div className="aspect-square rounded-[1.4rem] bg-gray-900 p-12 flex items-center justify-center">
+                <div className="text-center">
+                  <TrendingUp className="w-20 h-20 text-blue-400 mx-auto mb-6" />
+                  <div className="text-7xl font-extrabold text-blue-400 mb-2">500+</div>
+                  <div className="text-xl text-gray-300 font-semibold">AI Solutions Deployed</div>
+                  <p className="text-sm text-gray-500 mt-2">Validated and running in production environments.</p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

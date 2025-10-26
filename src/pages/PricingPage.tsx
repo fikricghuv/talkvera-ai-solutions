@@ -10,38 +10,39 @@ interface HomePageProps {
 function PricingPage({ onNavigate }: HomePageProps) {
   const plans = [
     {
-      icon: Rocket,
       name: 'Business Partner',
-      price: '$7,999',
-      period: '/month',
-      description: 'Ideal for growing companies ready to scale their AI capabilities',
-      features: [
-        'Dedicated AI Engineer',
-        'VIP support queue',
-        'Documentation and user guides',
-        'Live debugging and solution management',
-        'Client portal'
-      ],
-      highlighted: true,
-    },
-    {
-      icon: Building2,
-      name: 'Enterprise Partner',
       price: 'Custom',
       period: '',
-      description: 'Comprehensive solutions for large organizations with complex needs',
+      description: 'Comprehensive solutions for companies ready to scale their AI capabilities',
       features: [
-        'Includes all Business Partner features',
+        'Dedicated AI Engineer',
+        'Documentation and user guides',
+        'Live debugging and solution management',
         'Dedicated Project Manager',
-        'Weekly 60 minute meetings with our executive team',
         'Strategic roadmap review',
         'Team training and enablement sessions',
         'Documentation of all completed work',
-        'Quarterly executive briefing',
         'Everything customized for you and your business'
       ],
-      highlighted: false,
+      highlighted: true,
     },
+    // {
+    //   name: 'Enterprise Partner',
+    //   price: 'Custom',
+    //   period: '',
+    //   description: 'Comprehensive solutions for large organizations with complex needs',
+    //   features: [
+    //     'Includes all Business Partner features',
+    //     'Dedicated Project Manager',
+    //     'Weekly 60 minute meetings with our executive team',
+    //     'Strategic roadmap review',
+    //     'Team training and enablement sessions',
+    //     'Documentation of all completed work',
+    //     'Quarterly executive briefing',
+    //     'Everything customized for you and your business'
+    //   ],
+    //   highlighted: false,
+    // },
   ];
 
   const partnership = [
@@ -82,73 +83,77 @@ function PricingPage({ onNavigate }: HomePageProps) {
           </div>
 
           {/* Pricing Cards (2 Kolom Centered) */}
-          <div className="max-w-4xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-            {plans.map((plan, index) => (
-              <div
-                key={index}
-                // Mengurangi padding dari p-8 menjadi p-6
-                className={`relative p-6 flex flex-col justify-between rounded-3xl transition-all duration-300 transform hover:scale-[1.03]
-                  ${
-                    plan.highlighted
-                      ? 'bg-gradient-to-br from-blue-900/40 to-cyan-900/40 border-2 border-blue-500 shadow-2xl shadow-blue-500/30'
-                      : 'bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700 hover:border-blue-500/50'
-                  }
-                `}
-              >
-                {/* Most Popular Badge */}
-                {plan.highlighted && (
-                  <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 px-4 py-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-semibold rounded-full shadow-lg">
-                    Most Popular
-                  </div>
-                )}
+          <div className="max-w-4xl mx-auto flex justify-center mb-16 px-4">
                 
-                {/* Card Content Top */}
-                <div className='flex flex-col'>
-                    <div className="mb-5">
-                        {/* Mengurangi ukuran font dari 3xl menjadi 2xl */}
-                        <h3 className="text-2xl font-bold mb-1">{plan.name}</h3>
-                        {/* Mengurangi ukuran font dari sm menjadi xs */}
-                        <p className="text-gray-400 text-xs mb-3 italic">{plan.description}</p>
-                        <div className="flex items-baseline mb-5">
-                            {plan.price === 'Custom' ? (
-                                <span className="text-4xl font-bold text-blue-400">Custom</span>
-                            ) : (
-                                <>
-                                    <span className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                                        {plan.price}
-                                    </span>
-                                    <span className="text-gray-400 ml-2 text-lg">{plan.period}</span>
-                                </>
+                {/* Grid Diubah: grid-cols-1 md:grid-cols-2 (untuk simulasi 2 kartu) */}
+                <div className="grid grid-cols-1 md:grid-cols-1 gap-8"> 
+                    
+                    {plans.map((plan, index) => (
+                        <div
+                            key={index}
+                            className={`relative p-6 flex flex-col justify-between rounded-3xl transition-all duration-300 transform hover:scale-[1.03]
+                                ${
+                                    plan.highlighted
+                                        ? 'bg-gradient-to-br from-blue-900/40 to-cyan-900/40 border-2 border-blue-500 shadow-2xl shadow-blue-500/30'
+                                        : 'bg-gradient-to-br from-gray-800/50 to-gray-900/50 border border-gray-700 hover:border-blue-500/50'
+                                }
+                            `}
+                        >
+                            {/* Most Popular Badge */}
+                            {plan.highlighted && (
+                                <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 px-4 py-0.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white text-xs font-semibold rounded-full shadow-lg">
+                                    Most Popular
+                                </div>
                             )}
+                            
+                            {/* Card Content Top */}
+                            <div className='flex flex-col'>
+                                <div className="mb-5">
+                                    <h3 className="text-2xl font-bold mb-1">{plan.name}</h3>
+                                    <p className="text-gray-400 text-xs mb-3 italic">{plan.description}</p>
+                                    <div className="flex items-baseline mb-5">
+                                        {plan.price === 'Custom' ? (
+                                            <span className="text-4xl font-bold text-blue-400">Custom</span>
+                                        ) : (
+                                            <>
+                                                <span className="text-5xl font-extrabold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                                                    {plan.price}
+                                                </span>
+                                                <span className="text-gray-400 ml-2 text-lg">{plan.period}</span>
+                                            </>
+                                        )}
+                                    </div>
+                                </div>
+
+                                {/* Feature List: Menggunakan min-height agar tombol sebaris */}
+                                <ul className="space-y-2 mb-10 min-h-40">
+                                    {plan.features.map((feature, fIndex) => (
+                                        <li key={fIndex} className="flex items-start space-x-2">
+                                            <Check className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
+                                            <span className="text-sm text-gray-300">{feature}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            {/* Button Bottom: Selalu di bawah karena flex-col justify-between */}
+                            <button
+                                className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all transform hover:scale-[1.02] ${
+                                    plan.highlighted
+                                        ? 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-xl shadow-blue-500/40'
+                                        : 'bg-gray-800 hover:bg-gray-700 text-white border border-gray-700'
+                                }`}
+                                onClick={() => onNavigate('contact')}
+                            >
+                                {plan.price === 'Custom' ? 'Contact Sales' : 'Get Started Now'}
+                            </button>
                         </div>
-                    </div>
+                    ))}
 
-                    {/* Feature List: Menggunakan min-height agar tombol sebaris */}
-                    {/* Mengurangi min-height dari 52 menjadi 40 */}
-                    <ul className="space-y-2 mb-6 min-h-40">
-                      {plan.features.map((feature, fIndex) => (
-                        <li key={fIndex} className="flex items-start space-x-2">
-                          <Check className="w-4 h-4 text-green-400 flex-shrink-0 mt-0.5" />
-                          <span className="text-sm text-gray-300">{feature}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    {/* Ini adalah div kosong, DIBUTUHKAN SEMENTARA untuk memastikan kartu tunggal TIDAK melebar di tata letak 2 kolom */}
+                    <div className="hidden md:block"></div> 
                 </div>
-
-                {/* Button Bottom: Selalu di bawah karena flex-col justify-between */}
-                <button
-                  className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all transform hover:scale-[1.02] ${
-                    plan.highlighted
-                      ? 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-xl shadow-blue-500/40'
-                      : 'bg-gray-800 hover:bg-gray-700 text-white border border-gray-700'
-                  }`}
-                  onClick={() => onNavigate('contact')}
-                >
-                  {plan.price === 'Custom' ? 'Contact Sales' : 'Get Started Now'}
-                </button>
-              </div>
-            ))}
-          </div>
+            </div>
 
           <div className="mt-24">
             <div className="text-center mb-12">
@@ -191,7 +196,7 @@ function PricingPage({ onNavigate }: HomePageProps) {
               {processes.map((data, index) => (
                 <div key={index}>
                   <hr className="mb-3 border-blue-400" />
-                  <h4 className="text-gray-400">{data.desc}</h4>
+                  <h4 className="text-gray-100">{data.desc}</h4>
                 </div>
               ))}
             </div>

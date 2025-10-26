@@ -41,13 +41,10 @@ function App() {
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100">
-      {/* PENTING: Berikan fungsi handleNavigate ke Header */}
       <Header currentPage={currentPage} onNavigate={handleNavigate} /> 
       <main>
-        {/* Render page selain Docs */}
         {currentPage !== 'docs' && renderPage()} 
         
-        {/* Render DocsPage HANYA DI SINI, dengan prop initialSection */}
         {currentPage === 'docs' && (
           <DocsPage 
             onNavigate={handleNavigate} 
@@ -55,7 +52,11 @@ function App() {
           />
         )}
       </main>
-      <Footer onNavigate={handleNavigate} /> 
+      {/* <Footer onNavigate={handleNavigate} />  */}
+      {currentPage !== 'docs' && (
+        <Footer onNavigate={handleNavigate} /> 
+      )}
+
     </div>
   );
 }

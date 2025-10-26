@@ -94,7 +94,7 @@ function ContactPage() {
                                         <Mail className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
                                         <div>
                                             <div className="text-lg font-semibold text-white">Email</div>
-                                            <a href="mailto:hello@talkvera.ai" className="text-gray-400 hover:text-cyan-400 transition-colors text-base">talkvera.agent@gmail.com</a>
+                                            <a href="mailto:talkvera.agent@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors text-base">talkvera.agent@gmail.com</a>
                                         </div>
                                     </div>
                                     {/* Phone */}
@@ -172,7 +172,7 @@ const InputComponent = ({ id, label, type = 'text', placeholder, required = fals
             required={required}
             // Perubahan Styling: Menghapus outline dan mengubah fokus ring
             className="w-full px-4 py-3 bg-gray-800/80 border border-gray-700 rounded-xl text-white placeholder-gray-500 
-                       focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 focus:outline-none transition-all duration-200"
+                       focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:outline-none transition-all duration-200"
         />
     </div>
 );
@@ -189,7 +189,7 @@ const TextareaComponent = ({ id, label, placeholder }: TextareaComponentProps) =
             placeholder={placeholder}
             // Perubahan Styling: Menghapus outline dan mengubah fokus ring
             className="w-full px-4 py-3 bg-gray-800/80 border border-gray-700 rounded-xl text-white placeholder-gray-500 
-                       focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 focus:outline-none transition-all duration-200 resize-none"
+                       focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:outline-none transition-all duration-200 resize-none"
         ></textarea>
     </div>
 );
@@ -204,7 +204,7 @@ const SelectComponent = ({ id, label, options, required = false, selectStyle }: 
             id={id}
             required={required}
             // Perubahan Styling: Menghapus outline dan mengubah fokus ring
-            className="w-full px-4 py-3 bg-gray-800/80 border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-cyan-500/50 focus:border-cyan-500 focus:outline-none transition-all duration-200"
+            className="w-full px-4 py-3 bg-gray-800/80 border border-gray-700 rounded-xl text-white focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:outline-none transition-all duration-200"
             style={selectStyle} // Terapkan custom style untuk panah dropdown
         >
             {options.map((option) => (

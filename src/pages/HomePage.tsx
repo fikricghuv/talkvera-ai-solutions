@@ -1,6 +1,7 @@
 import { Bot, Workflow, BarChart3, Shield, Lock, Star, ArrowRight, Zap, Rocket, Brain, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import StarField from '../components/StarFieldAnimation';
+import CtaContent from '../components/Cta';
 
 type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
 type Section = string | undefined;
@@ -38,12 +39,7 @@ function HomePage({ currentPage, onNavigate }: HomePageProps) {
       icon: Lock,
       title: 'Secure and Compliant Protocols',
       description: 'Enterprise-grade security standards ensuring full compliance with industry regulations and data protection laws.',
-    },
-    {
-      icon: Zap,
-      title: 'Rapid Deployment Solutions',
-      description: 'Fast-track your AI initiatives with our proven deployment methodology and expert implementation support.',
-    },
+    }
   ];
 
   const processSteps = [
@@ -333,48 +329,9 @@ function HomePage({ currentPage, onNavigate }: HomePageProps) {
           </div>
       </section>
 
-      {/* SECTION 5: CTA Final (Dibuat mirip Hero Section) */}
-      <section className="relative py-32 overflow-hidden bg-gray-950/50">
-          {/* Latar belakang Cosmic Glows (sedikit berbeda dari Hero) */}
-          <div className="absolute inset-0">
-              {/* Glow 1 (Biru) - Menggunakan animasi cosmic-pan yang sudah didefinisikan */}
-              <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-blue-600/10 rounded-full blur-[100px] animate-cosmic-pan" style={{animationDuration: '25s'}}></div>
-              {/* Glow 2 (Cyan) - Menggunakan animasi cosmic-pan yang sudah didefinisikan */}
-              <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-cyan-600/10 rounded-full blur-[100px] animate-cosmic-pan" style={{animationDelay: '-15s', animationDuration: '25s'}}></div>
-          </div>
-
-          <div className="relative z-10 max-w-4xl mx-auto px-6 text-center">
-              {/* Judul dengan efek gradien seperti di Hero Section */}
-              <h2 className="text-4xl md:text-6xl font-extrabold mb-6 bg-gradient-to-r from-white via-blue-200 to-cyan-200 bg-clip-text text-transparent leading-tight">
-                  Unlock hidden potential within your business
-              </h2>
-              <p className="text-xl text-gray-400 mb-12 max-w-2xl mx-auto">
-                  Discover limitless opportunities with secure and intelligent AI systems. Ready to elevate your operations?
-              </p>
-              
-              {/* CSS kustom untuk animasi pulsa yang lambat (ditambahkan di sini untuk kebutuhan tunggal) */}
-              <style>{`
-                  @keyframes pulse-slow {
-                      0%, 100% {
-                          box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.4);
-                      }
-                      50% {
-                          box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
-                      }
-                  }
-                  .animate-pulse-slow {
-                      animation: pulse-slow 3s infinite;
-                  }
-              `}</style>
-              
-              {/* Button dengan ikon Rocket dan animasi pulse yang lambat */}
-              <button className="relative px-10 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-3 mx-auto 
-                  animate-pulse-slow"
-              onClick={() => onNavigate('contact')}>
-                  
-                  <span>Start Your Transformation Today</span>
-                  <Rocket size={20} />
-              </button>
+      <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
+          <div className="max-w-7xl mx-auto px-6">
+            <CtaContent onNavigate={onNavigate} />
           </div>
       </section>
     </div>

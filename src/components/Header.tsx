@@ -20,9 +20,19 @@ function Header({ currentPage, onNavigate }: HeaderProps) {
     { label: 'Docs', page: 'docs' },
   ];
 
-  const handleNavigate = (page: Page) => {
-    onNavigate(page);
+  const handleNavigate = (page: Page, section?: Section) => {
+    // Fungsi umum yang memanggil onNavigate dan menutup menu
+    onNavigate(page, section);
     setMobileMenuOpen(false);
+  };
+
+  const getNavigationAction = (itemPage: Page) => {
+    if (itemPage === 'case-study') {
+        // Navigasi spesifik: ke halaman 'docs' dengan section 'case-studies/overview'
+        return () => handleNavigate('docs', 'case-studies/overview');
+    }
+    // Navigasi standar
+    return () => handleNavigate(itemPage);
   };
 
   return (
@@ -40,45 +50,22 @@ function Header({ currentPage, onNavigate }: HeaderProps) {
             />
           </button>
 
+          {/* --- DESKTOP NAVIGATION --- (Sudah benar) */}
           <div className="hidden md:flex items-center space-x-8">
-            {/* {navItems.map((item) => (
-              <button
-                key={item.page}
-                onClick={() => handleNavigate(item.page)}
-                className={`text-sm font-medium transition-colors ${
-                  currentPage === item.page
-                    ? 'text-blue-400'
-                    : 'text-gray-300 hover:text-white'
-                }`}
-              >
-                {item.label}
-              </button>
-            ))} */}
-            {navItems.map((item) => {
-                // Tentukan aksi navigasi
-                let navigateAction = () => handleNavigate(item.page);
-
-                // LOGIKA PERBAIKAN: Jika item adalah 'Case Study', ubah tujuannya.
-                if (item.page === 'case-study') {
-                    // Kita navigasi ke 'docs', tetapi kita kirim 'case-studies/overview' sebagai section
-                    // Note: Kita harus mengirim 2 parameter ke onNavigate
-                    navigateAction = () => onNavigate('docs', 'case-studies/overview');
-                }
-
-                return (
-                    <button
-                      key={`${item.label}-${item.page}`}
-                      onClick={navigateAction}
-                      className={`text-sm font-medium transition-colors ${
-                        currentPage === item.page
-                          ? 'text-blue-400'
-                          : 'text-gray-300 hover:text-white'
-                      }`}
-                    >
-                      {item.label}
-                    </button>
-                );
-            })}
+            {navItems.map((item) => (
+                <button
+                    key={`${item.label}-${item.page}`}
+                    // Menggunakan fungsi yang sama untuk desktop
+                    onClick={getNavigationAction(item.page)}
+                    className={`text-sm font-medium transition-colors ${
+                      currentPage === item.page
+                        ? 'text-blue-400'
+                        : 'text-gray-300 hover:text-white'
+                    }`}
+                >
+                  {item.label}
+                </button>
+            ))}
             <button 
               onClick={() => handleNavigate('contact')}
               className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30"
@@ -95,12 +82,14 @@ function Header({ currentPage, onNavigate }: HeaderProps) {
           </button>
         </div>
 
+        {/* --- MOBILE MENU --- (Perbaikan di sini) */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 border-t border-gray-800 pt-4">
             {navItems.map((item) => (
               <button
                 key={item.page}
-                onClick={() => handleNavigate(item.page)}
+                // Menggunakan fungsi getNavigationAction untuk mendapatkan aksi yang benar
+                onClick={getNavigationAction(item.page)}
                 className={`block w-full text-left text-sm font-medium transition-colors ${
                   currentPage === item.page
                     ? 'text-blue-400'

@@ -1,5 +1,6 @@
-import { Target, Users, Award, Lightbulb, Heart, TrendingUp } from 'lucide-react';
+import { Target, Users, Award, Lightbulb, Heart, TrendingUp, Linkedin } from 'lucide-react';
 import StarField from '../components/StarFieldAnimation';
+import CtaContent from '../components/Cta';
 
 type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
 
@@ -33,35 +34,20 @@ function AboutPage({ onNavigate }: HomePageProps) {
 
   const team = [
     {
-      name: 'Dr. Emily Chen',
+      name: 'Muhammad Fikri Assegaf',
       role: 'Chief Executive Officer',
-      bio: 'PhD in Machine Learning from MIT. 15+ years leading AI research teams at Fortune 500 companies.',
+      linkedinUrl: 'https://www.linkedin.com/in/muhammad-fikri-assegaf/', 
     },
     {
-      name: 'Marcus Johnson',
+      name: 'Muhammad Fikri Assegaf',
       role: 'Chief Technology Officer',
-      bio: 'Former Principal Engineer at Google AI. Specialized in large-scale distributed systems and neural networks.',
+      linkedinUrl: 'https://www.linkedin.com/in/muhammad-fikri-assegaf/', 
     },
     {
-      name: 'Sarah Williams',
+      name: 'Muhammad Fikri Assegaf',
       role: 'Head of Product',
-      bio: 'Product leader with deep experience scaling AI products from zero to millions of users.',
-    },
-    {
-      name: 'David Park',
-      role: 'VP of Engineering',
-      bio: 'Built and led engineering teams at Microsoft and Amazon. Expert in cloud infrastructure and MLOps.',
-    },
-    {
-      name: 'Lisa Thompson',
-      role: 'Head of Client Success',
-      bio: '10+ years in enterprise consulting. Passionate about helping clients unlock AI-driven transformation.',
-    },
-    {
-      name: 'Alex Rivera',
-      role: 'Lead AI Research Scientist',
-      bio: 'Published researcher in NLP and computer vision. Previously at OpenAI and Stanford AI Lab.',
-    },
+      linkedinUrl: 'https://www.linkedin.com/in/muhammad-fikri-assegaf/', 
+    }
   ];
 
   const stats = [
@@ -162,7 +148,7 @@ function AboutPage({ onNavigate }: HomePageProps) {
           </div>
 
           <div className="mb-24">
-            <h2 className="text-4xl font-bold mb-12 text-center">Our Core Values</h2>
+            <h2 className="text-4xl font-bold mb-14 text-center">Our Core Values</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {values.map((value, index) => (
                 <div
@@ -192,7 +178,17 @@ function AboutPage({ onNavigate }: HomePageProps) {
                   </div>
                   <h3 className="text-xl font-bold text-center mb-2">{member.name}</h3>
                   <div className="text-blue-400 text-sm text-center mb-4">{member.role}</div>
-                  <p className="text-gray-400 text-sm leading-relaxed text-center">{member.bio}</p>
+                  <div className="flex justify-center mt-4">
+                      <a 
+                        href={member.linkedinUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition-colors group"
+                      >
+                        <Linkedin className="w-5 h-5 fill-current" />
+                        <span className="text-sm font-semibold">LinkedIn</span>
+                      </a>
+                    </div>
                 </div>
               ))}
             </div>
@@ -200,23 +196,10 @@ function AboutPage({ onNavigate }: HomePageProps) {
         </div>
       </section>
 
-      <section className="py-24 bg-gradient-to-br from-blue-900/20 to-cyan-900/20">
-        <div className="max-w-4xl mx-auto px-6 text-center">
-          <h2 className="text-4xl font-bold mb-6">Join Us on This Journey</h2>
-          <p className="text-xl text-gray-400 mb-10">
-            Whether you're looking to transform your business with AI or join our talented team, we'd love to hear from you.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30"
-            onClick={() => onNavigate('contact')}>
-              Get in Touch
-            </button>
-            <button className="px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all"
-            onClick={() => onNavigate('contact')}>
-              View Open Positions
-            </button>
+      <section className="pb-24 bg-gradient-to-b from-transparent to-gray-900/30">
+          <div className="max-w-7xl mx-auto px-6">
+            <CtaContent onNavigate={onNavigate} />
           </div>
-        </div>
       </section>
     </div>
   );

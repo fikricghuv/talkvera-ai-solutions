@@ -1,4 +1,5 @@
 import { Check, Zap, Rocket, Building2, User, Target, Layers, TrendingUp, Compass, Globe, Clock } from 'lucide-react';
+import CtaContent from '../components/Cta';
 
 type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
 
@@ -169,7 +170,7 @@ function PricingPage({ onNavigate }: HomePageProps) {
                   <div className={`p-3 mb-2 rounded-full 
                                   bg-blue-500/10 group-hover:bg-blue-500/20 transition-all duration-300 
                                   group-hover:shadow-lg group-hover:shadow-cyan-500/40`}>
-                      <partner.icon className="w-6 h-6 text-blue-400 group-hover:text-cyan-300 transition-all duration-300" /> 
+                      <partner.icon className="w-15 h-15 text-blue-400 group-hover:text-cyan-200 transition-all duration-300" /> 
                   </div>
                   
                   {/* Text: Ukuran standard, dengan garis di bawah saat hover */}
@@ -199,22 +200,10 @@ function PricingPage({ onNavigate }: HomePageProps) {
               ))}
             </div>
           </div>
-
-
-          <div className="mt-24 p-12 bg-gradient-to-br from-blue-900/20 to-cyan-900/20 rounded-2xl border border-blue-500/30">
-            <div className="text-center">
-              <h2 className="text-3xl font-bold mb-4">
-                Ready to Discuss Your Project?
-              </h2>
-              <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-                Our team can design a tailored package that perfectly fits your unique requirements and budget.
-              </p>
-              <button className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30"
-              onClick={() => onNavigate('contact')}>
-                Schedule a Consultation
-              </button>
-            </div>
+          <div className="mt-24">
+            <CtaContent onNavigate={onNavigate} />
           </div>
+          
         </div>
       </section>
     </div>

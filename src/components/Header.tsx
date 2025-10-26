@@ -49,7 +49,7 @@ function Header() {
         <div className="flex items-center justify-between">
           {/* 1. LOGO */}
           <Link
-            to="/" 
+            to="/home" 
             onClick={closeMobileMenu}
             className="flex items-center space-x-2 group"
           >

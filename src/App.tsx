@@ -1,64 +1,59 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'; // Import yang dibutuhkan
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
 import PricingPage from './pages/PricingPage';
 import AboutPage from './pages/AboutPage';
-import DocsPage from './pages/DocsPage'; // Pastikan DocsPage menerima initialSection
+import DocsPage from './pages/DocsPage'; 
 import ContactPage from './pages/ContactPage';
 
-type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact';
-
-function App() {
-  const [currentPage, setCurrentPage] = useState<Page>('home');
-  const [currentSection, setCurrentSection] = useState<string | undefined>(undefined);
-
-  // Fungsi navigasi yang LENGKAP, yang menerima page dan section.
-  const handleNavigate = (page: Page, section?: string) => {
-    setCurrentPage(page);
-    setCurrentSection(section); 
-  };
+// Buat komponen wrapper untuk menangani window.scrollTo, 
+// karena React Router tidak melakukannya secara default
+function ScrollToTop() {
+  const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [currentPage]);
+  }, [pathname]); // Scroll ke atas setiap kali path berubah
 
-  const renderPage = () => {
-    switch (currentPage) {
-      case 'home':
-        return <HomePage currentPage={currentPage} onNavigate={handleNavigate}/>; // Pass currentPage as a prop
-      case 'pricing':
-        return <PricingPage onNavigate={handleNavigate}/>; // Ganti setCurrentPage menjadi handleNavigate
-      case 'about':
-        return <AboutPage onNavigate={handleNavigate}/>; // Ganti setCurrentPage menjadi handleNavigate
-      // KASUS 'DOCS' DIHAPUS DARI SINI
-      case 'contact':
-        return <ContactPage />;
-      default:
-        return <HomePage currentPage={currentPage} onNavigate={handleNavigate}/>;
-    }
-  };
+  return null;
+}
+
+// Pisahkan komponen App menjadi dua: AppContent (yang berisi rute) dan AppWrapper (yang berisi BrowserRouter)
+function AppContent() {
+  // Gunakan useLocation untuk menentukan halaman saat ini (untuk Header/Footer)
+  const location = useLocation();
+  const isDocsPage = location.pathname.startsWith('/docs');
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100">
-      <Header currentPage={currentPage} onNavigate={handleNavigate} /> 
+      <ScrollToTop /> 
+      <Header /> 
+      
       <main>
-        {currentPage !== 'docs' && renderPage()} 
         
-        {currentPage === 'docs' && (
-          <DocsPage 
-            onNavigate={handleNavigate} 
-            initialSection={currentSection}
-          />
-        )}
+        <Routes>
+          <Route path="/" element={<Navigate to="/home" replace />} /> 
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/pricing" element={<PricingPage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/contact" element={<ContactPage />} />
+          <Route path="/docs/*" element={<DocsPage />} /> 
+          
+          <Route path="*" element={<HomePage />} /> 
+        </Routes>
       </main>
-      {/* <Footer onNavigate={handleNavigate} />  */}
-      {currentPage !== 'docs' && (
-        <Footer onNavigate={handleNavigate} /> 
-      )}
-
+      
+      {!isDocsPage && <Footer />}
     </div>
   );
 }
 
-export default App;
+export default function App() {
+  return (
+    <BrowserRouter>
+      <AppContent />
+    </BrowserRouter>
+  );
+}

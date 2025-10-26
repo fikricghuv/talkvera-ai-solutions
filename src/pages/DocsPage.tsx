@@ -1,6 +1,9 @@
-// src/pages/DocsPage.tsx
-import { useState, useEffect } from 'react'; // <--- PERBAIKAN DI SINI
+import { useState, useEffect } from 'react';
 import { Book, Network, Workflow, FileText, BookOpenText, ChevronRight, ChevronLeft } from 'lucide-react';
+// Import hooks dari React Router DOM
+import { useParams, useNavigate, Link } from 'react-router-dom'; 
+
+// Import komponen konten (biarkan sama)
 import IntroductionContent from '../components/docs/IntroductionContent';
 import UltimateAssistantContent from '../components/docs/UltimateAssistantContent';
 import RagPipelineContent from '../components/docs/RagPipelineContent';
@@ -10,125 +13,115 @@ import ProcessContent from '../components/docs/ProcessContent';
 import TechStackContent from '../components/docs/TechStackContent';
 import OverviewContent from '../components/docs/OverviewContent';
 
-type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
+function DocsPage() {
+  const { '*': currentPath } = useParams<{ '*': string }>(); 
+  const navigate = useNavigate();
+  
+  const currentSectionID = currentPath?.split('/').pop() || 'introduction'; 
 
-interface DocsPageProps {
-    onNavigate: (page: Page, section?: string) => void;
-    initialSection?: string; 
-}
-
-function DocsPage({ onNavigate, initialSection }: DocsPageProps) {
-  const [activeSection, setActiveSection] = useState(initialSection || 'introduction');
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
 
+  // --- START FIX: Penambahan Base Path dan Helper Function ---
+  // ASUMSI: Rute utama untuk dokumentasi adalah '/docs'. Ubah ini jika base route Anda berbeda.
+  const DOCS_BASE_PREFIX = "/docs"; 
+
+  // Fungsi helper untuk membuat path absolut penuh
+  const getFullDocPath = (segment: string) => {
+    // Pastikan path diawali dengan prefix dan hapus potensi double-slash
+    return `${DOCS_BASE_PREFIX}/${segment}`.replace(/\/\/+/g, '/');
+  };
+  // --- END FIX ---
+
+
+  const navigation = [
+    { id: 'introduction', label: 'Introduction', icon: Book, path: 'introduction' },
+    { id: 'tech-stack', label: 'Technology Stack', icon: Network, path: 'tech-stack' },
+    { id: 'process', label: 'Our Process', icon: Workflow, path: 'process' },
+    { id: 'resources', label: 'Resources', icon: FileText, path: 'resources' },
+    {
+      id: 'customer-showcase',
+      label: 'Customer Showcase',
+      icon: BookOpenText,
+      basePath: 'case-studies', 
+      children: [
+        { id: 'overview', label: 'Overview', path: 'case-studies/overview' },
+        { id: 'ultimate-assistant', label: 'Ultimate Assistant', path: 'case-studies/ultimate-assistant' },
+        { id: 'rag-pipeline', label: 'RAG Pipeline', path: 'case-studies/rag-pipeline' },
+        { id: 'newsletter-creation', label: 'Newsletter Creation', path: 'case-studies/newsletter-creation' },
+        { id: 'schedule-appointment-agent', label: 'Schedule Appointment Agent', path: 'case-studies/schedule-appointment-agent' },
+        { id: 'customer-service-agent', label: 'Customer Service Agent', path: 'case-studies/customer-service-agent' },
+        { id: 'generate-test-case', label: 'Generate Test Scenario', path: 'case-studies/generate-test-case' },
+      ],
+    },
+  ];
+
   useEffect(() => {
-      if (initialSection) {
-          if (initialSection.startsWith('case-studies/')) {
-              // Jika ini adalah Case Study, aktifkan 'overview' dan buka dropdown 'case-studies'
-              setActiveSection('overview');
-              setOpenDropdown('customer-showcase'); 
-          } else {
-              // Untuk section lain (misalnya 'introduction', 'tech-stack')
-              setActiveSection(initialSection);
-              setOpenDropdown(null); // Tutup dropdown lain jika ada
-          }
-      }
-  }, [initialSection]);
+    const showcaseParent = navigation.find(item => item.id === 'customer-showcase');
+    
+    if (currentPath?.startsWith(showcaseParent?.basePath || '')) {
+      setOpenDropdown('customer-showcase');
+    } else {
+      setOpenDropdown(null); 
+    }
+
+    // Default ke introduction jika path kosong
+    if (!currentPath || currentPath === 'docs') {
+      // Gunakan navigate dengan path absolut
+      navigate(getFullDocPath('introduction'), { replace: true });
+    }
+  }, [currentPath, navigate]);
 
   const toggleDropdown = (id: string): void => {
-    // Menggunakan setOpenDropdown tanpa 'as any'
-    setOpenDropdown(openDropdown === id ? null : id);
+      const isCurrentlyActive = currentPath?.startsWith(navigation.find(i => i.id === id)?.basePath || '');
+      
+      if (isCurrentlyActive && openDropdown === id) {
+          setOpenDropdown(null); 
+          return;
+      }
+      
+      setOpenDropdown(openDropdown === id ? null : id);
   };
 
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  const navigation = [
-    { id: 'introduction', label: 'Introduction', icon: Book },
-    { id: 'tech-stack', label: 'Technology Stack', icon: Network },
-    { id: 'process', label: 'Our Process', icon: Workflow },
-    { id: 'resources', label: 'Resources', icon: FileText },
-    {
-      id: 'customer-showcase',
-      label: 'Customer Showcase',
-      icon: BookOpenText,
-      children: [
-        { id: 'overview', label: 'Overview' },
-        { id: 'ultimate-assistant', label: 'Ultimate Assistant' },
-        { id: 'rag-pipeline', label: 'RAG Pipeline' },
-        { id: 'newsletter-creation', label: 'Newsletter Creation' },
-        { id: 'schedule-appointment-agent', label: 'Schedule Appointment Agent' },
-        { id: 'customer-service-agent', label: 'Customer Service Agent' },
-        { id: 'generate-test-case', label: 'Generate Test Scenario' },
-      ],
-    },
-  ];
-
-  const handleSectionClick = (id: string) => {
-        setActiveSection(id);
-  }
-
   const renderContent = () => {
-    switch (activeSection) {
+    switch (currentSectionID) {
       case 'introduction':
-        return (
-          <IntroductionContent />
-        );
-
+        return <IntroductionContent />;
       case 'tech-stack':
-        return (
-          <TechStackContent />
-        );
-
+        return <TechStackContent />;
       case 'process':
-        return (
-          <ProcessContent />
-        );
-
+        return <ProcessContent />;
       case 'resources':
-        return (
-          <ResourcesContent />
-        );
-
+        return <ResourcesContent />;
       case 'overview':
-        return (
-          <OverviewContent 
-                        onSectionChange={handleSectionClick}
-                        activeSection={activeSection} 
-                    />
-        );
-
+        return <OverviewContent />;
       case 'ultimate-assistant':
-        return (
-          <UltimateAssistantContent />
-        );
-
+        return <UltimateAssistantContent />;
       case 'rag-pipeline':
-        return (
-          <RagPipelineContent />
-        );
-      
+        return <RagPipelineContent />;
       case 'newsletter-creation':
-        return (
-          <NewsletterContent />
-        );
+        return <NewsletterContent />;
+      
+      case 'schedule-appointment-agent':
+      case 'customer-service-agent':
+      case 'generate-test-case':
+        return <div>{currentSectionID.replace(/-/g, ' ').toUpperCase()} Content Coming Soon.</div>;
 
       default:
-        return <div>Section not found</div>;
+        return <IntroductionContent />;
     }
   };
 
   return (
     <div className="pt-16 min-h-screen bg-gradient-to-b from-transparent to-gray-900/30">
       <div className="max-w-7xl mx-auto px-6 py-12">
-        
-        {/* Tombol Show Sidebar (Hanya terlihat jika sidebar tertutup) */}
         {!isSidebarOpen && (
             <button
                 onClick={toggleSidebar}
-                // Gaya konsisten dengan tombol hide, menggunakan ChevronRight
                 className="fixed top-30 left-6 z-40 p-3 rounded-lg bg-gray-800/90 hover:bg-gray-700/90 border border-gray-700 text-white transition-colors shadow-xl hidden lg:block"
                 title="Show Sidebar"
             >
@@ -142,15 +135,13 @@ function DocsPage({ onNavigate, initialSection }: DocsPageProps) {
           {/* Sidebar - Conditional Rendering */}
           {isSidebarOpen && (
               <aside className="lg:col-span-1 relative">
-                {/* Mengubah p-6 menjadi pt-14 p-6 untuk memberi ruang bagi tombol di atas */}
                 <div className="sticky bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 p-6">
                   <div className="flex justify-between items-center mb-6">
                     <h2 className="text-xl font-bold">Documentation</h2>
                     
-                    {/* TOMBOL HIDE SIDEBAR (di dalam kartu) */}
+                    {/* TOMBOL HIDE SIDEBAR */}
                     <button
                         onClick={toggleSidebar}
-                        // Menghilangkan posisi absolute, menggunakan gaya yang sama
                         className="p-3 rounded-lg bg-gray-800/90 hover:bg-gray-700/90 border border-gray-700 text-white transition-colors hidden lg:block"
                         title="Hide Sidebar"
                     >
@@ -161,57 +152,66 @@ function DocsPage({ onNavigate, initialSection }: DocsPageProps) {
                   <nav className="space-y-1">
                     {navigation.map((item) => (
                       <div key={item.id}>
-                        <button
-                          onClick={() =>
-                            item.children
-                              ? toggleDropdown(item.id)
-                              : setActiveSection(item.id)
-                          }
-                          className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition-all ${
-                            activeSection === item.id
-                              ? 'bg-blue-500/20 text-blue-400'
-                              : 'text-gray-200 hover:bg-gray-800/50 hover:text-white'
-                          }`}
-                        >
-                          <div className="flex items-center space-x-3">
-                            <item.icon size={18} />
-                            <span className="text-sm font-medium">{item.label}</span>
-                          </div>
-
-                          {item.children && (
-                            <svg
-                              className={`w-4 h-4 transform transition-transform ${
-                                openDropdown === item.id ? 'rotate-90' : ''
-                              }`}
-                              fill="none"
-                              stroke="currentColor"
-                              viewBox="0 0 24 24"
+                        {/* Tautan Utama (Non-Dropdown) */}
+                        {!item.children && (
+                            <Link
+                                to={getFullDocPath(item.path)} 
+                                className={`w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition-all ${
+                                    currentSectionID === item.id 
+                                        ? 'bg-blue-500/20 text-blue-400'
+                                        : 'text-gray-200 hover:bg-gray-800/50 hover:text-white'
+                                }`}
                             >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                strokeWidth={2}
-                                d="M9 5l7 7-7 7"
-                              />
-                            </svg>
-                          )}
-                        </button>
+                                <div className="flex items-center space-x-3">
+                                    <item.icon size={18} />
+                                    <span className="text-sm font-medium">{item.label}</span>
+                                </div>
+                            </Link>
+                        )}
 
-                        {/* Dropdown */}
+                        {/* Dropdown Header */}
+                        {item.children && (
+                            <button
+                                onClick={() => toggleDropdown(item.id)} 
+                                className="w-full flex items-center justify-between px-4 py-2.5 rounded-lg transition-all text-gray-200 hover:bg-gray-800/50 hover:text-white"
+                            >
+                                <div className="flex items-center space-x-3">
+                                    <item.icon size={18} />
+                                    <span className="text-sm font-medium">{item.label}</span>
+                                </div>
+                                <svg
+                                    className={`w-4 h-4 transform transition-transform ${
+                                        openDropdown === item.id ? 'rotate-90' : ''
+                                    }`}
+                                    fill="none"
+                                    stroke="currentColor"
+                                    viewBox="0 0 24 24"
+                                >
+                                    <path
+                                        strokeLinecap="round"
+                                        strokeLinejoin="round"
+                                        strokeWidth={2}
+                                        d="M9 5l7 7-7 7"
+                                    />
+                                </svg>
+                            </button>
+                        )}
+
+                        {/* Dropdown Children */}
                         {item.children && openDropdown === item.id && (
                           <div className="ml-8 mt-1 space-y-1">
                             {item.children.map((child) => (
-                              <button
+                              <Link
                                 key={child.id}
-                                onClick={() => setActiveSection(child.id)}
-                                className={`w-full text-left px-4 py-2 rounded-lg text-sm transition-all ${
-                                  activeSection === child.id
+                                to={getFullDocPath(child.path)} 
+                                className={`w-full text-left px-4 py-2 rounded-lg text-sm transition-all flex items-center ${
+                                  currentSectionID === child.id
                                     ? 'text-blue-400 bg-blue-500/10'
                                     : 'text-gray-300 hover:text-white hover:bg-gray-800/30'
                                 }`}
                               >
-                                {child.label}
-                              </button>
+                                  {child.label}
+                              </Link>
                             ))}
                           </div>
                         )}
@@ -222,7 +222,7 @@ function DocsPage({ onNavigate, initialSection }: DocsPageProps) {
               </aside>
           )}
 
-          {/* Main content - Menggunakan kolom penuh jika sidebar tertutup */}
+          {/* Main content */}
           <main className={isSidebarOpen ? 'lg:col-span-3' : 'lg:col-span-4'}>
             <div className="prose prose-invert max-w-none">
               {renderContent()}
@@ -235,4 +235,3 @@ function DocsPage({ onNavigate, initialSection }: DocsPageProps) {
 }
 
 export default DocsPage;
-

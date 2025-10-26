@@ -2,13 +2,11 @@ import { Target, Users, Award, Lightbulb, Heart, TrendingUp, Linkedin } from 'lu
 import StarField from '../components/StarFieldAnimation';
 import CtaContent from '../components/Cta';
 
-type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
+// Import useNavigate dari react-router-dom
+import { useNavigate } from 'react-router-dom';
 
-interface HomePageProps {
-    onNavigate: (page: Page) => void;
-}
-
-function AboutPage({ onNavigate }: HomePageProps) {
+function AboutPage() { 
+  const navigate = useNavigate(); 
 
   const services = [
     {
@@ -90,7 +88,6 @@ function AboutPage({ onNavigate }: HomePageProps) {
       <section className="bg-gradient-to-b from-gray-900/30 to-transparent">
         <div className="max-w-7xl mx-auto px-6 pt-10">
           <div className="mb-24">
-            {/* <h2 className="text-4xl font-bold mb-6 text-center">Our Mission & Vision</h2> */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="p-8 text-center">
                 <div className='flex justify-center'>
@@ -193,7 +190,7 @@ function AboutPage({ onNavigate }: HomePageProps) {
 
       <section className="pb-24 bg-gradient-to-b from-transparent to-gray-900/30">
           <div className="max-w-7xl mx-auto px-6">
-            <CtaContent onNavigate={onNavigate} />
+            <CtaContent /> 
           </div>
       </section>
     </div>

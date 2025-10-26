@@ -1,13 +1,16 @@
 import { Check, Zap, Rocket, Building2, User, Target, Layers, TrendingUp, Compass, Globe, Clock } from 'lucide-react';
 import CtaContent from '../components/Cta';
 
-type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
+import { useNavigate } from 'react-router-dom';
 
-interface HomePageProps {
-    onNavigate: (page: Page) => void;
-}
+function PricingPage() {
+  const navigate = useNavigate(); 
 
-function PricingPage({ onNavigate }: HomePageProps) {
+  // Fungsi untuk navigasi ke halaman kontak
+  const handleContactNavigate = () => {
+    navigate('/contact');
+  };
+
   const plans = [
     {
       name: 'Business Partner',
@@ -26,23 +29,7 @@ function PricingPage({ onNavigate }: HomePageProps) {
       ],
       highlighted: true,
     },
-    // {
-    //   name: 'Enterprise Partner',
-    //   price: 'Custom',
-    //   period: '',
-    //   description: 'Comprehensive solutions for large organizations with complex needs',
-    //   features: [
-    //     'Includes all Business Partner features',
-    //     'Dedicated Project Manager',
-    //     'Weekly 60 minute meetings with our executive team',
-    //     'Strategic roadmap review',
-    //     'Team training and enablement sessions',
-    //     'Documentation of all completed work',
-    //     'Quarterly executive briefing',
-    //     'Everything customized for you and your business'
-    //   ],
-    //   highlighted: false,
-    // },
+    // Jika ada rencana lain, mereka akan diletakkan di sini.
   ];
 
   const partnership = [
@@ -82,10 +69,10 @@ function PricingPage({ onNavigate }: HomePageProps) {
             </p>
           </div>
 
-          {/* Pricing Cards (2 Kolom Centered) */}
+          {/* Pricing Cards */}
           <div className="max-w-4xl mx-auto flex justify-center mb-16 px-4">
                 
-                {/* Grid Diubah: grid-cols-1 md:grid-cols-2 (untuk simulasi 2 kartu) */}
+                {/* Grid Diubah: grid-cols-1 md:grid-cols-1 (karena hanya ada 1 plan di data) */}
                 <div className="grid grid-cols-1 md:grid-cols-1 gap-8"> 
                     
                     {plans.map((plan, index) => (
@@ -125,7 +112,7 @@ function PricingPage({ onNavigate }: HomePageProps) {
                                     </div>
                                 </div>
 
-                                {/* Feature List: Menggunakan min-height agar tombol sebaris */}
+                                {/* Feature List */}
                                 <ul className="space-y-2 mb-10 min-h-40">
                                     {plan.features.map((feature, fIndex) => (
                                         <li key={fIndex} className="flex items-start space-x-2">
@@ -136,22 +123,20 @@ function PricingPage({ onNavigate }: HomePageProps) {
                                 </ul>
                             </div>
 
-                            {/* Button Bottom: Selalu di bawah karena flex-col justify-between */}
+                            {/* Tombol Bottom: Menggunakan fungsi handleContactNavigate */}
                             <button
                                 className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all transform hover:scale-[1.02] ${
                                     plan.highlighted
                                         ? 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-xl shadow-blue-500/40'
                                         : 'bg-gray-800 hover:bg-gray-700 text-white border border-gray-700'
                                 }`}
-                                onClick={() => onNavigate('contact')}
+                                // GANTI onNavigate('contact') dengan fungsi React Router
+                                onClick={handleContactNavigate} 
                             >
                                 {plan.price === 'Custom' ? 'Contact Sales' : 'Get Started Now'}
                             </button>
                         </div>
                     ))}
-
-                    {/* Ini adalah div kosong, DIBUTUHKAN SEMENTARA untuk memastikan kartu tunggal TIDAK melebar di tata letak 2 kolom */}
-                    <div className="hidden md:block"></div> 
                 </div>
             </div>
 
@@ -202,7 +187,7 @@ function PricingPage({ onNavigate }: HomePageProps) {
             </div>
           </div>
           <div className="mt-24">
-            <CtaContent onNavigate={onNavigate} />
+            <CtaContent  />
           </div>
           
         </div>

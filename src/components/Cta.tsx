@@ -1,10 +1,7 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
-interface CtaContentProps {
-    onNavigate: (page: 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact') => void;
-}
-
-const CtaContent: React.FC<CtaContentProps> = ({ onNavigate }) => {
+const CtaContent: React.FC = () => {
     return (
         <div className="p-8 md:p-12 bg-gradient-to-br from-blue-900/20 to-cyan-900/20 rounded-2xl border border-blue-500/30">
             
@@ -18,12 +15,13 @@ const CtaContent: React.FC<CtaContentProps> = ({ onNavigate }) => {
                     <p className="text-gray-400 mb-8 max-w-2xl mx-auto md:mx-0">
                         Unlock untapped potential with safe, responsible, and powerful AI solutions.
                     </p>
-                    <button 
-                        className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30"
-                        onClick={() => onNavigate('contact')}
+                    
+                    <Link 
+                        to="/contact" 
+                        className="inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30"
                     >
                         Get Started
-                    </button>
+                    </Link>
                 </div>
 
                 {/* 2. Logo (Kanan) */}

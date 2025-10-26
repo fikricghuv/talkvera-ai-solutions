@@ -1,18 +1,21 @@
 import { Bot, Workflow, BarChart3, Shield, Lock, Star, ArrowRight, Zap, Rocket, Brain, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom'; 
 import StarField from '../components/StarFieldAnimation';
 import CtaContent from '../components/Cta';
 
-type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact'; 
-type Section = string | undefined;
-interface HomePageProps {
-    currentPage: Page;
-    onNavigate: (page: Page, section?: Section) => void;
-}
-
-function HomePage({ currentPage, onNavigate }: HomePageProps) {
+function HomePage() {
 
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
+  const navigate = useNavigate();
+
+  const handleContactNavigate = () => {
+    navigate('/contact');
+  };
+
+  const handleCaseStudiesNavigate = () => {
+    navigate('/docs/case-studies/overview');
+  };
 
   const features = [
     {
@@ -108,14 +111,14 @@ function HomePage({ currentPage, onNavigate }: HomePageProps) {
 
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <button 
-              onClick={() => onNavigate('contact')} // Panggil onNavigate('contact')
+              onClick={handleContactNavigate} // Panggil onNavigate('contact')
               className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2"
             >
               <span>Get Started</span>
               <ArrowRight size={20} />
             </button>
             <button className="px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all"
-            onClick={() => onNavigate('docs', 'case-studies/overview')}>
+            onClick={handleCaseStudiesNavigate}>
               View Case Studies
             </button>
           </div>
@@ -331,7 +334,7 @@ function HomePage({ currentPage, onNavigate }: HomePageProps) {
 
       <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
           <div className="max-w-7xl mx-auto px-6">
-            <CtaContent onNavigate={onNavigate} />
+            <CtaContent />
           </div>
       </section>
     </div>

@@ -1,24 +1,32 @@
 import { Mail, Instagram, Phone } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
-type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs';
 
-interface FooterProps {
-  onNavigate: (page: Page) => void;
-}
+function Footer() {
 
-function Footer({ onNavigate }: FooterProps) {
+  const navLinks = [
+    { label: 'About Us', path: '/about' },
+    // Navigasi Case Studies diarahkan ke rute Docs yang spesifik
+    { label: 'Case Studies', path: '/docs/case-studies/overview' }, 
+  ];
+
+  const resourceLinks = [
+    { label: 'Documentation', path: '/docs' },
+    { label: 'Pricing', path: '/pricing' },
+  ];
+
   return (
     <footer className="bg-[#0a0a0a] border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
+            <Link to="/" className="flex items-center space-x-2 mb-4 group">
               <img
                   src='/assets/logo-talkvera-white.svg'
                   alt="TalkVera Logo"
-                  className="h-8 w-auto transition-opacity group-hover:opacity-80" // Sesuaikan ukuran dan efek hover
+                  className="h-8 w-auto transition-opacity group-hover:opacity-80"
               />
-            </div>
+            </Link>
             <p className="text-sm text-gray-400">
               Building intelligent AI solutions for business growth with secure and compliant protocols.
             </p>
@@ -27,44 +35,32 @@ function Footer({ onNavigate }: FooterProps) {
           <div>
             <h3 className="font-semibold text-white mb-4">Company</h3>
             <ul className="space-y-2">
-              <li>
-                <button
-                  onClick={() => onNavigate('about')}
-                  className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                >
-                  About Us
-                </button>
-              </li>
-              {/* <li>
-                <button
-                  onClick={() => onNavigate('docs')}
-                  className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                >
-                  Case Studies
-                </button>
-              </li> */}
+              {navLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
           <div>
             <h3 className="font-semibold text-white mb-4">Resources</h3>
             <ul className="space-y-2">
-              <li>
-                <button
-                  onClick={() => onNavigate('docs')}
-                  className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                >
-                  Documentation
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('pricing')}
-                  className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
-                >
-                  Pricing
-                </button>
-              </li>
+              {resourceLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
 
@@ -97,7 +93,7 @@ function Footer({ onNavigate }: FooterProps) {
 
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
           <p className="text-sm text-gray-500">
-            © 2024 TalkVera AI. All rights reserved.
+            © 2025 TalkVera. All rights reserved.
           </p>
           <div className="flex space-x-6">
             <a href="#" className="text-sm text-gray-500 hover:text-blue-400 transition-colors">

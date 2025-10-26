@@ -1,73 +1,80 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 
-type Page = 'home' | 'pricing' | 'about' | 'case-study' | 'docs' | 'contact';
-type Section = string | undefined;
-interface HeaderProps {
-  currentPage: Page;
-  onNavigate: (page: Page, section?: Section) => void;
-}
-
-function Header({ currentPage, onNavigate }: HeaderProps) {
+function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const navigate = useNavigate(); 
+  const currentPathname = window.location.pathname; // Dapatkan pathname saat ini
 
-  const navItems: { label: string; page: Page }[] = [
-    { label: 'Home', page: 'home' },
-    { label: 'Pricing', page: 'pricing' },
-    { label: 'About', page: 'about' },
-    { label: 'Case Study', page: 'case-study' },
-    // { label: 'Contact', page: 'contact' },
-    { label: 'Docs', page: 'docs' },
+  const navItems: { label: string; path: string }[] = [
+    { label: 'Home', path: '/home' }, 
+    { label: 'Pricing', path: '/pricing' },
+    { label: 'About', path: '/about' },
+    { label: 'Case Study', path: '/docs/case-studies/overview' }, 
+    { label: 'Docs', path: '/docs/introduction' },
   ];
 
-  const handleNavigate = (page: Page, section?: Section) => {
-    // Fungsi umum yang memanggil onNavigate dan menutup menu
-    onNavigate(page, section);
-    setMobileMenuOpen(false);
+  const closeMobileMenu = () => setMobileMenuOpen(false);
+  const handleNavigate = (path: string) => {
+    navigate(path);
+    closeMobileMenu();
   };
+    
+  // Fungsi penentu kelas NavLink
+  const getNavLinkClass = ({ isActive, path }: { isActive: boolean, path: string }) => {
+      // 1. Cek Case Study Link
+      if (path === '/docs/case-studies/overview') {
+          // Aktif jika path saat ini dimulai dengan /docs/case-studies
+          const isCaseStudyActive = currentPathname.startsWith('/docs/case-studies');
+          return isCaseStudyActive ? 'text-blue-400' : 'text-gray-300 hover:text-white';
+      }
 
-  const getNavigationAction = (itemPage: Page) => {
-    if (itemPage === 'case-study') {
-        // Navigasi spesifik: ke halaman 'docs' dengan section 'case-studies/overview'
-        return () => handleNavigate('docs', 'case-studies/overview');
-    }
-    // Navigasi standar
-    return () => handleNavigate(itemPage);
-  };
+      // 2. Cek Docs Link
+      if (path === '/docs/introduction') {
+          // Aktif jika dimulai dengan /docs/ TAPI BUKAN /docs/case-studies
+          const isDocsActive = currentPathname.startsWith('/docs/') && !currentPathname.startsWith('/docs/case-studies');
+          return isDocsActive ? 'text-blue-400' : 'text-gray-300 hover:text-white';
+      }
+      
+      // 3. Link Lain (Home, Pricing, About)
+      // Gunakan isActive bawaan dari NavLink
+      return isActive ? 'text-blue-400' : 'text-gray-300 hover:text-white';
+  }
+
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-lg border-b border-gray-800">
       <nav className="max-w-7xl mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <button
-            onClick={() => handleNavigate('home')}
+          {/* 1. LOGO */}
+          <Link
+            to="/" 
+            onClick={closeMobileMenu}
             className="flex items-center space-x-2 group"
           >
             <img
                 src='/assets/logo-talkvera-white.svg'
                 alt="TalkVera Logo"
-                className="h-8 w-auto transition-opacity group-hover:opacity-80" // Sesuaikan ukuran dan efek hover
+                className="h-8 w-auto transition-opacity group-hover:opacity-80"
             />
-          </button>
+          </Link>
 
-          {/* --- DESKTOP NAVIGATION --- (Sudah benar) */}
+          {/* --- DESKTOP NAVIGATION --- */}
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
-                <button
-                    key={`${item.label}-${item.page}`}
-                    // Menggunakan fungsi yang sama untuk desktop
-                    onClick={getNavigationAction(item.page)}
-                    className={`text-sm font-medium transition-colors ${
-                      currentPage === item.page
-                        ? 'text-blue-400'
-                        : 'text-gray-300 hover:text-white'
-                    }`}
+                <NavLink
+                    key={item.path}
+                    to={item.path}
+                    className={({ isActive }) => `text-sm font-medium transition-colors ${getNavLinkClass({ isActive, path: item.path })}`}
                 >
                   {item.label}
-                </button>
+                </NavLink>
             ))}
+            
+            {/* 3. GET STARTED BUTTON */}
             <button 
-              onClick={() => handleNavigate('contact')}
+              onClick={() => handleNavigate('/contact')}
               className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30"
             >
               Get Started
@@ -82,25 +89,23 @@ function Header({ currentPage, onNavigate }: HeaderProps) {
           </button>
         </div>
 
-        {/* --- MOBILE MENU --- (Perbaikan di sini) */}
+        {/* --- MOBILE MENU --- */}
         {mobileMenuOpen && (
           <div className="md:hidden mt-4 pb-4 space-y-4 border-t border-gray-800 pt-4">
             {navItems.map((item) => (
-              <button
-                key={item.page}
-                // Menggunakan fungsi getNavigationAction untuk mendapatkan aksi yang benar
-                onClick={getNavigationAction(item.page)}
-                className={`block w-full text-left text-sm font-medium transition-colors ${
-                  currentPage === item.page
-                    ? 'text-blue-400'
-                    : 'text-gray-300 hover:text-white'
-                }`}
+              <NavLink
+                key={item.path}
+                to={item.path}
+                onClick={closeMobileMenu}
+                className={({ isActive }) => `block w-full text-left text-sm font-medium transition-colors ${getNavLinkClass({ isActive, path: item.path })}`}
               >
                 {item.label}
-              </button>
+              </NavLink>
             ))}
+            
+            {/* 5. MOBILE GET STARTED BUTTON */}
             <button 
-              onClick={() => handleNavigate('contact')}
+              onClick={() => handleNavigate('/contact')}
               className="w-full px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-lg"
             >
               Get Started

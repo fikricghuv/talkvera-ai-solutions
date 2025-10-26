@@ -1,35 +1,41 @@
-import { Mail, Phone, MapPin, ArrowRight, Zap } from 'lucide-react';
+import React, { useState, useCallback } from 'react';
+import { Mail, Phone, MapPin, ArrowRight, CircleUser, Loader } from 'lucide-react';
 import StarField from '../components/StarFieldAnimation';
 
 // --- Type/Interface Declarations (Dianggap Anda menggunakan TypeScript/TSX) ---
-// Jika Anda tidak menggunakan TypeScript, HAPUS BARIS INI dan BARIS 6-17.
 interface SelectOption {
     value: string;
     label: string;
 }
 
-interface TextareaComponentProps {
+interface CommonProps {
     id: string;
     label: string;
     placeholder?: string;
     required?: boolean;
+    value: string;
+    onChange: (e: React.ChangeEvent<any>) => void; // Menggunakan 'any' untuk mencakup Input, Textarea, dan Select
 }
 
-interface InputComponentProps {
-    id: string;
-    label: string;
+interface TextareaComponentProps extends CommonProps {
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+}
+
+interface InputComponentProps extends CommonProps {
     type?: string;
-    placeholder?: string;
-    required?: boolean;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-interface SelectComponentProps {
-    id: string;
-    label: string;
+interface SelectComponentProps extends CommonProps {
     options: SelectOption[];
-    required?: boolean;
+    selectStyle: React.CSSProperties;
+    value: string;
+    onChange: (e: React.ChangeEvent<HTMLSelectElement>) => void;
 }
 
+// --- Data Konstan ---
 const employeeOptions: SelectOption[] = [
     { value: '', label: 'Select Employee Range' },
     { value: '1-10', label: '1 - 10 Employees (Startup)' },
@@ -38,14 +44,78 @@ const employeeOptions: SelectOption[] = [
     { value: '201+', label: '201+ Employees (Enterprise)' },
 ];
 
+const initialFormData = {
+    firstName: '',
+    lastName: '',
+    role: '',
+    website: '',
+    email: '',
+    company: '',
+    companySize: '',
+    projectDesc: '',
+};
+
+const API_ENDPOINT = 'https://reproofless-judi-prepituitary.ngrok-free.dev/webhook/contact-information';
+
 function ContactPage() {
+    const [formData, setFormData] = useState(initialFormData);
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [message, setMessage] = useState<{ type: 'success' | 'error' | null; text: string | null }>({ type: null, text: null });
+
+    // Style untuk panah dropdown custom
     const selectStyle = {
-        backgroundImage: "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%239CA3AF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e\")",
+        backgroundImage: "url(\"data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%239CA3AF' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3csvg%3e\")",
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'right 0.75rem center',
         backgroundSize: '1.5em 1.5em',
-        paddingRight: '2.5rem', // Memberi ruang untuk panah
+        paddingRight: '2.5rem', 
     };
+
+    // Handler universal untuk memperbarui state formulir
+    const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+        const { id, value } = e.target;
+        setFormData(prev => ({ ...prev, [id]: value }));
+        // Hapus pesan error/sukses saat user mulai mengetik lagi
+        if (message.type) setMessage({ type: null, text: null });
+    }, [message.type]);
+
+    // Handler untuk pengiriman formulir
+    const handleSubmit = useCallback(async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
+        setMessage({ type: null, text: null });
+
+        try {
+            const response = await fetch(API_ENDPOINT, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': 'test123',
+                },
+                body: JSON.stringify(formData),
+            });
+
+            if (response.ok) {
+                setMessage({ 
+                    type: 'success', 
+                    text: 'Success! Your consultation request has been sent. We will contact you shortly.' 
+                });
+                setFormData(initialFormData); // Reset form
+            } else {
+                // Mencoba membaca response JSON untuk detail error
+                const errorData = await response.json().catch(() => ({ message: 'Server responded with an error.' }));
+                throw new Error(errorData.message || `HTTP Error: ${response.status}`);
+            }
+        } catch (error) {
+            console.error('Submission failed:', error);
+            setMessage({ 
+                type: 'error', 
+                text: `Submission Failed: ${error instanceof Error ? error.message : 'Unknown error occurred.'} Please try again.`
+            });
+        } finally {
+            setIsSubmitting(false);
+        }
+    }, [formData]);
 
     return (
         <div className="pt-16 min-h-screen text-white">
@@ -55,7 +125,7 @@ function ContactPage() {
                 <StarField />
                 <div className="relative max-w-4xl mx-auto px-6 z-10">
                     <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6">
-                        <Zap className="w-4 h-4 text-blue-400" />
+                        <CircleUser className="w-4 h-4 text-blue-400" />
                         <span className="text-sm text-blue-300">Contact Our AI Team</span>
                     </div>
                     
@@ -75,7 +145,7 @@ function ContactPage() {
                     <div className="p-0.5 rounded-3xl bg-gradient-to-br from-blue-700/50 via-gray-800 to-cyan-700/50 shadow-2xl shadow-blue-900/50">
                         <div className="grid grid-cols-1 lg:grid-cols-3 gap-0 bg-gray-900 rounded-[calc(1.5rem-2px)] divide-y lg:divide-y-0 lg:divide-x divide-gray-800">
                         
-                            {/* Left Column: Contact Information - Menggunakan gradient background ringan */}
+                            {/* Left Column: Contact Information */}
                             <div className="lg:col-span-1 space-y-8 p-8 md:p-12 
                                             bg-gradient-to-br from-gray-900 to-gray-800/50 rounded-t-[calc(1.5rem-2px)] lg:rounded-l-[calc(1.5rem-2px)] lg:rounded-tr-none">
                                 <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent pb-4 mb-4">
@@ -119,46 +189,79 @@ function ContactPage() {
 
                             <div className="lg:col-span-2 p-8 md:p-12">
                                 <h2 className='text-md font-semibold text-white pb-2'>Let's get to know you</h2>
-                                <form className="space-y-6">
+                                
+                                {/* Form Submission Feedback */}
+                                {message.text && (
+                                    <div className={`p-4 mb-6 rounded-lg font-medium ${message.type === 'success' ? 'bg-green-600/20 text-green-300 border border-green-700' : 'bg-red-600/20 text-red-300 border border-red-700'}`}>
+                                        {message.text}
+                                    </div>
+                                )}
+
+                                {/* FORM */}
+                                <form onSubmit={handleSubmit} className="space-y-6">
                                     
-                                    {/* Row 1: First Name and Last Name (NEW) */}
+                                    {/* Row 1: First Name and Last Name */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <InputComponent id="firstName" label="First Name" type="text" placeholder="Enter your first name" required={true} />
-                                        <InputComponent id="lastName" label="Last Name" type="text" placeholder="Enter your last name" required={true} />
+                                        <InputComponent id="firstName" label="First Name" type="text" placeholder="Enter your first name" required={true} value={formData.firstName} onChange={handleChange} />
+                                        <InputComponent id="lastName" label="Last Name" type="text" placeholder="Enter your last name" required={true} value={formData.lastName} onChange={handleChange} />
                                     </div>
                                     
-                                    {/* Row 2: Your Role and Website (NEW) */}
+                                    {/* Row 2: Your Role and Website */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <InputComponent id="role" label="Your Role within Organization" type="text" placeholder="e.g., CTO, Head of AI" required={true} />
-                                        <InputComponent id="website" label="Website (Optional)" type="url" placeholder="https://www.company.com" required={false} />
+                                        <InputComponent id="role" label="Your Role within Organization" type="text" placeholder="e.g., CTO, Head of AI" required={true} value={formData.role} onChange={handleChange} />
+                                        {/* PERBAIKAN: Mengubah type="url" menjadi type="text" */}
+                                        <InputComponent 
+                                            id="website" 
+                                            label="Website (Optional)" 
+                                            type="text" 
+                                            placeholder="e.g., www.company.com or https://www.company.com" 
+                                            required={false} 
+                                            value={formData.website} 
+                                            onChange={handleChange} 
+                                        />
                                     </div>
 
                                     {/* Row 3: Work Email and Company Name */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <InputComponent id="email" label="Work Email" type="email" placeholder="example@company.com" required={true} />
-                                        <InputComponent id="company" label="Company Name" type="text" placeholder="Your Company Name" required={true} />
+                                        <InputComponent id="email" label="Work Email" type="email" placeholder="example@company.com" required={true} value={formData.email} onChange={handleChange} />
+                                        <InputComponent id="company" label="Company Name" type="text" placeholder="Your Company Name" required={true} value={formData.company} onChange={handleChange} />
                                     </div>
                                     
-                                    {/* Row 4: Company Size (Dipertahankan) */}
+                                    {/* Row 4: Company Size */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <SelectComponent 
-                                            id="company-size" 
+                                            id="companySize" // ID harus sesuai dengan key di formData
                                             label="Company Size (Number of Employees)" 
                                             options={employeeOptions} 
                                             required={true}
                                             selectStyle={selectStyle} 
+                                            value={formData.companySize}
+                                            onChange={handleChange} 
                                         />
                                         {/* Kolom kosong untuk menjaga tata letak 2 kolom */}
                                         <div></div> 
                                     </div>
 
                                     {/* Row 5: Tell us about your project... */}
-                                    <TextareaComponent id="project-desc" label="How Can We Help?" placeholder="Describe your AI needs, current challenges, and goals..." required={true}/>
+                                    <TextareaComponent id="projectDesc" label="How Can We Help?" placeholder="Describe your AI needs, current challenges, and goals..." required={true} value={formData.projectDesc} onChange={handleChange}/>
                                     
                                     {/* Submit Button */}
-                                    <button type="submit" className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-[1.01] shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2">
-                                        <span>Send Consultation Request</span>
-                                        <ArrowRight size={20} />
+                                    <button 
+                                        type="submit" 
+                                        disabled={isSubmitting}
+                                        className="w-full px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-[1.01] shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                                    >
+                                        {isSubmitting ? (
+                                            <>
+                                                <Loader className="animate-spin w-5 h-5" />
+                                                <span>Sending Request...</span>
+                                            </>
+                                        ) : (
+                                            <>
+                                                <span>Send Consultation Request</span>
+                                                <ArrowRight size={20} />
+                                            </>
+                                        )}
                                     </button>
                                 </form>
                             </div>
@@ -170,8 +273,8 @@ function ContactPage() {
     );
 }
 
-// Reusable Input Component (Standardized Style)
-const InputComponent = ({ id, label, type = 'text', placeholder, required = false }: InputComponentProps) => (
+// Reusable Input Component
+const InputComponent = ({ id, label, type = 'text', placeholder, required = false, value, onChange }: InputComponentProps) => (
     <div>
         <label htmlFor={id} className="block text-sm font-medium text-gray-300 mb-2">
             {label} {required && <span className="text-red-500">*</span>}
@@ -181,7 +284,8 @@ const InputComponent = ({ id, label, type = 'text', placeholder, required = fals
             id={id}
             placeholder={placeholder}
             required={required}
-            // Perubahan Styling: Menghapus outline dan mengubah fokus ring
+            value={value}
+            onChange={onChange}
             className="w-full px-4 py-3 bg-gray-800/80 border border-gray-700 rounded-xl text-white placeholder-gray-500 
                        focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:outline-none transition-all duration-200"
         />
@@ -189,7 +293,7 @@ const InputComponent = ({ id, label, type = 'text', placeholder, required = fals
 );
 
 // Reusable Textarea Component
-const TextareaComponent = ({ id, label, placeholder, required = false }: TextareaComponentProps) => (
+const TextareaComponent = ({ id, label, placeholder, required = false, value, onChange }: TextareaComponentProps) => (
     <div>
         <label htmlFor={id} className="block text-sm font-medium text-gray-300 mb-2">
             {label} {required && <span className="text-red-500">*</span>}
@@ -199,15 +303,16 @@ const TextareaComponent = ({ id, label, placeholder, required = false }: Textare
             rows={4}
             placeholder={placeholder}
             required={required}
-            // Perubahan Styling: Menghapus outline dan mengubah fokus ring
+            value={value}
+            onChange={onChange}
             className="w-full px-4 py-3 bg-gray-800/80 border border-gray-700 rounded-xl text-white placeholder-gray-500 
                        focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:outline-none transition-all duration-200 resize-none"
         ></textarea>
     </div>
 );
 
-// Komponen Select (diperbarui untuk menerima custom style panah dropdown)
-const SelectComponent = ({ id, label, options, required = false, selectStyle }: SelectComponentProps & { selectStyle: React.CSSProperties }) => (
+// Komponen Select
+const SelectComponent = ({ id, label, options, required = false, selectStyle, value, onChange }: SelectComponentProps) => (
     <div>
         <label htmlFor={id} className="block text-sm font-medium text-gray-300 mb-2">
             {label} {required && <span className="text-red-500">*</span>}
@@ -215,15 +320,17 @@ const SelectComponent = ({ id, label, options, required = false, selectStyle }: 
         <select
             id={id}
             required={required}
+            value={value}
+            onChange={onChange}
             className="w-full px-4 py-3 bg-gray-800/80 border border-gray-700 rounded-xl text-white appearance-none focus:ring-2 focus:ring-blue-500/50 focus:border-blue-500 focus:outline-none transition-all duration-200"
             style={selectStyle} 
         >
             {options.map((option) => (
                 <option 
-                    key={option.value} 
+                    key={option.value || 'default'} // Tambahkan 'default' key untuk opsi pertama yang kosong
                     value={option.value} 
-                    // Mengatur warna teks opsi agar terlihat gelap di menu dropdown
                     className="text-gray-900 bg-gray-200"
+                    disabled={option.value === ''} // Membuat opsi 'Select' tidak dapat dipilih
                 >
                     {option.label}
                 </option>

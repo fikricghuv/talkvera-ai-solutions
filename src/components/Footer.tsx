@@ -4,21 +4,29 @@ import { Link } from 'react-router-dom';
 
 function Footer() {
 
-  const navLinks = [
-    { label: 'About Us', path: '/about' },
-    // Navigasi Case Studies diarahkan ke rute Docs yang spesifik
-    { label: 'Case Studies', path: '/docs/case-studies/overview' }, 
+  const links = [
+    { label: 'Home', path: '/home' },
+    { label: 'Contact Us', path: '/contact' },
+    { label: 'Pricing', path: '/pricing' },
   ];
 
   const resourceLinks = [
-    { label: 'Documentation', path: '/docs' },
-    { label: 'Pricing', path: '/pricing' },
+    { label: 'Docs', path: '/docs/introduction' },
+    { label: 'Case Studies', path: '/docs/case-studies/overview' },
   ];
+
+  const companyLinks = [
+    { label: 'About Us', path: '/about' },
+  ];
+
+  const getStartedLink = [
+    { label: 'Get Started', desc: 'Learn more about how we can make your business grow.' },
+  ]
 
   return (
     <footer className="bg-[#0a0a0a] border-t border-gray-800">
       <div className="max-w-7xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
+        <div className="grid grid-cols-1 md:grid-cols-6 gap-8 mb-8">
           <div className="col-span-1">
             <Link to="/" className="flex items-center space-x-2 mb-4 group">
               <img
@@ -28,14 +36,14 @@ function Footer() {
               />
             </Link>
             <p className="text-sm text-gray-400">
-              Building intelligent AI solutions for business growth with secure and compliant protocols.
+              Transforming businesses through intelligent AI solutions.
             </p>
           </div>
 
           <div>
-            <h3 className="font-semibold text-white mb-4">Company</h3>
+            <h3 className="font-semibold text-white mb-4">Links</h3>
             <ul className="space-y-2">
-              {navLinks.map((link) => (
+              {links.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
@@ -52,6 +60,22 @@ function Footer() {
             <h3 className="font-semibold text-white mb-4">Resources</h3>
             <ul className="space-y-2">
               {resourceLinks.map((link) => (
+                <li key={link.path}>
+                  <Link
+                    to={link.path}
+                    className="text-sm text-gray-400 hover:text-blue-400 transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="font-semibold text-white mb-4">Company</h3>
+            <ul className="space-y-2">
+              {companyLinks.map((link) => (
                 <li key={link.path}>
                   <Link
                     to={link.path}
@@ -89,6 +113,23 @@ function Footer() {
                 </a>
             </div>
           </div>
+
+          <div>
+            <h3 className="font-semibold text-white mb-4">Get Started</h3>
+            {getStartedLink.map((item, index) => (
+              <p key={index} className="text-sm text-gray-400 mb-4">
+                {item.desc}
+              </p>
+            ))}
+
+            <Link 
+                to="/contact" 
+                className="inline-block px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30"
+            >
+                Get Started
+            </Link>
+          </div>
+
         </div>
 
         <div className="pt-8 border-t border-gray-800 flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
@@ -96,12 +137,12 @@ function Footer() {
             © 2025 TalkVera. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <a href="#" className="text-sm text-gray-500 hover:text-blue-400 transition-colors">
+            <Link to="/privacy"  className="text-sm text-gray-500 hover:text-blue-400 transition-colors">
               Privacy Policy
-            </a>
-            <a href="#" className="text-sm text-gray-500 hover:text-blue-400 transition-colors">
+            </Link>
+            {/* <Link to="/termcondition" className="text-sm text-gray-500 hover:text-blue-400 transition-colors">
               Terms of Service
-            </a>
+            </Link> */}
           </div>
         </div>
       </div>

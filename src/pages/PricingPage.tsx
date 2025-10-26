@@ -1,5 +1,6 @@
-import { Check, Zap, Rocket, Building2, User, Target, Layers, TrendingUp, Compass, Globe, Clock } from 'lucide-react';
+import { Check, MessagesSquare, Tag, User, FlaskConical, Settings, Layers, TrendingUp, Palette, Globe, Clock, Puzzle } from 'lucide-react';
 import CtaContent from '../components/Cta';
+import { Link } from 'react-router-dom';
 
 import { useNavigate } from 'react-router-dom';
 
@@ -33,12 +34,12 @@ function PricingPage() {
   ];
 
   const partnership = [
-    { icon: User, name: 'AI/ML Engineers' },
-    { icon: Target, name: 'Business Process Consultants' },
-    { icon: Layers, name: 'Data Scientists' },
-    { icon: Compass, name: 'Solution Architects' },
-    { icon: Clock, name: 'Project Managers' },
-    { icon: Globe, name: 'UI/UX Specialists' },
+    { icon: Settings, name: 'AI/ML Engineers' },
+    { icon: MessagesSquare, name: 'Business Process Consultants' },
+    { icon: FlaskConical, name: 'Data Scientists' },
+    { icon: Puzzle, name: 'Solution Architects' },
+    { icon: User, name: 'Project Managers' },
+    { icon: Palette, name: 'UI/UX Specialists' },
   ];
 
   const processes = [
@@ -54,7 +55,7 @@ function PricingPage() {
         <div className="max-w-7xl mx-auto px-6">
           <div className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-8">
-              <Zap className="w-4 h-4 text-blue-400" />
+              <Tag className="w-4 h-4 text-blue-400" />
               <span className="text-sm text-blue-300">Flexible Pricing Plans</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent leading-tight">
@@ -139,6 +140,31 @@ function PricingPage() {
                     ))}
                 </div>
             </div>
+          
+          <div className="mt-24">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">Post-Deployment Solution Management</h2>
+                <br />
+                <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
+                  <p>
+                    Launching your AI solution is just the beginning. At Talkvera, we offer comprehensive post-deployment support to ensure your systems continue to perform reliably as your business evolves.
+                  </p>
+                  <p>
+                    From ongoing system monitoring and performance optimization to adapting workflows as new challenges arise, our team stays engaged to keep your AI solutions running at peak efficiency.
+                  </p>
+                </div>
+              </div>
+              {/* Box Highlighted di Samping Kanan */}
+              <div className="relative p-1 bg-gradient-to-br from-blue-500/50 to-cyan-500/50 rounded-3xl shadow-2xl shadow-blue-500/20">
+                <img
+                  src="/assets/peoples-do-programming.jpg" 
+                  alt="People working on programming"
+                  className="w-full h-full object-cover rounded-[1.4rem]" 
+                />
+              </div>
+            </div>
+          </div>
 
           <div className="mt-24">
             <div className="text-center mb-12">
@@ -169,6 +195,15 @@ function PricingPage() {
                   </h3>
                 </div>
               ))}
+            </div>
+            <div className='text-center mt-12'>
+              <Link 
+                  to="/contact" 
+                  className="inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold 
+                  rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 "
+              >
+                  Get Started
+              </Link>
             </div>
           </div>
 

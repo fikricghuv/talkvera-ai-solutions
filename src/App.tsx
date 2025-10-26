@@ -7,6 +7,8 @@ import PricingPage from './pages/PricingPage';
 import AboutPage from './pages/AboutPage';
 import DocsPage from './pages/DocsPage'; 
 import ContactPage from './pages/ContactPage';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermAndCondition';
 
 // Buat komponen wrapper untuk menangani window.scrollTo, 
 // karena React Router tidak melakukannya secara default
@@ -25,6 +27,7 @@ function AppContent() {
   // Gunakan useLocation untuk menentukan halaman saat ini (untuk Header/Footer)
   const location = useLocation();
   const isDocsPage = location.pathname.startsWith('/docs');
+  const isPrivacyPage = location.pathname.startsWith('/privacy');
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100">
@@ -40,12 +43,13 @@ function AppContent() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/docs/*" element={<DocsPage />} /> 
-          
+          <Route path="/privacy" element={<PrivacyPolicy />} /> 
+          <Route path="/termcondition" element={<TermsAndConditions />} /> 
           <Route path="*" element={<HomePage />} /> 
         </Routes>
       </main>
       
-      {!isDocsPage && <Footer />}
+      {!isDocsPage && !isPrivacyPage &&  <Footer />}
     </div>
   );
 }

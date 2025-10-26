@@ -44,13 +44,6 @@ function AboutPage() {
     }
   ];
 
-  const stats = [
-    { number: '150+', label: 'Team Members' },
-    { number: '500+', label: 'Projects Delivered' },
-    { number: '50+', label: 'Enterprise Clients' },
-    { number: '95%', label: 'Client Retention' },
-  ];
-
   return (
     <div className="pt-16">
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -73,21 +66,13 @@ function AboutPage() {
               We're on a mission to democratize AI and empower businesses of all sizes to harness the transformative power of artificial intelligence.
             </p>
           </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-20">
-            {stats.map((stat, index) => (
-              <div key={index} className="text-center">
-                <div className="text-5xl font-bold text-blue-400 mb-2">{stat.number}</div>
-                <div className="text-gray-400">{stat.label}</div>
-              </div>
-            ))}
-          </div>
         </div>
       </section>
 
       <section className="bg-gradient-to-b from-gray-900/30 to-transparent">
         <div className="max-w-7xl mx-auto px-6 pt-10">
           <div className="mb-24">
+            <h2 className="text-4xl font-bold mb-12 text-center">Our Vision</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="p-8 text-center">
                 <div className='flex justify-center'>

@@ -1,6 +1,6 @@
 import { Bot, Workflow, BarChart3, Shield, Lock, Star, ArrowRight, Zap, Rocket, Brain, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom'; 
+import { useNavigate } from 'react-router-dom'; 
 import StarField from '../components/StarFieldAnimation';
 import CtaContent from '../components/Cta';
 
@@ -48,19 +48,19 @@ function HomePage() {
   const processSteps = [
     {
       number: "1",
-      title: "Discovery & Strategy",
+      title: "Discovery",
       description: "We begin by understanding your vision, goals, and requirements. Through collaborative discussions and research, we lay the foundation for your project's success.",
       icon: Brain,
     },
     {
       number: "2",
-      title: "Model Development",
+      title: "Development",
       description: "Our team transforms ideas into reality through agile development. We build, test, and iterate, ensuring your solution meets the highest standards of quality and performance.",
       icon: Workflow,
     },
     {
       number: "3",
-      title: "Deployment & Scale",
+      title: "Deployment",
       description: "We carefully launch your solution, ensuring a smooth transition to production. Our team provides ongoing support and optimization to keep your system running at its best.",
       icon: Rocket,
     },
@@ -125,7 +125,7 @@ function HomePage() {
 
           <div className="mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
             <div>
-              <div className="text-4xl font-bold text-blue-400 mb-2">500+</div>
+              <div className="text-4xl font-bold text-blue-400 mb-2">50+</div>
               <div className="text-sm text-gray-500">AI Agents Deployed</div>
             </div>
             <div>
@@ -293,11 +293,11 @@ function HomePage() {
       {/* SECTION 4: Real Results from Real Clients (Diperbarui) */}
       <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
           <div className="max-w-7xl mx-auto px-6">
-              <div className="text-center mb-16">
+              <div className="text-left mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4">
                       Real Results from Real Clients
                   </h2>
-                  <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                  <p className="text-xl text-gray-400 max-w-2xl">
                       See how TalkVera has helped businesses achieve unprecedented growth and efficiency.
                   </p>
               </div>

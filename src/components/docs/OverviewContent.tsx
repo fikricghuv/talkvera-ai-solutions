@@ -64,7 +64,7 @@ const OverviewContent = () => {
 
             {/* Available Templates */}
             <section>
-              <div className="grid grid-cols-1 gap-8">
+              <div className="grid grid-cols-1 gap-10">
                 {caseStudies.map((item, i) => (
                   <div 
                     key={i}

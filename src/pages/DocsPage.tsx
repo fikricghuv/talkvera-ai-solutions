@@ -1,9 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Book, Network, Workflow, FileText, BookOpenText, ChevronRight, ChevronLeft } from 'lucide-react';
-// Import hooks dari React Router DOM
 import { useParams, useNavigate, Link } from 'react-router-dom'; 
-
-// Import komponen konten (biarkan sama)
 import IntroductionContent from '../components/docs/IntroductionContent';
 import UltimateAssistantContent from '../components/docs/UltimateAssistantContent';
 import RagPipelineContent from '../components/docs/RagPipelineContent';
@@ -13,28 +10,9 @@ import ProcessContent from '../components/docs/ProcessContent';
 import TechStackContent from '../components/docs/TechStackContent';
 import OverviewContent from '../components/docs/OverviewContent';
 
-function DocsPage() {
-  const { '*': currentPath } = useParams<{ '*': string }>(); 
-  const navigate = useNavigate();
-  
-  const currentSectionID = currentPath?.split('/').pop() || 'introduction'; 
+const DOCS_BASE_PREFIX = "/docs"; 
 
-  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
-  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
-
-  // --- START FIX: Penambahan Base Path dan Helper Function ---
-  // ASUMSI: Rute utama untuk dokumentasi adalah '/docs'. Ubah ini jika base route Anda berbeda.
-  const DOCS_BASE_PREFIX = "/docs"; 
-
-  // Fungsi helper untuk membuat path absolut penuh
-  const getFullDocPath = (segment: string) => {
-    // Pastikan path diawali dengan prefix dan hapus potensi double-slash
-    return `${DOCS_BASE_PREFIX}/${segment}`.replace(/\/\/+/g, '/');
-  };
-  // --- END FIX ---
-
-
-  const navigation = [
+const navigation = [
     { id: 'introduction', label: 'Introduction', icon: Book, path: 'introduction' },
     { id: 'tech-stack', label: 'Technology Stack', icon: Network, path: 'tech-stack' },
     { id: 'process', label: 'Our Process', icon: Workflow, path: 'process' },
@@ -54,32 +32,63 @@ function DocsPage() {
         { id: 'generate-test-case', label: 'Generate Test Scenario', path: 'case-studies/generate-test-case' },
       ],
     },
-  ];
+];
+
+const getAllValidSectionIDs = (): Set<string> => {
+    const ids = new Set<string>();
+    
+    navigation.forEach(item => {
+        ids.add(item.id);
+        item.children?.forEach(child => ids.add(child.id));
+    });
+
+    return ids;
+};
+
+const VALID_SECTION_IDS = getAllValidSectionIDs();
+
+function DocsPage() {
+  const { '*': currentPath } = useParams<{ '*': string }>(); 
+  const navigate = useNavigate();
+  
+  const currentSectionID = currentPath?.split('/').pop() || 'introduction'; 
+
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+  const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  // Fungsi helper untuk membuat path absolut penuh
+  const getFullDocPath = (segment: string) => {
+    // Pastikan path diawali dengan prefix dan hapus potensi double-slash
+    return `${DOCS_BASE_PREFIX}/${segment}`.replace(/\/\/+/g, '/');
+  };
 
   useEffect(() => {
+
+    if (!currentPath || currentPath === 'docs') {
+      navigate(getFullDocPath('introduction'), { replace: true });
+      return; 
+    }
+    
+    if (!VALID_SECTION_IDS.has(currentSectionID)) {
+        console.warn(`Path dokumentasi tidak ditemukan: ${currentSectionID}. Mengarahkan ke Not Found.`);
+        navigate('/non-existent-path-for-catch-all', { replace: true }); 
+        return; 
+    }
+
     const showcaseParent = navigation.find(item => item.id === 'customer-showcase');
     
     if (currentPath?.startsWith(showcaseParent?.basePath || '')) {
       setOpenDropdown('customer-showcase');
     } else {
-      setOpenDropdown(null); 
-    }
-
-    // Default ke introduction jika path kosong
-    if (!currentPath || currentPath === 'docs') {
-      // Gunakan navigate dengan path absolut
-      navigate(getFullDocPath('introduction'), { replace: true });
+      const currentIsMainItem = navigation.some(item => item.id === currentSectionID);
+      if (currentIsMainItem) {
+        setOpenDropdown(null); 
+      }
     }
   }, [currentPath, navigate]);
 
   const toggleDropdown = (id: string): void => {
-      const isCurrentlyActive = currentPath?.startsWith(navigation.find(i => i.id === id)?.basePath || '');
-      
-      if (isCurrentlyActive && openDropdown === id) {
-          setOpenDropdown(null); 
-          return;
-      }
-      
+      // Logic untuk toggle sudah cukup baik, biarkan
       setOpenDropdown(openDropdown === id ? null : id);
   };
 
@@ -88,6 +97,10 @@ function DocsPage() {
   };
 
   const renderContent = () => {
+    if (!VALID_SECTION_IDS.has(currentSectionID)) {
+        return null; 
+    }
+
     switch (currentSectionID) {
       case 'introduction':
         return <IntroductionContent />;

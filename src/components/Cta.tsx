@@ -27,9 +27,10 @@ const CtaContent: React.FC = () => {
                 {/* 2. Logo (Kanan) */}
                 <div className="flex-shrink-0 order-first md:order-last mb-6 md:mb-0">
                     <img
-                        src="/assets/just-logo.svg" 
+                        src="/assets/cyan-blue-logo.svg" 
+                        // src="/assets/just-logo.svg" 
                         alt="TalkVera Logo"
-                        className="w-100 h-100"
+                        className="w-48 h-48"
                     />
               </div>
           </div>

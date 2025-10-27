@@ -30,7 +30,7 @@ function Footer() {
           <div className="col-span-1">
             <Link to="/" className="flex items-center space-x-2 mb-4 group">
               <img
-                  src='/assets/logo-talkvera-white.svg'
+                  src='/assets/full-logo-cyan-blue.svg'
                   alt="TalkVera Logo"
                   className="h-8 w-auto transition-opacity group-hover:opacity-80"
               />

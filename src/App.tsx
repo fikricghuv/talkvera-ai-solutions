@@ -9,6 +9,7 @@ import DocsPage from './pages/DocsPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermAndCondition';
+import NotFoundPage from './pages/NotFoundPage';
 
 const BASE_TITLE = "Talkvera: AI Solution";
 
@@ -66,14 +67,16 @@ function AppContent() {
   const isDocsPage = location.pathname.startsWith('/docs');
   const isPrivacyPage = location.pathname.startsWith('/privacy');
   const isTermsPage = location.pathname.startsWith('/termcondition'); 
+  const isNotFoundsPage = location.pathname.startsWith('/notfound'); 
 
   const shouldHideFooter = isDocsPage || isPrivacyPage || isTermsPage;
+  const shouldHideHeader = isNotFoundsPage;
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100">
       <TitleUpdater /> 
       <ScrollToTop /> 
-      <Header /> 
+      {!shouldHideHeader && <Header />}
       
       <main>
         
@@ -86,11 +89,13 @@ function AppContent() {
           <Route path="/docs/*" element={<DocsPage />} /> 
           <Route path="/privacy" element={<PrivacyPolicy />} /> 
           <Route path="/termcondition" element={<TermsAndConditions />} /> 
-          <Route path="*" element={<HomePage />} /> 
+          <Route path="/*" element={<Navigate to="/notfound" replace />} /> 
+          <Route path="/notfound" element={<NotFoundPage />} /> 
         </Routes>
       </main>
       
       {!shouldHideFooter && <Footer />}
+      
     </div>
   );
 }

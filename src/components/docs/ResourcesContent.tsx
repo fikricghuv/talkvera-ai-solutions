@@ -1,14 +1,13 @@
 const ResourcesContent = () => {
     return (
-        <div className="space-y-12">
-            <h1 className="text-4xl font-bold mb-6">Additional Resources</h1>
-            <p className="text-xl mb-10">
-              Technical references and troubleshooting insights to support engineering teams, partners, and technical buyers working with TalkVera systems.
+        <div className="space-y-6 text-left">
+            <h1 className="text-4xl font-bold mb-2">Additional Resources</h1>
+            <p className="mb-2 mt-1">
+              Technical references and troubleshooting insights to support engineering teams, partners, and technical buyers working with Talkvera systems.
             </p>
 
-            {/* Technical FAQ & Troubleshooting Guide */}
             <section>
-              <h2 className="text-2xl font-semibold mb-3">Technical FAQ & Troubleshooting Guide</h2>
+              <h2 className="text-2xl font-semibold mb-4">Technical FAQ & Troubleshooting Guide</h2>
               <p className="mb-4">
                 This section addresses common technical, implementation, and product-related questions. Topics include system maintainability, LLM behavior, hosting options, multilingual support, and RAG implementations.
               </p>
@@ -23,7 +22,7 @@ const ResourcesContent = () => {
 
             {/* Infrastructure & DevOps */}
             <section>
-              <h2 className="text-2xl font-semibold mb-3">Infrastructure & DevOps</h2>
+              <h2 className="text-2xl font-semibold mb-4">Infrastructure & DevOps</h2>
               <p className="mb-4">
                 We use modern infrastructure practices to ensure reliability and security in every deployment. CI/CD, environment provisioning, and secure configuration are built into our DevOps workflows.
               </p>
@@ -36,7 +35,7 @@ const ResourcesContent = () => {
 
             {/* Troubleshooting & Edge Cases */}
             <section>
-              <h2 className="text-2xl font-semibold mb-3">Troubleshooting & Edge Cases</h2>
+              <h2 className="text-2xl font-semibold mb-4">Troubleshooting & Edge Cases</h2>
               <p className="mb-4">
                 In cases of inconsistent responses or latency issues, we provide structured diagnostics and fallback mechanisms to maintain stability.
               </p>
@@ -48,7 +47,7 @@ const ResourcesContent = () => {
 
             {/* Glossary */}
             <section>
-              <h2 className="text-2xl font-semibold mb-3">Glossary: Key Terminology</h2>
+              <h2 className="text-2xl font-semibold mb-4">Glossary: Key Terminology</h2>
               <p className="mb-4">
                 Quick reference for foundational AI and system design terminology.
               </p>

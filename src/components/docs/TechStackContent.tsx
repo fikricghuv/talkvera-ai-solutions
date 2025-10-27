@@ -33,13 +33,13 @@ const TechStackContent = () => {
               <li><strong className="text-white">PostgreSQL:</strong> Our primary structured database — robust, scalable, and reliable.</li>
               <li><strong className="text-white">Vector Databases:</strong> Tools like <strong>Pinecone</strong>, <strong>Weaviate</strong>, and <strong>Qdrant</strong> enable semantic search and contextual understanding in AI systems.</li>
               <li><strong className="text-white">API Key Provisioning:</strong> Dedicated, scoped keys per client project for secure access control.</li>
-              <li><strong className="text-white">Internal Developer Tooling:</strong> Custom scripts, CLI tools, and integrations with <strong>ClickUp</strong> and <strong>GitHub</strong> to maintain operational efficiency.</li>
+              <li><strong className="text-white">Internal Developer Tooling:</strong> Custom scripts, CLI tools, and integrations with <strong>GitHub</strong> to maintain operational efficiency.</li>
             </ul>
 
             <h2 className="text-3xl font-semibold mt-12 mb-4">Programming & Integrations</h2>
             <p>
               Our development process is shaped by tools that enable <strong className="text-white">rapid iteration</strong>, 
-              <strong className="text-white"> intelligent automation</strong>, and <strong className="text-white">deep integration</strong> 
+              <strong className="text-white"> intelligent automation</strong>, and <strong className="text-white">deep integration </strong> 
               with external systems.
             </p>
 
@@ -62,8 +62,8 @@ const TechStackContent = () => {
             <p>
               We take a <strong className="text-white">model-agnostic</strong> approach to AI — benchmarking across providers 
               to select the best-performing model based on your goals. Whether optimizing for 
-              <strong className="text-white"> speed</strong>, <strong className="text-white">precision</strong>, 
-              <strong className="text-white">cost-efficiency</strong>, or <strong className="text-white">multilingual output</strong>, 
+              <strong className="text-white"> speed</strong>, <strong className="text-white"> precision</strong>, 
+              <strong className="text-white"> cost-efficiency</strong>, or <strong className="text-white">multilingual output</strong>, 
               we tailor each deployment for maximum impact.
             </p>
 

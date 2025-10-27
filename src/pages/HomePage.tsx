@@ -68,19 +68,19 @@ function HomePage() {
 
   const testimonials = [
     {
-      quote: 'TalkVera transformed our customer service operations. The AI agents handle 80% of inquiries autonomously, freeing our team for complex issues.',
+      quote: 'TalkVera completely transformed our first-level customer support. Within two weeks of implementation, the AI autonomously managed 78% of incoming basic inquiries, drastically reducing our agent queue times.',
       author: 'Sarah Mitchell',
-      role: 'CTO, TechForward Inc',
+      role: 'CTO, Innovatech Solutions',
     },
     {
-      quote: 'The automation pipelines reduced our processing time by 60%. The ROI was evident within the first quarter of implementation.',
+      quote: 'The integration with our CRM was seamless. Their automation pipelines immediately shaved 45% off our average ticket resolution time, allowing us to refocus our human agents on high-value, complex client issues.',
       author: 'James Chen',
-      role: 'Operations Director, GlobalLogistics',
+      role: 'Director of Operations, FutureLogistics',
     },
     {
-      quote: 'Outstanding security and compliance features. TalkVera helped us meet stringent regulatory requirements while improving efficiency.',
-      author: 'Maria Rodriguez',
-      role: 'Head of Compliance, FinanceHub',
+      quote: 'Before TalkVera, our onboarding process took 48 hours. The automation tools cut that down to under 5 hours. This immediate improvement in efficiency has allowed us to scale without needing to hire a larger support team.',
+      author: 'David Lee',
+      role: 'VP of Customer Success, Synergy Services',
     },
   ];
 
@@ -295,7 +295,7 @@ function HomePage() {
           <div className="max-w-7xl mx-auto px-6">
               <div className="text-left mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4">
-                      Real Results from Real Clients
+                      What People Are Saying About TalkVera
                   </h2>
                   <p className="text-xl text-gray-400 max-w-2xl">
                       See how TalkVera has helped businesses achieve unprecedented growth and efficiency.

@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom'; // Import yang dibutuhkan
+import { BrowserRouter, Routes, Route, useLocation, Navigate } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import HomePage from './pages/HomePage';
@@ -10,27 +10,68 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import TermsAndConditions from './pages/TermAndCondition';
 
-// Buat komponen wrapper untuk menangani window.scrollTo, 
-// karena React Router tidak melakukannya secara default
+const BASE_TITLE = "Talkvera: AI Solution";
+
+const ROUTE_TITLES = {
+    '/home': 'Home',
+    '/pricing': 'Pricing',
+    '/about': 'About Us',
+    '/contact': 'Contact Us',
+    '/docs': 'Docs',
+    '/privacy': 'Privacy',
+    '/termcondition': 'Terms & Conditions',
+    '*': 'Page Not Found',
+};
+
+/**
+ * Komponen untuk mengatur judul dokumen berdasarkan rute saat ini.
+ */
+function TitleUpdater() {
+    const location = useLocation();
+
+    useEffect(() => {
+        const pathname = location.pathname;
+        let pageTitle = '';
+
+        if (pathname.startsWith('/docs')) {
+            pageTitle = ROUTE_TITLES['/docs'];
+        } else {
+            const normalizedPath = pathname === '/' ? '/home' : pathname.toLowerCase();
+            
+            pageTitle = ROUTE_TITLES[normalizedPath as keyof typeof ROUTE_TITLES] || ROUTE_TITLES['*'];
+        }
+        document.title = `${pageTitle} - ${BASE_TITLE}`;
+    }, [location.pathname]);
+
+    return null;
+}
+
+/**
+ * Komponen untuk menggulir ke atas saat navigasi.
+ */
 function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, [pathname]); // Scroll ke atas setiap kali path berubah
+  }, [pathname]);
 
   return null;
 }
 
-// Pisahkan komponen App menjadi dua: AppContent (yang berisi rute) dan AppWrapper (yang berisi BrowserRouter)
+// --- Komponen Utama dengan Routing ---
 function AppContent() {
-  // Gunakan useLocation untuk menentukan halaman saat ini (untuk Header/Footer)
   const location = useLocation();
+  
   const isDocsPage = location.pathname.startsWith('/docs');
   const isPrivacyPage = location.pathname.startsWith('/privacy');
+  const isTermsPage = location.pathname.startsWith('/termcondition'); 
+
+  const shouldHideFooter = isDocsPage || isPrivacyPage || isTermsPage;
 
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-gray-100">
+      <TitleUpdater /> 
       <ScrollToTop /> 
       <Header /> 
       
@@ -49,7 +90,7 @@ function AppContent() {
         </Routes>
       </main>
       
-      {!isDocsPage && !isPrivacyPage &&  <Footer />}
+      {!shouldHideFooter && <Footer />}
     </div>
   );
 }

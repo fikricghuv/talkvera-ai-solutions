@@ -15,12 +15,7 @@ const IntroductionContent = () => {
                     Each major category in this documentation is presented as a dropdown menu, containing
                     detailed subpages for each topic. Use the sidebar or top navigation to explore areas like
                     <span className="text-white font-medium"> "Technology Stack", "Our Process", </span>and
-                    <span className="text-white font-medium"> "AI Agents".</span> If you're searching for
-                    something specific, use the built-in search feature or press
-                    <span className="text-white font-medium"> Command + K </span>
-                    to activate our <span className="text-white font-medium">Ask AI</span> tool, which can
-                    answer questions, suggest resources, or point you directly to relevant sections of the
-                    documentation.
+                    <span className="text-white font-medium"> "AI Agents".</span> 
                 </p>
             </div>
 
@@ -43,11 +38,10 @@ const IntroductionContent = () => {
                     can scope the engagement and align you with the right solutions.
                 </p>
                 <p className=" leading-relaxed">
-                    Currently, TalkVera works on a partnership plan that starts at
-                    <span className="text-white font-medium"> $20,000/month.</span> If your project is smaller
-                    in scope or budget, we recommend visiting our
-                    <span className="text-white font-medium"> Pricing Page </span>
-                    to explore available options.
+                    We specialize in building tailored AI automation solutions for enterprises. Because every 
+                    business's needs are unique, we don't offer fixed packages. Instead, we conduct a 
+                    <span className="text-white font-medium"> comprehensive 
+                    technical assessment </span>to provide a customized proposal and detailed investment outline.
                 </p>
             </div>
 

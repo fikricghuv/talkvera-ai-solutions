@@ -5,7 +5,7 @@ const ProcessContent = () => {
 
             <div className="space-y-8 leading-relaxed">
               <section>
-                <h2 className="text-2xl text-white mb-2">Initial Discovery</h2>
+                <h2 className="text-2xl text-white mb-4">Initial Discovery</h2>
                 <p>
                   At Talkvera, we see ourselves not just as service providers—but as long-term
                   strategic partners in your AI transformation journey. We take a deeply consultative
@@ -19,7 +19,7 @@ const ProcessContent = () => {
               </section>
 
               <section>
-                <h2 className="text-2xl text-white mb-2">Organizational Understanding</h2>
+                <h2 className="text-2xl text-white mb-4">Organizational Understanding</h2>
                 <p>
                   We begin by immersing ourselves in your team's world—learning how your company operates
                   today and where you're heading tomorrow. We spend time understanding:
@@ -33,7 +33,7 @@ const ProcessContent = () => {
               </section>
 
               <section>
-                <h2 className="text-2xl text-white mb-2">Strategic Roadmapping</h2>
+                <h2 className="text-2xl text-white mb-4">Strategic Roadmapping</h2>
                 <p>
                   With a deep understanding of your org structure, we help chart a high-leverage AI
                   roadmap. This ensures your short-term wins are built on top of systems that are
@@ -53,7 +53,7 @@ const ProcessContent = () => {
               </section>
 
               <section>
-                <h2 className="text-2xl text-white mb-2">Security & Compliance</h2>
+                <h2 className="text-2xl text-white mb-4">Security & Compliance</h2>
                 <p>
                   Trust is foundational in AI systems—especially when handling sensitive data, customer
                   communication, or proprietary workflows. During discovery, we assess:
@@ -67,9 +67,9 @@ const ProcessContent = () => {
               </section>
 
               <section>
-                <h2 className="text-2xl text-white mb-2">Rapid Iteration & Continuous Delivery</h2>
+                <h2 className="text-2xl text-white mb-4">Rapid Iteration & Continuous Delivery</h2>
                 <p>
-                  At True Horizon, we believe the real power of AI lies in its ability to evolve. That's
+                  At Talkvera, we believe the real power of AI lies in its ability to evolve. That's
                   why our development methodology is built around agility, modularity, and frequent
                   iteration. Every system we build is custom, and we co-create it with your team in
                   fast-moving, feedback-driven cycles.
@@ -77,7 +77,7 @@ const ProcessContent = () => {
               </section>
 
               <section>
-                <h3 className="text-xl text-white mb-1">Agile Development Framework</h3>
+                <h3 className="text-xl text-white mb-2">Agile Development Framework</h3>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Agile sprints (1–2 weeks) with demoable deliverables</li>
                   <li>Sprint planning and retro calls to align expectations</li>
@@ -87,7 +87,7 @@ const ProcessContent = () => {
               </section>
 
               <section>
-                <h3 className="text-xl text-white mb-1">Modular Architecture</h3>
+                <h3 className="text-xl text-white mb-2">Modular Architecture</h3>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Independent microservices and agents</li>
                   <li>Swappable foundation models or RAG layers</li>
@@ -97,9 +97,9 @@ const ProcessContent = () => {
               </section>
 
               <section>
-                <h2 className="text-2xl text-white mb-2">Quality Assurance & Deployment</h2>
+                <h2 className="text-2xl text-white mb-4">Quality Assurance & Deployment</h2>
                 <p>
-                  At True Horizon AI, the final stage of our three-step AI lifecycle focuses on rigorous
+                  At Talkvera, the final stage of our three-step AI lifecycle focuses on rigorous
                   testing, secure deployment, and long-term reliability. We combine automated pipelines
                   with human evaluation to ensure your system performs consistently, safely, and scalably
                   in production.
@@ -107,7 +107,7 @@ const ProcessContent = () => {
               </section>
 
               <section>
-                <h3 className="text-xl text-white mb-1">Quality Assurance Process</h3>
+                <h3 className="text-xl text-white mb-2">Quality Assurance Process</h3>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Automated testing pipelines with CI/CD integration</li>
                   <li>Comprehensive test coverage across critical functionalities</li>
@@ -119,7 +119,7 @@ const ProcessContent = () => {
               </section>
 
               <section>
-                <h3 className="text-xl text-white mb-1">Deployment Workflows</h3>
+                <h3 className="text-xl text-white mb-2">Deployment Workflows</h3>
                 <ul className="list-disc list-inside space-y-1">
                   <li>Staging and production environment setup</li>
                   <li>Automated deployment pipelines</li>
@@ -130,7 +130,7 @@ const ProcessContent = () => {
               </section>
 
               <section>
-                <h2 className="text-2xl text-white mb-2">Ongoing Support & Optimization</h2>
+                <h2 className="text-2xl text-white mb-4">Ongoing Support & Optimization</h2>
                 <p>
                   AI systems are never "done." We provide continuous oversight and enhancement through:
                 </p>

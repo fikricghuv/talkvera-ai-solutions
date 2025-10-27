@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
 import StarField from '../components/StarFieldAnimation';
 import CtaContent from '../components/Cta';
+import FadeInOnScroll from '../components/FadeInOnScroll';
 
 function HomePage() {
 
@@ -78,7 +79,7 @@ function HomePage() {
       role: 'Director of Operations, FutureLogistics',
     },
     {
-      quote: 'Before TalkVera, our onboarding process took 48 hours. The automation tools cut that down to under 5 hours. This immediate improvement in efficiency has allowed us to scale without needing to hire a larger support team.',
+      quote: 'Before TalkVera, our onboarding process took 48 hours. The automation tools cut that down to under 5 hours. This immediate improvement in efficiency has allowed us to scale without needing to hire a larger team.',
       author: 'David Lee',
       role: 'VP of Customer Success, Synergy Services',
     },
@@ -141,11 +142,13 @@ function HomePage() {
       </section>
 
       {/* SECTION 2: Comprehensive AI Solutions (Diperbaiki menjadi Accordion Interaktif) */}
+      
       <section className="py-24 relative overflow-hidden">
           {/* Efek Cahaya di Sisi Kanan (Memecah Kebosanan Kotak) */}
           <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[400px] h-[400px] bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none"></div>
 
           <div className="max-w-7xl mx-auto px-6 relative z-10">
+            <FadeInOnScroll delay={0.2} threshold={0.2}>
               <div className="text-center mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4">
                       Comprehensive AI Solutions
@@ -154,13 +157,19 @@ function HomePage() {
                       End-to-end AI services designed to transform your business operations and drive innovation.
                   </p>
               </div>
-
+            </FadeInOnScroll>
               <div className="max-w-4xl mx-auto space-y-4">
                   {features.map((feature, index) => {
                       const isActive = index === activeIndex;
                       const Icon = feature.icon;
 
                       return (
+                        <FadeInOnScroll 
+                          key={index} 
+                          delay={index * 0.15} 
+                          threshold={0.3}      
+                          direction="right"  
+                        >
                           <div key={index}>
                               <button
                                   onClick={() => setActiveIndex(isActive ? null : index)} // Toggle: Tutup jika aktif, buka jika tidak
@@ -221,6 +230,7 @@ function HomePage() {
                                   </p>
                               </div>
                           </div>
+                        </FadeInOnScroll>
                       );
                   })}
               </div>
@@ -232,6 +242,7 @@ function HomePage() {
           <div className="absolute top-1/2 left-0 -translate-y-1/2 w-[300px] h-[300px] bg-blue-500/5 rounded-full blur-[120px]"></div>
 
           <div className="max-w-5xl mx-auto px-6 relative">
+            <FadeInOnScroll delay={0.2} threshold={0.2}>
               <div className="text-center mb-16"> {/* Meningkatkan margin bawah */}
                   <h2 className="text-4xl md:text-5xl font-bold mb-4">
                       Our Proven Process
@@ -240,9 +251,15 @@ function HomePage() {
                       A streamlined three-phase methodology to deliver exceptional AI solutions tailored to your business.
                   </p>
               </div>
-
+            </FadeInOnScroll>
               <div className="relative">
                   {processSteps.map((step, index) => (
+                    <FadeInOnScroll 
+                      key={index} 
+                      delay={index * 0.15} 
+                      threshold={0.3}      
+                      direction="right"  
+                    >
                       <div key={index} className="relative">
                           {/* Flex container untuk Angka dan Konten, spasi responsif */}
                           <div className="flex gap-6 md:gap-8 items-start pb-16 last:pb-0"> 
@@ -285,6 +302,7 @@ function HomePage() {
                               </div>
                           </div>
                       </div>
+                    </FadeInOnScroll>
                   ))}
               </div>
           </div>
@@ -293,6 +311,7 @@ function HomePage() {
       {/* SECTION 4: Real Results from Real Clients (Diperbarui) */}
       <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
           <div className="max-w-7xl mx-auto px-6">
+            <FadeInOnScroll delay={0.2} threshold={0.2}>
               <div className="text-left mb-16">
                   <h2 className="text-4xl md:text-5xl font-bold mb-4">
                       What People Are Saying About TalkVera
@@ -301,11 +320,16 @@ function HomePage() {
                       See how TalkVera has helped businesses achieve unprecedented growth and efficiency.
                   </p>
               </div>
-
+            </FadeInOnScroll>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                  {testimonials.map((testimonial, index) => (
+              {testimonials.map((testimonial, index) => (
+                  <FadeInOnScroll 
+                      key={index} 
+                      delay={index * 0.15} 
+                      threshold={0.3}      
+                      direction="right"  
+                  >
                       <div
-                          key={index}
                           className="group relative p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700 hover:border-blue-500/50 transition-all duration-300 transform hover:scale-[1.02] shadow-xl hover:shadow-yellow-500/10"
                       >
                           {/* Efek bayangan kuning/biru halus saat hover */}
@@ -314,7 +338,6 @@ function HomePage() {
                           <div className="relative z-10">
                               <div className="flex items-center space-x-1 mb-6">
                                   {[...Array(5)].map((_, i) => (
-                                      // Mengganti CheckCircle2 dengan Star dan mewarnainya kuning
                                       <Star key={i} className="w-5 h-5 fill-yellow-400 text-yellow-400" />
                                   ))}
                               </div>
@@ -327,14 +350,18 @@ function HomePage() {
                               </div>
                           </div>
                       </div>
-                  ))}
-              </div>
+                  </FadeInOnScroll>
+              ))}
+            </div>
+            
           </div>
       </section>
 
       <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
           <div className="max-w-7xl mx-auto px-6">
-            <CtaContent />
+            <FadeInOnScroll delay={0.2} threshold={0.2}>
+                <CtaContent />
+            </FadeInOnScroll>
           </div>
       </section>
     </div>

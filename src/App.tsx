@@ -80,7 +80,7 @@ function AppContent() {
       
       <main>
         
-        <Routes>
+        <Routes key={location.pathname}>
           <Route path="/" element={<Navigate to="/home" replace />} /> 
           <Route path="/home" element={<HomePage />} />
           <Route path="/pricing" element={<PricingPage />} />
@@ -89,8 +89,9 @@ function AppContent() {
           <Route path="/docs/*" element={<DocsPage />} /> 
           <Route path="/privacy" element={<PrivacyPolicy />} /> 
           <Route path="/termcondition" element={<TermsAndConditions />} /> 
-          <Route path="/*" element={<Navigate to="/notfound" replace />} /> 
           <Route path="/notfound" element={<NotFoundPage />} /> 
+
+          <Route path="/*" element={<Navigate to="/notfound" replace />} /> 
         </Routes>
       </main>
       

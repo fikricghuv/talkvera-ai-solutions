@@ -1,7 +1,7 @@
-import { Check, MessagesSquare, Tag, User, FlaskConical, Settings, Layers, TrendingUp, Palette, Globe, Clock, Puzzle } from 'lucide-react';
+import { Check, MessagesSquare, Tag, User, FlaskConical, Settings, Layers, TrendingUp, Palette, Clock, Puzzle } from 'lucide-react';
 import CtaContent from '../components/Cta';
 import { Link } from 'react-router-dom';
-
+import FadeInOnScroll from '../components/FadeInOnScroll';
 import { useNavigate } from 'react-router-dom';
 
 function PricingPage() {
@@ -143,6 +143,11 @@ function PricingPage() {
           
           <div className="mt-24">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+              <FadeInOnScroll 
+                  delay={0.3} 
+                  threshold={0.3}      
+                  direction="left"  
+              >
               <div>
                 <h2 className="text-4xl md:text-5xl font-bold mb-6">Post-Deployment Solution Management</h2>
                 <br />
@@ -155,7 +160,12 @@ function PricingPage() {
                   </p>
                 </div>
               </div>
-              {/* Box Highlighted di Samping Kanan */}
+              </FadeInOnScroll>
+              <FadeInOnScroll 
+                  delay={0.3} 
+                  threshold={0.3}      
+                  direction="right"  
+              >
               <div className="relative p-1 bg-gradient-to-br from-blue-500/50 to-cyan-500/50 rounded-3xl shadow-2xl shadow-blue-500/20">
                 <img
                   src="/assets/peoples-do-programming.jpg" 
@@ -163,19 +173,28 @@ function PricingPage() {
                   className="w-full h-full object-cover rounded-[1.4rem]" 
                 />
               </div>
+              </FadeInOnScroll>
             </div>
           </div>
 
           <div className="mt-24">
+            <FadeInOnScroll delay={0.2} threshold={0.2}>
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4">What Sets Our Development Partnership Apart</h2>
               <p className="text-xl text-gray-400">
                 Every Talkvera development partnership includes access to:
               </p>
             </div>
+            </FadeInOnScroll>
 
             <div className="max-w-10xl mx-auto grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-8">
               {partnership.map((partner, index) => (
+                <FadeInOnScroll 
+                  key={index}
+                  delay={0.15 * index} 
+                  threshold={0.3}      
+                  direction="left"  
+                >
                 <div
                   key={index}
                   className="group relative p-4 flex flex-col items-center justify-center text-center 
@@ -194,8 +213,10 @@ function PricingPage() {
                                        transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
                   </h3>
                 </div>
+                </FadeInOnScroll>
               ))}
             </div>
+            <FadeInOnScroll delay={0.2} threshold={0.2}>
             <div className='text-center mt-12'>
               <Link 
                   to="/contact" 
@@ -205,25 +226,37 @@ function PricingPage() {
                   Get Started
               </Link>
             </div>
+            </FadeInOnScroll>
           </div>
-
+          
           <div className="mt-24">
+            <FadeInOnScroll delay={0.2} threshold={0.2}>
             <div className="mb-12 text-center">
               <h2 className="text-4xl font-bold mb-4">Transparent Process</h2>
             </div>
+            </FadeInOnScroll>
 
             <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-8 text-left">
               {processes.map((data, index) => (
+                <FadeInOnScroll 
+                  key={index}
+                  delay={0.15 * index} 
+                  threshold={0.3}      
+                  direction="right"  
+                >
                 <div key={index}>
                   <hr className="mb-3 border-blue-400" />
                   <h4 className="text-gray-100">{data.desc}</h4>
                 </div>
+                </FadeInOnScroll>
               ))}
             </div>
           </div>
+          <FadeInOnScroll delay={0.2} threshold={0.2}>
           <div className="mt-24">
             <CtaContent  />
           </div>
+          </FadeInOnScroll>
           
         </div>
       </section>

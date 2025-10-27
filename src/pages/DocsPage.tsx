@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Book, Network, Workflow, FileText, BookOpenText, ChevronRight, ChevronLeft } from 'lucide-react';
 import { useParams, useNavigate, Link } from 'react-router-dom'; 
 import IntroductionContent from '../components/docs/IntroductionContent';
-import UltimateAssistantContent from '../components/docs/UltimateAssistantContent';
+import ExecutiveCommandCenter from '../components/docs/ExecutiveCommandCenterContent';
 import RagPipelineContent from '../components/docs/RagPipelineContent';
 import NewsletterContent from '../components/docs/NewsletterContent';
 import ResourcesContent from '../components/docs/ResourcesContent';
@@ -113,7 +113,7 @@ function DocsPage() {
       case 'overview':
         return <OverviewContent />;
       case 'ultimate-assistant':
-        return <UltimateAssistantContent />;
+        return <ExecutiveCommandCenter />;
       case 'rag-pipeline':
         return <RagPipelineContent />;
       case 'newsletter-creation':

@@ -8,7 +8,6 @@ import AboutPage from './pages/AboutPage';
 import DocsPage from './pages/DocsPage'; 
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
-import TermsAndConditions from './pages/TermAndCondition';
 import NotFoundPage from './pages/NotFoundPage';
 
 const BASE_TITLE = "Talkvera: AI Solution";
@@ -88,7 +87,6 @@ function AppContent() {
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/docs/*" element={<DocsPage />} /> 
           <Route path="/privacy" element={<PrivacyPolicy />} /> 
-          <Route path="/termcondition" element={<TermsAndConditions />} /> 
           <Route path="/notfound" element={<NotFoundPage />} /> 
 
           <Route path="/*" element={<Navigate to="/notfound" replace />} /> 

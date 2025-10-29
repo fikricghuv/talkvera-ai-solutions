@@ -14,7 +14,7 @@ interface CommonProps {
     placeholder?: string;
     required?: boolean;
     value: string;
-    onChange: (e: React.ChangeEvent<any>) => void; // Menggunakan 'any' untuk mencakup Input, Textarea, dan Select
+    onChange: (e: React.ChangeEvent<any>) => void;
 }
 
 interface TextareaComponentProps extends CommonProps {
@@ -55,7 +55,7 @@ const initialFormData = {
     projectDesc: '',
 };
 
-const API_ENDPOINT = 'https://reproofless-judi-prepituitary.ngrok-free.dev/webhook/contact-information';
+const API_ENDPOINT = 'https://n8n.server.talkvera.com/webhook-test/upload-contact-information';
 
 function ContactPage() {
     const [formData, setFormData] = useState(initialFormData);
@@ -75,7 +75,6 @@ function ContactPage() {
     const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
         const { id, value } = e.target;
         setFormData(prev => ({ ...prev, [id]: value }));
-        // Hapus pesan error/sukses saat user mulai mengetik lagi
         if (message.type) setMessage({ type: null, text: null });
     }, [message.type]);
 

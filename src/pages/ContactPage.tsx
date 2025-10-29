@@ -55,7 +55,7 @@ const initialFormData = {
     projectDesc: '',
 };
 
-const API_ENDPOINT = 'https://n8n.server.talkvera.com/webhook-test/upload-contact-information';
+const API_ENDPOINT = 'https://n8n.server.talkvera.com/webhook/upload-contact-information';
 
 function ContactPage() {
     const [formData, setFormData] = useState(initialFormData);
@@ -89,7 +89,7 @@ function ContactPage() {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
-                    'Authorization': 'test123',
+                    'Authorization': 'landing-page',
                 },
                 body: JSON.stringify(formData),
             });

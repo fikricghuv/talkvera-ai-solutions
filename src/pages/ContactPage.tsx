@@ -160,7 +160,7 @@ function ContactPage() {
                                         <Mail className="w-6 h-6 text-blue-400 mt-1 flex-shrink-0" />
                                         <div>
                                             <div className="text-lg font-semibold text-white">Email</div>
-                                            <a href="mailto:talkvera.agent@gmail.com" className="text-gray-400 hover:text-blue-400 transition-colors text-base">talkvera.agent@gmail.com</a>
+                                            <a href="mailto:hello@talkvera.com" className="text-gray-400 hover:text-blue-400 transition-colors text-base">hello@talkvera.com</a>
                                         </div>
                                     </div>
                                     {/* Phone */}

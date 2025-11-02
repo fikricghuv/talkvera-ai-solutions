@@ -4,6 +4,9 @@ import { useNavigate } from 'react-router-dom';
 import StarField from '../components/StarFieldAnimation';
 import CtaContent from '../components/Cta';
 import FadeInOnScroll from '../components/FadeInOnScroll';
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
+
 
 function HomePage() {
 
@@ -17,6 +20,20 @@ function HomePage() {
   const handleCaseStudiesNavigate = () => {
     navigate('/docs/case-studies/overview');
   };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    if (location.hash) {
+      const target = document.querySelector(location.hash);
+      if (target) {
+        setTimeout(() => {
+          target.scrollIntoView({ behavior: "smooth" });
+        }, 150); 
+      }
+    }
+  }, [location]);
+
 
   const features = [
     {
@@ -84,6 +101,35 @@ function HomePage() {
       role: 'VP of Customer Success, Synergy Services',
     },
   ];
+
+  const faqs = [
+    {
+      question: "How long does implementation usually take?",
+      answer:
+        "We find the most value in engagements of at least 3 months, due to consulting and roadmapping demands. But we aim to deliver a POC within 3 weeks of onboarding.",
+    },
+    {
+      question: "Who owns the AI that you build for customers?",
+      answer:
+        "All intellectual property—including workflows, custom code, infrastructure, and documentation—belongs entirely to you from day one. If our partnership ends, we provide a complete and structured handoff.",
+    },
+    {
+      question: "What industries do you specialize in?",
+      answer:
+        "We’ve worked with SaaS, Retail, Finance, Real Estate, and E-commerce. Our consultative approach is industry-agnostic and adaptable to your context.",
+    },
+    {
+      question: "Do you build solutions from scratch or leverage tools?",
+      answer:
+        "It depends on scope. Some projects are best built from scratch, while others benefit from existing frameworks. We provide data-driven guidance to choose the optimal approach.",
+    },
+    {
+      question: "How do I know if AI is a good fit for my business?",
+      answer:
+        "If you deal with high data volume, repetitive operational tasks, customer interactions, or decision bottlenecks, AI usually delivers strong ROI. Our discovery process identifies the best use cases and expected value.",
+    },
+  ];
+
 
   return (
     <div className="pt-16">
@@ -357,6 +403,37 @@ function HomePage() {
           </div>
       </section>
 
+      {/* SECTION 5: FAQ */}
+      <section id="faq" className="py-24 bg-gradient-to-b from-gray-900/20 to-gray-900/40">
+        <div className="max-w-5xl mx-auto px-6">
+
+          <FadeInOnScroll delay={0.2} threshold={0.2}>
+            <div className="text-center mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold mb-4">
+                Frequently Asked Questions
+              </h2>
+              <p className="text-xl text-gray-400 max-w-2xl mx-auto">
+                Find answers to common questions about our services and solutions.
+              </p>
+            </div>
+          </FadeInOnScroll>
+
+          <div className="space-y-4">
+            {faqs.map((faq, index) => (
+              <FadeInOnScroll 
+                          key={index} 
+                          delay={index * 0.15} 
+                          threshold={0.3}      
+                          direction="right"  
+                        >
+                <FAQItem key={index} faq={faq} index={index} />
+              </FadeInOnScroll>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
       <section className="py-24 bg-gradient-to-b from-transparent to-gray-900/30">
           <div className="max-w-7xl mx-auto px-6">
             <FadeInOnScroll delay={0.2} threshold={0.2}>
@@ -367,5 +444,39 @@ function HomePage() {
     </div>
   );
 }
+
+function FAQItem({ faq, index }: any) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <div
+      className={`p-6 md:p-8 rounded-2xl border bg-gray-900/60 backdrop-blur-sm transition-all duration-300 cursor-pointer
+        ${open ? "border-blue-500/50" : "border-gray-700/50 hover:border-gray-600"}
+      `}
+      onClick={() => setOpen(!open)}
+    >
+      <div className="flex justify-between items-center">
+        <h3 className="text-lg md:text-xl font-semibold text-white">
+          {faq.question}
+        </h3>
+        <ChevronDown
+          className={`w-6 h-6 text-blue-400 transition-transform duration-300 
+            ${open ? "rotate-180" : "rotate-0"}
+          `}
+        />
+      </div>
+
+      <div
+        className="overflow-hidden transition-all duration-300"
+        style={{ maxHeight: open ? "300px" : "0" }}
+      >
+        <p className="text-gray-400 mt-4 leading-relaxed">
+          {faq.answer}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 
 export default HomePage;

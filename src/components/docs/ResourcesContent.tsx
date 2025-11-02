@@ -11,7 +11,7 @@ const ResourcesContent = () => {
               <p className="mb-4">
                 This section addresses common technical, implementation, and product-related questions. Topics include system maintainability, LLM behavior, hosting options, multilingual support, and RAG implementations.
               </p>
-              <ul className="list-disc list-inside space-y-1">
+              <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                 <li><strong className="text-white">Maintainability:</strong> Modular architecture, versioned APIs, and documentation-first design.</li>
                 <li><strong className="text-white">Hallucination handling:</strong> RAGAS metrics, human-reviewed data audits, and retraining when needed.</li>
                 <li><strong className="text-white">Hosting:</strong> Supports client-hosted deployments (VPC/private cloud) with secure IAM onboarding.</li>
@@ -26,7 +26,7 @@ const ResourcesContent = () => {
               <p className="mb-4">
                 We use modern infrastructure practices to ensure reliability and security in every deployment. CI/CD, environment provisioning, and secure configuration are built into our DevOps workflows.
               </p>
-              <ul className="list-disc list-inside space-y-1">
+              <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                 <li><strong className="text-white">Deployment:</strong> GitHub Actions or n8n-based pipelines with isolated staging and production environments.</li>
                 <li><strong className="text-white">Provisioning:</strong> Managed via Docker, Terraform, Railway, or Kubernetes.</li>
                 <li><strong className="text-white">Security:</strong> Encryption, secrets management, and role-based access control (least privilege principle).</li>
@@ -39,7 +39,7 @@ const ResourcesContent = () => {
               <p className="mb-4">
                 In cases of inconsistent responses or latency issues, we provide structured diagnostics and fallback mechanisms to maintain stability.
               </p>
-              <ul className="list-disc list-inside space-y-1">
+              <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                 <li><strong className="text-white">Inconsistent responses:</strong> Provide logs for automated retries and fallback model analysis.</li>
                 <li><strong className="text-white">Latency profiling:</strong> Async tracing, caching, and prompt optimization to improve performance.</li>
               </ul>
@@ -51,7 +51,7 @@ const ResourcesContent = () => {
               <p className="mb-4">
                 Quick reference for foundational AI and system design terminology.
               </p>
-              <ul className="list-disc list-inside space-y-1">
+              <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                 <li><strong className="text-white">LLM (Large Language Model):</strong> Neural network trained to generate human-like text.</li>
                 <li><strong className="text-white">RAG (Retrieval-Augmented Generation):</strong> Combines LLMs with vector databases for factual grounding.</li>
                 <li><strong className="text-white">Vector Database:</strong> Engine that stores and retrieves text embeddings for semantic search.</li>

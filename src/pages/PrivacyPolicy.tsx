@@ -54,7 +54,7 @@ const policyContent = [
     text: (
       <span>
         If you have any questions about this Privacy Policy, please contact us at: <br/>
-        Email: <a href="mailto:talkvera.agent.gmail.com" className="text-blue-400 hover:text-cyan-400 transition-colors">talkvera.agent@gmail.com</a>
+        Email: <a href="mailto:hello@talkvera.com" className="text-blue-400 hover:text-cyan-400 transition-colors">hello@talkvera.com</a>
       </span>
     )
   },

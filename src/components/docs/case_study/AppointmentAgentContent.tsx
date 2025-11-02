@@ -1,3 +1,5 @@
+import AppointmentAgentFlowchart from './flowchart/AppointmentAgentFlowchart';
+
 const AppointmentAgentContent = () => {
     return (
         <div className="space-y-8">
@@ -15,6 +17,8 @@ const AppointmentAgentContent = () => {
                     The agent handles complete appointment lifecycle management while maintaining user profiles, enforcing business rules like working hours (8 AM - 5 PM), and ensuring data consistency through intelligent validation workflows. It remembers conversation context, confirms actions before execution, and provides clear, professional communication throughout every interaction.
                 </p>
             </div>
+
+            <AppointmentAgentFlowchart />
 
             {/* --- 2. Phase 1: Natural Language Input & Secure Webhook Interface --- */}
             <div className="mt-6">
@@ -100,7 +104,7 @@ const AppointmentAgentContent = () => {
                     </li>
                     <li>
                         <span className="font-medium text-white">Update User Information:</span> Modifies user profiles following a <strong>mandatory "get-then-update" workflow</strong>:
-                        <ul className="list-circle space-y-1 mt-1 pl-6">
+                        <ul className="list-circle list-disc space-y-1 mt-1 pl-6">
                             <li>Always calls <strong>Get User Information</strong> first to retrieve current data and user ID</li>
                             <li>Shows user their existing information for transparency</li>
                             <li>Uses retrieved ID as the matching parameter for the update operation</li>

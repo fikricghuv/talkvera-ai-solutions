@@ -1,8 +1,10 @@
+import RAGDatabaseAgentFlowchart from './flowchart/RAGDatabaseAgentFlowchart';
+
 const DatabaseQueryAgentContent = () => {
     return (
         <div className="space-y-8">
             <h1 className="text-4xl font-bold mb-6">
-                RAG Database Agent | Intelligent Enterprise Data Access System
+                Database Personal Analysis | Intelligent Enterprise Data Access System
             </h1>
 
             {/* --- 1. Project Overview --- */}
@@ -16,10 +18,12 @@ const DatabaseQueryAgentContent = () => {
                 </p>
             </div>
 
+            <RAGDatabaseAgentFlowchart />
+
             {/* --- 2. Phase 1: Natural Language Input & Webhook Interface --- */}
             <div className="mt-6">
                 <h2 className="text-2xl font-semibold mb-3">Phase 1: Natural Language Input & Webhook Interface</h2>
-                
+
                 <h3 className="text-xl font-semibold mt-4">Trigger</h3>
                 <p className="leading-relaxed mt-2">
                     Activated when a user submits a <strong>natural language question</strong> via <strong>POST request</strong> to the <code>/rag-database-agent</code> webhook endpoint.

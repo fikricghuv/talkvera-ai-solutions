@@ -13,6 +13,7 @@ function Footer() {
   const resourceLinks = [
     { label: 'Docs', path: '/docs/introduction' },
     { label: 'Case Studies', path: '/docs/case-studies/overview' },
+    { label: "FQA's", path: '/home#faq' },
   ];
 
   const companyLinks = [
@@ -106,7 +107,7 @@ function Footer() {
                 </a>
                 
                 <a
-                    href="mailto:talkvera.agent@gmail.com"
+                    href="mailto:hello@talkvera.com"
                     className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
                 >
                     <Mail size={18} className="text-gray-400 hover:text-blue-400" />

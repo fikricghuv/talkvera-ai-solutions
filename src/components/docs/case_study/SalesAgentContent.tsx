@@ -1,3 +1,5 @@
+import SalesAgentFlowchart from './flowchart/SalesAgentFlowchart';
+
 const SalesAgentContent = () => {
     return (
         <div className="space-y-8">
@@ -15,6 +17,8 @@ const SalesAgentContent = () => {
                     The agent eliminates manual data entry by automatically saving customer details (name, email, phone, notes) to PostgreSQL CRM, maintains conversation context for personalized interactions, and notifies the orders team via Telegram when quotes are generated or follow-ups are needed. It validates information before storage, tracks every interaction through CRM notes, and provides professional, friendly customer service 24/7.
                 </p>
             </div>
+
+            <SalesAgentFlowchart />
 
             {/* --- 2. Phase 1: Natural Language Input & Secure Webhook Interface --- */}
             <div className="mt-6">
@@ -65,7 +69,7 @@ const SalesAgentContent = () => {
                     </li>
                     <li>
                         <span className="font-medium text-white">Automated Data Collection:</span> For new customers, naturally collects required information during conversation:
-                        <ul className="list-circle space-y-1 mt-1 pl-6">
+                        <ul className="list-circle list-disc space-y-1 mt-1 pl-6">
                             <li><strong>Name:</strong> Full customer name for personalization</li>
                             <li><strong>Email:</strong> Primary contact with format validation (@ symbol required)</li>
                             <li><strong>Phone:</strong> Optional contact number for urgent communications</li>
@@ -110,7 +114,7 @@ const SalesAgentContent = () => {
                     </li>
                     <li>
                         <span className="font-medium text-white">Add CRM Note:</span> Records every significant interaction in <code>crm_notes</code> table with:
-                        <ul className="list-circle space-y-1 mt-1 pl-6">
+                        <ul className="list-circle list-disc space-y-1 mt-1 pl-6">
                             <li><strong>Customer Email:</strong> Links note to customer profile</li>
                             <li><strong>Note Content:</strong> Detailed summary of inquiry, quote, or feedback</li>
                             <li><strong>Interaction Type:</strong> Categorization (quote_generated, inquiry, follow_up, etc.)</li>

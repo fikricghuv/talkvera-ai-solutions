@@ -28,7 +28,7 @@ const TechStackContent = () => {
               clients in regulated industries or with unique infrastructure requirements are fully supported.
             </p>
 
-            <ul className="list-disc pl-6 space-y-2">
+            <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
               <li><strong className="text-white">Supabase:</strong> Secure authentication and real-time updates for rapid feature delivery.</li>
               <li><strong className="text-white">PostgreSQL:</strong> Our primary structured database — robust, scalable, and reliable.</li>
               <li><strong className="text-white">Vector Databases:</strong> Tools like <strong>Pinecone</strong>, <strong>Weaviate</strong>, and <strong>Qdrant</strong> enable semantic search and contextual understanding in AI systems.</li>
@@ -43,7 +43,7 @@ const TechStackContent = () => {
               with external systems.
             </p>
 
-            <ul className="list-disc pl-6 space-y-2">
+            <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
               <li><strong className="text-white">Languages:</strong> <strong>Python</strong> for AI and backend systems, 
                 <strong> JavaScript/TypeScript</strong> for front-end and lightweight logic.
               </li>
@@ -67,7 +67,7 @@ const TechStackContent = () => {
               we tailor each deployment for maximum impact.
             </p>
 
-            <ul className="list-disc pl-6 space-y-2">
+            <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
               <li><strong className="text-white">Retrieval-Augmented Generation (RAG):</strong> Grounding LLM responses with 
                 relevant internal data for accuracy and reduced hallucination.
               </li>

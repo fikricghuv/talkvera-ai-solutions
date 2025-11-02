@@ -24,7 +24,7 @@ const ProcessContent = () => {
                   We begin by immersing ourselves in your team's world—learning how your company operates
                   today and where you're heading tomorrow. We spend time understanding:
                 </p>
-                <ul className="list-disc list-inside space-y-1 mt-2">
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                   <li>Your core business model and revenue streams</li>
                   <li>Internal workflows and decision-making processes</li>
                   <li>Existing pain points and inefficiencies</li>
@@ -40,7 +40,7 @@ const ProcessContent = () => {
                   flexible, extendable, and aligned with future use cases.
                 </p>
                 <p>The roadmap helps answer:</p>
-                <ul className="list-disc list-inside space-y-1 mt-2">
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                   <li>What can we build today that generates ROI in &lt;90 days?</li>
                   <li>
                     What foundational systems do we need for long-term automation and intelligence?
@@ -58,7 +58,7 @@ const ProcessContent = () => {
                   Trust is foundational in AI systems—especially when handling sensitive data, customer
                   communication, or proprietary workflows. During discovery, we assess:
                 </p>
-                <ul className="list-disc list-inside space-y-1 mt-2">
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                   <li>Data classification and handling requirements</li>
                   <li>Access control and permissions</li>
                   <li>Infrastructure constraints and compliance needs</li>
@@ -78,7 +78,7 @@ const ProcessContent = () => {
 
               <section>
                 <h3 className="text-xl text-white mb-2">Agile Development Framework</h3>
-                <ul className="list-disc list-inside space-y-1">
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                   <li>Agile sprints (1–2 weeks) with demoable deliverables</li>
                   <li>Sprint planning and retro calls to align expectations</li>
                   <li>Kanban or Jira-based task management for transparency</li>
@@ -88,7 +88,7 @@ const ProcessContent = () => {
 
               <section>
                 <h3 className="text-xl text-white mb-2">Modular Architecture</h3>
-                <ul className="list-disc list-inside space-y-1">
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                   <li>Independent microservices and agents</li>
                   <li>Swappable foundation models or RAG layers</li>
                   <li>API-first infrastructure for external integrations</li>
@@ -108,7 +108,7 @@ const ProcessContent = () => {
 
               <section>
                 <h3 className="text-xl text-white mb-2">Quality Assurance Process</h3>
-                <ul className="list-disc list-inside space-y-1">
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                   <li>Automated testing pipelines with CI/CD integration</li>
                   <li>Comprehensive test coverage across critical functionalities</li>
                   <li>Hallucination detection and prevention</li>
@@ -120,7 +120,7 @@ const ProcessContent = () => {
 
               <section>
                 <h3 className="text-xl text-white mb-2">Deployment Workflows</h3>
-                <ul className="list-disc list-inside space-y-1">
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                   <li>Staging and production environment setup</li>
                   <li>Automated deployment pipelines</li>
                   <li>Monitoring and alerting configuration</li>
@@ -134,7 +134,7 @@ const ProcessContent = () => {
                 <p>
                   AI systems are never "done." We provide continuous oversight and enhancement through:
                 </p>
-                <ul className="list-disc list-inside space-y-1 mt-2">
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                   <li>Live system monitoring and performance tracking</li>
                   <li>Scheduled QA cycles and prompt refreshes</li>
                   <li>Regular re-embedding or retraining if needed</li>

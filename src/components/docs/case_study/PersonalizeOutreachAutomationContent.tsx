@@ -1,90 +1,107 @@
+import SendGreetingEmailFlowchart from './flowchart/SendGreetingsEmail';
+
 const PersonalizeOutreachAutomationContent = () => {
     return (
         <div className="space-y-8">
+            {/* TITLE: Matches the "Client | Project" format from the Barkbox example. */}
             <h1 className="text-4xl font-bold mb-6">
-                AI-Powered Lead Capture and Personalized Outreach Automation
+                AI-Powered Lead Capture & Personalized Outreach
             </h1>
 
+            {/* OVERVIEW: Adjusted to focus on the "partnership" and "business problem." */}
             <div>
                 <h2 className="text-2xl font-semibold mb-3">Project Overview</h2>
                 <p className="leading-relaxed">
-                    This n8n workflow completely automates the process of handling new consultation requests submitted via a landing page. Its primary goals are to instantly capture lead data, store it securely, generate a personalized, human-sounding introductory email using a specialized AI agent, and automatically send the welcome message to the prospect.
+                    We designed and deployed an automated n8n workflow to handle new consultation requests from Talkvera's landing page. 
+                    The objective was to instantly capture lead data, store it securely, and most importantly, 
+                    generate a highly personalized, human-sounding introductory email using a specialized AI agent.
                 </p>
                 <p className="leading-relaxed mt-3">
-                    This ensures an <strong>immediate and highly personalized</strong> first touchpoint, maximizing lead engagement and efficiency for the sales team. The workflow also utilizes <strong>PostgreSQL</strong> for both lead data storage and maintaining AI conversation memory for potential future interactions.
+                    This solution ensures an <strong>immediate and personalized first touchpoint</strong>, maximizing lead engagement 
+                    and delivering exceptional efficiency for the sales team. The system leverages <strong>PostgreSQL</strong> for both lead storage 
+                    and managing AI conversation memory for future interactions.
                 </p>
             </div>
 
-            <div>
-                <h2 className="text-2xl font-semibold mb-3">System Architecture (Workflow Breakdown)</h2>
+            {/* Your flowchart remains here for visualization */}
+            <SendGreetingEmailFlowchart />
 
-                <div className="mt-4">
-                    <h3 className="text-xl font-semibold">Phase 1: Data Ingestion and Preparation</h3>
-                    <ul className="list-disc list-inside space-y-2 mt-2 leading-relaxed">
-                        <li>
-                            <span className="font-medium text-white">Trigger (Webhook):</span> The workflow starts instantly when a contact form is submitted to the <strong>/upload-contact-information</strong> endpoint via a <strong>POST</strong> request. It uses header authentication for security.
-                        </li>
-                        <li>
-                            <span className="font-medium text-white">Edit Fields (Set):</span> This node cleans and standardizes the incoming webhook data (e.g., `firstName`, `email`, `company`, `projectDesc`) by mapping them to internal variables. It also handles potential missing fields, such as setting an empty string for `website` if it's not provided.
-                        </li>
-                    </ul>
-                </div>
-
-                <div className="mt-6">
-                    <h3 className="text-xl font-semibold">Phase 2: Database Storage and AI Personalization</h3>
-                    <ul className="list-disc list-inside space-y-2 mt-2 leading-relaxed">
-                        <li>
-                            <span className="font-medium text-white">Insert rows in a table (Postgres):</span> The normalized lead information is immediately stored in the <strong>customer_consultation</strong> table in a PostgreSQL database with an initial `status` of <strong>"New"</strong>. This ensures no lead data is lost and creates a unique consultation ID.
-                        </li>
-                        <li>
-                            <span className="font-medium text-white">AI Agent:</span> This is the core personalization engine, configured as a <strong>"Greeting Email Agent"</strong> from Talkvera.
-                            <ul className="list-circle list-inside ml-5">
-                                <li><strong>Goal:</strong> Draft exactly two concise, formal, and personalized opening paragraphs.</li>
-                                <li><strong>LLM:</strong> Uses the <strong>OpenRouter Chat Model</strong> (`openai/gpt-5-mini`) for generation.</li>
-                                <li><strong>Memory (Postgres Chat Memory):</strong> Connects to a separate PostgreSQL instance for conversation memory, using the prospect's `work_email` as the session key. This is a powerful feature for maintaining context for potential future interactions.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-
-                <div className="mt-6">
-                    <h3 className="text-xl font-semibold">Phase 3: Email Formatting and Final Delivery</h3>
-                    <ul className="list-disc list-inside space-y-2 mt-2 leading-relaxed">
-                        <li>
-                            <span className="font-medium text-white">Code in JavaScript:</span> This crucial node takes the raw, personalized text generated by the AI Agent and wraps it within a complete, styled <strong>HTML email template</strong>. The resulting HTML body is assigned to a new variable: <strong>`htmlEmailBody`</strong>.
-                        </li>
-                        <li>
-                            <span className="font-medium text-white">Send a message (Gmail):</span> The final email is sent to the prospect's `work_email` with a subject of <strong>"Welcome To Talkvera!"</strong> and the fully formatted <strong>`htmlEmailBody`</strong>.
-                        </li>
-                        <li>
-                            <span className="font-medium text-white">Update rows in a table (Postgres):</span> The final step updates the corresponding row in the <strong>customer_consultation</strong> table, setting the `status` to <strong>"Send"</strong> and saving the entire <strong>`greetings_email_content`</strong> generated by the AI into the database.
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
+            {/* PHASE RESTRUCTURE:
+              These phases now reflect the "business process" (Capture -> Personalize -> Deliver)
+              to mirror the storytelling structure of the Barkbox example.
+            */}
 
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Key Technologies and Configuration</h2>
+                <h2 className="text-2xl font-semibold mb-3">Phase 1: Instant Lead Capture & Verification</h2>
                 <p className="leading-relaxed">
-                    This workflow relies on a tight integration between several specialized tools:
+                    <span className="font-medium text-white">Trigger:</span> Activates instantly when a prospect submits the form on the landing page.
                 </p>
-                <ul className="list-disc list-inside space-y-2 mt-2 leading-relaxed">
-                    <li><span className="font-medium text-white">AI Language Model:</span> OpenRouter (Model: `openai/gpt-5-mini`).</li>
-                    <li><span className="font-medium text-white">Database:</span> PostgreSQL. Used for secure lead storage and as the backend for the AI's <strong>Chat Memory</strong>.</li>
-                    <li><span className="font-medium text-white">Email Service:</span> Gmail. Handles the automated sending of the final HTML email.</li>
-                    <li><span className="font-medium text-white">Custom Code:</span> The JavaScript <strong>Code</strong> node is essential for converting the plain AI text output into a deliverable, professional HTML email.</li>
+                <p className="leading-relaxed mt-3">
+                    <span className="font-medium text-white">Key Capabilities:</span>
+                </p>
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
+                    <li><span className="font-medium text-white">Secure Webhook Ingestion:</span> Securely receives form data (name, email, project description) via an authenticated POST endpoint.</li>
+                    <li><span className="font-medium text-white">Data Standardization:</span> Cleans and maps incoming data to structured internal variables, ensuring data consistency before storage.</li>
+                    <li><span className="font-medium text-white">Reliable Lead Storage:</span> Instantly saves the standardized lead data into the <strong>customer_consultation</strong> table in <strong>PostgreSQL</strong> with an initial status of "New".</li>
                 </ul>
             </div>
-            
 
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Key Business Value</h2>
-                <ul className="list-disc list-inside space-y-2 mt-2 leading-relaxed">
-                    <li><span className="font-medium text-white">Instant Response:</span> Guarantees prospects receive a personalized response within seconds of submission, dramatically improving the lead experience.</li>
-                    <li><span className="font-medium text-white">Personalization at Scale:</span> AI drafts unique greetings that acknowledge specific project needs, making the communication relevant without manual effort.</li>
-                    <li><span className="font-medium text-white">Reliable Tracking:</span> Full end-to-end data logging in the database, including the final email content, ensures compliance and clear sales oversight.</li>
+                <h2 className="text-2xl font-semibold mb-3">Phase 2: AI-Powered Personalization</h2>
+                <p className="leading-relaxed">
+                    <span className="font-medium text-white">Trigger:</span> Runs automatically after the lead's data is successfully saved to the database.
+                </p>
+                <p className="leading-relaxed mt-3">
+                    <span className="font-medium text-white">Functionality:</span>
+                </p>
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
+                    <li><span className="font-medium text-white">Context-Aware AI Agent:</span> Utilizes a custom "Greeting Email Agent" from Talkvera to analyze the prospect's inputs (especially `projectDesc`).</li>
+                    <li><span className="font-medium text-white">Dynamic Content Generation:</span> The AI (using the <strong>OpenRouter Chat Model</strong>) drafts two formal and highly personalized opening paragraphs that directly reference the prospect's needs.</li>
+                    <li><span className="font-medium text-white">Persistent AI Memory:</span> Connects to a <strong>PostgreSQL Chat Memory</strong> using the prospect's email as the session key. This allows the AI to recall context in future interactions.</li>
                 </ul>
+            </div>
+
+            <div>
+                <h2 className="text-2xl font-semibold mb-3">Phase 3: Automated Formatting & Delivery</h2>
+                <p className="leading-relaxed">
+                    <span className="font-medium text-white">Trigger:</span> Activates immediately after the AI finishes generating the personalized text.
+                </p>
+                <p className="leading-relaxed mt-3">
+                    <span className="font-medium text-white">Functionality:</span>
+                </p>
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
+                    <li><span className="font-medium text-white">HTML Email Assembly:</span> A custom <strong>JavaScript</strong> node takes the raw text output from the AI and dynamically wraps it in a professional, pre-styled HTML email template.</li>
+                    <li><span className="font-medium text-white">Automatic Email Dispatch:</span> Sends the fully formatted HTML email to the prospect using <strong>Gmail</strong>, with the subject "Welcome To Talkvera!".</li>
+                    <li><span className="font-medium text-white">Real-time Status Tracking:</span> Updates the prospect's status in the <strong>PostgreSQL</strong> database to "Send" and saves a copy of the sent email content for audit and tracking purposes.</li>
+                </ul>
+            </div>
+
+            {/* ROI SECTION: 
+              Renamed from "Key Business Value" to match the example.
+              The content is reframed to feel like "hiring a digital assistant."
+            */}
+            <div>
+                <h2 className="text-2xl font-semibold mb-3">Return on Investment</h2>
+                <p className="leading-relaxed">
+                    By implementing this automated workflow, Talkvera effectively launched a digital sales assistant that:
+                </p>
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
+                    <li>Operates 24/7 to respond to leads in seconds</li>
+                    <li>Delivers a level of personalization that is impossible to achieve manually at scale</li>
+                    <li>Ensures no lead is ever missed and no data is lost</li>
+                    <li>Operates with perfect consistency and accuracy</li>
+                    <li>Eliminates manual data entry and copy-paste errors</li>
+                    <li>Provides a complete audit trail for every prospect interaction</li>
+                </ul>
+                <p className="leading-relaxed mt-3">
+                    We also removed the separate "Key Technologies" section, as (like in the Barkbox example) it is much more powerful 
+                    to mention technologies (like <strong>PostgreSQL</strong>, <strong>Gmail</strong>, and <strong>OpenRouter</strong>) 
+                    directly within their functional descriptions.
+                </p>
+                <p className="leading-relaxed mt-3">
+                    The result is a dramatic increase in response speed and relevance, freeing the sales team from administrative tasks 
+                    and allowing them to focus on closing deals.
+                </p>
             </div>
         </div>
     );

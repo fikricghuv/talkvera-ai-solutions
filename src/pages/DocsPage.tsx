@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
 import { Book, Network, Workflow, FileText, BookOpenText, ChevronRight, ChevronLeft } from 'lucide-react';
 import { useParams, useNavigate, Link } from 'react-router-dom'; 
+import mermaid from 'mermaid';
 import IntroductionContent from '../components/docs/IntroductionContent';
-import ExecutiveCommandCenter from '../components/docs/case_study/ExecutiveCommandCenterContent';
 import DatabaseQueryAgentContent from '../components/docs/case_study/DatabaseQueryAgentContent';
 import NewsletterAutomationAgentContent from '../components/docs/case_study/WeeklyNewsletterContent';
 import ResourcesContent from '../components/docs/ResourcesContent';
@@ -28,7 +28,6 @@ const navigation = [
       basePath: 'case-studies', 
       children: [
         { id: 'overview', label: 'Overview', path: 'case-studies/overview' },
-        { id: 'ultimate-assistant', label: 'Ultimate Assistant', path: 'case-studies/ultimate-assistant' },
         { id: 'rag-agent', label: 'Database Personal Analysis', path: 'case-studies/rag-agent' },
         { id: 'newsletter-creation', label: 'Weekly Newsletter Automation', path: 'case-studies/newsletter-creation' },
         { id: 'personalized-outreach-agent', label: 'Personalized Outreach', path: 'case-studies/personalized-outreach-agent' },
@@ -60,6 +59,36 @@ function DocsPage() {
 
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
+  // ✅ Inisialisasi Mermaid saat component mount
+  useEffect(() => {
+    mermaid.initialize({ 
+      startOnLoad: true,
+      theme: 'dark',
+      securityLevel: 'loose',
+      themeVariables: {
+        primaryColor: '#6366f1',
+        primaryTextColor: '#fff',
+        primaryBorderColor: '#4f46e5',
+        lineColor: '#6366f1',
+        secondaryColor: '#8b5cf6',
+        tertiaryColor: '#ec4899',
+        background: '#1a1a1a',
+        mainBkg: '#1a1a1a',
+        secondBkg: '#2a2a2a',
+      }
+    });
+  }, []);
+
+  // ✅ Re-render Mermaid setiap kali section berubah
+  useEffect(() => {
+    // Tunggu DOM update, lalu render mermaid
+    const timer = setTimeout(() => {
+      mermaid.contentLoaded();
+    }, 100);
+    
+    return () => clearTimeout(timer);
+  }, [currentSectionID]);
 
   // Fungsi helper untuk membuat path absolut penuh
   const getFullDocPath = (segment: string) => {
@@ -117,8 +146,6 @@ function DocsPage() {
         return <ResourcesContent />;
       case 'overview':
         return <OverviewContent />;
-      case 'ultimate-assistant':
-        return <ExecutiveCommandCenter />;
       case 'rag-agent':
         return <DatabaseQueryAgentContent />;
       case 'newsletter-creation':

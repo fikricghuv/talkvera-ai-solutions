@@ -12,18 +12,25 @@ const OverviewContent = () => {
             path: 'ultimate-assistant' 
         },
         { 
-            id: 'rag-pipeline', 
-            title: "RAG Pipeline", 
+            id: 'rag-agent', 
+            title: "Database Personal Analysis Agent", 
             subtitle: "Knowledge Retrieval & Analysis", 
             desc: "Retrieval-Augmented Generation pipeline for enhanced AI responses.",
-            path: 'rag-pipeline' 
+            path: 'rag-agent' 
         },
         { 
             id: 'newsletter-creation', 
-            title: "Newsletter Creation", 
+            title: "Weekly Newsletter Automation Agent", 
             subtitle: "Content Marketing Automation", 
             desc: "AI-powered newsletter creation and distribution system.",
             path: 'newsletter-creation' 
+        },
+        { 
+            id: 'personalized-outreach-agent', 
+            title: "Personalized Outreach Agent", 
+            subtitle: "Sales & Marketing", 
+            desc: "AI-driven system to lead capture and personalized outreach.",
+            path: 'personalized-outreach-agent' 
         },
         { 
             id: 'schedule-appointment-agent', 
@@ -33,18 +40,18 @@ const OverviewContent = () => {
             path: 'schedule-appointment-agent' 
         },
         { 
-            id: 'customer-service-agent', 
-            title: "Customer Service Agent", 
+            id: 'sales-agent', 
+            title: "Sales Agent", 
             subtitle: "Customer & Sales Support", 
-            desc: "An AI agent specialized in handling customer inquiries and support tickets.",
-            path: 'customer-service-agent' 
+            desc: "An AI agent specialized in handling customer inquiries.",
+            path: 'sales-agent' 
         },
         { 
-            id: 'generate-test-case', 
-            title: "Generate Test Scenario",
+            id: 'qa-automation-agent', 
+            title: "QA Automation Agent",
             subtitle: "Software QA & Engineering", 
-            desc: "AI automation to generate comprehensive test cases based on project requirements.",
-            path: 'generate-test-case' 
+            desc: "AI automation to generate comprehensive test cases based on project requirements docs.",
+            path: 'qa-automation-agent' 
         }
     ];
 

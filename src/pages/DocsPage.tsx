@@ -2,13 +2,17 @@ import { useState, useEffect } from 'react';
 import { Book, Network, Workflow, FileText, BookOpenText, ChevronRight, ChevronLeft } from 'lucide-react';
 import { useParams, useNavigate, Link } from 'react-router-dom'; 
 import IntroductionContent from '../components/docs/IntroductionContent';
-import ExecutiveCommandCenter from '../components/docs/ExecutiveCommandCenterContent';
-import RagPipelineContent from '../components/docs/RagPipelineContent';
-import NewsletterContent from '../components/docs/NewsletterContent';
+import ExecutiveCommandCenter from '../components/docs/case_study/ExecutiveCommandCenterContent';
+import DatabaseQueryAgentContent from '../components/docs/case_study/DatabaseQueryAgentContent';
+import NewsletterAutomationAgentContent from '../components/docs/case_study/WeeklyNewsletterContent';
 import ResourcesContent from '../components/docs/ResourcesContent';
 import ProcessContent from '../components/docs/ProcessContent';
 import TechStackContent from '../components/docs/TechStackContent';
-import OverviewContent from '../components/docs/OverviewContent';
+import OverviewContent from '../components/docs/case_study/OverviewContent';
+import PersonalizeOutreachAutomationContent from '../components/docs/case_study/PersonalizeOutreachAutomationContent';
+import QAAutomationContent from '../components/docs/case_study/QAAutomationContent';
+import AppointmentAgentContent from '../components/docs/case_study/AppointmentAgentContent';
+import SalesAgentContent from '../components/docs/case_study/SalesAgentContent';
 
 const DOCS_BASE_PREFIX = "/docs"; 
 
@@ -25,11 +29,12 @@ const navigation = [
       children: [
         { id: 'overview', label: 'Overview', path: 'case-studies/overview' },
         { id: 'ultimate-assistant', label: 'Ultimate Assistant', path: 'case-studies/ultimate-assistant' },
-        { id: 'rag-pipeline', label: 'RAG Pipeline', path: 'case-studies/rag-pipeline' },
-        { id: 'newsletter-creation', label: 'Newsletter Creation', path: 'case-studies/newsletter-creation' },
+        { id: 'rag-agent', label: 'Database Personal Analysis', path: 'case-studies/rag-agent' },
+        { id: 'newsletter-creation', label: 'Weekly Newsletter Automation', path: 'case-studies/newsletter-creation' },
+        { id: 'personalized-outreach-agent', label: 'Personalized Outreach', path: 'case-studies/personalized-outreach-agent' },
         { id: 'schedule-appointment-agent', label: 'Schedule Appointment Agent', path: 'case-studies/schedule-appointment-agent' },
-        { id: 'customer-service-agent', label: 'Customer Service Agent', path: 'case-studies/customer-service-agent' },
-        { id: 'generate-test-case', label: 'Generate Test Scenario', path: 'case-studies/generate-test-case' },
+        { id: 'sales-agent', label: 'Sales Agent', path: 'case-studies/sales-agent' },
+        { id: 'qa-automation-agent', label: 'QA Automation Agent', path: 'case-studies/qa-automation-agent' },
       ],
     },
 ];
@@ -114,15 +119,20 @@ function DocsPage() {
         return <OverviewContent />;
       case 'ultimate-assistant':
         return <ExecutiveCommandCenter />;
-      case 'rag-pipeline':
-        return <RagPipelineContent />;
+      case 'rag-agent':
+        return <DatabaseQueryAgentContent />;
       case 'newsletter-creation':
-        return <NewsletterContent />;
-      
+        return <NewsletterAutomationAgentContent />;
+      case 'personalized-outreach-agent':
+        return <PersonalizeOutreachAutomationContent />;
+      case 'qa-automation-agent':
+        return <QAAutomationContent />;
       case 'schedule-appointment-agent':
-      case 'customer-service-agent':
-      case 'generate-test-case':
-        return <div>{currentSectionID.replace(/-/g, ' ').toUpperCase()} Content Coming Soon.</div>;
+        return <AppointmentAgentContent />;
+      case 'sales-agent':
+        return <SalesAgentContent />;
+
+        // return <div>{currentSectionID.replace(/-/g, ' ').toUpperCase()} Content Coming Soon.</div>;
 
       default:
         return <IntroductionContent />;

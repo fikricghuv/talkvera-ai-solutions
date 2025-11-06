@@ -144,8 +144,6 @@ const DatabaseQueryAgentContent = () => {
                     <li><span className="font-medium text-white">Democratizes Data Access:</span> Non-technical users query complex databases and document repositories using natural language—no SQL or search expertise required.</li>
                     <li><span className="font-medium text-white">Hybrid Intelligence:</span> Automatically routes questions to the optimal data source (vector search for documents, SQL for structured data)—maximizing answer accuracy.</li>
                     <li><span className="font-medium text-white">Accelerates Decision-Making:</span> Instant answers to business questions reduce dependency on data analysts and technical teams.</li>
-                    <li><span className="font-medium text-white">Ensures Query Accuracy:</span> Schema-aware query construction, foreign key validation, and data existence checks minimize errors.</li>
-                    <li><span className="font-medium text-white">Contextual Conversations:</span> Session-based memory enables natural follow-up questions and maintains conversation flow.</li>
                     <li><span className="font-medium text-white">Enterprise Scalability:</span> Session isolation supports unlimited concurrent users without context mixing.</li>
                     <li><span className="font-medium text-white">Seamless Integration:</span> RESTful API interface connects with existing tools, chat platforms, and business applications.</li>
                     <li><span className="font-medium text-white">Reduces Technical Debt:</span> Dramatically lowers ad-hoc data request backlog for technical teams.</li>

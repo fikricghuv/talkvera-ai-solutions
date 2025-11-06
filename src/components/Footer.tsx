@@ -5,23 +5,23 @@ import { Link } from 'react-router-dom';
 function Footer() {
 
   const links = [
-    { label: 'Home', path: '/home' },
-    { label: 'Contact Us', path: '/contact' },
-    { label: 'Pricing', path: '/pricing' },
+    { label: 'Home', path: '/home#home' },
+    { label: 'Kontak', path: '/contact' },
+    { label: 'Harga', path: '/pricing' },
   ];
 
   const resourceLinks = [
-    { label: 'Docs', path: '/docs/introduction' },
-    { label: 'Case Studies', path: '/docs/case-studies/overview' },
-    { label: "FQA's", path: '/home#faq' },
+    { label: 'Dokumentasi', path: '/docs/introduction' },
+    { label: 'Studi Kasus', path: '/docs/case-studies/overview' },
+    { label: "FAQ", path: '/home#faq' },
   ];
 
   const companyLinks = [
-    { label: 'About Us', path: '/about' },
+    { label: 'Tentang', path: '/about' },
   ];
 
   const getStartedLink = [
-    { label: 'Get Started', desc: 'Learn more about how we can make your business grow.' },
+    { label: 'Mulai Sekarang', desc: 'Pelajari lebih jauh bagaimana kami dapat membuat bisnismu lebih produktif.' },
   ]
 
   return (
@@ -37,7 +37,7 @@ function Footer() {
               />
             </Link>
             <p className="text-sm text-gray-400">
-              Transforming businesses through intelligent AI solutions.
+              Operasional lebih rapi, tim lebih fokus—berkat automasi cerdas.
             </p>
           </div>
 
@@ -116,7 +116,7 @@ function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-white mb-4">Get Started</h3>
+            <h3 className="font-semibold text-white mb-4">Mulai Sekarang</h3>
             {getStartedLink.map((item, index) => (
               <p key={index} className="text-sm text-gray-400 mb-4">
                 {item.desc}
@@ -127,7 +127,7 @@ function Footer() {
                 to="/contact" 
                 className="inline-block px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30"
             >
-                Get Started
+                Mulai Sekarang
             </Link>
           </div>
 

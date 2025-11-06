@@ -129,11 +129,11 @@ function ContactPage() {
                     </div>
                     
                     <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent leading-tight">
-                        Get Started with Talkvera
+                        Diskusikan Kebutuhan Anda Bersama Talkvera
                     </h1>
                     
                     <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-                        Speak to an expert and start a plan for your project.
+                        Bicaralah dengan seorang ahli dan mulailah membuat rencana untuk proyek Anda.
                     </p>
                 </div>
             </section>
@@ -151,7 +151,7 @@ function ContactPage() {
                                     Contact Information
                                 </h2>
                                 <p className="text-gray-400 text-lg">
-                                    Our team is ready to assist you. Feel free to reach out via email, phone, or visit our office.
+                                    Tim kami siap membantu Anda. Jangan ragu untuk menghubungi kami melalui email, telepon, atau mengunjungi kantor kami.
                                 </p>
 
                                 <div className="space-y-6 pt-4">

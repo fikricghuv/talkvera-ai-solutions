@@ -1,4 +1,4 @@
-import { Check, MessagesSquare, Tag, User, FlaskConical, Settings, Layers, TrendingUp, Palette, Clock, Puzzle } from 'lucide-react';
+import { Check, MessagesSquare, Tag, User, FlaskConical, Settings, Layers, TrendingUp, Palette, Clock, Puzzle, ArrowRight } from 'lucide-react';
 import CtaContent from '../components/Cta';
 import { Link } from 'react-router-dom';
 import FadeInOnScroll from '../components/FadeInOnScroll';
@@ -17,16 +17,16 @@ function PricingPage() {
       name: 'Business Partner',
       price: 'Custom',
       period: '',
-      description: 'Comprehensive solutions for companies ready to scale their AI capabilities',
+      description: 'Solusi komprehensif untuk perusahaan yang siap meningkatkan kapabilitas AI mereka',
       features: [
         'Dedicated AI Engineer',
-        'Documentation and user guides',
-        'Live debugging and solution management',
+        'Dokumentasi dan panduan pengguna',
+        'Debugging langsung dan manajemen solusi',
         'Dedicated Project Manager',
         'Strategic roadmap review',
-        'Team training and enablement sessions',
-        'Documentation of all completed work',
-        'Everything customized for you and your business'
+        'Sesi pelatihan dan pemberdayaan tim',
+        'Dokumentasi semua pekerjaan yang telah selesai',
+        'Semuanya disesuaikan untuk Anda dan bisnis Anda'
       ],
       highlighted: true,
     },
@@ -43,10 +43,10 @@ function PricingPage() {
   ];
 
   const processes = [
-    { icon: Check, desc: 'Clear documentation of all work completed' },
-    { icon: TrendingUp, desc: 'Regular progress updates and demonstrations' },
-    { icon: Layers, desc: 'Collaborative planning sessions' },
-    { icon: Clock, desc: 'Detailed time tracking and reporting' },
+    { icon: Check, desc: 'Dokumentasi yang jelas untuk semua pekerjaan yang telah diselesaikan' },
+    { icon: TrendingUp, desc: 'Update progres dan demonstrasi rutin' },
+    { icon: Layers, desc: 'Sesi perencanaan kolaboratif' },
+    { icon: Clock, desc: 'Time tracking dan detail laporan' },
   ];
 
   return (
@@ -62,11 +62,11 @@ function PricingPage() {
               Choose Your AI Journey
             </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              At Talkvera, we act as your dedicated AI partner—focused on identifying and executing the highest ROI opportunities for automation within your business.
+              Di Talkvera, kami bertindak sebagai mitra AI khusus Anda—berfokus pada identifikasi dan eksekusi peluang ROI tertinggi untuk otomatisasi dalam bisnis Anda.
             </p>
             <br/>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-              Our mission is to help you and your team reclaim valuable hours each week by designing intelligent systems that eliminate repetitive tasks, streamline workflows, and scale with your operations. Over time, these time savings compound into massive gains in efficiency, productivity, and growth.
+              Misi kami adalah membantu Anda dan tim Anda mendapatkan kembali jam-jam berharga setiap minggu dengan merancang sistem cerdas yang menghilangkan tugas-tugas berulang, menyederhanakan alur kerja, dan menyesuaikan skala dengan operasional Anda. Seiring waktu, penghematan waktu ini menghasilkan peningkatan besar dalam efisiensi, produktivitas, dan pertumbuhan.
             </p>
           </div>
 
@@ -134,7 +134,7 @@ function PricingPage() {
                                 // GANTI onNavigate('contact') dengan fungsi React Router
                                 onClick={handleContactNavigate} 
                             >
-                                {plan.price === 'Custom' ? 'Contact Sales' : 'Get Started Now'}
+                                {plan.price === 'Custom' ? 'Contact Sales' : 'Konsultasi Dengan Kami Now'}
                             </button>
                         </div>
                     ))}
@@ -149,14 +149,16 @@ function PricingPage() {
                   direction="left"  
               >
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">Post-Deployment Solution Management</h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">
+                  <span className='text-blue-400'>Post-Deployment</span> Solution Management
+                </h2>
                 <br />
                 <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
                   <p>
-                    Launching your AI solution is just the beginning. At Talkvera, we offer comprehensive post-deployment support to ensure your systems continue to perform reliably as your business evolves.
+                    Meluncurkan solusi AI Anda hanyalah permulaan. Di Talkvera, kami menawarkan dukungan pasca-penerapan yang komprehensif untuk memastikan sistem Anda terus berkinerja andal seiring perkembangan bisnis Anda.
                   </p>
                   <p>
-                    From ongoing system monitoring and performance optimization to adapting workflows as new challenges arise, our team stays engaged to keep your AI solutions running at peak efficiency.
+                    Dari pemantauan sistem dan pengoptimalan kinerja yang berkelanjutan hingga adaptasi alur kerja seiring munculnya tantangan baru, tim kami selalu terlibat untuk menjaga solusi AI Anda tetap berjalan pada kinerja terbaik.
                   </p>
                 </div>
               </div>
@@ -180,9 +182,9 @@ function PricingPage() {
           <div className="mt-24">
             <FadeInOnScroll delay={0.2} threshold={0.2}>
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">What Sets Our Development Partnership Apart</h2>
+              <h2 className="text-4xl font-bold mb-4">What Sets <span className='text-blue-400'>Our Development Partnership</span> Apart</h2>
               <p className="text-xl text-gray-400">
-                Every Talkvera development partnership includes access to:
+                Setiap kemitraan pengembangan Talkvera memiliki akses ke:
               </p>
             </div>
             </FadeInOnScroll>
@@ -220,10 +222,10 @@ function PricingPage() {
             <div className='text-center mt-12'>
               <Link 
                   to="/contact" 
-                  className="inline-block px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold 
-                  rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 "
+                  className="inline-flex w-full sm:w-auto px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 items-center justify-between space-x-4"
               >
-                  Get Started
+                  <span>Konsultasi Dengan Kami</span>
+                  <ArrowRight size={20} />
               </Link>
             </div>
             </FadeInOnScroll>
@@ -232,7 +234,7 @@ function PricingPage() {
           <div className="mt-24">
             <FadeInOnScroll delay={0.2} threshold={0.2}>
             <div className="mb-12 text-center">
-              <h2 className="text-4xl font-bold mb-4">Transparent Process</h2>
+              <h2 className="text-4xl font-bold mb-4"><span className='text-blue-400'>Transparent</span> Process</h2>
             </div>
             </FadeInOnScroll>
 

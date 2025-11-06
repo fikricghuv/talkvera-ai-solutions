@@ -9,17 +9,17 @@ function AboutPage() {
     {
       icon: Lightbulb,
       title: 'Custom AI Agent Engineering',
-      description: 'We architect, deploy, and maintain AI systems tailored to your specific business operations—designed to drive measurable outcomes and long-term scalability.',
+      description: 'Kami merancang, menerapkan, dan memelihara sistem AI yang disesuaikan dengan operasi bisnis spesifik Anda—dirancang untuk mendorong hasil yang terukur dan skalabilitas jangka panjang.',
     },
     {
       icon: Heart,
       title: 'Fully Managed',
-      description: 'Our team builds and manages end-to-end automation systems that integrate seamlessly into your workflows, unlocking efficiency and reducing manual overhead.',
+      description: 'Tim kami membangun dan mengelola sistem otomasi menyeluruh yang terintegrasi secara mulus ke dalam workflow Anda, membuka efisiensi dan mengurangi overhead manual.',
     },
     {
       icon: Award,
       title: 'AI Partner',
-      description: 'We partner with your team to assess opportunities for AI implementation, align solutions with business goals, and ensure successful adoption across departments.',
+      description: 'Kami bermitra dengan tim Anda untuk menilai peluang implementasi AI, menyelaraskan solusi dengan tujuan bisnis, dan memastikan adopsi yang berhasil di seluruh departemen.',
     }
   ];
 
@@ -57,10 +57,10 @@ function AboutPage() {
               <span className="text-sm text-blue-300">About TalkVera</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent leading-tight">
-              Pioneering the Future of AI
+              AI That Works While You Grow
             </h1>
             <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
-              We're on a mission to democratize AI and empower businesses of all sizes to harness the transformative power of artificial intelligence.
+              Kami memiliki misi untuk mendemokratisasi AI dan memberdayakan bisnis segala ukuran untuk memanfaatkan kekuatan transformatif kecerdasan buatan.
             </p>
           </div>
         </div>
@@ -113,7 +113,7 @@ function AboutPage() {
 
           <div className='pb-24'>
             <FadeInOnScroll delay={0.2} threshold={0.2}>
-              <h2 className="text-4xl font-bold mb-12 text-center">Meet Our Team</h2>
+              <h2 className="text-4xl font-bold mb-12 text-center">Meet <span className='text-blue-400'>Our Team</span></h2>
             </FadeInOnScroll>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {team.map((member, index) => (
@@ -180,14 +180,14 @@ function AboutPage() {
               direction="left"
             >
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">We Help You Grow</h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">We Help <span className='text-blue-400'>You Grow</span></h2>
                 <br />
                 <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
                   <p>
-                    At Talkvera, we don't just build AI systems—we build long-term partnerships that evolve with your business. Our mission is to help you unlock growth by leveraging custom AI solutions that are scalable, efficient, and aligned with your goals.
+                    Di Talkvera, kami tidak hanya membangun sistem AI—kami membangun kemitraan jangka panjang yang berkembang bersama bisnis Anda. Misi kami adalah membantu Anda mencapai pertumbuhan dengan memanfaatkan solusi AI khusus yang skalabel, efisien, dan selaras dengan tujuan Anda.
                   </p>
                   <p>
-                    Whether you're optimizing internal operations, reducing manual workload, or exploring new ways to engage customers, we act as a strategic partner in your transformation journey. We combine deep technical expertise with a business-first mindset to deliver real, measurable impact.
+                    Baik Anda mengoptimalkan operasional internal, mengurangi beban kerja manual, atau mengeksplorasi cara baru untuk melibatkan pelanggan, kami bertindak sebagai mitra strategis dalam perjalanan transformasi Anda. Kami menggabungkan keahlian teknis yang mendalam dengan pola pikir yang mengutamakan bisnis untuk memberikan dampak nyata dan terukur.
                   </p>
                   <br />
                   <p className="text-blue-400 font-semibold">

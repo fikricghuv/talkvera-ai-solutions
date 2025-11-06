@@ -8,11 +8,11 @@ function Header() {
   const currentPathname = window.location.pathname; // Dapatkan pathname saat ini
 
   const navItems: { label: string; path: string }[] = [
-    { label: 'Home', path: '/home' }, 
-    { label: 'Pricing', path: '/pricing' },
-    { label: 'About', path: '/about' },
-    { label: 'Case Study', path: '/docs/case-studies/overview' }, 
-    { label: 'Docs', path: '/docs/introduction' },
+    { label: 'Home', path: '/home#home' }, 
+    { label: 'Harga', path: '/pricing' },
+    { label: 'Tentang', path: '/about' },
+    { label: 'Studi Kasus', path: '/docs/case-studies/overview' }, 
+    { label: 'Dokumentasi', path: '/docs/introduction' },
   ];
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
@@ -72,12 +72,12 @@ function Header() {
                 </NavLink>
             ))}
             
-            {/* 3. GET STARTED BUTTON */}
+            {/* 3. Mulai Sekarang BUTTON */}
             <button 
               onClick={() => handleNavigate('/contact')}
               className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30"
             >
-              Get Started
+              Mulai Sekarang
             </button>
           </div>
 
@@ -103,12 +103,12 @@ function Header() {
               </NavLink>
             ))}
             
-            {/* 5. MOBILE GET STARTED BUTTON */}
+            {/* 5. MOBILE Mulai Sekarang BUTTON */}
             <button 
               onClick={() => handleNavigate('/contact')}
               className="w-full px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-lg"
             >
-              Get Started
+              Mulai Sekarang
             </button>
             
           </div>

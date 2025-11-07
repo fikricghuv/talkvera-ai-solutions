@@ -1,66 +1,69 @@
 const IntroductionContent = () => {
     return (
         <div className="space-y-8">
-            <h1 className="text-4xl font-bold mb-6">Getting Started</h1>
+            <h1 className="text-4xl font-bold mb-6">Pengenalan</h1>
 
-            <p className=" leading-relaxed">
-                Welcome to TalkVera's documentation! This section is your launchpad for getting oriented
-                with our tools, services, and how we work. Our goal is to make working with TalkVera
-                seamless and intuitive.
+            <p className="leading-relaxed">
+                Selamat datang di dokumentasi TalkVera! Bagian ini menjadi titik awal untuk memahami alat, 
+                layanan, dan cara kerja sistem kami. Tujuan kami adalah membantu Anda bekerja dengan 
+                TalkVera secara lebih mudah, intuitif, dan tanpa hambatan.
             </p>
 
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Navigating the Documentation</h2>
-                <p className=" leading-relaxed">
-                    Each major category in this documentation is presented as a dropdown menu, containing
-                    detailed subpages for each topic. Use the sidebar or top navigation to explore areas like
-                    <span className="text-white font-medium"> "Technology Stack", "Our Process", </span>and
-                    <span className="text-white font-medium"> "AI Agents".</span> 
+                <h2 className="text-2xl font-semibold mb-3">Menjelajahi Dokumentasi</h2>
+                <p className="leading-relaxed">
+                    Setiap kategori utama disajikan dalam bentuk menu tarik-turun yang berisi halaman 
+                    penjelasan untuk setiap topik. Gunakan bilah sisi atau navigasi atas untuk menjelajahi 
+                    area seperti 
+                    <span className="text-white font-medium"> "Studi Kasus", "Proses Kerja", </span>
+                    dan 
+                    <span className="text-white font-medium"> "Agen AI".</span>
                 </p>
             </div>
 
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Who This Is For</h2>
-                <p className=" leading-relaxed">
-                    This documentation is designed for developers, product leaders, operations teams, and
-                    decision-makers who want to understand and implement AI capabilities into their workflows.
-                    Whether you're launching a new project or integrating one of our agents into your systems,
-                    this guide will help you understand what's possible and how to get there.
+                <h2 className="text-2xl font-semibold mb-3">Untuk Siapa Dokumentasi Ini</h2>
+                <p className="leading-relaxed">
+                    Dokumentasi ini ditujukan untuk pengembang, product lead, tim operasional, serta 
+                    pemangku kepentingan yang ingin memahami dan menerapkan kemampuan AI ke dalam 
+                    alur kerja mereka. Baik Anda sedang membangun proyek baru atau mengintegrasikan agen 
+                    TalkVera ke sistem yang sudah ada, panduan ini membantu Anda memahami apa yang dapat 
+                    dilakukan—dan bagaimana mencapainya.
                 </p>
             </div>
 
             <div>
-                <h2 className="text-2xl font-semibold mb-3">How to Work With Us</h2>
-                <p className=" leading-relaxed mb-3">
-                    To start working with TalkVera, visit our
-                    <span className="text-white font-medium"> Contact Page </span>and fill out the form with
-                    as much detail as possible about your project. The more context you provide, the better we
-                    can scope the engagement and align you with the right solutions.
+                <h2 className="text-2xl font-semibold mb-3">Bagaimana Bekerja Sama dengan Kami</h2>
+                <p className="leading-relaxed mb-3">
+                    Untuk memulai, kunjungi halaman
+                    <span className="text-white font-medium"> Kontak </span>
+                    dan isi formulir dengan detail proyek Anda. Semakin lengkap informasi yang diberikan, 
+                    semakin akurat kami dapat menentukan ruang lingkup dan solusi yang tepat untuk kebutuhan Anda.
                 </p>
-                <p className=" leading-relaxed">
-                    We specialize in building tailored AI automation solutions for enterprises. Because every 
-                    business's needs are unique, we don't offer fixed packages. Instead, we conduct a 
-                    <span className="text-white font-medium"> comprehensive 
-                    technical assessment </span>to provide a customized proposal and detailed investment outline.
-                </p>
-            </div>
-
-            <div>
-                <h2 className="text-2xl font-semibold mb-3">Documentation Tips</h2>
-                <p className=" leading-relaxed">
-                    Each page in the documentation is written with clarity and speed in mind. You'll find
-                    headings, brief explanations, and where helpful, embedded videos, diagrams, and example
-                    prompts. Use these as references or templates to better understand how our tools work in
-                    practice.
+                <p className="leading-relaxed">
+                    TalkVera berfokus pada pengembangan solusi otomatisasi AI yang sepenuhnya disesuaikan. 
+                    Karena setiap bisnis memiliki kebutuhan unik, kami tidak menyediakan paket harga tetap. 
+                    Sebagai gantinya, kami melakukan 
+                    <span className="text-white font-medium"> asesmen teknis menyeluruh </span> 
+                    untuk menyusun proposal khusus beserta estimasi investasinya.
                 </p>
             </div>
 
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Feedback Welcome</h2>
-                <p className=" leading-relaxed">
-                    We strive to keep our documentation current and helpful. If something's missing or unclear,
-                    don't hesitate to reach out. We're continuously iterating based on client feedback and
-                    evolving AI capabilities.
+                <h2 className="text-2xl font-semibold mb-3">Tips Menggunakan Dokumentasi</h2>
+                <p className="leading-relaxed">
+                    Setiap halaman dalam dokumentasi ditulis secara ringkas dan mudah dipahami. Anda akan 
+                    menemukan judul terstruktur, penjelasan singkat, serta—bila relevan—diagram atau contoh 
+                    prompt. Gunakan semua ini sebagai referensi untuk memahami cara kerja alat dan agen AI kami.
+                </p>
+            </div>
+
+            <div>
+                <h2 className="text-2xl font-semibold mb-3">Masukan Sangat Kami Hargai</h2>
+                <p className="leading-relaxed">
+                    Kami berkomitmen menjaga dokumentasi ini tetap relevan dan bermanfaat. Jika Anda menemukan 
+                    bagian yang kurang jelas atau perlu diperbaiki, jangan ragu untuk menghubungi kami. 
+                    Dokumentasi ini terus berkembang mengikuti masukan pengguna dan kemajuan teknologi AI.
                 </p>
             </div>
         </div>

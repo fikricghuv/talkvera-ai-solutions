@@ -3,99 +3,153 @@ import GenerateTestScenarioFlowchart from './flowchart/GenerateTestScenarioFlowc
 const QAAutomationContent = () => {
     return (
         <div className="space-y-8">
-            {/* TITLE: Changed to "Client | Project" format. 
-              Assuming this is for an internal QA team.
-            */}
+
+            {/* Title */}
             <h1 className="text-4xl font-bold mb-6">
-                QA Team | AI-Powered Test Scenario Generator
+                Tim QA | Sistem Otomatisasi Pembuatan Test Scenario Berbasis AI
             </h1>
 
-            {/* OVERVIEW: Slight adjustment to focus on the "problem" and "solution." */}
+            {/* Overview */}
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Project Overview</h2>
+                <h2 className="text-2xl font-semibold mb-3">Ringkasan Proyek</h2>
                 <p className="leading-relaxed">
-                    We designed and deployed an automated n8n workflow to transform the critical task of <strong>Quality Assurance (QA)</strong>. 
-                    This solution automatically generates a structured <strong>Test Scenario document</strong> 
-                    directly from an uploaded Business or Product Requirements Document (BRD/PRD) in PDF format.
+                    Kami membangun sebuah workflow otomatis berbasis <strong>n8n</strong> yang dirancang
+                    untuk mentransformasi proses penting dalam <strong>Quality Assurance (QA)</strong>. 
+                    Sistem ini secara otomatis menghasilkan <strong>Test Scenario terstruktur</strong> 
+                    langsung dari dokumen Business Requirements (BRD) atau Product Requirements (PRD) 
+                    dalam format PDF.
                 </p>
                 <p className="leading-relaxed mt-3">
-                    The system replaces a time-consuming manual process with intelligent extraction, 
-                    AI analysis, and automated export to <strong>Google Sheets</strong>. The result is a 
-                    <strong>fast, consistent, and structured</strong> QA documentation process.
+                    Alur ini menggantikan proses manual yang memakan waktu dengan serangkaian langkah 
+                    cerdas—mulai dari ekstraksi dokumen, analisis AI, hingga ekspor otomatis ke 
+                    <strong>Google Sheets</strong>. Hasilnya adalah proses QA yang lebih 
+                    <strong>cepat, konsisten, dan dapat diskalakan</strong>.
                 </p>
             </div>
 
             <GenerateTestScenarioFlowchart />
 
-            {/* PHASE RESTRUCTURE:
-              These phases now reflect the "business process" (Analysis -> Generation -> Export), 
-              not the "technical steps" (Webhook -> Code -> Loop).
-            */}
-
+            {/* Phase 1 */}
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Phase 1: Document Analysis & Preprocessing</h2>
+                <h2 className="text-2xl font-semibold mb-3">
+                    Fase 1: Analisis Dokumen & Pra-Pemrosesan
+                </h2>
+
                 <p className="leading-relaxed">
-                    <span className="font-medium text-white">Trigger:</span> Activates instantly when a QA engineer uploads a PDF file (BRD or PRD) to the webhook endpoint.
+                    <span className="font-medium text-white">Trigger:</span> Berjalan otomatis ketika QA engineer mengunggah file PDF (BRD/PRD) ke webhook endpoint.
                 </p>
+
                 <p className="leading-relaxed mt-3">
-                    <span className="font-medium text-white">Functionality:</span>
+                    <span className="font-medium text-white">Fungsi Utama:</span>
                 </p>
+
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                    <li><span className="font-medium text-white">Intelligent Text Extraction:</span> The system automatically extracts raw text from the uploaded PDF file.</li>
-                    <li><span className="font-medium text-white">Structure Conversion (PDF to Markdown):</span> A custom <strong>JavaScript</strong> node converts the raw text into Markdown format. This is a critical step to preserve the document's structure (headings, lists) for the AI to understand.</li>
-                    <li><span className="font-medium text-white">Text Normalization:</span> Cleans the Markdown text of unnecessary whitespace and newlines, preparing a clean, concise input for the AI model.</li>
+                    <li>
+                        <span className="font-medium text-white">Ekstraksi Teks Cerdas:</span> 
+                        Sistem membaca dan mengekstrak teks mentah dari file PDF.
+                    </li>
+
+                    <li>
+                        <span className="font-medium text-white">Konversi Struktur (PDF → Markdown):</span> 
+                        Node <strong>JavaScript</strong> khusus mengubah teks menjadi format Markdown 
+                        untuk mempertahankan struktur dokumen (heading, list, section) yang penting 
+                        bagi pemahaman AI.
+                    </li>
+
+                    <li>
+                        <span className="font-medium text-white">Normalisasi Teks:</span> 
+                        Membersihkan whitespace dan karakter tak penting untuk menyiapkan input yang 
+                        rapi bagi model AI.
+                    </li>
                 </ul>
             </div>
 
+            {/* Phase 2 */}
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Phase 2: AI-Powered Scenario Generation</h2>
+                <h2 className="text-2xl font-semibold mb-3">
+                    Fase 2: Pembuatan Test Scenario Berbasis AI
+                </h2>
+
                 <p className="leading-relaxed">
-                    <span className="font-medium text-white">Trigger:</span> Runs automatically after the document has been processed and cleaned.
+                    <span className="font-medium text-white">Trigger:</span> Aktif setelah dokumen selesai diproses dan dinormalisasi.
                 </p>
+
                 <p className="leading-relaxed mt-3">
-                    <span className="font-medium text-white">Functionality:</span>
+                    <span className="font-medium text-white">Fungsi Utama:</span>
                 </p>
+
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                    <li><span className="font-medium text-white">AI QA Expert Agent:</span> Utilizes an advanced AI model (<strong>OpenRouter: `google/gemini-2.5-flash`</strong>) role-played as a QA expert. The AI analyzes the Markdown document and generates 10 comprehensive test scenarios.</li>
-                    <li><span className="font-medium text-white">Structured Output Validation:</span> Employs a <strong>Structured Output Parser</strong> to force the AI's response into a strict JSON format. This guarantees the data (project name, list of cases) is always clean, structured, and error-free.</li>
+                    <li>
+                        <span className="font-medium text-white">AI QA Expert Agent:</span> 
+                        Menggunakan model <strong>OpenRouter: google/gemini-2.5-flash</strong> 
+                        yang berperan sebagai pakar QA.  
+                        AI membaca dokumen dan menghasilkan 10 test scenario komprehensif.
+                    </li>
+
+                    <li>
+                        <span className="font-medium text-white">Validasi Output Terstruktur:</span> 
+                        <strong>Structured Output Parser</strong> memastikan seluruh respons AI  
+                        mengikuti format JSON yang konsisten—menghindari kesalahan format dan 
+                        memudahkan proses selanjutnya.
+                    </li>
                 </ul>
             </div>
 
+            {/* Phase 3 */}
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Phase 3: Automated Documentation & Export</h2>
+                <h2 className="text-2xl font-semibold mb-3">
+                    Fase 3: Dokumentasi Otomatis & Ekspor
+                </h2>
+
                 <p className="leading-relaxed">
-                    <span className="font-medium text-white">Trigger:</span> Activates as soon as the AI has successfully generated and validated the test scenarios.
+                    <span className="font-medium text-white">Trigger:</span> Dimulai ketika semua test scenario berhasil dihasilkan dan divalidasi.
                 </p>
+
                 <p className="leading-relaxed mt-3">
-                    <span className="font-medium text-white">Functionality:</span>
+                    <span className="font-medium text-white">Fungsi Utama:</span>
                 </p>
+
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                    <li><span className="font-medium text-white">Dynamic Spreadsheet Creation:</span> Automatically creates a new <strong>Google Sheet</strong> with a dynamic title based on the AI's output (e.g., "Test scenario : [Project Name]").</li>
-                    <li><span className="font-medium text-white">Data Formatting & Looping:</span> Converts the JSON array from the AI into individual items, then loops through to process each test case one by one.</li>
-                    <li><span className="font-medium text-white">Automated Row Population:</span> Writes each test case as a new row in the Google Sheet, automatically populating columns: <strong>ID, Case, Steps, Type,</strong> and <strong>Expected</strong>. The <strong>Actual</strong> and <strong>Status</strong> columns are intentionally left blank for the QA team to fill during manual testing.</li>
+                    <li>
+                        <span className="font-medium text-white">Pembuatan Spreadsheet Dinamis:</span> 
+                        Workflow membuat <strong>Google Sheet</strong> baru dengan judul otomatis 
+                        sesuai hasil AI (misalnya: “Test Scenario – [Nama Proyek]”).
+                    </li>
+
+                    <li>
+                        <span className="font-medium text-white">Pemrosesan Data & Looping:</span> 
+                        JSON array dari AI dipecah menjadi item individual, kemudian diproses satu per satu.
+                    </li>
+
+                    <li>
+                        <span className="font-medium text-white">Pengisian Otomatis:</span> 
+                        Setiap test scenario ditulis sebagai baris baru dengan kolom lengkap  
+                        <strong>ID, Case, Steps, Type, Expected</strong>.  
+                        Kolom <strong>Actual</strong> & <strong>Status</strong> sengaja dikosongkan  
+                        untuk proses uji manual.
+                    </li>
                 </ul>
             </div>
 
-            {/* ROI SECTION: 
-              Changed from "Key Business Value" to "Return on Investment" to match the Barkbox example.
-              The narrative is framed as "hiring a digital assistant."
-            */}
+            {/* ROI */}
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Return on Investment</h2>
+                <h2 className="text-2xl font-semibold mb-3">Nilai Bisnis & Return on Investment</h2>
+
                 <p className="leading-relaxed">
-                    By implementing this AI workflow, the QA team effectively "hired" a senior digital QA Analyst that:
+                    Dengan workflow ini, tim QA pada dasarnya “mempekerjakan” seorang analis QA senior digital yang:
                 </p>
+
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                    <li>Turns a 50-page BRD into a structured test plan in minutes, not days</li>
-                    <li>Operates 24/7 with no training, PTO, or breaks required</li>
-                    <li>Ensures 100% consistency in test documentation format and structure</li>
-                    <li>Uses advanced AI to identify scenarios and edge cases that a human might miss</li>
-                    <li>Integrates directly with <strong>Google Sheets</strong>, where the team already works</li>
-                    <li>Frees up senior QA engineers from repetitive documentation to focus on complex, exploratory testing</li>
+                    <li>Mengubah BRD 50 halaman menjadi test scenario dalam hitungan menit</li>
+                    <li>Bekerja 24/7 tanpa training, cuti, atau onboarding</li>
+                    <li>Memberikan format dokumentasi yang konsisten dan standar</li>
+                    <li>Mengenali skenario dan edge-case yang sering dilewatkan manusia</li>
+                    <li>Terintegrasi langsung dengan <strong>Google Sheets</strong></li>
+                    <li>Menghemat waktu engineer senior dari pekerjaan repetitif</li>
                 </ul>
+
                 <p className="leading-relaxed mt-3">
-                    {/* Strong closing paragraph like the Barkbox example */}
-                    The result is a drastic reduction in QA prep time, improved test quality and coverage, and a faster, more agile product development lifecycle.
+                    Hasil akhirnya adalah penurunan drastis waktu persiapan QA, peningkatan kualitas skenario, dan proses pengembangan produk yang jauh lebih cepat dan adaptif.
                 </p>
             </div>
         </div>

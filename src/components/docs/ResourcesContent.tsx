@@ -1,67 +1,74 @@
 const ResourcesContent = () => {
     return (
         <div className="space-y-6 text-left">
-            <h1 className="text-4xl font-bold mb-2">Additional Resources</h1>
-            <p className="mb-2 mt-1">
-              Technical references and troubleshooting insights to support engineering teams, partners, and technical buyers working with Talkvera systems.
+            <h1 className="text-4xl font-bold mb-2">Resource Tambahan</h1>
+            <p className="mb-2 mt-1 leading-relaxed">
+              Referensi teknis dan panduan troubleshooting untuk membantu tim engineering, mitra, 
+              dan technical stakeholders yang bekerja dengan sistem TalkVera.
             </p>
 
+            {/* TECHNICAL FAQ */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Technical FAQ & Troubleshooting Guide</h2>
-              <p className="mb-4">
-                This section addresses common technical, implementation, and product-related questions. Topics include system maintainability, LLM behavior, hosting options, multilingual support, and RAG implementations.
+              <h2 className="text-2xl font-semibold mb-4">FAQ Teknis & Panduan Troubleshooting</h2>
+              <p className="mb-4 leading-relaxed">
+                Bagian ini membahas pertanyaan umum terkait teknis, implementasi, serta penggunaan produk. 
+                Topik meliputi maintainability sistem, perilaku LLM, opsi hosting, dukungan multibahasa, 
+                dan implementasi RAG.
               </p>
               <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                <li><strong className="text-white">Maintainability:</strong> Modular architecture, versioned APIs, and documentation-first design.</li>
-                <li><strong className="text-white">Hallucination handling:</strong> RAGAS metrics, human-reviewed data audits, and retraining when needed.</li>
-                <li><strong className="text-white">Hosting:</strong> Supports client-hosted deployments (VPC/private cloud) with secure IAM onboarding.</li>
-                <li><strong className="text-white">Multilingual systems:</strong> Built-in localization and model adaptation for global deployments.</li>
-                <li><strong className="text-white">RAG support:</strong> Grounded retrieval with semantic filters and QA scoring (precision, recall, groundedness).</li>
+                <li><strong className="text-white">Maintainability:</strong> Arsitektur modular, API berversi, dan pendekatan documentation-first.</li>
+                <li><strong className="text-white">Penanganan halusinasi:</strong> Metrik RAG, audit data oleh manusia, dan retraining bila diperlukan.</li>
+                <li><strong className="text-white">Hosting:</strong> Mendukung deployment di lingkungan klien (VPC/private cloud) dengan onboarding IAM yang aman.</li>
+                <li><strong className="text-white">Sistem multibahasa:</strong> Lokalisasi bawaan dan adaptasi model untuk kebutuhan global.</li>
+                <li><strong className="text-white">Dukungan RAG:</strong> Retrieval berbasis konteks dengan filter semantik dan penilaian QA (precision, recall, groundedness).</li>
               </ul>
             </section>
 
-            {/* Infrastructure & DevOps */}
+            {/* INFRASTRUCTURE */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Infrastructure & DevOps</h2>
-              <p className="mb-4">
-                We use modern infrastructure practices to ensure reliability and security in every deployment. CI/CD, environment provisioning, and secure configuration are built into our DevOps workflows.
+              <h2 className="text-2xl font-semibold mb-4">Infrastruktur & DevOps</h2>
+              <p className="mb-4 leading-relaxed">
+                Kami menggunakan praktik infrastruktur modern untuk memastikan keandalan dan keamanan 
+                di setiap deployment. CI/CD, provisioning environment, dan konfigurasi aman menjadi bagian 
+                inti dari workflow DevOps kami.
               </p>
               <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                <li><strong className="text-white">Deployment:</strong> GitHub Actions or n8n-based pipelines with isolated staging and production environments.</li>
-                <li><strong className="text-white">Provisioning:</strong> Managed via Docker, Terraform, Railway, or Kubernetes.</li>
-                <li><strong className="text-white">Security:</strong> Encryption, secrets management, and role-based access control (least privilege principle).</li>
+                <li><strong className="text-white">Deployment:</strong> GitHub Actions atau pipeline berbasis n8n dengan environment staging dan production terisolasi.</li>
+                <li><strong className="text-white">Provisioning:</strong> Dikelola menggunakan Docker, Terraform, Railway, atau Kubernetes.</li>
+                <li><strong className="text-white">Keamanan:</strong> Enkripsi, secrets management, dan role-based access control (prinsip least privilege).</li>
               </ul>
             </section>
 
-            {/* Troubleshooting & Edge Cases */}
+            {/* TROUBLESHOOTING */}
             <section>
               <h2 className="text-2xl font-semibold mb-4">Troubleshooting & Edge Cases</h2>
-              <p className="mb-4">
-                In cases of inconsistent responses or latency issues, we provide structured diagnostics and fallback mechanisms to maintain stability.
+              <p className="mb-4 leading-relaxed">
+                Untuk kasus respons yang tidak konsisten atau masalah latensi, kami menyediakan diagnostik 
+                terstruktur serta mekanisme fallback guna menjaga stabilitas sistem.
               </p>
               <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                <li><strong className="text-white">Inconsistent responses:</strong> Provide logs for automated retries and fallback model analysis.</li>
-                <li><strong className="text-white">Latency profiling:</strong> Async tracing, caching, and prompt optimization to improve performance.</li>
+                <li><strong className="text-white">Respons tidak konsisten:</strong> Analisis log, automated retries, dan evaluasi model fallback.</li>
+                <li><strong className="text-white">Profiling latensi:</strong> Async tracing, caching, dan optimasi prompt untuk meningkatkan performa.</li>
               </ul>
             </section>
 
-            {/* Glossary */}
+            {/* GLOSSARY */}
             <section>
-              <h2 className="text-2xl font-semibold mb-4">Glossary: Key Terminology</h2>
-              <p className="mb-4">
-                Quick reference for foundational AI and system design terminology.
+              <h2 className="text-2xl font-semibold mb-4">Glosarium: Istilah Penting</h2>
+              <p className="mb-4 leading-relaxed">
+                Referensi cepat untuk terminologi dasar dalam AI dan desain sistem.
               </p>
               <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                <li><strong className="text-white">LLM (Large Language Model):</strong> Neural network trained to generate human-like text.</li>
-                <li><strong className="text-white">RAG (Retrieval-Augmented Generation):</strong> Combines LLMs with vector databases for factual grounding.</li>
-                <li><strong className="text-white">Vector Database:</strong> Engine that stores and retrieves text embeddings for semantic search.</li>
-                <li><strong className="text-white">Embedding:</strong> Numeric vector capturing the meaning of text or data.</li>
-                <li><strong className="text-white">Prompt Engineering:</strong> Crafting prompts to shape model behavior.</li>
-                <li><strong className="text-white">Groundedness:</strong> Alignment of AI outputs with source documents or trusted context.</li>
-                <li><strong className="text-white">Token Limit:</strong> Maximum text length an AI model can process per request.</li>
-                <li><strong className="text-white">Agent:</strong> AI system that performs tasks autonomously or semi-autonomously.</li>
-                <li><strong className="text-white">Human-in-the-Loop (HITL):</strong> Workflow involving human validation or override of AI outputs.</li>
-                <li><strong className="text-white">CI/CD:</strong> Continuous integration and deployment pipelines ensuring reliable updates.</li>
+                <li><strong className="text-white">LLM (Large Language Model):</strong> Model neural network yang menghasilkan teks mirip bahasa manusia.</li>
+                <li><strong className="text-white">RAG (Retrieval-Augmented Generation):</strong> Menggabungkan LLM dengan vector database untuk menghasilkan output yang ter-grounding.</li>
+                <li><strong className="text-white">Vector Database:</strong> Sistem penyimpanan embedding untuk semantic search.</li>
+                <li><strong className="text-white">Embedding:</strong> Representasi numerik yang menangkap makna suatu teks atau data.</li>
+                <li><strong className="text-white">Prompt Engineering:</strong> Teknik menyusun prompt untuk mengarahkan perilaku model.</li>
+                <li><strong className="text-white">Groundedness:</strong> Tingkat kesesuaian output AI dengan dokumen sumber atau konteks terpercaya.</li>
+                <li><strong className="text-white">Token Limit:</strong> Batas panjang teks yang dapat diproses model dalam satu permintaan.</li>
+                <li><strong className="text-white">Agent:</strong> Sistem AI yang menjalankan tugas secara otonom atau semi-otonom.</li>
+                <li><strong className="text-white">Human-in-the-Loop (HITL):</strong> Workflow yang melibatkan manusia untuk validasi atau override output AI.</li>
+                <li><strong className="text-white">CI/CD:</strong> Pipeline integrasi dan deployment berkelanjutan untuk pembaruan yang aman dan konsisten.</li>
               </ul>
             </section>
           </div>

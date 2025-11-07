@@ -4,196 +4,217 @@ const SalesAgentContent = () => {
     return (
         <div className="space-y-8">
             <h1 className="text-4xl font-bold mb-6">
-                Sales Agent | AI-Powered CRM & Quote Management System
+                Sales Agent | Sistem CRM & Manajemen Penawaran Berbasis AI
             </h1>
 
-            {/* --- 1. Project Overview --- */}
+            {/* --- 1. Gambaran Proyek --- */}
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Project Overview</h2>
+                <h2 className="text-2xl font-semibold mb-3">Gambaran Proyek</h2>
                 <p className="leading-relaxed">
-                    The <strong>Sales Agent</strong> is an intelligent customer interaction system that automates the entire sales workflow—from initial inquiry to quote generation and CRM data management. Built on <strong>n8n automation platform</strong>, this AI-powered assistant handles customer conversations, captures essential information, generates accurate quotes, and ensures seamless handoff to the orders team through automated notifications.
+                    <strong>Sales Agent</strong> adalah sistem interaksi pelanggan berbasis AI yang mengotomatisasi seluruh alur kerja penjualan—mulai dari pertanyaan awal, pengumpulan data pelanggan, pembuatan penawaran, hingga pencatatan CRM. Dibangun di atas <strong>platform otomasi n8n</strong>, agen ini menangani percakapan pelanggan, mengumpulkan informasi penting, menghasilkan penawaran secara akurat, dan melakukan notifikasi otomatis kepada tim orders.
                 </p>
                 <p className="leading-relaxed mt-3">
-                    The agent eliminates manual data entry by automatically saving customer details (name, email, phone, notes) to PostgreSQL CRM, maintains conversation context for personalized interactions, and notifies the orders team via Telegram when quotes are generated or follow-ups are needed. It validates information before storage, tracks every interaction through CRM notes, and provides professional, friendly customer service 24/7.
+                    Agen ini menghilangkan entri data manual dengan menyimpan detail pelanggan (nama, email, nomor telepon, catatan) secara otomatis ke CRM PostgreSQL, mempertahankan konteks percakapan, dan mengirim notifikasi real-time ke Telegram saat penawaran selesai dibuat. Setiap data divalidasi sebelum disimpan, interaksi terdokumentasi sebagai catatan CRM, dan pelanggan mendapatkan layanan yang ramah serta responsif 24/7.
                 </p>
             </div>
 
             <SalesAgentFlowchart />
 
-            {/* --- 2. Phase 1: Natural Language Input & Secure Webhook Interface --- */}
+            {/* --- 2. Fase 1: Input Bahasa Alami & Webhook Aman --- */}
             <div className="mt-6">
-                <h2 className="text-2xl font-semibold mb-3">Phase 1: Natural Language Input & Secure Webhook Interface</h2>
-                
+                <h2 className="text-2xl font-semibold mb-3">Fase 1: Input Bahasa Alami & Webhook Aman</h2>
+
                 <h3 className="text-xl font-semibold mt-4">Trigger</h3>
                 <p className="leading-relaxed mt-2">
-                    Activated when a customer sends an inquiry via <strong>POST request</strong> to the <code>/sales-agent</code> webhook endpoint with <strong>header authentication</strong>.
+                    Dimulai saat pelanggan mengirim pertanyaan melalui <strong>POST request</strong> ke endpoint <code>/sales-agent</code> dengan <strong>header authentication</strong>.
                 </p>
 
-                <h3 className="text-xl font-semibold mt-4">Key Capabilities</h3>
+                <h3 className="text-xl font-semibold mt-4">Kemampuan Utama</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Secure API Gateway:</span> Receives <strong>HTTP POST requests</strong> with <strong>header-based authentication</strong> to protect sensitive customer and business data from unauthorized access.
+                        <span className="font-medium text-white">Gateway API Aman:</span> 
+                        Menerima <strong>HTTP POST</strong> dengan autentikasi header, menjaga keamanan data pelanggan dan bisnis.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Conversational Interface:</span> Accepts natural language messages like "I need a quote for 100 units of Product X" or "What's your pricing for enterprise plans?"—no structured forms required.
+                        <span className="font-medium text-white">Antarmuka Percakapan:</span> 
+                        Mendukung pesan bahasa alami seperti “Minta penawaran 100 unit Product X” atau “Berapa harga paket enterprise?”.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Session Management:</span> Maintains unique conversation threads using <code>session_id</code> to enable context-aware multi-turn dialogues where customers can refine requirements naturally.
+                        <span className="font-medium text-white">Manajemen Sesi:</span> 
+                        Mempertahankan percakapan menggunakan <code>session_id</code> sehingga dialog multi-turn tetap konsisten.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Raw Body Processing:</span> Handles flexible JSON payload formats for seamless integration with chat platforms, web forms, or custom applications.
+                        <span className="font-medium text-white">Pemrosesan Raw Body:</span>
+                        Menangani format JSON fleksibel dari chat apps, web forms, atau aplikasi kustom.
                     </li>
                 </ul>
 
                 <p className="leading-relaxed mt-3">
-                    This phase establishes a <strong>secure, conversational API</strong> that integrates with any frontend interface—web chat widgets, mobile apps, or messaging platforms—making customer engagement as simple as sending a text message.
+                    Fase ini menciptakan <strong>API percakapan yang aman dan fleksibel</strong>, dapat diintegrasikan dengan widget chat, aplikasi mobile, atau platform pesan apa pun.
                 </p>
             </div>
 
-            {/* --- 3. Phase 2: Intelligent Customer Information Management --- */}
+            {/* --- 3. Fase 2: Manajemen Informasi Pelanggan --- */}
             <div className="mt-6">
-                <h2 className="text-2xl font-semibold mb-3">Phase 2: Intelligent Customer Information Management</h2>
+                <h2 className="text-2xl font-semibold mb-3">Fase 2: Manajemen Informasi Pelanggan Cerdas</h2>
 
                 <h3 className="text-xl font-semibold mt-4">Trigger</h3>
                 <p className="leading-relaxed mt-2">
-                    Automatically engages when the AI agent needs to verify customer identity or collect contact information for CRM storage.
+                    Berjalan ketika agen AI perlu memverifikasi identitas pelanggan atau mengumpulkan informasi untuk CRM.
                 </p>
 
-                <h3 className="text-xl font-semibold mt-4">Key Capabilities</h3>
+                <h3 className="text-xl font-semibold mt-4">Kemampuan Utama</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Advanced Language Understanding:</span> Powered by <strong>OpenAI GPT-4o-mini</strong> via OpenRouter with temperature 0.7 for balanced, professional responses that understand customer intent even from casual phrasing.
+                        <span className="font-medium text-white">Pemahaman Bahasa Lanjutan:</span> 
+                        Menggunakan <strong>GPT-4o-mini via OpenRouter</strong> dengan output profesional dan natural.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Smart Customer Recognition:</span> Always checks CRM database first using <strong>Get Customer from CRM</strong> tool to identify returning customers by email—enabling personalized greetings and reference to past interactions.
+                        <span className="font-medium text-white">Pengenalan Pelanggan Cerdas:</span> 
+                        Mengecek CRM terlebih dahulu melalui <strong>Get Customer from CRM</strong> untuk mengidentifikasi pelanggan lama.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Automated Data Collection:</span> For new customers, naturally collects required information during conversation:
-                        <ul className="list-circle list-disc space-y-1 mt-1 pl-6">
-                            <li><strong>Name:</strong> Full customer name for personalization</li>
-                            <li><strong>Email:</strong> Primary contact with format validation (@ symbol required)</li>
-                            <li><strong>Phone:</strong> Optional contact number for urgent communications</li>
-                            <li><strong>Notes:</strong> Contextual information from initial inquiry</li>
+                        <span className="font-medium text-white">Pengumpulan Data Otomatis:</span> 
+                        Mengumpulkan:
+                        <ul className="list-disc space-y-1 mt-1 pl-6">
+                            <li><strong>Nama lengkap</strong></li>
+                            <li><strong>Email</strong> (dengan validasi format)</li>
+                            <li><strong>Nomor telepon</strong> (opsional)</li>
+                            <li><strong>Catatan awal</strong> dari kebutuhan pelanggan</li>
                         </ul>
                     </li>
                     <li>
-                        <span className="font-medium text-white">Save Customer to CRM:</span> Inserts new customer records into PostgreSQL <code>customers</code> table with validated data, automatic timestamp, and initial notes—creating persistent profiles for future interactions.
+                        <span className="font-medium text-white">Simpan Pelanggan ke CRM:</span>
+                        Memasukkan data ke tabel <code>customers</code> dengan timestamp dan catatan awal.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Data Validation Protocol:</span> Ensures email addresses contain proper formatting before database insertion, preventing invalid data entry and maintaining CRM data quality.
+                        <span className="font-medium text-white">Protokol Validasi Data:</span>
+                        Memastikan format email benar sebelum penyimpanan.
                     </li>
                     <li>
-                        <span className="font-medium text-white">PostgreSQL Conversation Memory:</span> Stores complete interaction histories tied to session IDs, enabling the agent to reference previous messages, understand context, and provide coherent multi-turn conversations.
+                        <span className="font-medium text-white">Memori Percakapan PostgreSQL:</span>
+                        Menyimpan riwayat percakapan berdasarkan session ID untuk interaksi multi-turn yang konsisten.
                     </li>
                 </ul>
             </div>
 
-            {/* --- 4. Phase 3: Automated Quote Generation & CRM Recording --- */}
+            {/* --- 4. Fase 3: Pembuatan Penawaran Otomatis & Pencatatan CRM --- */}
             <div className="mt-6">
-                <h2 className="text-2xl font-semibold mb-3">Phase 3: Automated Quote Generation & CRM Recording</h2>
+                <h2 className="text-2xl font-semibold mb-3">Fase 3: Pembuatan Penawaran Otomatis & Pencatatan CRM</h2>
 
                 <h3 className="text-xl font-semibold mt-4">Trigger</h3>
                 <p className="leading-relaxed mt-2">
-                    Executed when customer requirements are clear and the agent has sufficient information to generate an accurate quote.
+                    Dijalankan ketika kebutuhan pelanggan sudah jelas dan agen memiliki cukup informasi untuk membuat penawaran.
                 </p>
 
-                <h3 className="text-xl font-semibold mt-4">Key Capabilities</h3>
+                <h3 className="text-xl font-semibold mt-4">Kemampuan Utama</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
+
                     <li>
-                        <span className="font-medium text-white">Intelligent Quote Construction:</span> Agent analyzes customer requirements (product/service, quantity, specifications) and asks clarifying questions to ensure accuracy before generating quotes.
+                        <span className="font-medium text-white">Penyusunan Penawaran Cerdas:</span>
+                        Agen menganalisis kebutuhan pelanggan dan bertanya ulang bila detail belum lengkap.
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Save Quote to CRM:</span> Stores comprehensive quote information in PostgreSQL <code>quotes</code> table:
-                        <ul className="list-circle space-y-1 mt-1 pl-6">
-                            <li><strong>Customer Email:</strong> Links quote to customer profile</li>
-                            <li><strong>Items:</strong> Detailed list of products/services requested</li>
-                            <li><strong>Total Amount:</strong> Calculated pricing with proper decimal handling</li>
-                            <li><strong>Valid Until:</strong> Quote expiration date (typically 30 days)</li>
-                            <li><strong>Quote Details:</strong> Terms, conditions, and special requirements</li>
+                        <span className="font-medium text-white">Simpan Penawaran ke CRM:</span>
+                        Menyimpan ke tabel <code>quotes</code> termasuk:
+                        <ul className="list-disc space-y-1 mt-1 pl-6">
+                            <li><strong>Email pelanggan</strong></li>
+                            <li><strong>List item & spesifikasi</strong></li>
+                            <li><strong>Total harga</strong></li>
+                            <li><strong>Tanggal berlaku</strong></li>
+                            <li><strong>Detail penawaran & syarat</strong></li>
                         </ul>
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Add CRM Note:</span> Records every significant interaction in <code>crm_notes</code> table with:
-                        <ul className="list-circle list-disc space-y-1 mt-1 pl-6">
-                            <li><strong>Customer Email:</strong> Links note to customer profile</li>
-                            <li><strong>Note Content:</strong> Detailed summary of inquiry, quote, or feedback</li>
-                            <li><strong>Interaction Type:</strong> Categorization (quote_generated, inquiry, follow_up, etc.)</li>
-                            <li><strong>Timestamp:</strong> Automatic creation time for audit trail</li>
+                        <span className="font-medium text-white">Catatan CRM Otomatis:</span>
+                        Merekam:
+                        <ul className="list-disc space-y-1 mt-1 pl-6">
+                            <li>Jenis interaksi</li>
+                            <li>Ringkasan aktivitas</li>
+                            <li>Timestamp</li>
                         </ul>
                     </li>
-                    <li>
-                        <span className="font-medium text-white">Quote Confirmation Protocol:</span> Always confirms understanding of customer requirements before generating quotes, setting clear expectations on pricing, delivery times, and next steps.
-                    </li>
-                    <li>
-                        <span className="font-medium text-white">Complete Audit Trail:</span> Every quote generation, customer interaction, and data modification is permanently recorded in CRM for compliance, quality assurance, and future reference.
-                    </li>
-                </ul>
 
-                <p className="leading-relaxed mt-3">
-                    This phase ensures zero data loss through automated CRM recording while maintaining the speed and convenience of conversational interactions—eliminating manual data entry errors and administrative overhead.
-                </p>
-            </div>
+                    <li>
+                        <span className="font-medium text-white">Protokol Konfirmasi Penawaran:</span>
+                        Memastikan pemahaman yang sama sebelum penawaran dibuat.
+                    </li>
 
-            {/* --- 5. Phase 4: Order Team Notification & Response Delivery --- */}
-            <div className="mt-6">
-                <h2 className="text-2xl font-semibold mb-3">Phase 4: Order Team Notification & Response Delivery</h2>
-
-                <h3 className="text-xl font-semibold mt-4">Trigger</h3>
-                <p className="leading-relaxed mt-2">
-                    Runs after quote generation or when customer requires escalation to the orders team for specialized assistance.
-                </p>
-
-                <h3 className="text-xl font-semibold mt-4">Key Capabilities</h3>
-                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Notify Orders Team via Telegram:</span> Sends real-time alerts to the orders team Telegram channel with:
-                        <ul className="list-circle space-y-1 mt-1 pl-6">
-                            <li><strong>Customer Details:</strong> Name, email, phone for immediate context</li>
-                            <li><strong>Quote Summary:</strong> Items requested, pricing, and special requirements</li>
-                            <li><strong>Urgency Flags:</strong> Priority indicators for time-sensitive requests</li>
-                            <li><strong>Next Steps:</strong> Clear action items for team follow-up</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span className="font-medium text-white">Seamless Team Handoff:</span> Ensures orders team receives complete context without needing to access CRM database—enabling immediate response to customer needs.
-                    </li>
-                    <li>
-                        <span className="font-medium text-white">Customer Response Delivery:</span> Returns professional, structured JSON responses via <strong>Respond to Webhook</strong> node containing:
-                        <ul className="list-circle space-y-1 mt-1 pl-6">
-                            <li><strong>Response:</strong> AI-generated message with quote summary or inquiry answer</li>
-                            <li><strong>Session ID:</strong> Continuation token for follow-up conversations</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <span className="font-medium text-white">Clear Communication:</span> Provides natural language responses that confirm actions, explain next steps, and set expectations—maintaining professional yet friendly tone throughout.
-                    </li>
-                    <li>
-                        <span className="font-medium text-white">Error Handling:</span> Gracefully manages missing information, validation failures, or system issues with clear explanations and actionable guidance for resolution.
+                        <span className="font-medium text-white">Audit Trail Lengkap:</span>
+                        Semua interaksi tercatat dan dapat dilacak.
                     </li>
                 </ul>
 
                 <p className="leading-relaxed mt-3">
-                    This completes the sales workflow loop—from customer inquiry to quote generation to team notification—ensuring no opportunity falls through the cracks while maintaining excellent customer experience.
+                    Fase ini memastikan tidak ada data yang hilang dan semua penawaran terdokumentasi dengan rapi di CRM.
                 </p>
             </div>
 
-            {/* --- Return on Investment --- */}
+            {/* --- 5. Fase 4: Notifikasi Tim Orders & Pengiriman Respons --- */}
+            <div className="mt-6">
+                <h2 className="text-2xl font-semibold mb-3">Fase 4: Notifikasi Tim Orders & Pengiriman Respons</h2>
+
+                <h3 className="text-xl font-semibold mt-4">Trigger</h3>
+                <p className="leading-relaxed mt-2">
+                    Berjalan setelah penawaran selesai dibuat atau ketika perlu eskalasi ke tim orders.
+                </p>
+
+                <h3 className="text-xl font-semibold mt-4">Kemampuan Utama</h3>
+                <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
+                    <li>
+                        <span className="font-medium text-white">Notifikasi Telegram Real-Time:</span>
+                        Mengirim ringkasan pelanggan, penawaran, urgensi, dan langkah berikutnya.
+                    </li>
+
+                    <li>
+                        <span className="font-medium text-white">Handoff Mulus ke Tim Orders:</span>
+                        Memberikan konteks lengkap tanpa perlu mengakses CRM.
+                    </li>
+
+                    <li>
+                        <span className="font-medium text-white">Pengiriman Respons ke Pelanggan:</span>
+                        Mengirim JSON terstruktur melalui <strong>Respond to Webhook</strong>.
+                    </li>
+
+                    <li>
+                        <span className="font-medium text-white">Komunikasi Jelas & Profesional:</span>
+                        Memberikan penjelasan, ringkasan, dan langkah selanjutnya.
+                    </li>
+
+                    <li>
+                        <span className="font-medium text-white">Penanganan Error yang Baik:</span>
+                        Menyampaikan solusi saat terjadi kesalahan.
+                    </li>
+                </ul>
+
+                <p className="leading-relaxed mt-3">
+                    Fase ini memastikan tidak ada penawaran atau peluang yang terlewat dan pelanggan tetap mendapatkan layanan prima.
+                </p>
+            </div>
+
+            {/* --- ROI --- */}
             <div>
                 <h2 className="text-2xl font-semibold mb-3">Return on Investment</h2>
+
                 <p className="leading-relaxed">
-                    Implementing this <strong>Sales Agent</strong> delivers measurable business value:
+                    Implementasi <strong>Sales Agent</strong> menghadirkan keuntungan bisnis yang signifikan:
                 </p>
+
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                    <li><span className="font-medium text-white">Eliminates Manual Data Entry:</span> Automatically captures customer information (name, email, phone, notes) and saves to CRM—reducing data entry time by 90% and eliminating transcription errors.</li>
-                    <li><span className="font-medium text-white">Automated Quote Generation:</span> Creates accurate, professional quotes based on natural language requirements—cutting quote turnaround time from hours to seconds.</li>
-                    <li><span className="font-medium text-white">24/7 Customer Engagement:</span> Handles inquiries, collects information, and generates quotes around the clock without human intervention—capturing opportunities outside business hours.</li>
-                    <li><span className="font-medium text-white">Reduces Response Time:</span> Instant quote generation and information capture accelerate sales cycles—improving customer satisfaction and conversion rates.</li>
-                    <li><span className="font-medium text-white">Scales Without Headcount:</span> Handles unlimited concurrent customer conversations without additional staff—enabling business growth without proportional hiring costs.</li>
-                    <li><span className="font-medium text-white">Consistent Quality:</span> Validates all data before storage and follows standardized quote format—ensuring professional communication and accurate CRM records.</li>
-                    <li><span className="font-medium text-white">Customer Recognition:</span> Remembers returning customers and references past interactions—creating personalized experiences that build loyalty.</li>
+                    <li><span className="font-medium text-white">Eliminasi Entri Data Manual:</span> Mengurangi kesalahan dan mempercepat proses.</li>
+                    <li><span className="font-medium text-white">Pembuatan Penawaran Otomatis:</span> Penawaran siap dalam hitungan detik.</li>
+                    <li><span className="font-medium text-white">Layanan 24/7:</span> Menjawab pertanyaan dan membuat penawaran kapan saja.</li>
+                    <li><span className="font-medium text-white">Waktu Respons Lebih Cepat:</span> Meningkatkan kepuasan pelanggan dan konversi.</li>
+                    <li><span className="font-medium text-white">Skalabilitas Tanpa Penambahan SDM:</span> Menangani banyak pelanggan sekaligus.</li>
+                    <li><span className="font-medium text-white">Kualitas Konsisten:</span> Validasi data & format penawaran seragam.</li>
+                    <li><span className="font-medium text-white">Pengenalan Pelanggan:</span> Interaksi terasa personal dan relevan.</li>
                 </ul>
+
                 <p className="leading-relaxed mt-3">
-                    The modular n8n architecture enables future enhancements such as email quote delivery, CRM integration with existing systems, product catalog lookups, pricing rule engines, or payment link generation—ensuring long-term adaptability as business needs evolve without architectural rewrites.
+                    Arsitektur modular n8n juga memudahkan penambahan fitur di kemudian hari tanpa perubahan besar.
                 </p>
             </div>
         </div>

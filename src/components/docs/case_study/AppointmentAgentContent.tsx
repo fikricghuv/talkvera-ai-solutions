@@ -3,177 +3,227 @@ import AppointmentAgentFlowchart from './flowchart/AppointmentAgentFlowchart';
 const AppointmentAgentContent = () => {
     return (
         <div className="space-y-8">
+
             <h1 className="text-4xl font-bold mb-6">
-                Appointment Agent | AI-Powered Scheduling & User Management System
+                Appointment Agent | Sistem Penjadwalan & Manajemen Pengguna Berbasis AI
             </h1>
 
-            {/* --- 1. Project Overview --- */}
+            {/* --- 1. Gambaran Proyek --- */}
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Project Overview</h2>
+                <h2 className="text-2xl font-semibold mb-3">Gambaran Proyek</h2>
                 <p className="leading-relaxed">
-                    The <strong>Appointment Agent</strong> is an intelligent scheduling system that combines <strong>Google Calendar integration</strong> with <strong>PostgreSQL user management</strong> to deliver seamless appointment booking experiences. Built on <strong>n8n automation platform</strong>, this AI-powered assistant enables users to schedule, update, and manage appointments through natural language conversations—eliminating the friction of traditional booking systems.
+                    <strong>Appointment Agent</strong> adalah sistem penjadwalan cerdas yang mengintegrasikan 
+                    <strong> Google Calendar</strong> dan <strong>PostgreSQL</strong> untuk memberikan pengalaman booking 
+                    janji temu yang cepat, intuitif, dan sepenuhnya otomatis. Dibangun di atas platform 
+                    <strong> n8n</strong>, agen berbasis AI ini memungkinkan pengguna menjadwalkan, memperbarui, 
+                    atau mengelola janji temu melalui bahasa alami—tanpa formulir, tanpa UI rumit.
                 </p>
+
                 <p className="leading-relaxed mt-3">
-                    The agent handles complete appointment lifecycle management while maintaining user profiles, enforcing business rules like working hours (8 AM - 5 PM), and ensuring data consistency through intelligent validation workflows. It remembers conversation context, confirms actions before execution, and provides clear, professional communication throughout every interaction.
+                    Agen ini menangani seluruh siklus janji temu, mempertahankan profil pengguna, menerapkan aturan bisnis 
+                    seperti jam kerja (08.00–17.00), serta memastikan konsistensi data melalui validasi cerdas. 
+                    Ia mengingat konteks percakapan, meminta konfirmasi sebelum tindakan penting, dan menyampaikan komunikasi 
+                    yang jelas sepanjang interaksi.
                 </p>
             </div>
 
             <AppointmentAgentFlowchart />
 
-            {/* --- 2. Phase 1: Natural Language Input & Secure Webhook Interface --- */}
+            {/* --- 2. Fase 1: Input Bahasa Alami & Webhook Aman --- */}
             <div className="mt-6">
-                <h2 className="text-2xl font-semibold mb-3">Phase 1: Natural Language Input & Secure Webhook Interface</h2>
+                <h2 className="text-2xl font-semibold mb-3">Fase 1: Input Bahasa Alami & Webhook Aman</h2>
                 
                 <h3 className="text-xl font-semibold mt-4">Trigger</h3>
                 <p className="leading-relaxed mt-2">
-                    Activated when a user submits a <strong>scheduling request</strong> via <strong>POST request</strong> to the <code>/appointment-agent</code> webhook endpoint with <strong>header authentication</strong>.
+                    Dimulai saat pengguna mengirim <strong>permintaan penjadwalan</strong> melalui 
+                    <strong> POST request</strong> ke endpoint <code>/appointment-agent</code> dengan 
+                    <strong> header authentication</strong>.
                 </p>
 
-                <h3 className="text-xl font-semibold mt-4">Key Capabilities</h3>
+                <h3 className="text-xl font-semibold mt-4">Kemampuan Utama</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Secure API Gateway:</span> Receives <strong>HTTP POST requests</strong> with <strong>header-based authentication</strong> to ensure only authorized applications can access the scheduling system, protecting sensitive calendar and user data.
+                        <span className="font-medium text-white">Gateway API Aman:</span> 
+                        Menerima <strong>HTTP POST</strong> dengan autentikasi header untuk memastikan hanya aplikasi sah 
+                        yang dapat mengakses sistem penjadwalan.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Conversational Interface:</span> Accepts natural language requests like "Book me for next Monday at 2 PM" or "Update my appointment to Wednesday morning"—no structured forms or complex interfaces required.
+                        <span className="font-medium text-white">Antarmuka Percakapan:</span> 
+                        Mendukung permintaan bahasa alami seperti “Buatkan jadwal Senin jam 2 siang” atau 
+                        “Ubah janji temu saya ke Rabu pagi”.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Session Continuity:</span> Maintains conversation context across multiple interactions, allowing users to refine requests, ask follow-up questions, and complete complex scheduling scenarios naturally.
+                        <span className="font-medium text-white">Konteks Percakapan Berkelanjutan:</span> 
+                        Mempertahankan konteks agar pengguna dapat memperbaiki permintaan atau mengajukan pertanyaan lanjutan.
                     </li>
                 </ul>
 
                 <p className="leading-relaxed mt-3">
-                    This phase establishes a <strong>secure, conversational interface</strong> that integrates with chat platforms, mobile apps, or custom frontends—making appointment scheduling as simple as sending a message.
+                    Fase ini menyediakan <strong>pintu masuk percakapan yang aman</strong>, ideal untuk integrasi dengan chat apps, 
+                    mobile apps, atau frontend kustom.
                 </p>
             </div>
 
-            {/* --- 3. Phase 2: Intelligent Appointment Management --- */}
+            {/* --- 3. Fase 2: Manajemen Janji Temu Cerdas --- */}
             <div className="mt-6">
-                <h2 className="text-2xl font-semibold mb-3">Phase 2: Intelligent Appointment Management</h2>
+                <h2 className="text-2xl font-semibold mb-3">Fase 2: Manajemen Janji Temu Cerdas</h2>
 
                 <h3 className="text-xl font-semibold mt-4">Trigger</h3>
                 <p className="leading-relaxed mt-2">
-                    Automatically engages when the AI agent processes scheduling requests and determines the appropriate action based on user intent.
+                    Berjalan ketika agen AI memproses permintaan dan menentukan tindakan sesuai intent pengguna.
                 </p>
 
-                <h3 className="text-xl font-semibold mt-4">Key Capabilities</h3>
+                <h3 className="text-xl font-semibold mt-4">Kemampuan Utama</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
+
                     <li>
-                        <span className="font-medium text-white">Advanced Language Understanding:</span> Powered by <strong>OpenRouter Chat Model</strong> to interpret natural language requests, extract scheduling details (date, time, purpose), and understand intent even from casual, conversational phrasing.
+                        <span className="font-medium text-white">Pemahaman Bahasa Lanjutan:</span> 
+                        Menggunakan <strong>OpenRouter Chat Model</strong> untuk mengekstraksi tanggal, waktu, 
+                        dan tujuan dari kalimat percakapan.
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Google Calendar Integration:</span>
-                        <ul className="list-circle space-y-1 mt-1 pl-6">
-                            <li><strong>Create Appointment:</strong> Books new appointments with user-specified date, time, and description—automatically formatting data for Google Calendar API.</li>
-                            <li><strong>Get Appointment:</strong> Retrieves existing appointments to display schedules, verify bookings, or prepare for updates/cancellations.</li>
-                            <li><strong>Update Appointment:</strong> Modifies existing appointments after retrieving current details and confirming changes with the user.</li>
-                            <li><strong>Cancel Appointment:</strong> Removes appointments from calendar after confirmation, with clear success messaging.</li>
+                        <span className="font-medium text-white">Integrasi Google Calendar:</span>
+                        <ul className="list-disc space-y-1 mt-1 pl-6">
+                            <li><strong>Buat Janji Temu:</strong> Menjadwalkan janji dengan data lengkap.</li>
+                            <li><strong>Lihat Janji Temu:</strong> Mengambil jadwal yang sudah ada.</li>
+                            <li><strong>Perbarui Janji Temu:</strong> Memodifikasi jadwal secara aman.</li>
+                            <li><strong>Batalkan Janji Temu:</strong> Menghapus janji setelah konfirmasi.</li>
                         </ul>
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Business Rules Enforcement:</span> Validates all appointments against <strong>working hours (8 AM - 5 PM)</strong> constraint, rejecting out-of-hours requests with helpful alternative time suggestions.
+                        <span className="font-medium text-white">Penerapan Aturan Bisnis:</span> 
+                        Menolak jadwal di luar jam kerja (08.00–17.00) dan memberi rekomendasi waktu alternatif.
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Smart Workflow Logic:</span> Always retrieves current appointment data using <strong>Get Appointment</strong> before executing updates or cancellations—ensuring users see what they're changing and preventing accidental modifications.
+                        <span className="font-medium text-white">Alur Logika Cerdas:</span> 
+                        Selalu melakukan <strong>Get Appointment</strong> terlebih dahulu sebelum Update/Cancel.
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Confirmation Protocol:</span> Summarizes appointment details and requests explicit user confirmation before creating, updating, or canceling bookings—building trust and preventing errors.
+                        <span className="font-medium text-white">Protokol Konfirmasi:</span> 
+                        Merangkum jadwal dan meminta konfirmasi eksplisit sebelum tindakan eksekusi.
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">PostgreSQL Conversation Memory:</span> Stores session-specific conversation history, enabling the agent to reference previous messages, understand context, and support natural multi-turn dialogues.
+                        <span className="font-medium text-white">Memori Percakapan PostgreSQL:</span> 
+                        Menyimpan konteks sesi untuk dialog multi-turn yang alami.
                     </li>
                 </ul>
             </div>
 
-            {/* --- 4. Phase 3: User Profile Management --- */}
+            {/* --- 4. Fase 3: Manajemen Profil Pengguna --- */}
             <div className="mt-6">
-                <h2 className="text-2xl font-semibold mb-3">Phase 3: User Profile Management</h2>
+                <h2 className="text-2xl font-semibold mb-3">Fase 3: Manajemen Profil Pengguna</h2>
 
                 <h3 className="text-xl font-semibold mt-4">Trigger</h3>
                 <p className="leading-relaxed mt-2">
-                    Executed when users need to create, update, or retrieve their profile information stored in the PostgreSQL database.
+                    Terpicu ketika pengguna perlu membuat, memperbarui, atau mengambil profil yang tersimpan di PostgreSQL.
                 </p>
 
-                <h3 className="text-xl font-semibold mt-4">Key Capabilities</h3>
+                <h3 className="text-xl font-semibold mt-4">Kemampuan Utama</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
+
                     <li>
-                        <span className="font-medium text-white">Save User Information:</span> Creates new user profiles with required fields (<strong>name</strong> and <strong>email</strong>), validating email format and ensuring data integrity before database insertion.
+                        <span className="font-medium text-white">Simpan Informasi Pengguna:</span> 
+                        Membuat profil baru dengan validasi email sebelum penyimpanan.
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Get User Information:</span> Retrieves existing user profiles by email address, displaying current name and email data for verification or pre-update review.
+                        <span className="font-medium text-white">Ambil Informasi Pengguna:</span> 
+                        Mengambil data nama dan email berdasarkan alamat email pengguna.
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Update User Information:</span> Modifies user profiles following a <strong>mandatory "get-then-update" workflow</strong>:
-                        <ul className="list-circle list-disc space-y-1 mt-1 pl-6">
-                            <li>Always calls <strong>Get User Information</strong> first to retrieve current data and user ID</li>
-                            <li>Shows user their existing information for transparency</li>
-                            <li>Uses retrieved ID as the matching parameter for the update operation</li>
-                            <li>Updates only specified fields (name and/or email)</li>
-                            <li>Confirms successful update with new information</li>
+                        <span className="font-medium text-white">Perbarui Informasi Pengguna:</span> 
+                        Menggunakan pola wajib <strong>“get-then-update”</strong> untuk transparansi.
+                        <ul className="list-disc space-y-1 mt-1 pl-6">
+                            <li>Mengambil data & ID pengguna terlebih dahulu</li>
+                            <li>Menampilkan informasi lama sebelum perubahan</li>
+                            <li>Memperbarui hanya field yang diminta</li>
                         </ul>
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Data Validation:</span> Ensures email addresses contain proper formatting (@ symbol), preventing invalid data entry and maintaining database quality.
+                        <span className="font-medium text-white">Validasi Data:</span> 
+                        Memastikan format email valid sebelum update/insert.
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">PostgreSQL Integration:</span> Connects to <strong>pgvector account</strong> for reliable, scalable user data storage with ACID compliance guarantees.
+                        <span className="font-medium text-white">Integrasi PostgreSQL:</span> 
+                        Menggunakan akun <strong>pgvector</strong> untuk penyimpanan terstruktur & reliabel.
                     </li>
                 </ul>
 
                 <p className="leading-relaxed mt-3">
-                    This phase ensures every user has a persistent profile that links their appointments to their identity, enabling personalized experiences and data retrieval across sessions.
+                    Fase ini memastikan setiap janji temu selalu terhubung dengan identitas pengguna yang konsisten.
                 </p>
             </div>
 
-            {/* --- 5. Phase 4: Response Processing & Delivery --- */}
+            {/* --- 5. Fase 4: Pemrosesan & Pengiriman Respons --- */}
             <div className="mt-6">
-                <h2 className="text-2xl font-semibold mb-3">Phase 4: Response Processing & Delivery</h2>
+                <h2 className="text-2xl font-semibold mb-3">Fase 4: Pemrosesan & Pengiriman Respons</h2>
 
                 <h3 className="text-xl font-semibold mt-4">Trigger</h3>
                 <p className="leading-relaxed mt-2">
-                    Runs after the AI agent completes appointment operations or user profile management tasks.
+                    Berjalan setelah agen AI menyelesaikan operasi penjadwalan atau manajemen pengguna.
                 </p>
 
-                <h3 className="text-xl font-semibold mt-4">Key Capabilities</h3>
+                <h3 className="text-xl font-semibold mt-4">Kemampuan Utama</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
+
                     <li>
-                        <span className="font-medium text-white">Clear Communication:</span> Provides natural language responses that confirm actions, explain outcomes, and guide users through next steps—maintaining professional yet friendly tone throughout.
+                        <span className="font-medium text-white">Komunikasi Jelas:</span> 
+                        Memberikan respons bahasa alami yang mudah dipahami.
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Action Summaries:</span> After creating, updating, or canceling appointments, delivers concise summaries with date, time, and purpose details for user records.
+                        <span className="font-medium text-white">Ringkasan Tindakan:</span> 
+                        Menyampaikan detail lengkap setelah membuat, memperbarui, atau membatalkan janji.
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Webhook Response:</span> Returns structured responses to the requesting application via the <strong>Respond to Webhook</strong> node, supporting seamless integration with frontend interfaces.
+                        <span className="font-medium text-white">Webhook Response:</span> 
+                        Mengirim output terstruktur melalui node <strong>Respond to Webhook</strong>.
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Graceful Error Handling:</span> When operations fail due to invalid times, missing data, or system issues, provides clear explanations and actionable suggestions for resolution.
+                        <span className="font-medium text-white">Penanganan Error Elegan:</span> 
+                        Memberikan penjelasan dan solusi bila terjadi masalah data atau proses.
                     </li>
+
                     <li>
-                        <span className="font-medium text-white">Confirmation Requests:</span> Before executing destructive actions (cancellations, major updates), explicitly asks for user confirmation to prevent accidental data loss.
+                        <span className="font-medium text-white">Permintaan Konfirmasi:</span> 
+                        Mencegah perubahan kritis tanpa persetujuan eksplisit.
                     </li>
                 </ul>
 
                 <p className="leading-relaxed mt-3">
-                    This completes the interaction cycle with clear, actionable responses that users can trust and understand—building confidence in the automated scheduling system.
+                    Fase ini memastikan pengguna menerima respon yang akurat, profesional, dan mudah dipahami.
                 </p>
             </div>
 
-            {/* --- Return on Investment --- */}
+            {/* --- ROI --- */}
             <div>
                 <h2 className="text-2xl font-semibold mb-3">Return on Investment</h2>
+
                 <p className="leading-relaxed">
-                    Implementing this <strong>Appointment Agent</strong> delivers measurable operational value:
+                    Implementasi <strong>Appointment Agent</strong> menghadirkan peningkatan efisiensi operasional yang nyata:
                 </p>
+
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                    <li><span className="font-medium text-white">24/7 Automated Scheduling:</span> Users book, update, and manage appointments anytime through natural conversation—no human intervention or business hours limitations required.</li>
-                    <li><span className="font-medium text-white">Eliminates Scheduling Friction:</span> Replaces complex calendar interfaces with simple text-based requests like "Schedule me for tomorrow at 3 PM"—reducing booking abandonment and user frustration.</li>
-                    <li><span className="font-medium text-white">Prevents Data Errors:</span> Mandatory "get-before-update" workflows ensure users see current information before making changes—dramatically reducing accidental modifications or deletions.</li>
-                    <li><span className="font-medium text-white">Seamless User Experience:</span> Conversation memory and context awareness create natural dialogues that feel personal and intelligent, increasing user satisfaction and engagement.</li>
-                    <li><span className="font-medium text-white">Reduces Administrative Burden:</span> Eliminates manual appointment booking, rescheduling, and calendar management tasks—freeing staff to focus on higher-value activities.</li>
-                    <li><span className="font-medium text-white">Integrated User Profiles:</span> Links appointments to persistent user identities with validated contact information—enabling follow-up communication and personalized experiences.</li>
+                    <li><span className="font-medium text-white">Penjadwalan 24/7:</span> Dapat diakses kapan saja tanpa batas jam kantor.</li>
+                    <li><span className="font-medium text-white">Tanpa Friksi:</span> Pengguna cukup mengirim teks, bukan membuka UI kalender.</li>
+                    <li><span className="font-medium text-white">Minim Kesalahan:</span> Workflow get-before-update menghindari kesalahan fatal.</li>
+                    <li><span className="font-medium text-white">Pengalaman Konsisten:</span> Memori percakapan membuat interaksi terasa personal.</li>
+                    <li><span className="font-medium text-white">Beban Admin Turun:</span> Menghilangkan tugas manual dalam menjadwalkan.</li>
+                    <li><span className="font-medium text-white">Profil Tersentralisasi:</span> Data pengguna terkelola dengan baik dan dapat dilacak.</li>
                 </ul>
+
                 <p className="leading-relaxed mt-3">
-                    The modular n8n architecture enables future enhancements such as email/SMS confirmation notifications, calendar conflict detection, recurring appointment support, multiple calendar management, or integration with CRM systems—ensuring long-term adaptability to evolving business needs without architectural rewrites.
+                    Arsitektur modular n8n memungkinkan perluasan fitur ke depannya tanpa mengubah struktur inti.
                 </p>
             </div>
         </div>

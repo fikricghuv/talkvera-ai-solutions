@@ -17,9 +17,9 @@ import SalesAgentContent from '../components/docs/case_study/SalesAgentContent';
 const DOCS_BASE_PREFIX = "/docs"; 
 
 const navigation = [
-    { id: 'introduction', label: 'Introduction', icon: Book, path: 'introduction' },
-    { id: 'tech-stack', label: 'Technology Stack', icon: Network, path: 'tech-stack' },
-    { id: 'process', label: 'Our Process', icon: Workflow, path: 'process' },
+    { id: 'introduction', label: 'Pengenalan', icon: Book, path: 'introduction' },
+    { id: 'tech-stack', label: 'Fondasi Teknologi', icon: Network, path: 'tech-stack' },
+    { id: 'process', label: 'Proses Kerja', icon: Workflow, path: 'process' },
     { id: 'resources', label: 'Resources', icon: FileText, path: 'resources' },
     {
       id: 'customer-showcase',
@@ -187,7 +187,7 @@ function DocsPage() {
               <aside className="lg:col-span-1 relative">
                 <div className="sticky bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-xl border border-gray-700 p-6">
                   <div className="flex justify-between items-center mb-6">
-                    <h2 className="text-xl font-bold">Documentation</h2>
+                    <h2 className="text-xl font-bold">Dokumentasi</h2>
                     
                     {/* TOMBOL HIDE SIDEBAR */}
                     <button

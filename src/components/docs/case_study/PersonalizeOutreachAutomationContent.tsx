@@ -3,104 +3,143 @@ import SendGreetingEmailFlowchart from './flowchart/SendGreetingsEmail';
 const PersonalizeOutreachAutomationContent = () => {
     return (
         <div className="space-y-8">
-            {/* TITLE: Matches the "Client | Project" format from the Barkbox example. */}
+
             <h1 className="text-4xl font-bold mb-6">
-                AI-Powered Lead Capture & Personalized Outreach
+                Otomatisasi Penangkapan Lead & Email Personalisasi Berbasis AI
             </h1>
 
-            {/* OVERVIEW: Adjusted to focus on the "partnership" and "business problem." */}
+            {/* Overview */}
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Project Overview</h2>
+                <h2 className="text-2xl font-semibold mb-3">Gambaran Proyek</h2>
                 <p className="leading-relaxed">
-                    We designed and deployed an automated n8n workflow to handle new consultation requests from Talkvera's landing page. 
-                    The objective was to instantly capture lead data, store it securely, and most importantly, 
-                    generate a highly personalized, human-sounding introductory email using a specialized AI agent.
+                    Sistem ini dirancang untuk mengelola permintaan konsultasi dari landing page TalkVera secara otomatis. 
+                    Alur kerjanya menangkap data prospek secara instan, menyimpannya dengan aman, dan menghasilkan email sambutan 
+                    yang sangat personal melalui agen AI khusus.
                 </p>
                 <p className="leading-relaxed mt-3">
-                    This solution ensures an <strong>immediate and personalized first touchpoint</strong>, maximizing lead engagement 
-                    and delivering exceptional efficiency for the sales team. The system leverages <strong>PostgreSQL</strong> for both lead storage 
-                    and managing AI conversation memory for future interactions.
+                    Dengan pendekatan ini, setiap prospek menerima <strong>respons cepat dan bernuansa manusia</strong>, sehingga 
+                    meningkatkan peluang engagement sejak interaksi pertama. Penyimpanan data dan memori percakapan dikelola dengan 
+                    <strong> PostgreSQL</strong> untuk memastikan konsistensi dan skalabilitas jangka panjang.
                 </p>
             </div>
 
-            {/* Your flowchart remains here for visualization */}
             <SendGreetingEmailFlowchart />
 
-            {/* PHASE RESTRUCTURE:
-              These phases now reflect the "business process" (Capture -> Personalize -> Deliver)
-              to mirror the storytelling structure of the Barkbox example.
-            */}
-
+            {/* Phase 1 */}
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Phase 1: Instant Lead Capture & Verification</h2>
-                <p className="leading-relaxed">
-                    <span className="font-medium text-white">Trigger:</span> Activates instantly when a prospect submits the form on the landing page.
+                <h2 className="text-2xl font-semibold mb-3">Fase 1: Penangkapan Lead Instan & Verifikasi</h2>
+
+                <h3 className="text-xl font-semibold mt-4">Trigger</h3>
+                <p className="leading-relaxed mt-2">
+                    Dimulai otomatis saat prospek mengirimkan formulir pada landing page, memicu proses pengolahan data awal.
                 </p>
+
                 <p className="leading-relaxed mt-3">
-                    <span className="font-medium text-white">Key Capabilities:</span>
+                    <span className="font-medium text-white">Kemampuan Utama:</span>
                 </p>
+
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                    <li><span className="font-medium text-white">Secure Webhook Ingestion:</span> Securely receives form data (name, email, project description) via an authenticated POST endpoint.</li>
-                    <li><span className="font-medium text-white">Data Standardization:</span> Cleans and maps incoming data to structured internal variables, ensuring data consistency before storage.</li>
-                    <li><span className="font-medium text-white">Reliable Lead Storage:</span> Instantly saves the standardized lead data into the <strong>customer_consultation</strong> table in <strong>PostgreSQL</strong> with an initial status of "New".</li>
+                    <li>
+                        <span className="font-medium text-white">Penerimaan Data Webhook yang Aman:</span> 
+                        Menerima data formulir (nama, email, deskripsi proyek) melalui endpoint POST yang dilindungi.
+                    </li>
+                    <li>
+                        <span className="font-medium text-white">Standardisasi Data:</span> 
+                        Membersihkan dan memetakan input ke format internal yang konsisten sebelum disimpan.
+                    </li>
+                    <li>
+                        <span className="font-medium text-white">Penyimpanan Lead yang Andal:</span> 
+                        Menyimpan data prospek ke tabel <strong>customer_consultation</strong> di <strong>PostgreSQL</strong> 
+                        dengan status awal “Baru”.
+                    </li>
                 </ul>
             </div>
 
+            {/* Phase 2 */}
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Phase 2: AI-Powered Personalization</h2>
-                <p className="leading-relaxed">
-                    <span className="font-medium text-white">Trigger:</span> Runs automatically after the lead's data is successfully saved to the database.
+                <h2 className="text-2xl font-semibold mb-3">Fase 2: Personalisasi Pesan Berbasis AI</h2>
+
+                <h3 className="text-xl font-semibold mt-4">Trigger</h3>
+                <p className="leading-relaxed mt-2">
+                    Dimulai setelah data prospek tersimpan dengan sukses dan siap diproses oleh agen AI.
                 </p>
+
                 <p className="leading-relaxed mt-3">
-                    <span className="font-medium text-white">Functionality:</span>
+                    <span className="font-medium text-white">Fungsionalitas:</span>
                 </p>
+
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                    <li><span className="font-medium text-white">Context-Aware AI Agent:</span> Utilizes a custom "Greeting Email Agent" from Talkvera to analyze the prospect's inputs (especially `projectDesc`).</li>
-                    <li><span className="font-medium text-white">Dynamic Content Generation:</span> The AI (using the <strong>OpenRouter Chat Model</strong>) drafts two formal and highly personalized opening paragraphs that directly reference the prospect's needs.</li>
-                    <li><span className="font-medium text-white">Persistent AI Memory:</span> Connects to a <strong>PostgreSQL Chat Memory</strong> using the prospect's email as the session key. This allows the AI to recall context in future interactions.</li>
+                    <li>
+                        <span className="font-medium text-white">Agen AI yang Memahami Konteks:</span> 
+                        Agen “Greeting Email Agent” menganalisis input prospek untuk memahami kebutuhan dan tujuan mereka.
+                    </li>
+                    <li>
+                        <span className="font-medium text-white">Pembuatan Pesan Dinamis:</span> 
+                        Menghasilkan dua paragraf sambutan profesional yang disesuaikan dengan konteks menggunakan 
+                        <strong> OpenRouter Chat Model</strong>.
+                    </li>
+                    <li>
+                        <span className="font-medium text-white">Memori AI yang Persisten:</span> 
+                        Menyimpan konteks di <strong>PostgreSQL Chat Memory</strong> menggunakan email prospek sebagai 
+                        kunci sesi untuk interaksi lanjutan.
+                    </li>
                 </ul>
             </div>
 
+            {/* Phase 3 */}
             <div>
-                <h2 className="text-2xl font-semibold mb-3">Phase 3: Automated Formatting & Delivery</h2>
-                <p className="leading-relaxed">
-                    <span className="font-medium text-white">Trigger:</span> Activates immediately after the AI finishes generating the personalized text.
+                <h2 className="text-2xl font-semibold mb-3">Fase 3: Pemformatan Otomatis & Pengiriman Email</h2>
+
+                <h3 className="text-xl font-semibold mt-4">Trigger</h3>
+                <p className="leading-relaxed mt-2">
+                    Dimulai segera setelah AI menyelesaikan draf email personalisasi.
                 </p>
+
                 <p className="leading-relaxed mt-3">
-                    <span className="font-medium text-white">Functionality:</span>
+                    <span className="font-medium text-white">Fungsionalitas:</span>
                 </p>
+
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                    <li><span className="font-medium text-white">HTML Email Assembly:</span> A custom <strong>JavaScript</strong> node takes the raw text output from the AI and dynamically wraps it in a professional, pre-styled HTML email template.</li>
-                    <li><span className="font-medium text-white">Automatic Email Dispatch:</span> Sends the fully formatted HTML email to the prospect using <strong>Gmail</strong>, with the subject "Welcome To Talkvera!".</li>
-                    <li><span className="font-medium text-white">Real-time Status Tracking:</span> Updates the prospect's status in the <strong>PostgreSQL</strong> database to "Send" and saves a copy of the sent email content for audit and tracking purposes.</li>
+                    <li>
+                        <span className="font-medium text-white">Perakitan Email HTML:</span> 
+                        Node <strong>JavaScript</strong> mengubah draf AI menjadi email HTML profesional yang konsisten dengan brand.
+                    </li>
+                    <li>
+                        <span className="font-medium text-white">Pengiriman Email Otomatis:</span> 
+                        Mengirim email menggunakan <strong>Gmail</strong> dengan subjek “Welcome To TalkVera!”.
+                    </li>
+                    <li>
+                        <span className="font-medium text-white">Pelacakan Status Real-time:</span> 
+                        Memperbarui status prospek menjadi “Terkirim” dan menyimpan salinan email untuk audit.
+                    </li>
                 </ul>
             </div>
 
-            {/* ROI SECTION: 
-              Renamed from "Key Business Value" to match the example.
-              The content is reframed to feel like "hiring a digital assistant."
-            */}
+            {/* ROI */}
             <div>
                 <h2 className="text-2xl font-semibold mb-3">Return on Investment</h2>
+
                 <p className="leading-relaxed">
-                    By implementing this automated workflow, Talkvera effectively launched a digital sales assistant that:
+                    Dengan workflow ini, TalkVera secara efektif memperoleh seorang <strong>asisten penjualan digital</strong> yang:
                 </p>
+
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                    <li>Operates 24/7 to respond to leads in seconds</li>
-                    <li>Delivers a level of personalization that is impossible to achieve manually at scale</li>
-                    <li>Ensures no lead is ever missed and no data is lost</li>
-                    <li>Operates with perfect consistency and accuracy</li>
-                    <li>Eliminates manual data entry and copy-paste errors</li>
-                    <li>Provides a complete audit trail for every prospect interaction</li>
+                    <li>Merespons prospek dalam hitungan detik, kapan saja</li>
+                    <li>Menyediakan personalisasi yang konsisten dan mendalam</li>
+                    <li>Memastikan tidak ada prospek yang terlewat</li>
+                    <li>Beroperasi tanpa kesalahan administratif</li>
+                    <li>Menghilangkan pekerjaan input manual dan copy-paste</li>
+                    <li>Menyimpan rekam jejak lengkap untuk setiap percakapan</li>
                 </ul>
+
                 <p className="leading-relaxed mt-3">
-                    We also removed the separate "Key Technologies" section, as (like in the Barkbox example) it is much more powerful 
-                    to mention technologies (like <strong>PostgreSQL</strong>, <strong>Gmail</strong>, and <strong>OpenRouter</strong>) 
-                    directly within their functional descriptions.
+                    Penyebutan teknologi—seperti <strong>PostgreSQL</strong>, <strong>Gmail</strong>, dan 
+                    <strong> OpenRouter</strong>—diberikan langsung pada konteks fungsinya agar lebih relevan dan mudah dipahami.
                 </p>
+
                 <p className="leading-relaxed mt-3">
-                    The result is a dramatic increase in response speed and relevance, freeing the sales team from administrative tasks 
-                    and allowing them to focus on closing deals.
+                    Solusi ini secara signifikan meningkatkan kecepatan respons dan kualitas interaksi, 
+                    memungkinkan tim sales berfokus pada penutupan penjualan daripada tugas rutin administratif.
                 </p>
             </div>
         </div>

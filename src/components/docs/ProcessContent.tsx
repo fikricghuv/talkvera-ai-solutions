@@ -1,148 +1,158 @@
 const ProcessContent = () => {
     return (
-         <div className="space-y-6 text-left">
-            <h1 className="text-4xl font-bold mb-4">Our Process</h1>
+        <div className="space-y-6 text-left">
+            <h1 className="text-4xl font-bold mb-4">Proses Kerja Kami</h1>
 
             <div className="space-y-8 leading-relaxed">
+
+              {/* DISCOVERY */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Initial Discovery</h2>
+                <h2 className="text-2xl text-white mb-4">Tahap Discovery Awal</h2>
                 <p>
-                  At Talkvera, we see ourselves not just as service providers—but as long-term
-                  strategic partners in your AI transformation journey. We take a deeply consultative
-                  approach to ensure every system we build aligns with your broader vision, scales with
-                  your business, and drives measurable impact across departments.
+                  Di TalkVera, kami tidak berperan sekadar sebagai penyedia layanan, melainkan sebagai mitra 
+                  strategis jangka panjang dalam transformasi AI Anda. Kami menerapkan pendekatan konsultatif 
+                  untuk memastikan setiap sistem yang dibangun selaras dengan visi perusahaan, mampu berkembang, 
+                  dan memberi dampak nyata di berbagai level organisasi.
                 </p>
                 <p>
-                  Our goal is to go far beyond the surface-level use case and instead uncover where AI
-                  can create true, compounding value in your organization.
+                  Fokus kami adalah menggali secara mendalam area yang dapat memberikan nilai bisnis 
+                  berkelanjutan melalui implementasi AI.
                 </p>
               </section>
 
+              {/* ORGANIZATIONAL UNDERSTANDING */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Organizational Understanding</h2>
+                <h2 className="text-2xl text-white mb-4">Pemahaman Struktur & Operasi Organisasi</h2>
                 <p>
-                  We begin by immersing ourselves in your team's world—learning how your company operates
-                  today and where you're heading tomorrow. We spend time understanding:
+                  Kami mulai dengan menyelami cara kerja organisasi Anda—bagaimana proses berjalan saat ini 
+                  dan tujuan yang ingin dicapai ke depannya. Pada tahap ini kami mempelajari:
                 </p>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                  <li>Your core business model and revenue streams</li>
-                  <li>Internal workflows and decision-making processes</li>
-                  <li>Existing pain points and inefficiencies</li>
-                  <li>Departments where AI can have immediate impact</li>
+                  <li>Model bisnis dan aliran pendapatan utama</li>
+                  <li>Alur kerja internal serta proses pengambilan keputusan</li>
+                  <li>Pain point operasional dan area yang tidak efisien</li>
+                  <li>Departemen yang dapat menerima dampak cepat dari AI</li>
                 </ul>
               </section>
 
+              {/* STRATEGIC ROADMAP */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Strategic Roadmapping</h2>
+                <h2 className="text-2xl text-white mb-4">Perancangan Roadmap Strategis</h2>
                 <p>
-                  With a deep understanding of your org structure, we help chart a high-leverage AI
-                  roadmap. This ensures your short-term wins are built on top of systems that are
-                  flexible, extendable, and aligned with future use cases.
+                  Dengan memahami struktur organisasi, kami membantu menyusun roadmap AI yang berpengaruh 
+                  dan berorientasi hasil. Roadmap ini memastikan setiap langkah jangka pendek dibangun 
+                  di atas fondasi sistem yang adaptif dan siap dikembangkan.
                 </p>
-                <p>The roadmap helps answer:</p>
+                <p>Roadmap ini memberikan jawaban atas pertanyaan penting seperti:</p>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                  <li>What can we build today that generates ROI in &lt;90 days?</li>
-                  <li>
-                    What foundational systems do we need for long-term automation and intelligence?
-                  </li>
-                  <li>Where will AI create the most measurable business impact?</li>
-                  <li>
-                    How do we ensure interoperability, governance, and observability from day one?
-                  </li>
+                  <li>Solusi apa yang dapat menghasilkan ROI dalam waktu &lt;90 hari?</li>
+                  <li>Sistem dasar apa yang dibutuhkan untuk automasi jangka panjang?</li>
+                  <li>Area mana yang memberikan dampak bisnis paling signifikan?</li>
+                  <li>Bagaimana memastikan interoperabilitas dan governance sejak awal?</li>
                 </ul>
               </section>
 
+              {/* SECURITY */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Security & Compliance</h2>
+                <h2 className="text-2xl text-white mb-4">Keamanan & Kepatuhan</h2>
                 <p>
-                  Trust is foundational in AI systems—especially when handling sensitive data, customer
-                  communication, or proprietary workflows. During discovery, we assess:
+                  Kepercayaan adalah fondasi dalam implementasi sistem AI—terutama saat menangani data sensitif, 
+                  proses internal, atau komunikasi pelanggan. Pada tahap ini kami menilai:
                 </p>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                  <li>Data classification and handling requirements</li>
-                  <li>Access control and permissions</li>
-                  <li>Infrastructure constraints and compliance needs</li>
-                  <li>Auditability and traceability requirements</li>
+                  <li>Kebutuhan penanganan dan klasifikasi data</li>
+                  <li>Kontrol akses dan hak izin</li>
+                  <li>Kebutuhan kepatuhan dan batasan infrastruktur</li>
+                  <li>Kebutuhan audit trail dan traceability</li>
                 </ul>
               </section>
 
+              {/* RAPID ITERATION */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Rapid Iteration & Continuous Delivery</h2>
+                <h2 className="text-2xl text-white mb-4">Iterasi Cepat & Pengiriman Berkelanjutan</h2>
                 <p>
-                  At Talkvera, we believe the real power of AI lies in its ability to evolve. That's
-                  why our development methodology is built around agility, modularity, and frequent
-                  iteration. Every system we build is custom, and we co-create it with your team in
-                  fast-moving, feedback-driven cycles.
+                  Kami percaya kekuatan AI ada pada kemampuannya untuk berkembang. Itu sebabnya pendekatan 
+                  pengembangan kami berfokus pada agility, modularitas, dan iterasi cepat. Setiap sistem dibangun 
+                  secara kustom dan dikembangkan bersama tim Anda melalui siklus yang bergerak cepat dan 
+                  berbasis feedback langsung.
                 </p>
               </section>
 
+              {/* AGILE */}
               <section>
-                <h3 className="text-xl text-white mb-2">Agile Development Framework</h3>
+                <h3 className="text-xl text-white mb-2">Metodologi Pengembangan Agile</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                  <li>Agile sprints (1–2 weeks) with demoable deliverables</li>
-                  <li>Sprint planning and retro calls to align expectations</li>
-                  <li>Kanban or Jira-based task management for transparency</li>
-                  <li>Embedded client feedback built into every iteration</li>
+                  <li>Sprint 1–2 minggu dengan hasil yang dapat didemokan</li>
+                  <li>Perencanaan sprint dan retrospektif untuk penyelarasan</li>
+                  <li>Manajemen tugas melalui Kanban atau Jira untuk transparansi penuh</li>
+                  <li>Feedback klien yang terintegrasi di setiap tahap</li>
                 </ul>
               </section>
 
+              {/* MODULAR ARCHITECTURE */}
               <section>
-                <h3 className="text-xl text-white mb-2">Modular Architecture</h3>
+                <h3 className="text-xl text-white mb-2">Arsitektur Modular</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                  <li>Independent microservices and agents</li>
-                  <li>Swappable foundation models or RAG layers</li>
-                  <li>API-first infrastructure for external integrations</li>
-                  <li>Easily replaceable vector stores, LLMs, and pipelines</li>
+                  <li>Microservices dan agent yang berdiri independen</li>
+                  <li>Model dasar atau layer RAG yang mudah diganti</li>
+                  <li>Arsitektur API-first untuk integrasi eksternal</li>
+                  <li>Vector store, LLM, dan pipeline yang dapat diganti atau ditingkatkan</li>
                 </ul>
               </section>
 
+              {/* QA & DEPLOYMENT */}
               <section>
                 <h2 className="text-2xl text-white mb-4">Quality Assurance & Deployment</h2>
                 <p>
-                  At Talkvera, the final stage of our three-step AI lifecycle focuses on rigorous
-                  testing, secure deployment, and long-term reliability. We combine automated pipelines
-                  with human evaluation to ensure your system performs consistently, safely, and scalably
-                  in production.
+                  Tahap terakhir dalam lifecycle AI kami berfokus pada pengujian komprehensif, deployment 
+                  aman, dan keandalan jangka panjang. Kami menggabungkan pipeline otomatis dengan evaluasi 
+                  manual untuk memastikan performa sistem tetap stabil dan aman di lingkungan produksi.
                 </p>
               </section>
 
+              {/* QA PROCESS */}
               <section>
-                <h3 className="text-xl text-white mb-2">Quality Assurance Process</h3>
+                <h3 className="text-xl text-white mb-2">Proses Quality Assurance</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                  <li>Automated testing pipelines with CI/CD integration</li>
-                  <li>Comprehensive test coverage across critical functionalities</li>
-                  <li>Hallucination detection and prevention</li>
-                  <li>Prompt injection defense and security testing</li>
-                  <li>Toxicity and bias checks with industry-specific thresholds</li>
-                  <li>RAG evaluation and retrieval accuracy validation</li>
+                  <li>Pipeline testing otomatis dengan integrasi CI/CD</li>
+                  <li>Cakupan pengujian luas untuk fungsi-fungsi kritis</li>
+                  <li>Deteksi dan pencegahan halusinasi</li>
+                  <li>Pengujian keamanan terhadap prompt injection</li>
+                  <li>Pengecekan bias & toksisitas sesuai standar industri</li>
+                  <li>Evaluasi RAG dan validasi akurasi retrieval</li>
                 </ul>
               </section>
 
+              {/* DEPLOYMENT WORKFLOW */}
               <section>
-                <h3 className="text-xl text-white mb-2">Deployment Workflows</h3>
+                <h3 className="text-xl text-white mb-2">Alur Deployment</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                  <li>Staging and production environment setup</li>
-                  <li>Automated deployment pipelines</li>
-                  <li>Monitoring and alerting configuration</li>
-                  <li>Security and compliance validation</li>
-                  <li>Performance optimization and scaling</li>
+                  <li>Konfigurasi lingkungan staging dan production</li>
+                  <li>Pipeline deployment otomatis</li>
+                  <li>Konfigurasi monitoring dan alerting</li>
+                  <li>Validasi keamanan dan kepatuhan</li>
+                  <li>Optimasi performa dan skalabilitas</li>
                 </ul>
               </section>
 
+              {/* ONGOING SUPPORT */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Ongoing Support & Optimization</h2>
+                <h2 className="text-2xl text-white mb-4">Dukungan Berkelanjutan & Optimasi</h2>
                 <p>
-                  AI systems are never "done." We provide continuous oversight and enhancement through:
+                  Sistem AI tidak pernah benar-benar selesai. Kami menyediakan supervisi dan peningkatan 
+                  berkelanjutan melalui:
                 </p>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                  <li>Live system monitoring and performance tracking</li>
-                  <li>Scheduled QA cycles and prompt refreshes</li>
-                  <li>Regular re-embedding or retraining if needed</li>
-                  <li>Direct support channels with optional SLAs</li>
+                  <li>Pemantauan sistem secara langsung</li>
+                  <li>Siklus QA berkala dan pembaruan prompt</li>
+                  <li>Re-embedding atau retraining bila diperlukan</li>
+                  <li>Saluran dukungan khusus dengan opsi SLA</li>
                 </ul>
               </section>
+
             </div>
-          </div>
+        </div>
     );
-};  
+};
+
 export default ProcessContent;

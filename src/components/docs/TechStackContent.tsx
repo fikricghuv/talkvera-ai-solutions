@@ -1,89 +1,107 @@
 const TechStackContent = () => {
     return (
         <div className="space-y-8 max-w-5xl mx-auto">
-            <h1 className="text-4xl font-bold mb-4">Technology Stack</h1>
+            <h1 className="text-4xl font-bold mb-4">Fondasi Teknologi Kami</h1>
 
-            <p>
-              At Talkvera, we adopt a forward-looking, modular tech stack built for speed, flexibility, and 
-              long-term scalability. Our tooling reflects a blend of modern cloud infrastructure, 
-              developer-centric platforms, and battle-tested AI frameworks. We select technologies based on 
-              performance, integration depth, 
-              open-source momentum, and alignment with client-specific use cases. 
-              Whether you're a technical stakeholder or completely new to AI, our stack is designed to make 
-              innovation accessible and reliable.
+            <p className="leading-relaxed">
+              Di TalkVera, kami menggunakan teknologi yang modern, modular, dan dirancang untuk kecepatan, 
+              fleksibilitas, serta skalabilitas jangka panjang. Seluruh tools yang kami pilih merupakan 
+              gabungan dari infrastruktur cloud terkini, platform yang ramah bagi developer, dan framework AI 
+              yang telah teruji. Pemilihan teknologi dilakukan berdasarkan performa, kedalaman integrasi, 
+              kekuatan komunitas open-source, serta kesesuaiannya dengan kebutuhan spesifik setiap klien. 
+              Baik Anda seorang pemangku kepentingan teknis maupun baru memulai perjalanan di dunia AI, 
+              stack kami dirancang agar inovasi tetap mudah diakses dan dapat diandalkan.
             </p>
 
-            <h2 className="text-3xl font-semibold mt-12 mb-4">Infrastructure</h2>
-            <p>
-              We operate primarily as a <strong className="text-white">full AWS shop</strong>, meaning our systems are deployed, 
-              managed, and scaled using <strong className="text-white">Amazon Web Services</strong> — a trusted platform for secure, 
-              high-performance cloud computing.
+            <h2 className="text-3xl font-semibold mt-12 mb-4">Arsitektur Infrastruktur Cloud</h2>
+            <p className="leading-relaxed">
+              Kami beroperasi sebagai <strong className="text-white">full AWS shop</strong>, yang berarti sistem kami 
+              dijalankan, dikelola, dan diskalakan menggunakan 
+              <strong className="text-white"> Amazon Web Services</strong> — platform cloud yang aman 
+              dan berkinerja tinggi.
             </p>
 
-            <p>
-              Our in-house <strong className="text-white">cloud infrastructure engineers</strong> are experienced with 
-              <strong className="text-white"> multi-cloud environments</strong>, enabling support across 
-              <strong className="text-white"> Azure</strong>, <strong className="text-white">Google Cloud Platform (GCP)</strong>, 
-              and <strong className="text-white">DigitalOcean</strong> depending on project needs. This flexibility ensures 
-              clients in regulated industries or with unique infrastructure requirements are fully supported.
-            </p>
-
-            <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-              <li><strong className="text-white">Supabase:</strong> Secure authentication and real-time updates for rapid feature delivery.</li>
-              <li><strong className="text-white">PostgreSQL:</strong> Our primary structured database — robust, scalable, and reliable.</li>
-              <li><strong className="text-white">Vector Databases:</strong> Tools like <strong>Pinecone</strong>, <strong>Weaviate</strong>, and <strong>Qdrant</strong> enable semantic search and contextual understanding in AI systems.</li>
-              <li><strong className="text-white">API Key Provisioning:</strong> Dedicated, scoped keys per client project for secure access control.</li>
-              <li><strong className="text-white">Internal Developer Tooling:</strong> Custom scripts, CLI tools, and integrations with <strong>GitHub</strong> to maintain operational efficiency.</li>
-            </ul>
-
-            <h2 className="text-3xl font-semibold mt-12 mb-4">Programming & Integrations</h2>
-            <p>
-              Our development process is shaped by tools that enable <strong className="text-white">rapid iteration</strong>, 
-              <strong className="text-white"> intelligent automation</strong>, and <strong className="text-white">deep integration </strong> 
-              with external systems.
+            <p className="leading-relaxed">
+              <strong className="text-white">Engineer infrastruktur cloud</strong> kami juga berpengalaman 
+              dalam lingkungan <strong className="text-white">multi-cloud</strong>, sehingga dapat mendukung 
+              kebutuhan pada <strong className="text-white">Azure</strong>, 
+              <strong className="text-white">Google Cloud Platform (GCP)</strong>, 
+              dan <strong className="text-white">DigitalOcean</strong> bila diperlukan. Fleksibilitas ini sangat 
+              penting bagi klien yang memiliki regulasi khusus atau kebutuhan infrastruktur yang unik.
             </p>
 
             <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-              <li><strong className="text-white">Languages:</strong> <strong>Python</strong> for AI and backend systems, 
-                <strong> JavaScript/TypeScript</strong> for front-end and lightweight logic.
-              </li>
-              <li><strong className="text-white">Developer Tools:</strong> Platforms like <strong>Replit</strong>, <strong>Cursor</strong>, 
-                <strong>Lovable</strong>, and <strong>Bolt</strong> for real-time collaboration and rapid prototyping.
-              </li>
-              <li><strong className="text-white">Integration Layer:</strong> Via <strong>n8n</strong>, supporting 850+ integrations 
-                with SaaS tools, databases, and webhook-based services for instant connectivity.
-              </li>
-              <li><strong className="text-white">Voice AI:</strong> Powered by <strong>ElevenLabs</strong> and retail AI tools 
-                for natural, context-aware voice agents.
-              </li>
+              <li><strong className="text-white">Supabase:</strong> Autentikasi aman dan pembaruan real-time untuk pengembangan fitur yang lebih cepat.</li>
+              <li><strong className="text-white">PostgreSQL:</strong> Database utama kami—stabil, scalable, dan dapat diandalkan.</li>
+              <li><strong className="text-white">Vector Databases:</strong> Teknologi seperti <strong>Pinecone</strong>, <strong>Weaviate</strong>, dan <strong>Qdrant</strong> untuk semantic search dan pemahaman konteks dalam sistem AI.</li>
+              <li><strong className="text-white">API Key Provisioning:</strong> Kunci API per proyek untuk kontrol akses yang tersegmentasi dan aman.</li>
+              <li><strong className="text-white">Internal Developer Tooling:</strong> Skrip internal, CLI tools, dan integrasi dengan <strong>GitHub</strong> guna menjaga efisiensi operasional.</li>
             </ul>
 
-            <h2 className="text-3xl font-semibold mt-12 mb-4">Artificial Intelligence</h2>
-            <p>
-              We take a <strong className="text-white">model-agnostic</strong> approach to AI — benchmarking across providers 
-              to select the best-performing model based on your goals. Whether optimizing for 
-              <strong className="text-white"> speed</strong>, <strong className="text-white"> precision</strong>, 
-              <strong className="text-white"> cost-efficiency</strong>, or <strong className="text-white">multilingual output</strong>, 
-              we tailor each deployment for maximum impact.
+            <h2 className="text-3xl font-semibold mt-12 mb-4">Pemrograman & Integrasi Sistem</h2>
+            <p className="leading-relaxed">
+              Proses pengembangan kami didukung oleh tools yang memungkinkan 
+              <strong className="text-white"> iterasi cepat</strong>, 
+              <strong className="text-white"> automasi cerdas</strong>, dan 
+              <strong className="text-white"> integrasi mendalam</strong> dengan sistem eksternal.
             </p>
 
             <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-              <li><strong className="text-white">Retrieval-Augmented Generation (RAG):</strong> Grounding LLM responses with 
-                relevant internal data for accuracy and reduced hallucination.
+              <li>
+                <strong className="text-white">Bahasa Pemrograman:</strong> 
+                <strong> Python</strong> untuk sistem AI dan backend, serta 
+                <strong> JavaScript/TypeScript</strong> untuk front-end dan logika ringan.
               </li>
-              <li><strong className="text-white">Embedding Model Selection & Testing:</strong> Running controlled experiments 
-                to find the most effective embedding strategy for your data.
+              <li>
+                <strong className="text-white">Developer Tools:</strong> Platform seperti 
+                <strong> Replit</strong>, <strong>Cursor</strong>, <strong>Lovable</strong>, 
+                dan <strong>Bolt</strong> untuk kolaborasi real-time dan prototyping cepat.
               </li>
-              <li><strong className="text-white">Agent Frameworks & Builders:</strong> Modular AI agents that can 
-                <strong> search</strong>, <strong>summarize</strong>, <strong>trigger workflows</strong>, or 
-                <strong> take actions</strong> in real-time.
+              <li>
+                <strong className="text-white">Integration Layer:</strong> Menggunakan 
+                <strong> n8n</strong> yang mendukung lebih dari 850 integrasi dengan SaaS, 
+                database, dan layanan berbasis webhook.
               </li>
-              <li><strong className="text-white">LLM Evaluation & Model Routing:</strong> Internal scoring systems 
-                (LLM-as-a-judge) dynamically route tasks to the best-performing models.
+              <li>
+                <strong className="text-white">Voice AI:</strong> Didukung oleh 
+                <strong> ElevenLabs</strong> dan teknologi voice retail untuk agen suara yang natural 
+                dan memahami konteks.
               </li>
             </ul>
-          </div>
+
+            <h2 className="text-3xl font-semibold mt-12 mb-4">Teknologi Kecerdasan Buatan</h2>
+            <p className="leading-relaxed">
+              Kami menerapkan pendekatan <strong className="text-white">model-agnostic</strong> — melakukan 
+              benchmarking lintas penyedia untuk memilih model dengan performa terbaik sesuai tujuan Anda. 
+              Baik mengoptimalkan <strong className="text-white">kecepatan</strong>, 
+              <strong className="text-white">akurasi</strong>, 
+              <strong className="text-white">efisiensi biaya</strong>, maupun 
+              <strong className="text-white"> output multibahasa</strong>, setiap deployment 
+              kami sesuaikan untuk menghasilkan dampak maksimal.
+            </p>
+
+            <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
+              <li>
+                <strong className="text-white">Retrieval-Augmented Generation (RAG): </strong> 
+                Menghubungkan respons LLM dengan data internal yang relevan untuk meningkatkan akurasi 
+                dan mengurangi halusinasi.
+              </li>
+              <li>
+                <strong className="text-white">Pemilihan & Pengujian Embedding Model: </strong> 
+                Eksperimen terkontrol untuk menentukan strategi embedding paling efektif untuk dataset Anda.
+              </li>
+              <li>
+                <strong className="text-white">Agent Frameworks & Builders: </strong> 
+                Agen modular yang dapat <strong>mencari</strong>, <strong>meringkas</strong>, 
+                <strong> menjalankan workflow</strong>, atau <strong>mengambil tindakan</strong> secara real-time.
+              </li>
+              <li>
+                <strong className="text-white">Evaluasi LLM & Model Routing: </strong> 
+                Sistem penilaian internal (LLM-as-a-judge) untuk merutekan tugas ke model dengan performa terbaik.
+              </li>
+            </ul>
+        </div>
     );
 };
-  
+
 export default TechStackContent;

@@ -174,16 +174,16 @@ function HomePage() {
   ];
 
   return (
-    <div id='home' className="pt-16">
+    <div id='home' className="pt-28 md:pt-14">
       <StarField />
 
       <section className="relative min-h-screen md:min-h-[80vh] grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl mx-auto px-6">
 
         {/* LEFT COLUMN */}
-        <div className="relative">
+        <div>
 
           {/* Background Blur */}
-          <div className="absolute inset-0 pointer-events-none md:block hidden">
+          <div className="absolute inset-0">
             <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
             <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
           </div>
@@ -201,22 +201,15 @@ function HomePage() {
             </p>
 
             {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <button
-                onClick={handleContactNavigate}
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2"
-              >
-                <span>Konsultasi Dengan Kami</span>
-                <ArrowRight size={18} className="sm:size-20" />
-              </button>
-
-              <button
-                className="px-6 sm:px-8 py-3 sm:py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all"
-                onClick={handleCaseStudiesNavigate}
-              >
-                Lihat Studi Kasus Klien
-              </button>
-            </div>
+            <div className="flex flex-col sm:flex-row gap-4 justify-start"> 
+                <button onClick={handleContactNavigate} className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2" > 
+                  <span>Konsultasi Dengan Kami</span> 
+                  <ArrowRight size={20} /> 
+                </button> 
+                <button className="px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all" onClick={handleCaseStudiesNavigate} > 
+                  Lihat Studi Kasus Klien 
+                </button> 
+              </div>
 
             {/* Stats Section */}
             <div className="mt-10 grid grid-cols-3 sm:grid-cols-3 gap-4 sm:gap-6 max-w-sm sm:max-w-lg mx-auto sm:mx-0">
@@ -319,7 +312,7 @@ function HomePage() {
             </div>
 
             {/* KOLOM KANAN: Visualisasi Dinamis */}
-            <div className="relative flex hidden md:flex justify-center items-center p-4 md:p-8">
+            <div className="relative flex hidden justify-center items-center p-4 md:p-8">
               <DynamicFeatureAnimation 
                 activeIndex={activeIndex}
                 animations={featureAnimations}

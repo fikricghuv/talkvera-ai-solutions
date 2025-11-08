@@ -312,7 +312,7 @@ function HomePage() {
             </div>
 
             {/* KOLOM KANAN: Visualisasi Dinamis */}
-            <div className="relative flex hidden justify-center items-center p-4 md:p-8">
+            <div className="relative flex hidden md:flex justify-center items-center p-4 md:p-8">
               <DynamicFeatureAnimation 
                 activeIndex={activeIndex}
                 animations={featureAnimations}

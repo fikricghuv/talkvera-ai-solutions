@@ -36,28 +36,28 @@ const QAAutomationContent = () => {
                 </h2>
 
                 <p className="leading-relaxed">
-                    <span className="font-medium text-white">Trigger:</span> Berjalan otomatis ketika QA engineer mengunggah file PDF (BRD/PRD) ke webhook endpoint.
+                    <span className="font-medium text-white">Trigger: </span> Berjalan otomatis ketika QA engineer mengunggah file PDF (BRD/PRD) ke webhook endpoint.
                 </p>
 
                 <p className="leading-relaxed mt-3">
-                    <span className="font-medium text-white">Fungsi Utama:</span>
+                    <span className="font-medium text-white">Fungsi Utama: </span>
                 </p>
 
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Ekstraksi Teks Cerdas:</span> 
+                        <span className="font-medium text-white">Ekstraksi Teks Cerdas: </span> 
                         Sistem membaca dan mengekstrak teks mentah dari file PDF.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Konversi Struktur (PDF → Markdown):</span> 
+                        <span className="font-medium text-white">Konversi Struktur (PDF → Markdown): </span> 
                         Node <strong>JavaScript</strong> khusus mengubah teks menjadi format Markdown 
                         untuk mempertahankan struktur dokumen (heading, list, section) yang penting 
                         bagi pemahaman AI.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Normalisasi Teks:</span> 
+                        <span className="font-medium text-white">Normalisasi Teks: </span> 
                         Membersihkan whitespace dan karakter tak penting untuk menyiapkan input yang 
                         rapi bagi model AI.
                     </li>
@@ -71,23 +71,23 @@ const QAAutomationContent = () => {
                 </h2>
 
                 <p className="leading-relaxed">
-                    <span className="font-medium text-white">Trigger:</span> Aktif setelah dokumen selesai diproses dan dinormalisasi.
+                    <span className="font-medium text-white">Trigger: </span> Aktif setelah dokumen selesai diproses dan dinormalisasi.
                 </p>
 
                 <p className="leading-relaxed mt-3">
-                    <span className="font-medium text-white">Fungsi Utama:</span>
+                    <span className="font-medium text-white">Fungsi Utama: </span>
                 </p>
 
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">AI QA Expert Agent:</span> 
+                        <span className="font-medium text-white">AI QA Expert Agent: </span> 
                         Menggunakan model <strong>OpenRouter: google/gemini-2.5-flash</strong> 
                         yang berperan sebagai pakar QA.  
                         AI membaca dokumen dan menghasilkan 10 test scenario komprehensif.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Validasi Output Terstruktur:</span> 
+                        <span className="font-medium text-white">Validasi Output Terstruktur: </span> 
                         <strong>Structured Output Parser</strong> memastikan seluruh respons AI  
                         mengikuti format JSON yang konsisten—menghindari kesalahan format dan 
                         memudahkan proses selanjutnya.
@@ -102,27 +102,27 @@ const QAAutomationContent = () => {
                 </h2>
 
                 <p className="leading-relaxed">
-                    <span className="font-medium text-white">Trigger:</span> Dimulai ketika semua test scenario berhasil dihasilkan dan divalidasi.
+                    <span className="font-medium text-white">Trigger: </span> Dimulai ketika semua test scenario berhasil dihasilkan dan divalidasi.
                 </p>
 
                 <p className="leading-relaxed mt-3">
-                    <span className="font-medium text-white">Fungsi Utama:</span>
+                    <span className="font-medium text-white">Fungsi Utama: </span>
                 </p>
 
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Pembuatan Spreadsheet Dinamis:</span> 
+                        <span className="font-medium text-white">Pembuatan Spreadsheet Dinamis: </span> 
                         Workflow membuat <strong>Google Sheet</strong> baru dengan judul otomatis 
                         sesuai hasil AI (misalnya: “Test Scenario – [Nama Proyek]”).
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Pemrosesan Data & Looping:</span> 
+                        <span className="font-medium text-white">Pemrosesan Data & Looping: </span> 
                         JSON array dari AI dipecah menjadi item individual, kemudian diproses satu per satu.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Pengisian Otomatis:</span> 
+                        <span className="font-medium text-white">Pengisian Otomatis: </span> 
                         Setiap test scenario ditulis sebagai baris baru dengan kolom lengkap  
                         <strong>ID, Case, Steps, Type, Expected</strong>.  
                         Kolom <strong>Actual</strong> & <strong>Status</strong> sengaja dikosongkan  

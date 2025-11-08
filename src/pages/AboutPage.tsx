@@ -8,19 +8,22 @@ function AboutPage() {
   const services = [
     {
       icon: Lightbulb,
-      title: 'Custom AI Agent Engineering',
-      description: 'Kami merancang, menerapkan, dan memelihara sistem AI yang disesuaikan dengan operasi bisnis spesifik Anda—dirancang untuk mendorong hasil yang terukur dan skalabilitas jangka panjang.',
+      title: 'Pengembangan AI Agent Kustom',
+      description:
+        'Kami merancang, membangun, dan memelihara AI agent yang sepenuhnya disesuaikan dengan proses bisnis Anda—difokuskan pada hasil yang terukur dan skalabilitas jangka panjang.',
     },
     {
       icon: Heart,
-      title: 'Fully Managed',
-      description: 'Tim kami membangun dan mengelola sistem otomasi menyeluruh yang terintegrasi secara mulus ke dalam workflow Anda, membuka efisiensi dan mengurangi overhead manual.',
+      title: 'Layanan Automasi Menyeluruh',
+      description:
+        'Tim kami mengembangkan dan mengelola sistem automasi end-to-end yang terintegrasi mulus dengan workflow Anda, meningkatkan efisiensi sekaligus mengurangi beban operasional.',
     },
     {
       icon: Award,
-      title: 'AI Partner',
-      description: 'Kami bermitra dengan tim Anda untuk menilai peluang implementasi AI, menyelaraskan solusi dengan tujuan bisnis, dan memastikan adopsi yang berhasil di seluruh departemen.',
-    }
+      title: 'Mitra Transformasi AI',
+      description:
+        'Kami bekerja sebagai mitra strategis untuk mengidentifikasi peluang AI, menyelaraskan solusi dengan tujuan bisnis, dan memastikan adopsi yang lancar di seluruh organisasi.',
+    },
   ];
 
   const team = [
@@ -54,10 +57,10 @@ function AboutPage() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-8">
               <Target className="w-4 h-4 text-blue-400" />
-              <span className="text-sm text-blue-300">About TalkVera</span>
+              <span className="text-sm text-blue-300">Tentang TalkVera</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent leading-tight">
-              AI That Works While You Grow
+              AI yang <span className='text-blue-400'>Membantu Anda Bertumbuh</span> Lebih Cepat
             </h1>
             <p className="text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto">
               Kami memiliki misi untuk mendemokratisasi AI dan memberdayakan bisnis segala ukuran untuk memanfaatkan kekuatan transformatif kecerdasan buatan.
@@ -71,7 +74,7 @@ function AboutPage() {
 
           <div className="mb-24">
             <FadeInOnScroll delay={0.2} threshold={0.2}>
-              <h2 className="text-4xl font-bold mb-12 text-center">Our Vision</h2>
+              <h2 className="text-4xl font-bold mb-12 text-center"><span className='text-blue-400'>Visi</span> Talkvera</h2>
             </FadeInOnScroll>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="p-8 text-center">
@@ -87,7 +90,7 @@ function AboutPage() {
                   direction="right"
                 >
                   <p className="text-gray-400 leading-relaxed">
-                    To empower businesses with accessible, ethical, and impactful AI solutions that drive sustainable growth and create lasting value for all stakeholders.
+                    Menciptakan sistem AI yang meningkatkan efisiensi, kejelasan, dan kinerja operasional di setiap lini bisnis.
                   </p>
                 </FadeInOnScroll>
               </div>
@@ -104,7 +107,7 @@ function AboutPage() {
                   direction="right"
                 >
                   <p className="text-gray-400 leading-relaxed">
-                    To become the world's most trusted AI partner, recognized for innovation, integrity, and the positive transformation we bring to businesses and communities globally.
+                    Membangun standar baru dalam automasi cerdas dan menjadi mitra strategis bagi perusahaan yang ingin bertransformasi.
                   </p>
                 </FadeInOnScroll>
               </div>
@@ -113,7 +116,7 @@ function AboutPage() {
 
           <div className='pb-24'>
             <FadeInOnScroll delay={0.2} threshold={0.2}>
-              <h2 className="text-4xl font-bold mb-12 text-center">Meet <span className='text-blue-400'>Our Team</span></h2>
+              <h2 className="text-4xl font-bold mb-12 text-center">Tim di Balik <span className='text-blue-400'>Talkvera</span></h2>
             </FadeInOnScroll>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {team.map((member, index) => (
@@ -180,7 +183,7 @@ function AboutPage() {
               direction="left"
             >
               <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">We Help <span className='text-blue-400'>You Grow</span></h2>
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">Kami Mengoptimalkan Cara Anda <span className='text-blue-400'>Bertumbuh</span></h2>
                 <br />
                 <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
                   <p>

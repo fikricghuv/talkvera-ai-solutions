@@ -43,17 +43,17 @@ const AppointmentAgentContent = () => {
                 <h3 className="text-xl font-semibold mt-4">Kemampuan Utama</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Gateway API Aman:</span> 
+                        <span className="font-medium text-white">Gateway API Aman: </span> 
                         Menerima <strong>HTTP POST</strong> dengan autentikasi header untuk memastikan hanya aplikasi sah 
                         yang dapat mengakses sistem penjadwalan.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Antarmuka Percakapan:</span> 
+                        <span className="font-medium text-white">Antarmuka Percakapan: </span> 
                         Mendukung permintaan bahasa alami seperti “Buatkan jadwal Senin jam 2 siang” atau 
                         “Ubah janji temu saya ke Rabu pagi”.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Konteks Percakapan Berkelanjutan:</span> 
+                        <span className="font-medium text-white">Konteks Percakapan Berkelanjutan: </span> 
                         Mempertahankan konteks agar pengguna dapat memperbaiki permintaan atau mengajukan pertanyaan lanjutan.
                     </li>
                 </ul>
@@ -77,38 +77,38 @@ const AppointmentAgentContent = () => {
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
 
                     <li>
-                        <span className="font-medium text-white">Pemahaman Bahasa Lanjutan:</span> 
+                        <span className="font-medium text-white">Pemahaman Bahasa Lanjutan: </span> 
                         Menggunakan <strong>OpenRouter Chat Model</strong> untuk mengekstraksi tanggal, waktu, 
                         dan tujuan dari kalimat percakapan.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Integrasi Google Calendar:</span>
+                        <span className="font-medium text-white">Integrasi Google Calendar: </span>
                         <ul className="list-disc space-y-1 mt-1 pl-6">
-                            <li><strong>Buat Janji Temu:</strong> Menjadwalkan janji dengan data lengkap.</li>
-                            <li><strong>Lihat Janji Temu:</strong> Mengambil jadwal yang sudah ada.</li>
-                            <li><strong>Perbarui Janji Temu:</strong> Memodifikasi jadwal secara aman.</li>
-                            <li><strong>Batalkan Janji Temu:</strong> Menghapus janji setelah konfirmasi.</li>
+                            <li><strong>Buat Janji Temu: </strong> Menjadwalkan janji dengan data lengkap.</li>
+                            <li><strong>Lihat Janji Temu: </strong> Mengambil jadwal yang sudah ada.</li>
+                            <li><strong>Perbarui Janji Temu: </strong> Memodifikasi jadwal secara aman.</li>
+                            <li><strong>Batalkan Janji Temu: </strong> Menghapus janji setelah konfirmasi.</li>
                         </ul>
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Penerapan Aturan Bisnis:</span> 
+                        <span className="font-medium text-white">Penerapan Aturan Bisnis: </span> 
                         Menolak jadwal di luar jam kerja (08.00–17.00) dan memberi rekomendasi waktu alternatif.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Alur Logika Cerdas:</span> 
+                        <span className="font-medium text-white">Alur Logika Cerdas: </span> 
                         Selalu melakukan <strong>Get Appointment</strong> terlebih dahulu sebelum Update/Cancel.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Protokol Konfirmasi:</span> 
+                        <span className="font-medium text-white">Protokol Konfirmasi: </span> 
                         Merangkum jadwal dan meminta konfirmasi eksplisit sebelum tindakan eksekusi.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Memori Percakapan PostgreSQL:</span> 
+                        <span className="font-medium text-white">Memori Percakapan PostgreSQL: </span> 
                         Menyimpan konteks sesi untuk dialog multi-turn yang alami.
                     </li>
                 </ul>
@@ -127,17 +127,17 @@ const AppointmentAgentContent = () => {
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
 
                     <li>
-                        <span className="font-medium text-white">Simpan Informasi Pengguna:</span> 
+                        <span className="font-medium text-white">Simpan Informasi Pengguna: </span> 
                         Membuat profil baru dengan validasi email sebelum penyimpanan.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Ambil Informasi Pengguna:</span> 
+                        <span className="font-medium text-white">Ambil Informasi Pengguna: </span> 
                         Mengambil data nama dan email berdasarkan alamat email pengguna.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Perbarui Informasi Pengguna:</span> 
+                        <span className="font-medium text-white">Perbarui Informasi Pengguna: </span> 
                         Menggunakan pola wajib <strong>“get-then-update”</strong> untuk transparansi.
                         <ul className="list-disc space-y-1 mt-1 pl-6">
                             <li>Mengambil data & ID pengguna terlebih dahulu</li>
@@ -147,12 +147,12 @@ const AppointmentAgentContent = () => {
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Validasi Data:</span> 
+                        <span className="font-medium text-white">Validasi Data: </span> 
                         Memastikan format email valid sebelum update/insert.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Integrasi PostgreSQL:</span> 
+                        <span className="font-medium text-white">Integrasi PostgreSQL: </span> 
                         Menggunakan akun <strong>pgvector</strong> untuk penyimpanan terstruktur & reliabel.
                     </li>
                 </ul>
@@ -175,27 +175,27 @@ const AppointmentAgentContent = () => {
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
 
                     <li>
-                        <span className="font-medium text-white">Komunikasi Jelas:</span> 
+                        <span className="font-medium text-white">Komunikasi Jelas: </span> 
                         Memberikan respons bahasa alami yang mudah dipahami.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Ringkasan Tindakan:</span> 
+                        <span className="font-medium text-white">Ringkasan Tindakan: </span> 
                         Menyampaikan detail lengkap setelah membuat, memperbarui, atau membatalkan janji.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Webhook Response:</span> 
+                        <span className="font-medium text-white">Webhook Response: </span> 
                         Mengirim output terstruktur melalui node <strong>Respond to Webhook</strong>.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Penanganan Error Elegan:</span> 
+                        <span className="font-medium text-white">Penanganan Error Elegan: </span> 
                         Memberikan penjelasan dan solusi bila terjadi masalah data atau proses.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Permintaan Konfirmasi:</span> 
+                        <span className="font-medium text-white">Permintaan Konfirmasi: </span> 
                         Mencegah perubahan kritis tanpa persetujuan eksplisit.
                     </li>
                 </ul>
@@ -214,12 +214,12 @@ const AppointmentAgentContent = () => {
                 </p>
 
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                    <li><span className="font-medium text-white">Penjadwalan 24/7:</span> Dapat diakses kapan saja tanpa batas jam kantor.</li>
-                    <li><span className="font-medium text-white">Tanpa Friksi:</span> Pengguna cukup mengirim teks, bukan membuka UI kalender.</li>
-                    <li><span className="font-medium text-white">Minim Kesalahan:</span> Workflow get-before-update menghindari kesalahan fatal.</li>
-                    <li><span className="font-medium text-white">Pengalaman Konsisten:</span> Memori percakapan membuat interaksi terasa personal.</li>
-                    <li><span className="font-medium text-white">Beban Admin Turun:</span> Menghilangkan tugas manual dalam menjadwalkan.</li>
-                    <li><span className="font-medium text-white">Profil Tersentralisasi:</span> Data pengguna terkelola dengan baik dan dapat dilacak.</li>
+                    <li><span className="font-medium text-white">Penjadwalan 24/7: </span> Dapat diakses kapan saja tanpa batas jam kantor.</li>
+                    <li><span className="font-medium text-white">Tanpa Friksi: </span> Pengguna cukup mengirim teks, bukan membuka UI kalender.</li>
+                    <li><span className="font-medium text-white">Minim Kesalahan: </span> Workflow get-before-update menghindari kesalahan fatal.</li>
+                    <li><span className="font-medium text-white">Pengalaman Konsisten: </span> Memori percakapan membuat interaksi terasa personal.</li>
+                    <li><span className="font-medium text-white">Beban Admin Turun: </span> Menghilangkan tugas manual dalam menjadwalkan.</li>
+                    <li><span className="font-medium text-white">Profil Tersentralisasi: </span> Data pengguna terkelola dengan baik dan dapat dilacak.</li>
                 </ul>
 
                 <p className="leading-relaxed mt-3">

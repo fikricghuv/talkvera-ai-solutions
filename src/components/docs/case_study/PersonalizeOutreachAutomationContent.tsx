@@ -35,20 +35,20 @@ const PersonalizeOutreachAutomationContent = () => {
                 </p>
 
                 <p className="leading-relaxed mt-3">
-                    <span className="font-medium text-white">Kemampuan Utama:</span>
+                    <span className="font-medium text-white">Kemampuan Utama: </span>
                 </p>
 
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Penerimaan Data Webhook yang Aman:</span> 
+                        <span className="font-medium text-white">Penerimaan Data Webhook yang Aman: </span> 
                         Menerima data formulir (nama, email, deskripsi proyek) melalui endpoint POST yang dilindungi.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Standardisasi Data:</span> 
+                        <span className="font-medium text-white">Standardisasi Data: </span> 
                         Membersihkan dan memetakan input ke format internal yang konsisten sebelum disimpan.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Penyimpanan Lead yang Andal:</span> 
+                        <span className="font-medium text-white">Penyimpanan Lead yang Andal: </span> 
                         Menyimpan data prospek ke tabel <strong>customer_consultation</strong> di <strong>PostgreSQL</strong> 
                         dengan status awal “Baru”.
                     </li>
@@ -65,21 +65,21 @@ const PersonalizeOutreachAutomationContent = () => {
                 </p>
 
                 <p className="leading-relaxed mt-3">
-                    <span className="font-medium text-white">Fungsionalitas:</span>
+                    <span className="font-medium text-white">Fungsionalitas: </span>
                 </p>
 
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Agen AI yang Memahami Konteks:</span> 
+                        <span className="font-medium text-white">Agen AI yang Memahami Konteks: </span> 
                         Agen “Greeting Email Agent” menganalisis input prospek untuk memahami kebutuhan dan tujuan mereka.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Pembuatan Pesan Dinamis:</span> 
+                        <span className="font-medium text-white">Pembuatan Pesan Dinamis: </span> 
                         Menghasilkan dua paragraf sambutan profesional yang disesuaikan dengan konteks menggunakan 
                         <strong> OpenRouter Chat Model</strong>.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Memori AI yang Persisten:</span> 
+                        <span className="font-medium text-white">Memori AI yang Persisten: </span> 
                         Menyimpan konteks di <strong>PostgreSQL Chat Memory</strong> menggunakan email prospek sebagai 
                         kunci sesi untuk interaksi lanjutan.
                     </li>
@@ -96,20 +96,20 @@ const PersonalizeOutreachAutomationContent = () => {
                 </p>
 
                 <p className="leading-relaxed mt-3">
-                    <span className="font-medium text-white">Fungsionalitas:</span>
+                    <span className="font-medium text-white">Fungsionalitas: </span>
                 </p>
 
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Perakitan Email HTML:</span> 
+                        <span className="font-medium text-white">Perakitan Email HTML: </span> 
                         Node <strong>JavaScript</strong> mengubah draf AI menjadi email HTML profesional yang konsisten dengan brand.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Pengiriman Email Otomatis:</span> 
+                        <span className="font-medium text-white">Pengiriman Email Otomatis: </span> 
                         Mengirim email menggunakan <strong>Gmail</strong> dengan subjek “Welcome To TalkVera!”.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Pelacakan Status Real-time:</span> 
+                        <span className="font-medium text-white">Pelacakan Status Real-time: </span> 
                         Memperbarui status prospek menjadi “Terkirim” dan menyimpan salinan email untuk audit.
                     </li>
                 </ul>

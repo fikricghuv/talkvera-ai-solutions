@@ -1,4 +1,4 @@
-import { Bot, Workflow, BarChart3, Shield, Lock, Star, ArrowRight, Zap, Rocket, Brain, ChevronDown } from 'lucide-react';
+import { Workflow, Star, ArrowRight, Rocket, Brain, ChevronDown } from 'lucide-react';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import StarField from '../components/StarFieldAnimation';
@@ -174,73 +174,77 @@ function HomePage() {
   ];
 
   return (
-    <div id='home' className="pt-14">
-      {/* PENTING: Pindahkan max-w-7xl, mx-auto, dan px-6 ke sini */}
+    <div id='home' className="pt-16">
       <StarField />
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl mx-auto px-6">
-        
-        {/* KOLOM KIRI (Konten Teks) */}
-        <div>
 
-          {/* Efek Latar Belakang (Tetap di luar div konten) */}
+      <section className="relative min-h-screen md:min-h-[80vh] grid grid-cols-1 md:grid-cols-2 gap-10 max-w-7xl mx-auto px-6">
 
-          <div className="absolute inset-0">
-            <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        {/* LEFT COLUMN */}
+        <div className="relative">
+
+          {/* Background Blur */}
+          <div className="absolute inset-0 pointer-events-none md:block hidden">
+            <div className="absolute top-1/4 left-1/4 w-72 h-72 bg-blue-500/10 rounded-full blur-3xl"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
           </div>
 
-          <div className="relative py-32 text-left">
+          <div className="relative py-20 md:py-32 text-left">
 
-            {/* Judul Utama */}
-            <h1 className="text-3xl md:text-6xl font-bold mb-6 leading-tight text-white"> 
-                {/* Membungkus kata yang ingin diwarnai */}
-                <span className="text-blue-400">Scale Up Bisnis</span> Anda Tanpa Terjebak Administrasi Harian
+            {/* Main Heading */}
+            <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold mb-4 leading-snug text-white">
+              <span className="text-blue-400">Scale Up Bisnis</span> Anda Tanpa Terjebak Administrasi Harian
             </h1>
 
-            {/* Paragraf */}
-            <p className="text-xl md:text-xl text-gray-300 mb-6 max-w-3xl">
+            {/* Paragraph */}
+            <p className="text-base sm:text-lg md:text-xl text-gray-300 mb-6 max-w-2xl">
               <strong>Hemat Ratusan Jam & Puluhan Juta</strong> Dengan Sistem Kerja Yang Efisien + Workflow Automation
             </p>
 
-            {/* Tombol CTA */}
-            <div className="flex flex-col sm:flex-row gap-4 justify-start">
+            {/* CTA Buttons */}
+            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
               <button
                 onClick={handleContactNavigate}
-                className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2"
               >
                 <span>Konsultasi Dengan Kami</span>
-                <ArrowRight size={20} />
+                <ArrowRight size={18} className="sm:size-20" />
               </button>
+
               <button
-                className="px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all"
+                className="px-6 sm:px-8 py-3 sm:py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all"
                 onClick={handleCaseStudiesNavigate}
               >
                 Lihat Studi Kasus Klien
               </button>
             </div>
 
-            {/* Statistik */}
-            <div className="mt-8 grid grid-cols-3 gap-8 max-w-lg">
+            {/* Stats Section */}
+            <div className="mt-10 grid grid-cols-3 sm:grid-cols-3 gap-4 sm:gap-6 max-w-sm sm:max-w-lg mx-auto sm:mx-0">
               <div className="text-center">
-                <div className="text-4xl font-bold text-blue-400 mb-2">50+</div>
-                <div className="text-sm text-gray-500">Implementasi Workflow</div>
+                <div className="text-2xl sm:text-4xl font-bold text-blue-400 mb-1">50+</div>
+                <div className="text-xs sm:text-sm text-gray-500">Implementasi Workflow</div>
               </div>
+
               <div className="text-center">
-                <div className="text-4xl font-bold text-blue-400 mb-2">95%</div>
-                <div className="text-sm text-gray-500">Kepuasan Klien</div>
+                <div className="text-2xl sm:text-4xl font-bold text-blue-400 mb-1">95%</div>
+                <div className="text-xs sm:text-sm text-gray-500">Kepuasan Klien</div>
               </div>
+
               <div className="text-center">
-                <div className="text-4xl font-bold text-blue-400 mb-2">24/7</div>
-                <div className="text-sm text-gray-500">Dukungan Teknis</div>
+                <div className="text-2xl sm:text-4xl font-bold text-blue-400 mb-1">24/7</div>
+                <div className="text-xs sm:text-sm text-gray-500">Dukungan Teknis</div>
               </div>
             </div>
+
           </div>
         </div>
 
-        {/* KOLOM KANAN (Visualisasi/Image) */}
-        <div className="relative flex items-center justify-center py-20">
+        {/* RIGHT COLUMN (Workflow Animation) */}
+        <div className="relative hidden md:flex items-center justify-center pb-16 md:pb-0">
           <AnimatedWorkflow />
         </div>
+
+
       </section>
 
       {/* SECTION 2: Comprehensive AI Solutions (Diperbaiki menjadi Accordion Interaktif) */}
@@ -259,67 +263,69 @@ function HomePage() {
               </p>
             </div>
           </FadeInOnScroll>
-          <FadeInOnScroll delay={0.2} threshold={0.2}>
-            <div className='justify-center overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-10'>
-              <div className="max-w-4xl mx-auto space-y-3 md:space-y-4">
-                {features.map((feature, index) => {
-                  const isActive = index === activeIndex;
+          <div className="justify-center overflow-hidden grid grid-cols-1 md:grid-cols-2 gap-10">
+            <div className="max-w-4xl mx-auto space-y-3 md:space-y-4">
+              {features.map((feature, index) => {
+                const isActive = index === activeIndex;
 
-                  return (
-                    <div key={index}>
+                return (
+                  <FadeInOnScroll
+                    key={index}
+                    delay={index * 0.15}
+                    threshold={0.3}
+                    direction="right"
+                  >
+                    <div>
                       <button
                         onClick={() => setActiveIndex(index)}
                         className={`group relative w-full text-left py-4 px-4 rounded-lg transition-all duration-200 
-                                      ${isActive
-                            ? 'font-semibold' // Highlight background minimal untuk aktif
-                            : '' // Menambahkan hover agar interaktif
-                          }
-                                  `}
+                          ${isActive ? 'font-semibold' : ''}
+                        `}
                       >
-                        {/* Konten (Selalu Terlihat) */}
+                        {/* Konten */}
                         <div className="relative z-20 flex items-center gap-4">
-                          <div className='flex items-center space-x-4'>
-
+                          <div className="flex items-center space-x-4">
                             <h2
-                              // DIUBAH: text-xl menjadi text-2xl
                               className={`text-2xl transition-colors duration-300 
-                                                  ${isActive ? 'text-white font-bold' : 'text-gray-400 font-medium group-hover:text-gray-300'}
-                                              `}
+                                ${isActive ? 'text-white font-bold' : 'text-gray-400 font-medium group-hover:text-gray-300'}
+                              `}
                             >
                               {feature.title}
                             </h2>
                           </div>
+
                           {isActive && (
-                              <div className="flex-shrink-0 transition-opacity duration-300">
-                                  <ArrowRight size={24} className="text-blue-400" /> {/* Ikon sedikit lebih besar agar menonjol */}
-                              </div>
+                            <div className="flex-shrink-0 transition-opacity duration-300">
+                              <ArrowRight size={24} className="text-blue-400" />
+                            </div>
                           )}
                         </div>
                       </button>
 
                       <div className="ml-5 mt-2 mb-4 md:ml-6">
-                        <p className={`
-                                      text-base leading-relaxed pl-4 border-l-2 text-md
-                                      ${isActive ? 'text-gray-300 border-blue-500' : 'text-gray-400 border-gray-700'} 
-                                  `}
+                        <p
+                          className={`
+                            text-base leading-relaxed pl-4 border-l-2 text-md
+                            ${isActive ? 'text-gray-300 border-blue-500' : 'text-gray-400 border-gray-700'} 
+                          `}
                         >
                           {feature.description}
                         </p>
                       </div>
                     </div>
-                  );
-                })}
-              </div>
-
-              {/* KOLOM KANAN: Visualisasi Dinamis */}
-              <div className="relative flex justify-center items-center p-4 md:p-8">
-                <DynamicFeatureAnimation 
-                  activeIndex={activeIndex}
-                  animations={featureAnimations}
-                />
-              </div>
+                  </FadeInOnScroll>
+                );
+              })}
             </div>
-          </FadeInOnScroll>
+
+            {/* KOLOM KANAN: Visualisasi Dinamis */}
+            <div className="relative flex hidden md:flex justify-center items-center p-4 md:p-8">
+              <DynamicFeatureAnimation 
+                activeIndex={activeIndex}
+                animations={featureAnimations}
+              />
+            </div>
+          </div>
         </div>
       </section>
 

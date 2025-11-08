@@ -37,11 +37,11 @@ interface SelectComponentProps extends CommonProps {
 
 // --- Data Konstan ---
 const employeeOptions: SelectOption[] = [
-    { value: '', label: 'Select Employee Range' },
-    { value: '1-10', label: '1 - 10 Employees (Startup)' },
-    { value: '11-50', label: '11 - 50 Employees (Small Business)' },
-    { value: '51-200', label: '51 - 200 Employees (Mid-size)' },
-    { value: '201+', label: '201+ Employees (Enterprise)' },
+    { value: '', label: 'Pilih Jumlah Karyawan' },
+    { value: '1-10', label: '1 - 10 Karyawan (Startup)' },
+    { value: '11-50', label: '11 - 50 Karyawan (Small Business)' },
+    { value: '51-200', label: '51 - 200 Karyawan (Mid-size)' },
+    { value: '201+', label: '201+ Karyawan (Enterprise)' },
 ];
 
 const initialFormData = {
@@ -97,7 +97,7 @@ function ContactPage() {
             if (response.ok) {
                 setMessage({ 
                     type: 'success', 
-                    text: 'Success! Your consultation request has been sent. We will contact you shortly.' 
+                    text: 'Berhasil! Permintaan konsultasi Anda telah dikirim. Kami akan segera menghubungi Anda.' 
                 });
                 setFormData(initialFormData); // Reset form
             } else {
@@ -109,7 +109,7 @@ function ContactPage() {
             console.error('Submission failed:', error);
             setMessage({ 
                 type: 'error', 
-                text: `Submission Failed: ${error instanceof Error ? error.message : 'Unknown error occurred.'} Please try again.`
+                text: `Pengiriman Gagal: ${error instanceof Error ? error.message : 'Unknown error occurred.'} Mohon coba lagi.`
             });
         } finally {
             setIsSubmitting(false);
@@ -125,15 +125,15 @@ function ContactPage() {
                 <div className="relative max-w-4xl mx-auto px-6 z-10">
                     <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-6">
                         <CircleUser className="w-4 h-4 text-blue-400" />
-                        <span className="text-sm text-blue-300">Contact Our AI Team</span>
+                        <span className="text-sm text-blue-300">Hubungi Tim AI Kami</span>
                     </div>
                     
                     <h1 className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent leading-tight">
-                        Diskusikan Kebutuhan Anda Bersama Talkvera
+                        Diskusikan Kebutuhan Anda Bersama Tim Talkvera
                     </h1>
                     
                     <p className="text-xl text-gray-400 max-w-3xl mx-auto">
-                        Bicaralah dengan seorang ahli dan mulailah membuat rencana untuk proyek Anda.
+                        Terhubunglah dengan ahli kami dan mulai rancang solusi terbaik untuk bisnis Anda.
                     </p>
                 </div>
             </section>
@@ -148,10 +148,10 @@ function ContactPage() {
                             <div className="lg:col-span-1 space-y-8 p-8 md:p-12 
                                             bg-gradient-to-br from-gray-900 to-gray-800/50 rounded-t-[calc(1.5rem-2px)] lg:rounded-l-[calc(1.5rem-2px)] lg:rounded-tr-none">
                                 <h2 className="text-3xl font-bold bg-gradient-to-r from-blue-300 to-cyan-300 bg-clip-text text-transparent pb-4 mb-4">
-                                    Contact Information
+                                    Informasi Kontak
                                 </h2>
                                 <p className="text-gray-400 text-lg">
-                                    Tim kami siap membantu Anda. Jangan ragu untuk menghubungi kami melalui email, telepon, atau mengunjungi kantor kami.
+                                    Tim kami siap membantu Anda. Hubungi kami melalui email, telepon, atau kunjungi kantor kami untuk konsultasi langsung.
                                 </p>
 
                                 <div className="space-y-6 pt-4">
@@ -182,12 +182,12 @@ function ContactPage() {
                                 </div>
                                 
                                 <p className="pt-6 text-sm text-gray-500 border-t border-gray-800/70">
-                                    Working Hours: Monday - Friday, 09:00 - 17:00 WIB (GMT+7)
+                                    Jam Operasional: Senin – Jumat, 09.00 – 17.00 WIB
                                 </p>
                             </div>
 
                             <div className="lg:col-span-2 p-8 md:p-12">
-                                <h2 className='text-md font-semibold text-white pb-2'>Let's get to know you</h2>
+                                <h2 className='text-md font-semibold text-white pb-2'>Mari Kenali Kebutuhan Anda</h2>
                                 
                                 {/* Form Submission Feedback */}
                                 {message.text && (
@@ -201,19 +201,19 @@ function ContactPage() {
                                     
                                     {/* Row 1: First Name and Last Name */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <InputComponent id="firstName" label="First Name" type="text" placeholder="Enter your first name" required={true} value={formData.firstName} onChange={handleChange} />
-                                        <InputComponent id="lastName" label="Last Name" type="text" placeholder="Enter your last name" required={true} value={formData.lastName} onChange={handleChange} />
+                                        <InputComponent id="firstName" label="Nama Depan" type="text" placeholder="Masukkan nama depan Anda" required={true} value={formData.firstName} onChange={handleChange} />
+                                        <InputComponent id="lastName" label="Nama Belakang" type="text" placeholder="Masukkan nama belakang Anda" required={true} value={formData.lastName} onChange={handleChange} />
                                     </div>
                                     
                                     {/* Row 2: Your Role and Website */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <InputComponent id="role" label="Your Role within Organization" type="text" placeholder="e.g., CTO, Head of AI" required={true} value={formData.role} onChange={handleChange} />
+                                        <InputComponent id="role" label="Peran Anda dalam Perusahaan" type="text" placeholder="contoh: CTO, Head of AI, Founder" required={true} value={formData.role} onChange={handleChange} />
                                         {/* PERBAIKAN: Mengubah type="url" menjadi type="text" */}
                                         <InputComponent 
                                             id="website" 
-                                            label="Website (Optional)" 
+                                            label="Website (Opsional)" 
                                             type="text" 
-                                            placeholder="e.g., www.company.com or https://www.company.com" 
+                                            placeholder="contoh: www.company.com or https://www.company.com" 
                                             required={false} 
                                             value={formData.website} 
                                             onChange={handleChange} 
@@ -222,15 +222,15 @@ function ContactPage() {
 
                                     {/* Row 3: Work Email and Company Name */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                        <InputComponent id="email" label="Work Email" type="email" placeholder="example@company.com" required={true} value={formData.email} onChange={handleChange} />
-                                        <InputComponent id="company" label="Company Name" type="text" placeholder="Your Company Name" required={true} value={formData.company} onChange={handleChange} />
+                                        <InputComponent id="email" label="Email Kerja" type="email" placeholder="contoh: nama@perusahaan.com" required={true} value={formData.email} onChange={handleChange} />
+                                        <InputComponent id="company" label="Nama Perusahaan" type="text" placeholder="Masukkan nama perusahaan Anda" required={true} value={formData.company} onChange={handleChange} />
                                     </div>
                                     
                                     {/* Row 4: Company Size */}
                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <SelectComponent 
                                             id="companySize" // ID harus sesuai dengan key di formData
-                                            label="Company Size (Number of Employees)" 
+                                            label="Jumlah Karyawan" 
                                             options={employeeOptions} 
                                             required={true}
                                             selectStyle={selectStyle} 
@@ -242,7 +242,7 @@ function ContactPage() {
                                     </div>
 
                                     {/* Row 5: Tell us about your project... */}
-                                    <TextareaComponent id="projectDesc" label="How Can We Help?" placeholder="Describe your AI needs, current challenges, and goals..." required={true} value={formData.projectDesc} onChange={handleChange}/>
+                                    <TextareaComponent id="projectDesc" label="Bagaimana Kami Bisa Membantu" placeholder="Ceritakan kebutuhan AI Anda, tantangan saat ini, dan tujuan yang ingin dicapai..." required={true} value={formData.projectDesc} onChange={handleChange}/>
                                     
                                     {/* Submit Button */}
                                     <button 
@@ -253,11 +253,11 @@ function ContactPage() {
                                         {isSubmitting ? (
                                             <>
                                                 <Loader className="animate-spin w-5 h-5" />
-                                                <span>Sending Request...</span>
+                                                <span>Mengirim...</span>
                                             </>
                                         ) : (
                                             <>
-                                                <span>Send Consultation Request</span>
+                                                <span>Kirim Permintaan Konsultasi</span>
                                                 <ArrowRight size={20} />
                                             </>
                                         )}

@@ -7,7 +7,7 @@ const ProcessContent = () => {
 
               {/* DISCOVERY */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Tahap Discovery Awal</h2>
+                <h2 className="text-2xl text-white font-semibold mb-4">Tahap Discovery Awal</h2>
                 <p>
                   Di TalkVera, kami tidak berperan sekadar sebagai penyedia layanan, melainkan sebagai mitra 
                   strategis jangka panjang dalam transformasi AI Anda. Kami menerapkan pendekatan konsultatif 
@@ -22,7 +22,7 @@ const ProcessContent = () => {
 
               {/* ORGANIZATIONAL UNDERSTANDING */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Pemahaman Struktur & Operasi Organisasi</h2>
+                <h2 className="text-2xl text-white font-semibold mb-4">Pemahaman Struktur & Operasi Organisasi</h2>
                 <p>
                   Kami mulai dengan menyelami cara kerja organisasi Anda—bagaimana proses berjalan saat ini 
                   dan tujuan yang ingin dicapai ke depannya. Pada tahap ini kami mempelajari:
@@ -37,7 +37,7 @@ const ProcessContent = () => {
 
               {/* STRATEGIC ROADMAP */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Perancangan Roadmap Strategis</h2>
+                <h2 className="text-2xl text-white font-semibold mb-4">Perancangan Roadmap Strategis</h2>
                 <p>
                   Dengan memahami struktur organisasi, kami membantu menyusun roadmap AI yang berpengaruh 
                   dan berorientasi hasil. Roadmap ini memastikan setiap langkah jangka pendek dibangun 
@@ -54,7 +54,7 @@ const ProcessContent = () => {
 
               {/* SECURITY */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Keamanan & Kepatuhan</h2>
+                <h2 className="text-2xl text-white font-semibold mb-4">Keamanan & Kepatuhan</h2>
                 <p>
                   Kepercayaan adalah fondasi dalam implementasi sistem AI—terutama saat menangani data sensitif, 
                   proses internal, atau komunikasi pelanggan. Pada tahap ini kami menilai:
@@ -69,7 +69,7 @@ const ProcessContent = () => {
 
               {/* RAPID ITERATION */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Iterasi Cepat & Pengiriman Berkelanjutan</h2>
+                <h2 className="text-2xl text-white font-semibold mb-4">Iterasi Cepat & Pengiriman Berkelanjutan</h2>
                 <p>
                   Kami percaya kekuatan AI ada pada kemampuannya untuk berkembang. Itu sebabnya pendekatan 
                   pengembangan kami berfokus pada agility, modularitas, dan iterasi cepat. Setiap sistem dibangun 
@@ -102,7 +102,7 @@ const ProcessContent = () => {
 
               {/* QA & DEPLOYMENT */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Quality Assurance & Deployment</h2>
+                <h2 className="text-2xl text-white font-semibold mb-4">Quality Assurance & Deployment</h2>
                 <p>
                   Tahap terakhir dalam lifecycle AI kami berfokus pada pengujian komprehensif, deployment 
                   aman, dan keandalan jangka panjang. Kami menggabungkan pipeline otomatis dengan evaluasi 
@@ -137,7 +137,7 @@ const ProcessContent = () => {
 
               {/* ONGOING SUPPORT */}
               <section>
-                <h2 className="text-2xl text-white mb-4">Dukungan Berkelanjutan & Optimasi</h2>
+                <h2 className="text-2xl text-white font-semibold mb-4">Dukungan Berkelanjutan & Optimasi</h2>
                 <p>
                   Sistem AI tidak pernah benar-benar selesai. Kami menyediakan supervisi dan peningkatan 
                   berkelanjutan melalui:

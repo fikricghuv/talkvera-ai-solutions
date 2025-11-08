@@ -17,21 +17,24 @@ function PricingPage() {
       name: 'Business Partner',
       price: 'Custom',
       period: '',
-      description: 'Solusi komprehensif untuk perusahaan yang siap meningkatkan kapabilitas AI mereka',
+      description: [
+        'Solusi menyeluruh untuk perusahaan yang ingin meningkatkan kemampuan AI.',
+        'Didesain untuk mempercepat efisiensi operasional dan transformasi digital.'
+      ],
       features: [
         'Dedicated AI Engineer',
-        'Dokumentasi dan panduan pengguna',
-        'Debugging langsung dan manajemen solusi',
+        'Dokumentasi lengkap dan panduan penggunaan',
+        'Debugging real-time dan manajemen solusi berkelanjutan',
         'Dedicated Project Manager',
-        'Strategic roadmap review',
-        'Sesi pelatihan dan pemberdayaan tim',
-        'Dokumentasi semua pekerjaan yang telah selesai',
-        'Semuanya disesuaikan untuk Anda dan bisnis Anda'
+        'Strategic roadmap review & konsultasi rutin',
+        'Sesi pelatihan dan pengembangan kemampuan tim',
+        'Dokumentasi detail untuk setiap pekerjaan yang diselesaikan',
+        'Semuanya disesuaikan sepenuhnya dengan kebutuhan bisnis Anda'
       ],
       highlighted: true,
     },
-    // Jika ada rencana lain, mereka akan diletakkan di sini.
   ];
+
 
   const partnership = [
     { icon: Settings, name: 'AI/ML Engineers' },
@@ -43,10 +46,10 @@ function PricingPage() {
   ];
 
   const processes = [
-    { icon: Check, desc: 'Dokumentasi yang jelas untuk semua pekerjaan yang telah diselesaikan' },
-    { icon: TrendingUp, desc: 'Update progres dan demonstrasi rutin' },
-    { icon: Layers, desc: 'Sesi perencanaan kolaboratif' },
-    { icon: Clock, desc: 'Time tracking dan detail laporan' },
+    { icon: Check, desc: 'Dokumentasi lengkap dan mudah diakses untuk setiap pekerjaan' },
+    { icon: TrendingUp, desc: 'Pembaruan progres rutin disertai demonstrasi langsung' },
+    { icon: Layers, desc: 'Sesi perencanaan yang kolaboratif dan terstruktur' },
+    { icon: Clock, desc: 'Pelacakan waktu dan laporan detail di setiap tahap' },
   ];
 
   return (
@@ -56,10 +59,10 @@ function PricingPage() {
           <div className="text-center mb-16">
             <div className="inline-flex items-center space-x-2 px-4 py-2 bg-blue-500/10 border border-blue-500/20 rounded-full mb-8">
               <Tag className="w-4 h-4 text-blue-400" />
-              <span className="text-sm text-blue-300">Flexible Pricing Plans</span>
+              <span className="text-sm text-blue-300">Pilihan Harga yang Fleksibel</span>
             </div>
             <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-cyan-100 bg-clip-text text-transparent leading-tight">
-              Choose Your AI Journey
+              <span className='text-blue-400'>Mulai</span> Perjalanan AI Anda
             </h1>
             <p className="text-xl text-gray-400 max-w-3xl mx-auto">
               Di Talkvera, kami bertindak sebagai mitra AI khusus Anda—berfokus pada identifikasi dan eksekusi peluang ROI tertinggi untuk otomatisasi dalam bisnis Anda.
@@ -98,7 +101,13 @@ function PricingPage() {
                             <div className='flex flex-col'>
                                 <div className="mb-5">
                                     <h3 className="text-2xl font-bold mb-1">{plan.name}</h3>
-                                    <p className="text-gray-400 text-xs mb-3 italic">{plan.description}</p>
+                                    <div className="text-gray-400 text-xs mb-3 italic space-y-1">
+                                      {Array.isArray(plan.description)
+                                        ? plan.description.map((line, idx) => (
+                                            <p key={idx}>{line}</p>
+                                          ))
+                                        : <p>{plan.description}</p>}
+                                    </div>
                                     <div className="flex items-baseline mb-5">
                                         {plan.price === 'Custom' ? (
                                             <span className="text-4xl font-bold text-blue-400">Custom</span>
@@ -182,9 +191,9 @@ function PricingPage() {
           <div className="mt-24">
             <FadeInOnScroll delay={0.2} threshold={0.2}>
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4">What Sets <span className='text-blue-400'>Our Development Partnership</span> Apart</h2>
+              <h2 className="text-4xl font-bold mb-4">Keunggulan <span className='text-blue-400'>Kemitraan Pengembangan</span> Kami</h2>
               <p className="text-xl text-gray-400">
-                Setiap kemitraan pengembangan Talkvera memiliki akses ke:
+                Setiap kemitraan pengembangan di Talkvera mendapatkan akses ke:
               </p>
             </div>
             </FadeInOnScroll>
@@ -234,7 +243,7 @@ function PricingPage() {
           <div className="mt-24">
             <FadeInOnScroll delay={0.2} threshold={0.2}>
             <div className="mb-12 text-center">
-              <h2 className="text-4xl font-bold mb-4"><span className='text-blue-400'>Transparent</span> Process</h2>
+              <h2 className="text-4xl font-bold mb-4">Proses yang <span className='text-blue-400'>Transparan</span></h2>
             </div>
             </FadeInOnScroll>
 

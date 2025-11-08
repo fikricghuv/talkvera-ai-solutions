@@ -32,19 +32,19 @@ const SalesAgentContent = () => {
                 <h3 className="text-xl font-semibold mt-4">Kemampuan Utama</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Gateway API Aman:</span> 
+                        <span className="font-medium text-white">Gateway API Aman: </span> 
                         Menerima <strong>HTTP POST</strong> dengan autentikasi header, menjaga keamanan data pelanggan dan bisnis.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Antarmuka Percakapan:</span> 
+                        <span className="font-medium text-white">Antarmuka Percakapan: </span> 
                         Mendukung pesan bahasa alami seperti “Minta penawaran 100 unit Product X” atau “Berapa harga paket enterprise?”.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Manajemen Sesi:</span> 
+                        <span className="font-medium text-white">Manajemen Sesi: </span> 
                         Mempertahankan percakapan menggunakan <code>session_id</code> sehingga dialog multi-turn tetap konsisten.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Pemrosesan Raw Body:</span>
+                        <span className="font-medium text-white">Pemrosesan Raw Body: </span>
                         Menangani format JSON fleksibel dari chat apps, web forms, atau aplikasi kustom.
                     </li>
                 </ul>
@@ -66,15 +66,15 @@ const SalesAgentContent = () => {
                 <h3 className="text-xl font-semibold mt-4">Kemampuan Utama</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Pemahaman Bahasa Lanjutan:</span> 
+                        <span className="font-medium text-white">Pemahaman Bahasa Lanjutan: </span> 
                         Menggunakan <strong>GPT-4o-mini via OpenRouter</strong> dengan output profesional dan natural.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Pengenalan Pelanggan Cerdas:</span> 
+                        <span className="font-medium text-white">Pengenalan Pelanggan Cerdas: </span> 
                         Mengecek CRM terlebih dahulu melalui <strong>Get Customer from CRM</strong> untuk mengidentifikasi pelanggan lama.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Pengumpulan Data Otomatis:</span> 
+                        <span className="font-medium text-white">Pengumpulan Data Otomatis: </span> 
                         Mengumpulkan:
                         <ul className="list-disc space-y-1 mt-1 pl-6">
                             <li><strong>Nama lengkap</strong></li>
@@ -84,15 +84,15 @@ const SalesAgentContent = () => {
                         </ul>
                     </li>
                     <li>
-                        <span className="font-medium text-white">Simpan Pelanggan ke CRM:</span>
+                        <span className="font-medium text-white">Simpan Pelanggan ke CRM: </span>
                         Memasukkan data ke tabel <code>customers</code> dengan timestamp dan catatan awal.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Protokol Validasi Data:</span>
+                        <span className="font-medium text-white">Protokol Validasi Data: </span>
                         Memastikan format email benar sebelum penyimpanan.
                     </li>
                     <li>
-                        <span className="font-medium text-white">Memori Percakapan PostgreSQL:</span>
+                        <span className="font-medium text-white">Memori Percakapan PostgreSQL: </span>
                         Menyimpan riwayat percakapan berdasarkan session ID untuk interaksi multi-turn yang konsisten.
                     </li>
                 </ul>
@@ -111,12 +111,12 @@ const SalesAgentContent = () => {
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
 
                     <li>
-                        <span className="font-medium text-white">Penyusunan Penawaran Cerdas:</span>
+                        <span className="font-medium text-white">Penyusunan Penawaran Cerdas: </span>
                         Agen menganalisis kebutuhan pelanggan dan bertanya ulang bila detail belum lengkap.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Simpan Penawaran ke CRM:</span>
+                        <span className="font-medium text-white">Simpan Penawaran ke CRM: </span>
                         Menyimpan ke tabel <code>quotes</code> termasuk:
                         <ul className="list-disc space-y-1 mt-1 pl-6">
                             <li><strong>Email pelanggan</strong></li>
@@ -128,7 +128,7 @@ const SalesAgentContent = () => {
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Catatan CRM Otomatis:</span>
+                        <span className="font-medium text-white">Catatan CRM Otomatis: </span>
                         Merekam:
                         <ul className="list-disc space-y-1 mt-1 pl-6">
                             <li>Jenis interaksi</li>
@@ -138,12 +138,12 @@ const SalesAgentContent = () => {
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Protokol Konfirmasi Penawaran:</span>
+                        <span className="font-medium text-white">Protokol Konfirmasi Penawaran: </span>
                         Memastikan pemahaman yang sama sebelum penawaran dibuat.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Audit Trail Lengkap:</span>
+                        <span className="font-medium text-white">Audit Trail Lengkap: </span>
                         Semua interaksi tercatat dan dapat dilacak.
                     </li>
                 </ul>
@@ -165,27 +165,27 @@ const SalesAgentContent = () => {
                 <h3 className="text-xl font-semibold mt-4">Kemampuan Utama</h3>
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
                     <li>
-                        <span className="font-medium text-white">Notifikasi Telegram Real-Time:</span>
+                        <span className="font-medium text-white">Notifikasi Telegram Real-Time: </span>
                         Mengirim ringkasan pelanggan, penawaran, urgensi, dan langkah berikutnya.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Handoff Mulus ke Tim Orders:</span>
+                        <span className="font-medium text-white">Handoff Mulus ke Tim Orders: </span>
                         Memberikan konteks lengkap tanpa perlu mengakses CRM.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Pengiriman Respons ke Pelanggan:</span>
+                        <span className="font-medium text-white">Pengiriman Respons ke Pelanggan: </span>
                         Mengirim JSON terstruktur melalui <strong>Respond to Webhook</strong>.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Komunikasi Jelas & Profesional:</span>
+                        <span className="font-medium text-white">Komunikasi Jelas & Profesional: </span>
                         Memberikan penjelasan, ringkasan, dan langkah selanjutnya.
                     </li>
 
                     <li>
-                        <span className="font-medium text-white">Penanganan Error yang Baik:</span>
+                        <span className="font-medium text-white">Penanganan Error yang Baik: </span>
                         Menyampaikan solusi saat terjadi kesalahan.
                     </li>
                 </ul>
@@ -204,13 +204,13 @@ const SalesAgentContent = () => {
                 </p>
 
                 <ul className="list-disc space-y-2 mt-2 leading-relaxed pl-6">
-                    <li><span className="font-medium text-white">Eliminasi Entri Data Manual:</span> Mengurangi kesalahan dan mempercepat proses.</li>
-                    <li><span className="font-medium text-white">Pembuatan Penawaran Otomatis:</span> Penawaran siap dalam hitungan detik.</li>
-                    <li><span className="font-medium text-white">Layanan 24/7:</span> Menjawab pertanyaan dan membuat penawaran kapan saja.</li>
-                    <li><span className="font-medium text-white">Waktu Respons Lebih Cepat:</span> Meningkatkan kepuasan pelanggan dan konversi.</li>
-                    <li><span className="font-medium text-white">Skalabilitas Tanpa Penambahan SDM:</span> Menangani banyak pelanggan sekaligus.</li>
-                    <li><span className="font-medium text-white">Kualitas Konsisten:</span> Validasi data & format penawaran seragam.</li>
-                    <li><span className="font-medium text-white">Pengenalan Pelanggan:</span> Interaksi terasa personal dan relevan.</li>
+                    <li><span className="font-medium text-white">Eliminasi Entri Data Manual: </span> Mengurangi kesalahan dan mempercepat proses.</li>
+                    <li><span className="font-medium text-white">Pembuatan Penawaran Otomatis: </span> Penawaran siap dalam hitungan detik.</li>
+                    <li><span className="font-medium text-white">Layanan 24/7: </span> Menjawab pertanyaan dan membuat penawaran kapan saja.</li>
+                    <li><span className="font-medium text-white">Waktu Respons Lebih Cepat: </span> Meningkatkan kepuasan pelanggan dan konversi.</li>
+                    <li><span className="font-medium text-white">Skalabilitas Tanpa Penambahan SDM: </span> Menangani banyak pelanggan sekaligus.</li>
+                    <li><span className="font-medium text-white">Kualitas Konsisten: </span> Validasi data & format penawaran seragam.</li>
+                    <li><span className="font-medium text-white">Pengenalan Pelanggan: </span> Interaksi terasa personal dan relevan.</li>
                 </ul>
 
                 <p className="leading-relaxed mt-3">

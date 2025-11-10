@@ -10,17 +10,17 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import NotFoundPage from './pages/NotFoundPage';
 
-const BASE_TITLE = "Talkvera: AI Solution";
+// const BASE_TITLE = "Talkvera: AI Solution";
 
 const ROUTE_TITLES = {
-    '/home': 'Home',
-    '/pricing': 'Pricing',
-    '/about': 'About Us',
-    '/contact': 'Contact Us',
-    '/docs': 'Docs',
-    '/privacy': 'Privacy',
-    '/termcondition': 'Terms & Conditions',
-    '*': 'Page Not Found',
+    '/home': 'Beranda | TalkVera - Scale Up Bisnis Anda Tanpa Terjebak Administrasi Harian',
+    '/pricing': 'Harga Layanan | TalkVera - Pilih Paket yang Tepat untuk Anda',
+    '/about': 'Tentang Kami | TalkVera - Misi, Visi, dan Tim Kami',
+    '/contact': 'Kontak Kami | TalkVera - Hubungi Tim Dukungan & Sales',
+    '/docs': 'Dokumentasi | TalkVera - Panduan Penggunaan Lengkap',
+    '/privacy': 'Kebijakan Privasi | TalkVera',
+    '/termcondition': 'Syarat & Ketentuan Layanan | TalkVera',
+    '*': 'Halaman Tidak Ditemukan (404) | TalkVera', 
 };
 
 /**
@@ -40,7 +40,8 @@ function TitleUpdater() {
             
             pageTitle = ROUTE_TITLES[normalizedPath as keyof typeof ROUTE_TITLES] || ROUTE_TITLES['*'];
         }
-        document.title = `${pageTitle} - ${BASE_TITLE}`;
+        // document.title = `${pageTitle} - ${BASE_TITLE}`;
+        document.title = `${pageTitle}`;
     }, [location.pathname]);
 
     return null;

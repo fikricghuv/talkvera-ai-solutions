@@ -1,14 +1,15 @@
-talkvera-web:
+services:
+  talkvera-web:
     build: .
     container_name: talkvera-web
     labels:
       traefik.enable: "true"
 
       # root domain (menggunakan variabel dari .env)
-      traefik.http.routers.talkvera-root.entrypoints: websecure
-      traefik.http.routers.talkvera-root.rule: Host(`${ROOT_DOMAIN}`)
-      traefik.http.routers.talkvera-root.service: talkvera
-      traefik.http.routers.talkvera-root.tls.certresolver: mytlschallenge
+      traefik.http.routers.talkvera-web.entrypoints: websecure
+      traefik.http.routers.talkvera-web.rule: Host(`${ROOT_DOMAIN}`)
+      traefik.http.routers.talkvera-web.service: talkvera
+      traefik.http.routers.talkvera-web.tls.certresolver: mytlschallenge
 
       # www (dibuat secara dinamis dari variabel)
       traefik.http.routers.talkvera-www.entrypoints: websecure

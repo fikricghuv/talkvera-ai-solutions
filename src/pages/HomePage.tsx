@@ -79,7 +79,7 @@ function HomePage() {
       description: (
         <>
           Kami memulai dengan sesi kolaboratif 60 menit untuk memahami
-          <strong className="text-white"> proses bisnis manual terbesar</strong> Anda dan mengidentifikasi bottleneck (hambatan) yang paling menghabiskan waktu.
+          <strong className="text-white"> proses bisnis manual</strong> Anda dan mengidentifikasi bottleneck (hambatan) yang paling menghabiskan waktu.
           <strong className="text-blue-400"> Anda hanya perlu menjelaskan, kami yang petakan.</strong>
         </>
       ),
@@ -90,7 +90,7 @@ function HomePage() {
       title: "Development",
       description: (
         <>
-          Tim kami segera mengubah peta proses menjadi alur kerja yang tepat. Kami membangun, menguji, dan melakukan iterasi untuk memastikan solusi Anda
+          Tim kami segera mengubah peta proses menjadi alur kerja yang tepat. Kami membangun, menguji, dan melakukan iterasi untuk memastikan solusi untuk Anda
           <strong className="text-white"> akurat 100%</strong> dan siap digunakan dalam hitungan hari, <strong className="text-blue-400">mengurangi penundaan (time delay) bisnis Anda.</strong>
         </>
       ),
@@ -101,7 +101,7 @@ function HomePage() {
       title: "Deployment",
       description: (
         <>
-          Kami meluncurkan solusi automasi Anda dengan transisi yang mulus. Setelah *live*, tim kami menyediakan
+          Kami meluncurkan solusi automasi Anda dengan transisi yang mulus. Setelah <strong className="text-white">live</strong>, tim kami menyediakan
           <strong className="text-white"> dukungan penuh dan pemeliharaan 24/7</strong> untuk memastikan sistem Anda berjalan optimal,
           <strong className="text-blue-400"> tanpa perlu tim IT tambahan dari sisi Anda.</strong>
         </>

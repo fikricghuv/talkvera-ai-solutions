@@ -13,11 +13,12 @@ import NotFoundPage from './pages/NotFoundPage';
 // const BASE_TITLE = "Talkvera: AI Solution";
 
 const ROUTE_TITLES = {
-    '/home': 'Beranda | TalkVera - Scale Up Bisnis Anda Tanpa Terjebak Administrasi Harian',
+    '/home': 'TalkVera - Scale Up Bisnis Anda Tanpa Terjebak Administrasi Harian',
     '/pricing': 'Harga Layanan | TalkVera - Pilih Paket yang Tepat untuk Anda',
     '/about': 'Tentang Kami | TalkVera - Misi, Visi, dan Tim Kami',
     '/contact': 'Kontak Kami | TalkVera - Hubungi Tim Dukungan & Sales',
     '/docs': 'Dokumentasi | TalkVera - Panduan Penggunaan Lengkap',
+    '/docs/case-studies/overview': 'Studi Kasus | TalkVera - Proyeksikan Projek Anda',
     '/privacy': 'Kebijakan Privasi | TalkVera',
     '/termcondition': 'Syarat & Ketentuan Layanan | TalkVera',
     '*': 'Halaman Tidak Ditemukan (404) | TalkVera', 

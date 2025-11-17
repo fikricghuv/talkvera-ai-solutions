@@ -42,7 +42,7 @@ function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-white mb-4">Links</h3>
+            <h2 className="font-semibold text-white mb-4">Links</h2>
             <ul className="space-y-2">
               {links.map((link) => (
                 <li key={link.path}>
@@ -58,7 +58,7 @@ function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-white mb-4">Resources</h3>
+            <h2 className="font-semibold text-white mb-4">Resources</h2>
             <ul className="space-y-2">
               {resourceLinks.map((link) => (
                 <li key={link.path}>
@@ -74,7 +74,7 @@ function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-white mb-4">Company</h3>
+            <h2 className="font-semibold text-white mb-4">Company</h2>
             <ul className="space-y-2">
               {companyLinks.map((link) => (
                 <li key={link.path}>
@@ -90,33 +90,40 @@ function Footer() {
           </div>
 
           <div>
-            <h3 className="font-semibold text-white mb-4">Connect</h3>
+            <h2 className="font-semibold text-white mb-4">Connect</h2>
             <div className="flex space-x-4">
                 <a
-                    href="https://api.whatsapp.com/send/?phone=6285171182228&text&type=phone_number&app_absent=0"
-                    target="_blank"  rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
+                  href="https://api.whatsapp.com/send/?phone=6285171182228&text&type=phone_number&app_absent=0"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Hubungi kami via WhatsApp"
+                  className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
                 >
-                    <Phone size={18} className="text-gray-400 hover:text-blue-400" />
+                  <Phone size={18} className="text-gray-400 hover:text-blue-400" />
                 </a>
-                
+
                 <a
-                    href="https://www.instagram.com/talk.vera/"
-                    target="_blank"  rel="noopener noreferrer" className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
+                  href="https://www.instagram.com/talk.vera/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Kunjungi Instagram TalkVera"
+                  className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
                 >
-                    <Instagram size={18} className="text-gray-400 hover:text-blue-400" />
+                  <Instagram size={18} className="text-gray-400 hover:text-blue-400" />
                 </a>
-                
+
                 <a
-                    href="mailto:hello@talkvera.com"
-                    className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
+                  href="mailto:hello@talkvera.com"
+                  aria-label="Kirim email ke TalkVera"
+                  className="w-10 h-10 rounded-lg bg-gray-800 hover:bg-gray-700 flex items-center justify-center transition-colors"
                 >
-                    <Mail size={18} className="text-gray-400 hover:text-blue-400" />
+                  <Mail size={18} className="text-gray-400 hover:text-blue-400" />
                 </a>
             </div>
           </div>
 
           <div>
-            <h3 className="font-semibold text-white mb-4">Mulai Sekarang</h3>
+            <h2 className="font-semibold text-white mb-4">Mulai Sekarang</h2>
             {getStartedLink.map((item, index) => (
               <p key={index} className="text-sm text-gray-400 mb-4">
                 {item.desc}
@@ -125,7 +132,7 @@ function Footer() {
 
             <Link 
                 to="/contact" 
-                className="inline-block px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30"
+                className="inline-block px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/20"
             >
                 Mulai Sekarang
             </Link>
@@ -138,12 +145,12 @@ function Footer() {
             © 2025 TalkVera. All rights reserved.
           </p>
           <div className="flex space-x-6">
-            <Link to="/privacy"  className="text-sm text-gray-500 hover:text-blue-400 transition-colors">
+            <Link to="/privacy-policy"  className="text-sm text-gray-500 hover:text-blue-400 transition-colors">
               Privacy Policy
             </Link>
-            {/* <Link to="/termcondition" className="text-sm text-gray-500 hover:text-blue-400 transition-colors">
+            <Link to="/term-condition" className="text-sm text-gray-500 hover:text-blue-400 transition-colors">
               Terms of Service
-            </Link> */}
+            </Link>
           </div>
         </div>
       </div>

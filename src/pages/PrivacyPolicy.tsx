@@ -58,6 +58,12 @@ const policyContent = [
       </span>
     )
   },
+  {
+    id: 'third-party',
+    title: '10. Third-Party Services We Use',
+    text: 'We use third-party tools such as Google Fonts, Google Analytics (if enabled), and API integrations including n8n to deliver our services. These tools may collect technical data such as browser type, device information, and usage statistics.'
+  },
+
 ];
 
 
@@ -80,7 +86,7 @@ const PrivacyPolicy = () => {
               Privacy Policy
             </h1>
             <p className="text-sm text-gray-400 font-medium">
-              Last updated: <span className="text-blue-400">10/26/2025</span>
+              Last updated: <span className="text-blue-400">2025-11-17</span>
             </p>
           </div>
           

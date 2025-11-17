@@ -9,6 +9,7 @@ import DocsPage from './pages/DocsPage';
 import ContactPage from './pages/ContactPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import NotFoundPage from './pages/NotFoundPage';
+import TermsAndConditions from './pages/TermCondition'
 
 // const BASE_TITLE = "Talkvera: AI Solution";
 
@@ -19,8 +20,8 @@ const ROUTE_TITLES = {
     '/contact': 'Kontak Kami | TalkVera - Hubungi Tim Dukungan & Sales',
     '/docs': 'Dokumentasi | TalkVera - Panduan Penggunaan Lengkap',
     '/docs/case-studies/overview': 'Studi Kasus | TalkVera - Proyeksikan Projek Anda',
-    '/privacy': 'Kebijakan Privasi | TalkVera',
-    '/termcondition': 'Syarat & Ketentuan Layanan | TalkVera',
+    '/privacy-policy': 'Kebijakan Privasi | TalkVera',
+    '/term-condition': 'Syarat & Ketentuan Layanan | TalkVera',
     '*': 'Halaman Tidak Ditemukan (404) | TalkVera', 
 };
 
@@ -66,8 +67,8 @@ function AppContent() {
   const location = useLocation();
   
   const isDocsPage = location.pathname.startsWith('/docs');
-  const isPrivacyPage = location.pathname.startsWith('/privacy');
-  const isTermsPage = location.pathname.startsWith('/termcondition'); 
+  const isPrivacyPage = location.pathname.startsWith('/privacy-policy');
+  const isTermsPage = location.pathname.startsWith('/term-condition'); 
   const isNotFoundsPage = location.pathname.startsWith('/notfound'); 
 
   const shouldHideFooter = isDocsPage || isPrivacyPage || isTermsPage;
@@ -88,7 +89,8 @@ function AppContent() {
           <Route path="/about" element={<AboutPage />} />
           <Route path="/contact" element={<ContactPage />} />
           <Route path="/docs/*" element={<DocsPage />} /> 
-          <Route path="/privacy" element={<PrivacyPolicy />} /> 
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} /> 
+          <Route path="/term-condition" element={<TermsAndConditions />} />
           <Route path="/notfound" element={<NotFoundPage />} /> 
 
           <Route path="/*" element={<Navigate to="/notfound" replace />} /> 

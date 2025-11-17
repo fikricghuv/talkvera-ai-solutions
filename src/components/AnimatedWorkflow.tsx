@@ -157,25 +157,40 @@ const AnimatedWorkflow = () => {
               }}
             />
             
-            {/* Flowing dot animation */}
+            {/* Flowing dot animation (Perbaikan dimulai di sini) */}
             <motion.circle
               r="3"
               fill="#60a5fa"
               filter={`url(#glow-${i})`}
-              initial={{ offsetDistance: "0%", opacity: 0 }}
+              
+              // Hapus prop 'initial' yang menyebabkan warning
+              
               animate={{ 
-                offsetDistance: "100%",
+                // Animasikan offsetDistance sebagai properti CSS
+                offsetDistance: ["0%", "100%"],
                 opacity: [0, 1, 1, 0]
               }}
+              
               transition={{
-                duration: 3,
-                delay: i * 0.2,
-                repeat: Infinity,
-                ease: "easeInOut"
+                offsetDistance: {
+                    duration: 3,
+                    delay: i * 0.2,
+                    repeat: Infinity,
+                    ease: "linear" // Lebih baik menggunakan linear untuk pergerakan path
+                },
+                opacity: {
+                    duration: 3,
+                    delay: i * 0.2,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                }
               }}
+              
               style={{
+                // Tetapkan nilai awal CSS dan properti path
                 offsetPath: `path('${createCurvedPath(t.x, t.y, i)}')`,
-                transform: "translate(250px, 250px)"
+                transform: "translate(250px, 250px)",
+                offsetDistance: "0%", // Nilai awal (initial) untuk dianimasikan
               }}
             />
           </svg>

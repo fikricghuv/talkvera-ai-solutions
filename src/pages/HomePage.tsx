@@ -215,17 +215,17 @@ function HomePage() {
             <div className="mt-10 grid grid-cols-3 sm:grid-cols-3 gap-4 sm:gap-6 max-w-sm sm:max-w-lg mx-auto sm:mx-0">
               <div className="text-center">
                 <div className="text-2xl sm:text-4xl font-bold text-blue-400 mb-1">50+</div>
-                <div className="text-xs sm:text-sm text-gray-500">Implementasi Workflow</div>
+                <div className="text-xs sm:text-sm text-gray-200">Implementasi Workflow</div>
               </div>
 
               <div className="text-center">
                 <div className="text-2xl sm:text-4xl font-bold text-blue-400 mb-1">95%</div>
-                <div className="text-xs sm:text-sm text-gray-500">Kepuasan Klien</div>
+                <div className="text-xs sm:text-sm text-gray-200">Kepuasan Klien</div>
               </div>
 
               <div className="text-center">
                 <div className="text-2xl sm:text-4xl font-bold text-blue-400 mb-1">24/7</div>
-                <div className="text-xs sm:text-sm text-gray-500">Dukungan Teknis</div>
+                <div className="text-xs sm:text-sm text-gray-200">Dukungan Teknis</div>
               </div>
             </div>
 

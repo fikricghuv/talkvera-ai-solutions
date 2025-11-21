@@ -5,6 +5,13 @@ const OverviewContent = () => {
 
     const caseStudies = [
         { 
+            id: 'whatsapp-agent', 
+            title: "Otomasi Customer Service 24/7", 
+            subtitle: "Tingkatkan Efisiensi Layanan Pelanggan", 
+            desc: "Sistem AI WhatsApp yang menangani ribuan percakapan sekaligus dengan respons instan 24/7. Kurangi biaya operasional 40-60% sambil meningkatkan customer satisfaction melalui smart automation dan personalisasi.",
+            path: 'whatsapp-agent' 
+        },
+        { 
             id: 'rag-agent', 
             title: "Analisis Database Berbasis AI", 
             subtitle: "Knowledge Retrieval & Insights", 

@@ -13,6 +13,7 @@ import PersonalizeOutreachAutomationContent from '../components/docs/case_study/
 import QAAutomationContent from '../components/docs/case_study/QAAutomationContent';
 import AppointmentAgentContent from '../components/docs/case_study/AppointmentAgentContent';
 import SalesAgentContent from '../components/docs/case_study/SalesAgentContent';
+import WhatsappAgentContent from '../components/docs/case_study/WhatsappAgentContent'
 
 const DOCS_BASE_PREFIX = "/docs"; 
 
@@ -28,6 +29,7 @@ const navigation = [
       basePath: 'case-studies', 
       children: [
         { id: 'overview', label: 'Overview', path: 'case-studies/overview' },
+        { id: 'whatsapp-agent', label: 'WhatsApp Customer Service', path: 'case-studies/whatsapp-agent' },
         { id: 'rag-agent', label: 'Database Personal Analysis', path: 'case-studies/rag-agent' },
         { id: 'newsletter-creation', label: 'Weekly Newsletter Automation', path: 'case-studies/newsletter-creation' },
         { id: 'personalized-outreach-agent', label: 'Personalized Outreach', path: 'case-studies/personalized-outreach-agent' },
@@ -146,6 +148,8 @@ function DocsPage() {
         return <ResourcesContent />;
       case 'overview':
         return <OverviewContent />;
+      case 'whatsapp-agent':
+        return <WhatsappAgentContent />;
       case 'rag-agent':
         return <DatabaseQueryAgentContent />;
       case 'newsletter-creation':

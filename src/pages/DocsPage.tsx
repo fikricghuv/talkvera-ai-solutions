@@ -13,7 +13,8 @@ import PersonalizeOutreachAutomationContent from '../components/docs/case_study/
 import QAAutomationContent from '../components/docs/case_study/QAAutomationContent';
 import AppointmentAgentContent from '../components/docs/case_study/AppointmentAgentContent';
 import SalesAgentContent from '../components/docs/case_study/SalesAgentContent';
-import WhatsappAgentContent from '../components/docs/case_study/WhatsappAgentContent'
+import WhatsappAgentContent from '../components/docs/case_study/WhatsappAgentContent';
+import ManagementSheetAgent from '../components/docs/case_study/ManagementSheetAgent';
 
 const DOCS_BASE_PREFIX = "/docs"; 
 
@@ -31,6 +32,7 @@ const navigation = [
         { id: 'overview', label: 'Overview', path: 'case-studies/overview' },
         { id: 'whatsapp-agent', label: 'WhatsApp Customer Service', path: 'case-studies/whatsapp-agent' },
         { id: 'rag-agent', label: 'Database Personal Analysis', path: 'case-studies/rag-agent' },
+        { id: 'management-operasional-bisnis', label: 'Management Oprasional Bisnis', path: 'case-studies/management-operasional-bisnis' },
         { id: 'newsletter-creation', label: 'Weekly Newsletter Automation', path: 'case-studies/newsletter-creation' },
         { id: 'personalized-outreach-agent', label: 'Personalized Outreach', path: 'case-studies/personalized-outreach-agent' },
         { id: 'schedule-appointment-agent', label: 'Schedule Appointment Agent', path: 'case-studies/schedule-appointment-agent' },
@@ -152,6 +154,8 @@ function DocsPage() {
         return <WhatsappAgentContent />;
       case 'rag-agent':
         return <DatabaseQueryAgentContent />;
+      case 'management-operasional-bisnis':
+        return <ManagementSheetAgent />;
       case 'newsletter-creation':
         return <NewsletterAutomationAgentContent />;
       case 'personalized-outreach-agent':

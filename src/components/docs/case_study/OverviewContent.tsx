@@ -19,6 +19,13 @@ const OverviewContent = () => {
             path: 'rag-agent' 
         },
         { 
+            id: 'management-operasional-bisnis', 
+            title: "Management Operasional Bisnis", 
+            subtitle: "Finance, CRM & Content Automation", 
+            desc: "Asisten operasional berbasis Telegram yang mengelola 3 pilar bisnis: pencatatan keuangan otomatis, strategi konten viral, dan manajemen CRM—semua terintegrasi real-time ke Google Sheets.",
+            path: 'management-operasional-bisnis' 
+        },
+        { 
             id: 'newsletter-creation', 
             title: "Otomasi Pembuatan Konten Mingguan", 
             subtitle: "Content Operations Automation", 

@@ -1,9 +1,63 @@
+import { useEffect, useRef } from 'react';
 import { Target, Users, Award, Lightbulb, Heart, Linkedin } from 'lucide-react';
 import StarField from '../components/StarFieldAnimation';
 import CtaContent from '../components/Cta';
 import FadeInOnScroll from '../components/FadeInOnScroll';
+import { trackEvent } from '../utils/trackEvent';
 
 function AboutPage() {
+
+  // SECTION REFS (TRACKING)
+  const heroRef = useRef<HTMLDivElement>(null);
+  const visionRef = useRef<HTMLDivElement>(null);
+  const teamRef = useRef<HTMLDivElement>(null);
+  const servicesRef = useRef<HTMLDivElement>(null);
+
+  // PAGE VIEW (TRACKING)
+  useEffect(() => {
+    trackEvent("about_page_view", { page: "AboutPage" });
+  }, []);
+
+  // SECTION VIEW TRACKING
+  useEffect(() => {
+    const sections = [
+      { name: "hero_section_view", ref: heroRef },
+      { name: "vision_section_view", ref: visionRef },
+      { name: "team_section_view", ref: teamRef },
+      { name: "services_section_view", ref: servicesRef },
+    ];
+
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            const section = e.target.getAttribute("data-section");
+            trackEvent(section!, { visible: true });
+            obs.unobserve(e.target);
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    sections.forEach((s) => {
+      if (s.ref.current) {
+        s.ref.current.setAttribute("data-section", s.name);
+        obs.observe(s.ref.current);
+      }
+    });
+
+    return () => obs.disconnect();
+  }, []);
+
+  // CLICK TRACKING
+  const onLinkedInClick = (name: string, role: string) => {
+    trackEvent("about_click_linkedin", { name, role });
+  };
+
+  const onServiceClick = (title: string) => {
+    trackEvent("about_service_click", { service: title });
+  };
 
   const services = [
     {
@@ -46,7 +100,12 @@ function AboutPage() {
 
   return (
     <div className="pt-16">
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      
+      {/* HERO SECTION */}
+      <section 
+        ref={heroRef} // TRACKING
+        className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      >
         <StarField />
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/20 via-transparent to-cyan-900/20"></div>
         <div className="absolute inset-0">
@@ -72,7 +131,8 @@ function AboutPage() {
       <section className="bg-gradient-to-b from-gray-900/30 to-transparent">
         <div className="max-w-7xl mx-auto px-6 pt-10">
 
-          <div className="mb-24">
+          {/* VISION SECTION */}
+          <div ref={visionRef} className="mb-24"> 
             <FadeInOnScroll delay={0.2} threshold={0.2}>
               <h2 className="text-4xl font-bold mb-12 text-center"><span className='text-blue-400'>Visi</span> Talkvera</h2>
             </FadeInOnScroll>
@@ -84,11 +144,7 @@ function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-bold mb-4 text-center">Mission</h3>
                 </FadeInOnScroll>
-                <FadeInOnScroll
-                  delay={0.3}
-                  threshold={0.3}
-                  direction="right"
-                >
+                <FadeInOnScroll delay={0.3} threshold={0.3} direction="right">
                   <p className="text-gray-400 leading-relaxed">
                     Menciptakan sistem AI yang meningkatkan efisiensi, kejelasan, dan kinerja operasional di setiap lini bisnis.
                   </p>
@@ -101,11 +157,7 @@ function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-bold mb-4">Vision</h3>
                 </FadeInOnScroll>
-                <FadeInOnScroll
-                  delay={0.3}
-                  threshold={0.3}
-                  direction="right"
-                >
+                <FadeInOnScroll delay={0.3} threshold={0.3} direction="right">
                   <p className="text-gray-400 leading-relaxed">
                     Membangun standar baru dalam automasi cerdas dan menjadi mitra strategis bagi perusahaan yang ingin bertransformasi.
                   </p>
@@ -114,10 +166,12 @@ function AboutPage() {
             </div>
           </div>
 
-          <div className='pb-24'>
+          {/* TEAM SECTION */}
+          <div ref={teamRef} className='pb-24'>
             <FadeInOnScroll delay={0.2} threshold={0.2}>
               <h2 className="text-4xl font-bold mb-12 text-center">Tim di Balik <span className='text-blue-400'>Talkvera</span></h2>
             </FadeInOnScroll>
+            
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {team.map((member, index) => (
                 <FadeInOnScroll
@@ -126,10 +180,7 @@ function AboutPage() {
                   threshold={0.3}
                   direction="right"
                 >
-                  <div
-                    key={index}
-                    className="p-8 "
-                  >
+                  <div className="p-8">
                     <div className="w-20 h-20 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-6 mx-auto">
                       <Users className="w-10 h-10 text-blue-400" />
                     </div>
@@ -140,6 +191,7 @@ function AboutPage() {
                         href={member.linkedinUrl}
                         target="_blank"
                         rel="noopener noreferrer"
+                        onClick={() => onLinkedInClick(member.name, member.role)} // TRACKING
                         className="flex items-center space-x-2 text-gray-400 hover:text-blue-400 transition-colors group"
                       >
                         <Linkedin className="w-5 h-5 fill-current" />
@@ -152,7 +204,8 @@ function AboutPage() {
             </div>
           </div>
 
-          <div className="mb-24">
+          {/* SERVICES SECTION */}
+          <div ref={servicesRef} className="mb-24">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               {services.map((service, index) => (
                 <FadeInOnScroll
@@ -162,7 +215,7 @@ function AboutPage() {
                   direction="left"
                 >
                   <div
-                    key={index}
+                    onClick={() => onServiceClick(service.title)} // TRACKING
                     className="p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 rounded-2xl border border-gray-700 transition-all duration-300 transform hover:scale-[1.02] hover:border-blue-500/70 shadow-lg"
                   >
                     <div className="w-14 h-14 rounded-full bg-gradient-to-br from-blue-500/20 to-cyan-500/20 flex items-center justify-center mb-4">
@@ -176,54 +229,10 @@ function AboutPage() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24">
-            <FadeInOnScroll
-              delay={0.3}
-              threshold={0.3}
-              direction="left"
-            >
-              <div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-6">Kami Mengoptimalkan Cara Anda <span className='text-blue-400'>Bertumbuh</span></h2>
-                <br />
-                <div className="space-y-4 text-gray-300 text-lg leading-relaxed">
-                  <p>
-                    Di Talkvera, kami tidak hanya membangun sistem AI—kami membangun kemitraan jangka panjang yang berkembang bersama bisnis Anda. Misi kami adalah membantu Anda mencapai pertumbuhan dengan memanfaatkan solusi AI khusus yang skalabel, efisien, dan selaras dengan tujuan Anda.
-                  </p>
-                  <p>
-                    Baik Anda mengoptimalkan operasional internal, mengurangi beban kerja manual, atau mengeksplorasi cara baru untuk melibatkan pelanggan, kami bertindak sebagai mitra strategis dalam perjalanan transformasi Anda. Kami menggabungkan keahlian teknis yang mendalam dengan pola pikir yang mengutamakan bisnis untuk memberikan dampak nyata dan terukur.
-                  </p>
-                  <br />
-                  <p className="text-blue-400 font-semibold">
-                    Fikri A
-                  </p>
-                  <span className='text-sm'>Co-Founder</span>
-                </div>
-              </div>
-            </FadeInOnScroll>
-            {/* Box Highlighted di Samping Kanan */}
-            <FadeInOnScroll
-              delay={0.3}
-              threshold={0.3}
-              direction="right"
-            >
-              <div className="relative p-1 bg-gradient-to-br from-blue-500/50 to-cyan-500/50 rounded-3xl shadow-2xl shadow-blue-500/20">
-                <img
-                  src="/assets/people-do-programming.jpg"
-                  alt="People working on programming"
-                  className="w-full h-full object-cover rounded-[1.4rem]"
-                />
-              </div>
-            </FadeInOnScroll>
-          </div>
-        </div>
-      </section>
+          {/* CTA SECTION (tidak perlu tracking khusus kecuali diminta) */}
+          <CtaContent />
 
-      <section className="pb-24 bg-gradient-to-b from-transparent to-gray-900/30">
-        <FadeInOnScroll delay={0.2} threshold={0.2}>
-          <div className="max-w-7xl mx-auto px-6">
-            <CtaContent />
-          </div>
-        </FadeInOnScroll>
+        </div>
       </section>
     </div>
   );

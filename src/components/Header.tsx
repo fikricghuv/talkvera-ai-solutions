@@ -1,6 +1,7 @@
 import { Menu, X } from 'lucide-react';
 import { useState } from 'react';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
+import { trackEvent } from '../utils/trackEvent';
 
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,6 +18,10 @@ function Header() {
 
   const closeMobileMenu = () => setMobileMenuOpen(false);
   const handleNavigate = (path: string) => {
+    trackEvent("navigate_click", {
+      destination: path,
+      from: currentPathname,
+    });
     navigate(path);
     closeMobileMenu();
   };
@@ -64,9 +69,17 @@ function Header() {
           <div className="hidden md:flex items-center space-x-8">
             {navItems.map((item) => (
                 <NavLink
-                    key={item.path}
-                    to={item.path}
-                    className={({ isActive }) => `text-sm font-medium transition-colors ${getNavLinkClass({ isActive, path: item.path })}`}
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => {
+                    trackEvent("menu_click", {
+                      menu_label: item.label,
+                      destination: item.path,
+                    });
+                  }}
+                  className={({ isActive }) =>
+                    `text-sm font-medium transition-colors ${getNavLinkClass({ isActive, path: item.path })}`
+                  }
                 >
                   {item.label}
                 </NavLink>
@@ -74,7 +87,10 @@ function Header() {
             
             {/* 3. Mulai Sekarang BUTTON */}
             <button 
-              onClick={() => handleNavigate('/contact')}
+              onClick={() => {
+                trackEvent("cta_click_mobile", { cta: "mulai_sekarang_header" });
+                handleNavigate('/contact');
+              }}
               className="px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-medium rounded-lg transition-all transform hover:scale-105 shadow-lg shadow-blue-500/30"
             >
               Mulai Sekarang
@@ -96,7 +112,14 @@ function Header() {
               <NavLink
                 key={item.path}
                 to={item.path}
-                onClick={closeMobileMenu}
+                onClick={() => {
+                  trackEvent("menu_click_mobile", {
+                    menu_label: item.label,
+                    destination: item.path,
+                  });
+                  closeMobileMenu();
+                }}
+
                 className={({ isActive }) => `block w-full text-left text-sm font-medium transition-colors ${getNavLinkClass({ isActive, path: item.path })}`}
               >
                 {item.label}
@@ -105,7 +128,10 @@ function Header() {
             
             {/* 5. MOBILE Mulai Sekarang BUTTON */}
             <button 
-              onClick={() => handleNavigate('/contact')}
+              onClick={() => {
+                trackEvent("cta_click", { cta: "mulai_sekarang_header" });
+                handleNavigate('/contact');
+              }}
               className="w-full px-6 py-2.5 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-medium rounded-lg"
             >
               Mulai Sekarang

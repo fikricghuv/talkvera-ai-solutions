@@ -3,6 +3,7 @@ import CtaContent from '../components/Cta';
 import { Link } from 'react-router-dom';
 import FadeInOnScroll from '../components/FadeInOnScroll';
 import { useNavigate } from 'react-router-dom';
+import { trackEvent } from '../utils/trackEvent';
 
 function PricingPage() {
   const navigate = useNavigate(); 
@@ -11,6 +12,15 @@ function PricingPage() {
   const handleContactNavigate = () => {
     navigate('/contact');
   };
+
+  const trackButtonClick = (buttonName: string, extra: Record<string, any> = {}) => {
+    trackEvent("button_click", {
+      page: "/pricing",
+      button_name: buttonName,
+      ...extra
+    });
+  };
+
 
   const plans = [
     {
@@ -135,16 +145,22 @@ function PricingPage() {
 
                             {/* Tombol Bottom: Menggunakan fungsi handleContactNavigate */}
                             <button
-                                className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all transform hover:scale-[1.02] ${
-                                    plan.highlighted
-                                        ? 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-xl shadow-blue-500/40'
-                                        : 'bg-gray-800 hover:bg-gray-700 text-white border border-gray-700'
-                                }`}
-                                // GANTI onNavigate('contact') dengan fungsi React Router
-                                onClick={handleContactNavigate} 
+                              className={`w-full py-3.5 rounded-xl font-semibold text-sm transition-all transform hover:scale-[1.02] ${
+                                  plan.highlighted
+                                      ? 'bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white shadow-xl shadow-blue-500/40'
+                                      : 'bg-gray-800 hover:bg-gray-700 text-white border border-gray-700'
+                              }`}
+                              onClick={() => {
+                                trackButtonClick("pricing_contact_sales", {
+                                  plan_name: plan.name,
+                                  plan_price: plan.price,
+                                });
+                                handleContactNavigate();
+                              }}
                             >
-                                {plan.price === 'Custom' ? 'Contact Sales' : 'Konsultasi Dengan Kami Now'}
+                              {plan.price === 'Custom' ? 'Contact Sales' : 'Konsultasi Dengan Kami Now'}
                             </button>
+
                         </div>
                     ))}
                 </div>

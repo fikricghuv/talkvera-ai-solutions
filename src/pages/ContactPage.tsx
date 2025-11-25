@@ -1,6 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Mail, Phone, MapPin, ArrowRight, CircleUser, Loader } from 'lucide-react';
 import StarField from '../components/StarFieldAnimation';
+import { trackEvent } from '../utils/trackEvent';
 
 // --- Type/Interface Declarations (Dianggap Anda menggunakan TypeScript/TSX) ---
 interface SelectOption {
@@ -78,9 +79,21 @@ function ContactPage() {
         if (message.type) setMessage({ type: null, text: null });
     }, [message.type]);
 
-    // Handler untuk pengiriman formulir
     const handleSubmit = useCallback(async (e: React.FormEvent) => {
         e.preventDefault();
+
+        // Track attempt
+        trackEvent("form_submit_attempt", {
+            form_id: "contact_form",
+            page: "/contact",
+            form_data_preview: {
+                firstName: formData.firstName,
+                lastName: formData.lastName,
+                email: formData.email,
+                company: formData.company,
+            }
+        });
+
         setIsSubmitting(true);
         setMessage({ type: null, text: null });
 
@@ -95,17 +108,35 @@ function ContactPage() {
             });
 
             if (response.ok) {
+
+                // Track success
+                trackEvent("form_submit_success", {
+                    form_id: "contact_form",
+                    page: "/contact",
+                    email: formData.email,
+                    company: formData.company,
+                });
+
                 setMessage({ 
                     type: 'success', 
                     text: 'Berhasil! Permintaan konsultasi Anda telah dikirim. Kami akan segera menghubungi Anda.' 
                 });
                 setFormData(initialFormData); // Reset form
+
             } else {
-                // Mencoba membaca response JSON untuk detail error
                 const errorData = await response.json().catch(() => ({ message: 'Server responded with an error.' }));
                 throw new Error(errorData.message || `HTTP Error: ${response.status}`);
             }
+
         } catch (error) {
+
+            // Track error
+            trackEvent("form_submit_error", {
+                form_id: "contact_form",
+                page: "/contact",
+                error: error instanceof Error ? error.message : "unknown_error",
+            });
+
             console.error('Submission failed:', error);
             setMessage({ 
                 type: 'error', 
@@ -115,6 +146,7 @@ function ContactPage() {
             setIsSubmitting(false);
         }
     }, [formData]);
+
 
     return (
         <div className="pt-16 min-h-screen text-white">

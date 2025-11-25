@@ -94,6 +94,18 @@ function DocsPage() {
     return () => clearTimeout(timer);
   }, [currentSectionID]);
 
+  // 🔥 Tracking Google Analytics ketika dokumen dibaca
+  useEffect(() => {
+    if (!window.gtag) return;
+
+    window.gtag("event", "docs_section_view", {
+      event_category: "Documentation",
+      event_label: currentSectionID,
+      section_id: currentSectionID,
+      path: currentPath,
+    });
+  }, [currentSectionID]);
+
   // Fungsi helper untuk membuat path absolut penuh
   const getFullDocPath = (segment: string) => {
     // Pastikan path diawali dengan prefix dan hapus potensi double-slash

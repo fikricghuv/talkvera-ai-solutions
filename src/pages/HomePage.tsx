@@ -13,16 +13,27 @@ import DashboardAnalyticsAnimation from '../components/MonitoringAnimation';
 import AccessControlAnimation from '../components/AccessControlAnimation';
 import EnterpriseSecurityAnimation from '../components/EnterpriseSecurityAnimation';
 
+const trackEvent = (eventName: string, label: string) => {
+  if (typeof window.gtag !== "undefined") {
+    window.gtag("event", eventName, {
+      event_category: "Navigation",
+      event_label: label,
+    });
+  }
+};
+
 function HomePage() {
 
   const [activeIndex, setActiveIndex] = useState<number | null>(0);
   const navigate = useNavigate();
 
   const handleContactNavigate = () => {
+    trackEvent("navigate_contact_click", "Contact Page");
     navigate('/contact');
   };
 
   const handleCaseStudiesNavigate = () => {
+    trackEvent("navigate_case_studies_click", "Case Studies Overview");
     navigate('/docs/case-studies/overview');
   };
 
@@ -202,11 +213,20 @@ function HomePage() {
 
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 justify-start"> 
-                <button onClick={handleContactNavigate} className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2" > 
+                <button 
+                  onClick={() => {
+                    trackEvent("hero_contact_click", "CTA Hero – Contact");
+                    handleContactNavigate();
+                  }} 
+                  className="px-8 py-4 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold rounded-lg transition-all transform hover:scale-105 shadow-xl shadow-blue-500/30 flex items-center justify-center space-x-2" > 
                   <span>Konsultasi Dengan Kami</span> 
                   <ArrowRight size={20} /> 
                 </button> 
-                <button className="px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all" onClick={handleCaseStudiesNavigate} > 
+                <button className="px-8 py-4 bg-gray-800/50 hover:bg-gray-700/50 text-white font-semibold rounded-lg border border-gray-700 transition-all" 
+                  onClick={() => {
+                    trackEvent("hero_case_studies_click", "CTA Hero – Case Studies");
+                    handleCaseStudiesNavigate();
+                  }} > 
                   Lihat Studi Kasus Klien 
                 </button> 
               </div>

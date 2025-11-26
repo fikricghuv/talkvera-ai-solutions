@@ -13,6 +13,7 @@ import ContactPage from './pages/ContactPage';
 import PrivacyPolicy from './pages/PrivacyPolicy';
 import NotFoundPage from './pages/NotFoundPage';
 import TermsAndConditions from './pages/TermCondition';
+import {ChatWidget} from "./pages/ChatWidget"
 
 const ROUTE_TITLES = {
     '/home': 'TalkVera - Scale Up Bisnis Anda Tanpa Terjebak Administrasi Harian',
@@ -74,6 +75,8 @@ function AppContent() {
       <GoogleAnalyticsTracker /> {/* <--- TRACKER DIPASANG DI SINI */}
 
       {!shouldHideHeader && <Header />}
+
+      <ChatWidget />
       
       <main>
         <Routes key={location.pathname}>

@@ -1,7 +1,9 @@
 // src/components/docs/OverviewContent.jsx
 import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const OverviewContent = () => {
+    const [showAll, setShowAll] = useState(false);
 
     const caseStudies = [
         { 
@@ -62,6 +64,8 @@ const OverviewContent = () => {
         }
     ];
 
+    const displayedCases = showAll ? caseStudies : caseStudies.slice(0, 3);
+
     return (
         <div className="space-y-16 p-6">
 
@@ -82,7 +86,7 @@ const OverviewContent = () => {
             {/* Case Studies Grid */}
             <section>
               <div className="grid grid-cols-1 gap-10">
-                {caseStudies.map((item, i) => (
+                {displayedCases.map((item, i) => (
                   <div 
                     key={i}
                     className="text-left p-6 rounded-xl border border-gray-700 bg-gray-900/20 hover:border-blue-500/40 hover:shadow-xl transition-all flex flex-col justify-between"
@@ -102,6 +106,18 @@ const OverviewContent = () => {
                   </div>
                 ))}
               </div>
+
+              {/* Show More Button */}
+              {!showAll && caseStudies.length > 3 && (
+                <div className="flex justify-center mt-8">
+                  <button
+                    onClick={() => setShowAll(true)}
+                    className="py-3 px-8 text-sm font-semibold rounded-lg bg-blue-600 hover:bg-blue-700 transition-colors shadow-md self-start inline-block text-white text-center"
+                  >
+                    Lihat Semua Studi Kasus ({caseStudies.length - 3} lainnya)
+                  </button>
+                </div>
+              )}
             </section>
           </div>
     );

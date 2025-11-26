@@ -6,7 +6,7 @@ import { trackEvent } from '../utils/trackEvent';
 function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate(); 
-  const currentPathname = window.location.pathname; // Dapatkan pathname saat ini
+  const currentPathname = window.location.pathname;
 
   const navItems: { label: string; path: string }[] = [
     { label: 'Home', path: '/home#home' }, 
@@ -28,25 +28,25 @@ function Header() {
     
   // Fungsi penentu kelas NavLink
   const getNavLinkClass = ({ isActive, path }: { isActive: boolean, path: string }) => {
-      // 1. Cek Case Study Link
+      
+      const activeStyle = 'text-blue-400 underline decoration-2 underline-offset-8 decoration-blue-400';
+      const inactiveStyle = 'text-gray-300 hover:text-white transition-all duration-200';
+
+      // 2. Cek Case Study Link
       if (path === '/docs/case-studies/overview') {
-          // Aktif jika path saat ini dimulai dengan /docs/case-studies
           const isCaseStudyActive = currentPathname.startsWith('/docs/case-studies');
-          return isCaseStudyActive ? 'text-blue-400' : 'text-gray-300 hover:text-white';
+          return isCaseStudyActive ? activeStyle : inactiveStyle;
       }
 
-      // 2. Cek Docs Link
+      // 3. Cek Docs Link
       if (path === '/docs/introduction') {
-          // Aktif jika dimulai dengan /docs/ TAPI BUKAN /docs/case-studies
           const isDocsActive = currentPathname.startsWith('/docs/') && !currentPathname.startsWith('/docs/case-studies');
-          return isDocsActive ? 'text-blue-400' : 'text-gray-300 hover:text-white';
+          return isDocsActive ? activeStyle : inactiveStyle;
       }
       
-      // 3. Link Lain (Home, Pricing, About)
-      // Gunakan isActive bawaan dari NavLink
-      return isActive ? 'text-blue-400' : 'text-gray-300 hover:text-white';
+      // 4. Link Lain (Home, Pricing, About)
+      return isActive ? activeStyle : inactiveStyle;
   }
-
 
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/80 backdrop-blur-lg border-b border-gray-800">

@@ -100,9 +100,9 @@ function AboutPage() {
 
   return (
     <div className="pt-16">
-      
+
       {/* HERO SECTION */}
-      <section 
+      <section
         ref={heroRef} // TRACKING
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
       >
@@ -128,11 +128,11 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-gradient-to-b from-gray-900/30 to-transparent">
+      <section className="py-24 bg-gradient-to-b from-gray-900/30 to-transparent">
         <div className="max-w-7xl mx-auto px-6 pt-10">
 
           {/* VISION SECTION */}
-          <div ref={visionRef} className="mb-24"> 
+          <div ref={visionRef} className="mb-24">
             <FadeInOnScroll delay={0.2} threshold={0.2}>
               <h2 className="text-4xl font-bold mb-12 text-center"><span className='text-blue-400'>Visi</span> Talkvera</h2>
             </FadeInOnScroll>
@@ -144,7 +144,7 @@ function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-bold mb-4 text-center">Mission</h3>
                 </FadeInOnScroll>
-                <FadeInOnScroll delay={0.3} threshold={0.3} direction="right">
+                <FadeInOnScroll delay={0.2} threshold={0.3} direction="right">
                   <p className="text-gray-400 leading-relaxed">
                     Menciptakan sistem AI yang meningkatkan efisiensi, kejelasan, dan kinerja operasional di setiap lini bisnis.
                   </p>
@@ -157,7 +157,7 @@ function AboutPage() {
                   </div>
                   <h3 className="text-2xl font-bold mb-4">Vision</h3>
                 </FadeInOnScroll>
-                <FadeInOnScroll delay={0.3} threshold={0.3} direction="right">
+                <FadeInOnScroll delay={0.2} threshold={0.3} direction="right">
                   <p className="text-gray-400 leading-relaxed">
                     Membangun standar baru dalam automasi cerdas dan menjadi mitra strategis bagi perusahaan yang ingin bertransformasi.
                   </p>
@@ -167,7 +167,7 @@ function AboutPage() {
           </div>
 
           {/* TEAM SECTION */}
-          <div ref={teamRef} className='pb-24'>
+          {/* <div ref={teamRef} className='pb-24'>
             <FadeInOnScroll delay={0.2} threshold={0.2}>
               <h2 className="text-4xl font-bold mb-12 text-center">Tim di Balik <span className='text-blue-400'>Talkvera</span></h2>
             </FadeInOnScroll>
@@ -202,7 +202,7 @@ function AboutPage() {
                 </FadeInOnScroll>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* SERVICES SECTION */}
           <div ref={servicesRef} className="mb-24">
@@ -229,12 +229,42 @@ function AboutPage() {
             </div>
           </div>
 
-          {/* CTA SECTION (tidak perlu tracking khusus kecuali diminta) */}
-          <CtaContent />
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center mb-24"> 
+            <FadeInOnScroll delay={0.2} threshold={0.3} direction="left" > 
+              <div> 
+                <h2 className="text-4xl md:text-5xl font-bold mb-6">Kami Mengoptimalkan Cara Anda <span className='text-blue-400'>Bertumbuh</span>
+                </h2> 
+                <br /> 
+                <div className="space-y-4 text-gray-300 text-lg leading-relaxed"> 
+                  <p> Di Talkvera, kami tidak hanya membangun sistem AI—kami membangun kemitraan jangka panjang 
+                    yang berkembang bersama bisnis Anda. Misi kami adalah membantu Anda mencapai pertumbuhan 
+                    dengan memanfaatkan solusi AI khusus yang skalabel, efisien, dan selaras dengan tujuan Anda. </p> 
+                  <p> Baik Anda mengoptimalkan operasional internal, mengurangi beban kerja manual, atau mengeksplorasi 
+                    cara baru untuk melibatkan pelanggan, kami bertindak sebagai mitra strategis dalam perjalanan 
+                    transformasi Anda. Kami menggabungkan keahlian teknis yang mendalam dengan pola pikir yang 
+                    mengutamakan bisnis untuk memberikan dampak nyata dan terukur. </p> 
+                  <br /> 
+                  <p className="text-blue-400 font-semibold"> Fikri A </p> <span className='text-sm'>Co-Founder</span> 
+                </div> 
+              </div> 
+            </FadeInOnScroll> {/* Box Highlighted di Samping Kanan */} 
+            <FadeInOnScroll delay={0.2} threshold={0.3} direction="right" > 
+              <div className="relative p-1 bg-gradient-to-br from-blue-500/50 to-cyan-500/50 rounded-3xl shadow-2xl shadow-blue-500/20"> 
+                <img src="/assets/people-do-programming.jpg" alt="People working on programming" className="w-full h-full object-cover rounded-[1.4rem]" /> 
+              </div> 
+            </FadeInOnScroll> 
+          </div> 
 
-        </div>
-      </section>
-    </div>
+        {/* CTA SECTION (tidak perlu tracking khusus kecuali diminta) */}
+        <FadeInOnScroll delay={0.2} threshold={0.2}>
+          <div className="mt-24">
+            <CtaContent />
+          </div>
+        </FadeInOnScroll>
+
+      </div>
+      </section >
+    </div >
   );
 }
 

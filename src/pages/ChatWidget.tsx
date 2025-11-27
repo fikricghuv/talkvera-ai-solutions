@@ -57,7 +57,7 @@ export const ChatWidget: React.FC = () => {
                 </div>
 
                 {/* Close Button - Hanya di Tablet/Desktop */}
-                <div className="absolute top-5 right-3 z-[10001] hidden sm:block">
+                <div className="absolute top-4 right-3 z-[10001] hidden sm:block">
                     <button
                         onClick={() => setIsOpen(false)}
                         className="p-1 rounded-full transition"
